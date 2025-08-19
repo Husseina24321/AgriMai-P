@@ -1,0 +1,30 @@
+@use "../vars/colors" as *;
+
+header {
+  background-color: $color2; // vert
+  padding: 1rem 2rem;
+
+  nav {
+    ul {
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      margin: 0;
+      padding: 0;
+    }
+
+    li {
+      margin: 0 1rem;
+    }
+
+    a {
+      color: $color3; // texte blanc
+      text-decoration: none;
+      font-weight: bold;
+
+      &:hover {
+        color: $color7; // orange au survol
+      }
+    }
+  }
+}
