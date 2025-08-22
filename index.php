@@ -1,10 +1,9 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="utf-8" />
-    <title>Gri Mai</title>
-    <link rel="stylesheet" href="../assets/styles/css/style.css">
-</head>
-</html>
 <?php
+session_start();
+require_once __DIR__ . '/vendor/autoload.php';
+require"services/autoload.php";
+$route = $_GET['route'] ?? 'default';
+$router = new Router();
+$router->handleRequest($route);
+
 

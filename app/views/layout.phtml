@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8" />
+    <title> gri Mai</title>
+    <link rel="stylesheet" href="../../assets/styles/css/style.css">
+</head>
+<header>
+    <nav>
+        <ul>
+            <li><a>index.php?</a></li>
+            <li><a>index.php?route=about</a></li>
+            <li><a>index.php?route=contact</a></li>
+            <li><a>index.php?route=faq</a></li>
+            <li><a>index.php?route=login</a></li>
+            <li><a>index.php?route=order</a></li>
+            <li><a>index.php?route=products</a></li>
+            <li><a>index.php?route=register</a></li>
+        </ul>
+    </nav>
+</header>
+<body>
+</body>
+</html>
+<?php
+if ($route === "home") {
+    require "app/views/home.phtml";
+} elseif ($route === "about") {
+    require "app/views/about.phtml";
+} elseif ($route === "contact") {
+    require "app/views/contact.phtml";
+} elseif ($route === "faq") {
+    require "app/views/faq.phtml";
+} elseif ($route === "login") {
+    require "app/views/login.phtml";
+} elseif ($route === "order") {
+    require "app/views/order.phtml";
+} elseif ($route === "products") {
+    require "app/views/products.phtml";
+} elseif ($route === "register") {
+    require "app/views/register.phtml";
+} elseif ($route === "notFound") {
+    require "app/views/notfound.phtml";
+}
+?>
+
