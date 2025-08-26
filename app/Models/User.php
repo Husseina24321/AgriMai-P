@@ -1,12 +1,5 @@
 <?php
 
-enum UserRole: string
-{
-    case Admin = 'Admin';
-    case Producer = 'Producteur';
-    case Buyer = 'Acheteur';
-}
-
 class User
 {
     private ?int $id = null;
@@ -126,6 +119,8 @@ class User
     {
         $this->deleted_at = $deleted_at;
     }
+
 }
+
 
 

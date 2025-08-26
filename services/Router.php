@@ -1,55 +1,124 @@
 <?php
 
-use Couchbase\User;
-
-class Router
-{
-    public function handleRequest(array $get) : void
+class Router {
+    public function handleRequest(array $get)
     {
-        $home= new HomeController();
-        $auth = new AuthController();
-        $cag = new CategoryController();
-        $cont = new ContactController();
-        $dash = new DashboardController();
-        $order = new OrderController();
-        $oi = new OrderItemController();
-        $pd = new ProductController();
-        $user = new UserController();
+        if (!empty($get['route'])) {
+            switch ($get['route']) {
+                // USERS
+                case "list-users":
+                    $userController = new UserController();
+                    $userController->list();
+                    // UserController::list();
+                    break;
+                case "details-user":
+                    $userController = new UserController();
+                    $userController->detailsUser();
+                    //UserController::detailsUser();
+                    break;
+                case "update-user":
+                    $userController = new UserController();
+                    $userController->updateUser();
+                    //UserController::updateUser();
+                    break;
+                case "check-update-user":
+                    $userController = new UserController();
+                    $userController->checkUpdateUser();
+                    //UserController::checkUpdateUser();
+                    break;
+                case "create-user":
+                    $userController = new UserController();
+                    $userController->createUser();
+                    //UserController::createUser();
+                    break;
+                case "check-create-user":
+                    $userController = new UserController();
+                    $userController->checkCreateUser();
+                    //UserController::checkCreateUser();
+                    break;
+                case "delete-user":
+                    $userController = new UserController();
+                    $userController->deleteUser();
+                    //UserController::deleteUser();
+                    break;
 
-        if(!isset($get["route"]))
-        {
-            $home->home();
-        }
-        if (isset($get['route']) && $get['route'] === 'about') {
-            $about->about();
+                // MESSAGES
+                case "list-messages":
+                    ContactController::listMessages();
+                    break;
+                case "list-messages-by-user":
+                    break;
+                case "delete-message":
+                    break;
 
-        } elseif (isset($get['route']) && $get['route'] === 'contact') {
-            $cont->ContactController();
-        } elseif (isset($get['route']) && $get['route'] === 'faq') {
-            $cont->faq();
+                // PRODUCTS
+                case "list-products":
+                    break;
+                case "details-product":
+                    break;
+                case "list-products-by-user":
+                    break;
+                case "create-product":
+                    break;
+                case "check-create-product":
+                    break;
+                case "update-product":
+                    break;
+                case "check-update-product":
+                    break;
+                case "delete-product":
+                    break;
 
-        } elseif (isset($get['route']) && $get['route'] === 'faq') {
-            if (isset($get['categorie']) && $get['categorie'] === 'dev-back') {
-                $controller->DevBack();
-            } elseif (isset($get['categorie']) && $get['categorie'] === 'dev-front') {
-                $controller->DevFront();
-            } else {
-                $controller->notFound();
+                // ORDERS
+                case "list-orders":
+                    break;
+                case "details-order":
+                    break;
+                case "list-orders-by-user":
+                    break;
+                case "update-order":
+                    break;
+                case "check-update-order":
+                    break;
+                case "delete-order":
+                    break;
+
+                // DASHBOARD
+                case "dashboard":
+                    // DashboardController::index();
+                    break;
+
+                // AUTH
+                case "login":
+                    $authController = new AuthController();
+                    $authController->login();
+                    break;
+                case "check-login":
+                    $authController = new AuthController();
+                    $authController->checkLogin();
+                    break;
+                case "register":
+                    $authController = new AuthController();
+                    $authController->register();
+                    break;
+                case "check-register":
+                    $authController = new AuthController();
+                    $authController->checkRegister();
+                    // AuthController::check-register();
+                    break;
+                case "logout":
+                    // AuthController::logout();
+                    break;
+
+                // -------- 404 --------
+                default:
+                    // PageController::error404();
+                    break;
             }
-
-        } elseif (isset($get['route']) && $get['route'] === 'article') {
-            if (isset($get['article']) && $get['article'] === 'i-love-php') {
-                $controller->ilovephp();
-            } elseif (isset($get['article']) && $get['article'] === 'i-love-js') {
-                $controller->ilovejs();
-            } else {
-                $controller->notFound();
-            }
-
-        } elseif (!isset($get['route'])) {
-            $controller->home();
         } else {
-            $controller->notFound();
+            // pas de route -> home
+            // PageController::home();
         }
     }
 }
+

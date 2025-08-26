@@ -1,11 +1,33 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="utf-8" />
-    <title> gri Mai</title>
-    <link rel="stylesheet" href="../../assets/styles/css/style.css">
-</head>
-<body>
-<h1>Register</h1>
-</body>
-</html>
+{% extends "layout.html.twig" %}
+{% block content %}
+<img src="/assets/styles/img/logo.png" alt="Logo AgriMai">
+<h1>Formulaire d'inscription </h1>
+<form action="/index.php?route=checkRegister" method="POST" >
+    <label>Prénom
+        <input type="text" name="first_name" placeholder="Prénom" required>
+    </label>
+    <label>Nom
+        <input type="text" name="last_name" placeholder="Nom" required>
+    </label>
+    <label>E-mail
+        <input type="email" name="email" placeholder="E-mail" required>
+    </label>
+    <label>Mot de passe
+        <input type="password" name="password" placeholder="Mot de passe" required>
+    </label>
+    <label>Confirmation du mot passe
+        <input type="password" name="confirm-password" placeholder="Confirmer mot de passe" required>
+    </label>
+    <label> Role
+    <select name="role" required>
+        <?php foreach (UserRole::cases() as $role): ?>
+        <option value="<?= htmlspecialchars($role->name) ?>">
+            <?= htmlspecialchars($role->value) ?>
+        </option>
+        <?php endforeach; ?>
+    </select>
+    </label>
+    <input type="hidden" name="csrf-token" value="<?= htmlspecialchars($csrfToken) ?>">
+    <button type="submit">S'inscrire</button>
+</form>
+{% endblock %}

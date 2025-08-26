@@ -1,11 +1,15 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="utf-8" />
-    <title> gri Mai</title>
-    <link rel="stylesheet" href="../../assets/styles/css/style.css">
-</head>
-<body>
-<h1>login</h1>
-</body>
-</html>
+{% extends "layout.html.twig" %}
+{% block content %}
+<img src="/assets/styles/img/logo.png" alt="Logo AgriMai">
+<h1>Connexion </h1>
+<form action="/index.php?route=checkRegister" method="POST" >
+    <label>E-mail
+        <input type="email" name="email" placeholder="E-mail" required>
+    </label>
+    <label>Mot de passe
+        <input type="password" name="password" placeholder="Mot de passe" required>
+    </label>
+    <input type="hidden" name="csrf-token" value="{{ csrfToken|e }}">
+    <button type="submit">Se connecter</button>
+</form>
+{% endblock %}
