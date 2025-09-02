@@ -1,12 +1,13 @@
 <?php
-
+namespace app\Models;
+use DateTime;
 class Message
 {
     private ?int $id = null;
     private int $sender_id;
     private int $receiver_id;
     private string $content;
-    private DateTime $sent_at;
+    private ?DateTime $sent_at;
 
     public function __construct(
         int $sender_id,

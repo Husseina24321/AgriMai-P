@@ -1,33 +1,50 @@
-{% extends "layout.html.twig" %}
+{% extends "/front/layout.html.twig" %}
 {% block content %}
-<img src="/assets/styles/img/logo.png" alt="Logo AgriMai">
-<h1>Formulaire d'inscription </h1>
-<form action="/index.php?route=checkRegister" method="POST" >
-    <label>Prénom
-        <input type="text" name="first_name" placeholder="Prénom" required>
-    </label>
-    <label>Nom
-        <input type="text" name="last_name" placeholder="Nom" required>
-    </label>
-    <label>E-mail
-        <input type="email" name="email" placeholder="E-mail" required>
-    </label>
-    <label>Mot de passe
-        <input type="password" name="password" placeholder="Mot de passe" required>
-    </label>
-    <label>Confirmation du mot passe
-        <input type="password" name="confirm-password" placeholder="Confirmer mot de passe" required>
-    </label>
-    <label> Role
-    <select name="role" required>
-        <?php foreach (UserRole::cases() as $role): ?>
-        <option value="<?= htmlspecialchars($role->name) ?>">
-            <?= htmlspecialchars($role->value) ?>
-        </option>
-        <?php endforeach; ?>
-    </select>
-    </label>
-    <input type="hidden" name="csrf-token" value="<?= htmlspecialchars($csrfToken) ?>">
-    <button type="submit">S'inscrire</button>
-</form>
+    <img src="/AgriMai/assets/styles/img/logo.png" alt="Logo AgriMai">
+    <h1>Formulaire d'inscription </h1>
+
+    <p style="color: red;">
+        {{ session["error-message"] }}
+    </p>
+
+    <form action="/AgriMai/index.php?route=check-register" method="POST">
+        <table>
+            <tr>
+                <td><label for="first_name">Prénom :</label></td>
+                <td><input type="text" id="first_name" name="first_name" placeholder="Prénom" required></td>
+            </tr>
+            <tr>
+                <td><label for="last_name">Nom :</label></td>
+                <td><input type="text" id="last_name" name="last_name" placeholder="Nom" required></td>
+            </tr>
+            <tr>
+                <td><label for="email">E-mail :</label></td>
+                <td><input type="email" id="email" name="email" placeholder="E-mail" required></td>
+            </tr>
+            <tr>
+                <td><label for="password">Mot de passe :</label></td>
+                <td><input type="password" id="password" name="password" placeholder="Mot de passe" required></td>
+            </tr>
+            <tr>
+                <td><label for="confirm-password">Confirmation :</label></td>
+                <td><input type="password" id="confirm-password" name="confirm-password" placeholder="Confirmer le mot de passe" required></td>
+            </tr>
+            <tr>
+                <td><label for="role">Rôle :</label></td>
+                <td>
+                    <select id="role" name="role" required>
+                        {% for role in roles %}
+                            <option value="{{ role.value|e }}">{{ role.value|e }}</option>
+                        {% endfor %}
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align: center;">
+                    <input type="hidden" name="csrf-token" value="{{ csrfToken|e }}">
+                    <button type="submit">S'inscrire</button>
+                </td>
+            </tr>
+        </table>
+    </form>
 {% endblock %}

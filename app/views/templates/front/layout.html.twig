@@ -3,13 +3,16 @@
 <head>
     <meta charset="utf-8" />
     <title> {% block title %} AgriMai {% endblock %}</title>
-    <link rel="stylesheet" href="/assets/styles/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/AgriMai/assets/styles/css/style.css">
+
+
 </head>
 <body>
-{% include "partials/header.html.twig"  %}
+{% include "/front/partials/header.html.twig"  %}
 {% block content %}
 {% endblock %}
-{% include "partials/footer.html.twig"  %}
+{% include "/front/partials/footer.html.twig"  %}
 </body>
 </html>
 

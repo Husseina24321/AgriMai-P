@@ -11,8 +11,10 @@
   ],
   "autoload": { "classmap":
   [ "app/Controllers/",
+    "app/Enum/",
     "app/Managers/",
     "app/Models/",
+    "app/views/",
     "services/"
   ]
   },

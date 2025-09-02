@@ -1,4 +1,9 @@
 <?php
+namespace app\Managers;
+
+use PDO;
+use PDOException;
+
 abstract class AbstractManager
 {
     protected PDO $db;

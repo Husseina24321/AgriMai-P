@@ -1,1 +1,19 @@
-<?php
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8" />
+    <title> {% block title %} AgriMai {% endblock %}</title>
+    <link rel="stylesheet" href="assets/styles/css/style.css">
+</head>
+<body>
+{% block content %}
+    <nav>
+        <ul>
+            <li><a href="">Tableau de bord</a></li>
+            <li><a href="">Gestion des utilisateurs</a></li>
+        </ul>
+    </nav>
+{% endblock %}
+</body>
+</html>

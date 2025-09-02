@@ -1,8 +1,11 @@
-{% extends "layout.html.twig" %}
+{% extends "/front/layout.html.twig" %}
 {% block content %}
-<img src="/assets/styles/img/logo.png" alt="Logo AgriMai">
+<img src="/AgriMai/assets/styles/img/logo.png" alt="Logo AgriMai">
 <h1>Connexion </h1>
-<form action="/index.php?route=checkRegister" method="POST" >
+    <p style="color: red;">
+        {{ session["error-message"] }}
+    </p>
+<form action="/AgriMai/index.php?route=check-login" method="POST">
     <label>E-mail
         <input type="email" name="email" placeholder="E-mail" required>
     </label>

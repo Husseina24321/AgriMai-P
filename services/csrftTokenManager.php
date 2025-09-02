@@ -1,4 +1,5 @@
 <?php
+namespace services;
 class CSRFTokenManager
 {
     public function generateCSRFToken(): string

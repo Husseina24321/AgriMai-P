@@ -1,11 +1,13 @@
 <?php
+namespace app\Controllers;
 use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
 use Twig\Extension\DebugExtension;
 use Twig\Error\LoaderError;
 use Twig\Error\RuntimeError;
 use Twig\Error\SyntaxError;
-use JetBrains\PhpStorm\NoReturn;
+
+
 
 abstract class AbstractController
 {
@@ -13,7 +15,7 @@ abstract class AbstractController
 
     public function __construct()
     {
-        $loader = new FilesystemLoader('templates');
+        $loader = new FilesystemLoader('app/views/templates');
         $this->twig = new Environment($loader, ['debug' => true]);
         $this->twig->addExtension(new DebugExtension());
     }
@@ -23,7 +25,7 @@ abstract class AbstractController
     {
         // Twig  lance des exceptions (LoaderError, RuntimeError, SyntaxError) pour éviter "Unhandled exceptions"
         try {
-            echo $this->twig->render("app/views/front/$name.html.twig", $context);
+            echo $this->twig->render("$name", $context);
         } catch (LoaderError | RuntimeError | SyntaxError $e) {
             die("Erreur de rendu Twig : " . $e->getMessage());
         }

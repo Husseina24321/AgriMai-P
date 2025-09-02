@@ -1,11 +1,12 @@
 <?php
+namespace app\Models;
 class OrderItem
 {
     private ?int $id = null;
     private ?int $order_id;
     private ?int $product_id;
     private float $unit_price;
-    private ?int $quantity = null;
+    private ?int $quantity;
     private float $total;
 
     public function __construct(

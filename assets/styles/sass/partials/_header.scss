@@ -1,14 +1,23 @@
 @use "../vars/colors" as *;
+@use "../vars/fonts" as *;
 
 header {
-  background-color: $color2; // vert
+  background-color: $color8;
   padding: 1rem 2rem;
 
   nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    img {
+      width: 70px;
+      height: auto;
+    }
+
     ul {
       list-style: none;
       display: flex;
-      justify-content: space-between;
       margin: 0;
       padding: 0;
     }
@@ -18,13 +27,33 @@ header {
     }
 
     a {
-      color: $color3; // texte blanc
+      @include inter(700, normal, 18px);
+      color: $color3;
       text-decoration: none;
-      font-weight: bold;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
 
       &:hover {
-        color: $color7; // orange au survol
+        color: $color7;
       }
+
+      img {
+        width: 18px;
+        height: auto;
+      }
+
+      i {
+        font-size: 1.2rem;
+      }
+    }
+    .aBorder1{
+      border: inset;
+    }
+    .aBorder2{
+      background-color: $color1;
+      color: $color4;
+      border: 2px solid $color1;
     }
   }
 }

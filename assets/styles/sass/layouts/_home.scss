@@ -1,2 +1,227 @@
 @use "../vars/colors" as *;
+@use "../vars/fonts" as *;
 @use "../partials/header"as *;
+
+
+.container{
+  padding: 0;
+  margin: auto;
+}
+  #hero {
+  background: url("/AgriMai/assets/styles/img/image1.png") no-repeat center center/cover;
+  color: white;
+  min-height: 100vh; /* plein écran */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+
+
+}
+#hero p {
+  @include roboto(500, normal , 24px);
+  line-height: 1.5;
+
+}
+
+.hero-body {
+  display: flex;
+  gap: 2rem;
+  max-width: 1200px;
+  width: 100%;
+  align-items: center;
+}
+
+.hero-image2 img {
+  width: 280px;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+.hero-text {
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: flex-start;
+}
+
+
+.hero-text h1 {
+  @include montserrat(700, normal, 40px);
+  margin: 0;
+
+}
+
+.hero-buttons {
+  display: flex;
+  align-items: center;
+  margin: 1rem 0;
+  gap: 0.5rem;
+}
+
+.hero-buttons button {
+  @include inter(600, normal, 18px);
+  background: $color1;
+  border: 1px solid $color1;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.hero-buttons button:hover {
+background:$color7;
+}
+.hero-buttons a{
+  text-decoration: none;
+  color: inherit;
+}
+.Presentation-body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 40px;
+  gap: 20px;
+}
+.Presentation-body img{
+  border: 1px solid $color1;
+  border-radius: 30px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+  width: 50rem;
+  height: 30rem;
+
+}
+.Presentation-text h2{
+  @include montserrat(700, normal, 38px);
+  color: $color8;
+}
+.Presentation-text p{
+  @include roboto(500, normal, 22px);
+  line-height: 1.6;
+  .mission {
+    color: $color8;
+    font-weight: bold;
+  }
+}
+.Presentation-buttons button{
+  @include inter(600, normal, 18px);
+  background: $color8;
+  border: 1px solid $color1;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  color: $color3;
+}
+.Presentation-buttons button:hover {
+  background:$color7;
+}
+.Presentation-buttons a{
+  text-decoration: none;
+  color: inherit;
+}
+#recent-products {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: dashed;
+}
+#certificats {
+  padding: 2rem;
+
+  .certificat-body {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem; // espace entre les colonnes
+    flex-wrap: wrap; // permet de passer en plusieurs lignes si l’écran est petit
+  }
+
+  .certificat {
+    flex: 1 1 30%; // chaque certificat prend environ 30% de largeur
+    background: $color5;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+
+    /* Animation au chargement */
+    opacity: 0;
+    transform: translateY(40px) scale(0.95);
+    animation: fadeUp 0.8s ease forwards;
+
+    /* Décalage entre chaque certificat */
+    &:nth-child(1) {
+      animation-delay: 0.2s;
+    }
+    &:nth-child(2) {
+      animation-delay: 0.4s;
+    }
+    &:nth-child(3) {
+      animation-delay: 0.6s;
+    }
+
+    /* Effet hover */
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+    &:hover {
+      transform: translateY(-10px) scale(2.00);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    img {
+      width: 120px;
+      height: auto;
+      margin-bottom: 1rem;
+      transition: transform 0.3s ease;
+    }
+
+    &:hover img {
+      transform: scale(1.1);
+    }
+
+    h3 {
+      @include montserrat(700, normal, 20px);
+      margin-bottom: 1rem;
+      color: $color3;
+    }
+
+    p {
+      @include roboto(400, normal, 16px);
+      margin-bottom: 1.5rem;
+      line-height: 1.5;
+      color: $color3;
+    }
+
+    .certificat-buttons button {
+      background: $color9; // ta couleur principale
+      color: $color4;
+      border: none;
+      padding: 0.6rem 1.2rem;
+      border-radius: 6px;
+      cursor: pointer;
+      @include inter(600, normal, 18px);
+
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      &:hover {
+        background: $color7;
+      }
+    }
+  }
+}
+
+/* Animation keyframes */
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+
+
+
+
+
+

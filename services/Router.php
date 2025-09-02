@@ -1,15 +1,38 @@
 <?php
+namespace services;
+use app\Controllers\UserController;
+use app\Controllers\HomeController;
+use app\Controllers\ContactController;
+use app\Controllers\ProductController;
+use app\Controllers\AuthController;
+use app\Controllers\DashboardController;
 
 class Router {
-    public function handleRequest(array $get)
+    public function handleRequest(array $get):void
     {
         if (!empty($get['route'])) {
             switch ($get['route']) {
+                // Home
+                case "home":
+                    $controller = new HomeController();
+                    $controller->index();
+                    break;
+
+                // Newsletter
+                case "newsletter":
+                    $controller = new HomeController();
+                    $controller->subscribeNewsletter();
+                    break;
                 // USERS
                 case "list-users":
                     $userController = new UserController();
                     $userController->list();
                     // UserController::list();
+                    break;
+                case "pending-user":
+                    $userController = new UserController();
+                    $userController->listPending();
+                    // UserController::listPending();
                     break;
                 case "details-user":
                     $userController = new UserController();
@@ -21,20 +44,24 @@ class Router {
                     $userController->updateUser();
                     //UserController::updateUser();
                     break;
+
                 case "check-update-user":
                     $userController = new UserController();
                     $userController->checkUpdateUser();
-                    //UserController::checkUpdateUser();
-                    break;
+
                 case "create-user":
                     $userController = new UserController();
                     $userController->createUser();
                     //UserController::createUser();
-                    break;
+                break;
                 case "check-create-user":
                     $userController = new UserController();
                     $userController->checkCreateUser();
                     //UserController::checkCreateUser();
+                case "validate-user":
+                    $userController = new UserController();
+                    $userController->validateUser();
+                    // UserController::validateUser();
                     break;
                 case "delete-user":
                     $userController = new UserController();
@@ -44,31 +71,72 @@ class Router {
 
                 // MESSAGES
                 case "list-messages":
-                    ContactController::listMessages();
+                    $ContactController = new ContactController();
+                    $ContactController->listMessages();
+                    //ContactController::listMessages();
                     break;
                 case "list-messages-by-user":
+                    $ContactController = new ContactController();
+                    $userId = isset($_GET["user_id"]) ? (int) $_GET["user_id"] : 0; // récupère l'id utilisateur depuis l'URL
+                    $ContactController->listMessagesByUser($userId);
                     break;
+
                 case "delete-message":
+                    $ContactController = new ContactController();
+                    $messageId = isset($_GET["id"]) ? (int) $_GET["id"] : 0; // récupère l'id du message pour la suppression
+                    $ContactController->deleteMessage($messageId);
                     break;
+
 
                 // PRODUCTS
                 case "list-products":
-                    break;
-                case "details-product":
-                    break;
-                case "list-products-by-user":
-                    break;
-                case "create-product":
-                    break;
-                case "check-create-product":
-                    break;
-                case "update-product":
-                    break;
-                case "check-update-product":
-                    break;
-                case "delete-product":
+                    $controller = new ProductController();
+                    $controller->listProducts();
                     break;
 
+                case "list-products-by-user":
+                    $controller = new ProductController();
+                    $userId = $_GET["user_id"] ?? 0;
+                    $controller->listProductsByUser((int)$userId);
+                    break;
+
+                case "list-products-by-location":
+                    $controller = new ProductController();
+                    $location = $_GET["location"] ?? '';
+                    $controller->listProductsByLocation($location);
+                    break;
+
+                case "products-by-location":
+                    $controller = new HomeController();
+                    $region = $_GET['location'] ?? '';
+                    $controller->showByRegion($region);
+                    break;
+
+                case "create-product":
+                    $controller = new ProductController();
+                    $controller->createProduct();
+                    break;
+
+                case "edit-product":
+                    $controller = new ProductController();
+                    $controller->editProduct();
+                    break;
+
+                case 'producerForm':
+                    $controller = new ProductController();
+                    $controller->showForm();
+                    break;
+
+                case "delete-product":
+                    $controller = new ProductController();
+                    $controller->deleteProduct();
+                    break;
+
+                //dashboard
+                case 'dashboard':
+                    $controller = new DashboardController();
+                    $controller->index();
+                    break;
                 // ORDERS
                 case "list-orders":
                     break;
@@ -81,11 +149,6 @@ class Router {
                 case "check-update-order":
                     break;
                 case "delete-order":
-                    break;
-
-                // DASHBOARD
-                case "dashboard":
-                    // DashboardController::index();
                     break;
 
                 // AUTH
@@ -104,7 +167,6 @@ class Router {
                 case "check-register":
                     $authController = new AuthController();
                     $authController->checkRegister();
-                    // AuthController::check-register();
                     break;
                 case "logout":
                     // AuthController::logout();

@@ -1,4 +1,4 @@
-@mixin montserrat($weight: 700, $style: normal, $size: 40px) {
+@mixin montserrat($weight: 700, $style: normal, $size: 70px) {
   font-family: "Montserrat", sans-serif;
   font-optical-sizing: auto;
   font-weight: $weight;
@@ -6,15 +6,14 @@
   font-variation-settings: "wdth" 100;
   font-size: $size;
 };
-@mixin roboto($weight: 700, $style: normal, $size: 40px) {
+@mixin roboto($weight: 900, $style: normal, $size: 70px) {
   font-family: "Roboto", sans-serif;
   font-optical-sizing: auto;
   font-weight: $weight;
   font-style: $style;
-  font-variation-settings: "wdth" 100;
   font-size: $size;
 };
-@mixin inter($weight: 700, $style: normal, $size: 40px) {
+@mixin inter($weight: 700, $style: normal, $size: 70px) {
   font-family: "Inter", sans-serif;
   font-optical-sizing: auto;
   font-weight: $weight;

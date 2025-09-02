@@ -1,4 +1,7 @@
 <?php
+namespace app\Models;
+use app\Enum\ProductLocation;
+use DateTime;
 
 class Product
 {
@@ -10,6 +13,9 @@ class Product
     private string $image;
     private int $user_id;
     private ProductLocation $location;
+    private DateTime $created_at;
+    private DateTime $updated_at;
+    private ?DateTime $deleted_at = null;
 
     public function __construct(
         string $title,
@@ -27,6 +33,9 @@ class Product
         $this->image = $image;
         $this->user_id = $user_id;
         $this->location = $location;
+        $this->created_at = new DateTime(); // Produit créé à l’instant
+        $this->updated_at = new DateTime();
+
     }
 
     // Getters
@@ -70,6 +79,16 @@ class Product
         return $this->location;
     }
 
+    public function getCreatedAt(): DateTime
+    {
+        return $this->created_at;
+    }
+
+    public function getDeletedAt(): ?DateTime
+    {
+        return $this->deleted_at;
+    }
+
     // Setters
     public function setId(?int $id): void
     {
@@ -109,6 +128,16 @@ class Product
     public function setLocation(ProductLocation $location): void
     {
         $this->location = $location;
+    }
+
+    public function setCreatedAt(DateTime $created_at): void
+    {
+        $this->created_at = $created_at;
+    }
+
+    public function setDeletedAt(?DateTime $deleted_at): void
+    {
+        $this->deleted_at = $deleted_at;
     }
 }
 

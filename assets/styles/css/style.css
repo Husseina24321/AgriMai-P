@@ -1,3 +1,5 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Roboto:wght@400;500;700&family=Inter:wght@400;500;700&display=swap");
 html {
   font-size: 16px;
 }
@@ -5,6 +7,7 @@ html {
 body {
   margin: 0;
   min-height: 100vh;
+  background-color: #F5F5DC;
 }
 
 .container {
@@ -14,13 +17,21 @@ body {
 }
 
 header {
-  background-color: #28582B;
+  background-color: #285829;
   padding: 1rem 2rem;
+}
+header nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+header nav img {
+  width: 70px;
+  height: auto;
 }
 header nav ul {
   list-style: none;
   display: flex;
-  justify-content: space-between;
   margin: 0;
   padding: 0;
 }
@@ -28,12 +39,288 @@ header nav li {
   margin: 0 1rem;
 }
 header nav a {
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+  font-size: 18px;
   color: #FFFFFF;
   text-decoration: none;
-  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 header nav a:hover {
   color: #E2801D;
+}
+header nav a img {
+  width: 18px;
+  height: auto;
+}
+header nav a i {
+  font-size: 1.2rem;
+}
+header nav .aBorder1 {
+  border: inset;
+}
+header nav .aBorder2 {
+  background-color: #F5F5DC;
+  color: #000000;
+  border: 2px solid #F5F5DC;
+}
+
+.container {
+  padding: 0;
+  margin: auto;
+}
+
+#hero {
+  background: url("/AgriMai/assets/styles/img/image1.png") no-repeat center center/cover;
+  color: white;
+  min-height: 100vh; /* plein écran */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+#hero p {
+  font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1.5;
+}
+
+.hero-body {
+  display: flex;
+  gap: 2rem;
+  max-width: 1200px;
+  width: 100%;
+  align-items: center;
+}
+
+.hero-image2 img {
+  width: 280px;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+.hero-text {
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: flex-start;
+}
+
+.hero-text h1 {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+  font-size: 40px;
+  margin: 0;
+}
+
+.hero-buttons {
+  display: flex;
+  align-items: center;
+  margin: 1rem 0;
+  gap: 0.5rem;
+}
+
+.hero-buttons button {
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+  font-size: 18px;
+  background: #F5F5DC;
+  border: 1px solid #F5F5DC;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.hero-buttons button:hover {
+  background: #E2801D;
+}
+
+.hero-buttons a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.Presentation-body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 40px;
+  gap: 20px;
+}
+
+.Presentation-body img {
+  border: 1px solid #F5F5DC;
+  border-radius: 30px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+  width: 50rem;
+  height: 30rem;
+}
+
+.Presentation-text h2 {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+  font-size: 38px;
+  color: #285829;
+}
+
+.Presentation-text p {
+  font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 22px;
+  line-height: 1.6;
+}
+.Presentation-text p .mission {
+  color: #285829;
+  font-weight: bold;
+}
+
+.Presentation-buttons button {
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+  font-size: 18px;
+  background: #285829;
+  border: 1px solid #F5F5DC;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  color: #FFFFFF;
+}
+
+.Presentation-buttons button:hover {
+  background: #E2801D;
+}
+
+.Presentation-buttons a {
+  text-decoration: none;
+  color: inherit;
+}
+
+#recent-products {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: dashed;
+}
+
+#certificats {
+  padding: 2rem;
+}
+#certificats .certificat-body {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+#certificats .certificat {
+  flex: 1 1 30%;
+  background: #5F5628;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 1.5rem;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  /* Animation au chargement */
+  opacity: 0;
+  transform: translateY(40px) scale(0.95);
+  animation: fadeUp 0.8s ease forwards;
+  /* Décalage entre chaque certificat */
+  /* Effet hover */
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+#certificats .certificat:nth-child(1) {
+  animation-delay: 0.2s;
+}
+#certificats .certificat:nth-child(2) {
+  animation-delay: 0.4s;
+}
+#certificats .certificat:nth-child(3) {
+  animation-delay: 0.6s;
+}
+#certificats .certificat:hover {
+  transform: translateY(-10px) scale(2);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+#certificats .certificat img {
+  width: 120px;
+  height: auto;
+  margin-bottom: 1rem;
+  transition: transform 0.3s ease;
+}
+#certificats .certificat:hover img {
+  transform: scale(1.1);
+}
+#certificats .certificat h3 {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+  font-size: 20px;
+  margin-bottom: 1rem;
+  color: #FFFFFF;
+}
+#certificats .certificat p {
+  font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 16px;
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+  color: #FFFFFF;
+}
+#certificats .certificat .certificat-buttons button {
+  background: #B9FFD2;
+  color: #000000;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+  font-size: 18px;
+}
+#certificats .certificat .certificat-buttons button a {
+  text-decoration: none;
+  color: inherit;
+}
+#certificats .certificat .certificat-buttons button:hover {
+  background: #E2801D;
+}
+
+/* Animation keyframes */
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

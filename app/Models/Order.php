@@ -1,22 +1,19 @@
 <?php
-    Enum OrderStatus: string
-    {
-        case Pending = 'En attente';
-        case Approved = 'Validée';
-        case Shipped = 'Expédiée';
-    }
+namespace app\Models;
+use app\Enum\OrderStatus;
+use DateTime;
     class Order
     {
         private ?int $id = null;
         private int $buyer_id;
         private DateTime $created_at;
-        private ?DateTime $updated_at = null;
-        private orderStatus $status;
+        private ?DateTime $updated_at;
+        private OrderStatus $status;
         public function __construct(
-        int $buyer_id,
-        DateTime $created_at,
-        ?DateTime $updated_at,
-        OrderStatus $status = orderStatus::Pending
+            int $buyer_id,
+            DateTime $created_at,
+            ?DateTime $updated_at = null,
+            OrderStatus $status = OrderStatus::Pending
     )
     {
         $this->buyer_id = $buyer_id;
