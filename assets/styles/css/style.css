@@ -16,6 +16,131 @@ body {
   padding: 4rem;
 }
 
+footer {
+  background-color: #5F5628;
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+  padding: 2rem;
+  justify-content: space-evenly;
+}
+
+.footer-logoAm img {
+  width: 50px;
+  height: 50px;
+}
+
+#newsletters .newsletters-body h4 {
+  font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 16px;
+  color: #FFFFFF;
+}
+#newsletters .newsletters-body p {
+  color: #FFFFFF;
+  font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 14px;
+}
+
+.newsletters-body form input {
+  width: 450px;
+  padding: 0.5rem;
+  font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 14px;
+  border: 1px solid #000000;
+}
+.newsletters-body form button {
+  padding: 0.5rem 0.2rem;
+  border: 1px solid #000000;
+  background: #FFFFFF;
+  color: #000000;
+  cursor: pointer;
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+  font-size: 14px;
+}
+.newsletters-body form button:hover {
+  background: #E2801D;
+}
+
+.cdg2 {
+  font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 14px;
+}
+
+.cdgStyle2 {
+  color: #E2801D;
+}
+
+.footer-social-body {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 5rem;
+}
+
+.footer-social-icon {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.footer-social-icon h4 {
+  font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 16px;
+  color: #FFFFFF;
+}
+.footer-social-icon a {
+  text-decoration: none;
+  color: #FFFFFF;
+  font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 16px;
+}
+
+.footer-text h4 {
+  font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 16px;
+  color: #FFFFFF;
+}
+
+.footer-text ul {
+  list-style-type: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.footer-text ul li a {
+  font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 14px;
+  text-decoration: none;
+  color: #FFFFFF;
+}
+
 header {
   background-color: #285829;
   padding: 1rem 2rem;
@@ -153,7 +278,7 @@ header nav .aBorder2 {
 
 .hero-buttons a {
   text-decoration: none;
-  color: inherit;
+  color: #000000;
 }
 
 .Presentation-body {
@@ -276,10 +401,10 @@ header nav .aBorder2 {
 #certificats .certificat h3 {
   font-family: "Montserrat", sans-serif;
   font-optical-sizing: auto;
-  font-weight: 700;
+  font-weight: 600;
   font-style: normal;
   font-variation-settings: "wdth" 100;
-  font-size: 20px;
+  font-size: 22px;
   margin-bottom: 1rem;
   color: #FFFFFF;
 }
@@ -288,7 +413,7 @@ header nav .aBorder2 {
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
-  font-size: 16px;
+  font-size: 18px;
   margin-bottom: 1.5rem;
   line-height: 1.5;
   color: #FFFFFF;
@@ -321,6 +446,212 @@ header nav .aBorder2 {
     opacity: 1;
     transform: translateY(0) scale(1);
   }
+}
+#logos {
+  padding: 2rem;
+}
+#logos .logo-body {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 2rem;
+  border-top: dashed;
+}
+#logos .logo-image {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 200px;
+}
+#logos .logo-image img {
+  width: 100px;
+  height: auto;
+  margin-bottom: 0.5rem;
+}
+#logos .logo-image h4 {
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+  font-size: 16px;
+  margin: 0;
+}
+
+#contact {
+  background-color: #285829;
+  margin-top: 4rem;
+}
+
+.contact-body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contact-form input,
+.contact-form textarea {
+  background-color: #F5F5DC;
+  color: #285829;
+  border: 1px solid #FFFFFF;
+  padding: 0.5rem;
+  font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 16px;
+}
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: black;
+  opacity: 1;
+}
+.contact-form label {
+  color: #F5F5DC;
+  margin-bottom: 0.3rem;
+  font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 18px;
+}
+
+.title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.title h3 {
+  color: #F5F5DC;
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+  font-size: 22px;
+}
+.title p {
+  color: #F5F5DC;
+  font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 18px;
+}
+
+.champs {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  margin-bottom: 1rem;
+}
+
+.submit {
+  display: flex;
+  justify-content: center;
+}
+.submit button {
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+  font-size: 18px;
+  background: #F5F5DC;
+  color: #000000;
+  border: 1px solid #FFFFFF;
+  padding: 0.6rem 1.2rem;
+  cursor: pointer;
+}
+.submit button:hover {
+  background: #E2801D;
+}
+
+#newsletter {
+  background: url("/AgriMai/assets/styles/img/pommes.jpg") no-repeat center center/cover;
+  padding-bottom: 4rem;
+  position: relative;
+}
+#newsletter::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 1;
+}
+#newsletter h3 {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+  font-size: 22px;
+  color: #FFFFFF;
+}
+#newsletter p {
+  font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 18px;
+  color: #FFFFFF;
+}
+#newsletter form input {
+  width: 530px;
+  padding: 0.8rem;
+  font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 18px;
+  border: 1px solid #000000;
+}
+#newsletter form button {
+  padding: 0.8rem 1.2rem;
+  border: 1px solid #000000;
+  background: #FFFFFF;
+  color: #000000;
+  cursor: pointer;
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+  font-size: 18px;
+}
+#newsletter form button:hover {
+  background: #E2801D;
+}
+
+.newsletter-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+.newsletter-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.cdg {
+  width: 630px;
+  font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 14px;
+}
+
+.cdgStyle {
+  color: #E2801D;
 }
 
 /*# sourceMappingURL=style.css.map */

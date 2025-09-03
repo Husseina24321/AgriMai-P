@@ -73,7 +73,7 @@ background:$color7;
 }
 .hero-buttons a{
   text-decoration: none;
-  color: inherit;
+  color:$color4;
 }
 .Presentation-body {
   display: flex;
@@ -178,13 +178,13 @@ background:$color7;
     }
 
     h3 {
-      @include montserrat(700, normal, 20px);
+      @include montserrat(600, normal, 22px);
       margin-bottom: 1rem;
       color: $color3;
     }
 
     p {
-      @include roboto(400, normal, 16px);
+      @include roboto(400, normal, 18px);
       margin-bottom: 1.5rem;
       line-height: 1.5;
       color: $color3;
@@ -218,6 +218,178 @@ background:$color7;
     transform: translateY(0) scale(1);
   }
 }
+#logos{
+  padding: 2rem;
+  .logo-body{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 2rem;
+    border-top: dashed;
+  }
+  .logo-image {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: 200px;
+  }
+
+  .logo-image img {
+    width: 100px;
+    height: auto;
+    margin-bottom: 0.5rem;
+  }
+
+  .logo-image h4 {
+    @include inter(600, normal, 16px);
+
+    margin: 0;
+  }
+}
+#contact {
+  background-color: $color8;
+  margin-top: 4rem;
+}
+
+.contact-body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contact-form {
+  input,
+  textarea {
+    background-color: $color1;
+    color: $color8;
+    border: 1px solid $color3;
+    padding: 0.5rem;
+    @include roboto(400, normal, 16px);
+
+    &::placeholder {
+      color: black;
+      opacity: 1;
+    }
+  }
+
+
+  label {
+    color: $color1;
+    margin-bottom: 0.3rem;
+    @include roboto(400, normal, 18px);
+  }
+}
+
+.title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  h3 {
+    color: $color1;
+    @include montserrat(600, normal, 22px);
+  }
+
+  p {
+    color: $color1;
+    @include roboto(400, normal, 18px);
+  }
+}
+
+.champs {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  margin-bottom: 1rem;
+}
+
+.submit {
+  display: flex;
+  justify-content: center;
+
+  button {
+    @include inter(600, normal, 18px);
+    background: $color1;
+    color: $color4;
+    border: 1px solid $color3;
+    padding: 0.6rem 1.2rem;
+    cursor: pointer;
+
+    &:hover {
+      background: $color7;
+    }
+  }
+}
+#newsletter{
+  background: url("/AgriMai/assets/styles/img/pommes.jpg") no-repeat center center/cover;
+  padding-bottom: 4rem;
+  position: relative;
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4); // noir transparent pour que le text soit visible
+    z-index: 1;
+  }
+
+  h3{
+    @include montserrat(600, normal, 22px);
+    color: $color3;
+  }
+  p{
+    @include roboto(400, normal, 18px);
+    color: $color3;
+  }
+
+  form{
+          input{
+            width: 530px;
+            padding: 0.8rem;
+            @include roboto(400, normal, 18px);
+            border: 1px solid $color4;
+          }
+    button{
+      padding: 0.8rem 1.2rem;
+      border:1px solid $color4;
+      background: $color3;
+      color: $color4;
+      cursor: pointer;
+      @include inter(600, normal, 18px);
+
+      &:hover {
+        background: $color7;
+      }
+    }
+  }
+}
+.newsletter-body{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+.newsletter-form{
+  display: flex;
+  flex-direction: column;
+
+}
+.cdg{
+  width: 630px;
+  @include roboto(400, normal, 14px);
+}
+.cdgStyle{
+  color: $color7;
+}
+
+
+
+
 
 
 

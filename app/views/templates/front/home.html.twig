@@ -28,161 +28,201 @@
         </div>
 
     </section>
-    <main>
-        <section id="content">
-            <div class ="Presentation-body">
-                <div class="Presentation-img">
-                    <img src="/AgriMai/assets/styles/img/image3.jpg" alt="image de pommes dans un pommier ">
-                </div>
-                <div class="Presentation-text">
-                    <h2>AgriMai</h2>
-                    <p>
-                        Connecte les producteurs locaux aux acheteurs en France.<br>
-                        Notre plateforme facilite un commerce simple, direct et transparent,
-                        en mettant en valeur un produit unique :<br>la pomme non traitée.<br>
-                        <span class="mission">Notre mission :</span><br>
-                        offrir aux producteurs une visibilité accrue à l’échelle nationale,<br>
-                        tout en garantissant la qualité,la traçabilité et la confiance <br>
-                        dans chaque transaction.
-                    </p>
-                    <div class="Presentation-buttons">
-                        <button><a href="/index.php?route=products">EN SAVOIR PLUS</a></button>
-                        <button><a href="/index.php?route=register">PUBLIER UNE ANNONNCE</a></button>
-                    </div>
-                </div>
+<section id="content">
+    <div class ="Presentation-body">
+        <div class="Presentation-img">
+            <img src="/AgriMai/assets/styles/img/image3.jpg" alt="image de pommes dans un pommier ">
+        </div>
+        <div class="Presentation-text">
+            <h2>AgriMai</h2>
+            <p>
+                Connecte les producteurs locaux aux acheteurs en France.<br>
+                Notre plateforme facilite un commerce simple, direct et transparent,
+                en mettant en valeur un produit unique :<br>la pomme non traitée.<br>
+                <span class="mission">Notre mission :</span><br>
+                offrir aux producteurs une visibilité accrue à l’échelle nationale,<br>
+                tout en garantissant la qualité,la traçabilité et la confiance <br>
+                dans chaque transaction.
+            </p>
+            <div class="Presentation-buttons">
+                <button><a href="/index.php?route=products">EN SAVOIR PLUS</a></button>
+                <button><a href="/index.php?route=register">PUBLIER UNE ANNONNCE</a></button>
             </div>
+        </div>
+    </div>
+<main>
 
-        </section>
-        <!-- Produits récents -->
-        <section id="recent-products">
-            <h2>Nos nouvelles petites</h2>
+</main>
 
-            {% if recentProducts is not empty %}
-                <table class="products-table">
-                    <thead>
+    </section>
+    <!-- Produits récents -->
+    <section id="recent-products">
+        <h2>Nos nouvelles petites</h2>
+
+        {% if recentProducts is not empty %}
+            <table class="products-table">
+                <thead>
+                <tr>
+                    <th>Image</th>
+                    <th>Titre</th>
+                    <th>Description</th>
+                    <th>Prix/kg</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for product in recentProducts %}
                     <tr>
-                        <th>Image</th>
-                        <th>Titre</th>
-                        <th>Description</th>
-                        <th>Prix/kg</th>
+                        <td>
+                            {% if product.getImage() %}
+                                <img src="assets/uploads/{{ product.getImage() }}" alt="{{ product.getTitle() }}">
+                            {% else %}
+                                -
+                            {% endif %}
+                        </td>
+                        <td>{{ product.getTitle() }}</td>
+                        <td>{{ product.getDescription() }}</td>
+                        <td>{{ product.getPrice() }} €</td>
                     </tr>
-                    </thead>
-                    <tbody>
-                    {% for product in recentProducts %}
-                        <tr>
-                            <td>
-                                {% if product.getImage() %}
-                                    <img src="assets/uploads/{{ product.getImage() }}" alt="{{ product.getTitle() }}">
-                                {% else %}
-                                    -
-                                {% endif %}
-                            </td>
-                            <td>{{ product.getTitle() }}</td>
-                            <td>{{ product.getDescription() }}</td>
-                            <td>{{ product.getPrice() }} €</td>
-                        </tr>
-                    {% endfor %}
-                    </tbody>
-                </table>
-            {% else %}
-                <p>Aucun produit récent disponible.</p>
-            {% endif %}
-        </section>
-        <section id="certificats">
-            <div class="certificat-body">
+                {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>Aucun produit récent disponible.</p>
+        {% endif %}
+    </section>
+    <section id="certificats">
+        <div class="certificat-body">
 
-                <div class="certificat">
-                    <img src="/AgriMai/assets/styles/img/image6.png" alt="Logo de l'AOP, L’Appellation d’origine protégée">
-                    <h3>L’Appellation d’origine protégée (AOP)</h3>
-                    <p>
-                        Désigne un produit dont toutes les étapes de production sont réalisées<br>
-                        selon un savoir-faire reconnu dans une même aire géographique,<br>
-                        qui donne ses caractéristiques au produit.
-                    </p>
-                    <div class="certificat-buttons">
-                        <button>
-                            <a href="https://www.inao.gouv.fr/aop-appellation-origine-protegee">En savoir plus</a>
-                        </button>
-                    </div>
+            <div class="certificat">
+                <img src="/AgriMai/assets/styles/img/image6.png" alt="Logo de l'AOP, L’Appellation d’origine protégée">
+                <h3>L’Appellation d’origine protégée (AOP)</h3>
+                <p>
+                    Désigne un produit dont toutes les étapes de production sont réalisées<br>
+                    selon un savoir-faire reconnu dans une même aire géographique,<br>
+                    qui donne ses caractéristiques au produit.
+                </p>
+                <div class="certificat-buttons">
+                    <button>
+                        <a href="https://www.inao.gouv.fr/aop-appellation-origine-protegee">En savoir plus</a>
+                    </button>
                 </div>
-
-                <div class="certificat">
-                    <img src="/AgriMai/assets/styles/img/image4.png" alt="Logo de l'IGP, L’indication géographique protégée ">
-                    <h3>L’indication géographique protégée (IGP)</h3>
-                    <p>
-                        Identifie un produit agricole, brut ou transformé,<br>
-                        dont la qualité, la réputation ou d’autres caractéristiques<br>
-                        sont liées à son origine géographique.
-                    </p>
-                    <div class="certificat-buttons">
-                        <button>
-                            <a href="https://www.inao.gouv.fr/igp-indication-geographique-protegee">En savoir plus</a>
-                        </button>
-                    </div>
-                </div>
-
-                <div class="certificat">
-                    <img src="/AgriMai/assets/styles/img/image5.png" alt="Logo de STG, La spécialité traditionnelle garantie">
-                    <h3>La spécialité traditionnelle garantie (STG)</h3>
-                    <p>
-                        Correspond à un produit dont les qualités spécifiques sont liées <br>
-                        à une composition, des méthodes de fabrication ou de transformation <br>
-                        fondées sur une tradition, mais pas à son origine géographique.
-                    </p>
-                    <div class="certificat-buttons">
-                        <button>
-                            <a href="https://www.inao.gouv.fr/stg-specialite-traditionnelle-garantie">En savoir plus</a>
-                        </button>
-                    </div>
-                </div>
-
             </div>
-        </section>
+
+            <div class="certificat">
+                <img src="/AgriMai/assets/styles/img/image4.png" alt="Logo de l'IGP, L’indication géographique protégée ">
+                <h3>L’indication géographique protégée (IGP)</h3>
+                <p>
+                    Identifie un produit agricole, brut ou transformé,<br>
+                    dont la qualité, la réputation ou d’autres caractéristiques<br>
+                    sont liées à son origine géographique.
+                </p>
+                <div class="certificat-buttons">
+                    <button>
+                        <a href="https://www.inao.gouv.fr/igp-indication-geographique-protegee">En savoir plus</a>
+                    </button>
+                </div>
+            </div>
+
+            <div class="certificat">
+                <img src="/AgriMai/assets/styles/img/image5.png" alt="Logo de STG, La spécialité traditionnelle garantie">
+                <h3>La spécialité traditionnelle garantie (STG)</h3>
+                <p>
+                    Correspond à un produit dont les qualités spécifiques sont liées <br>
+                    à une composition, des méthodes de fabrication ou de transformation <br>
+                    fondées sur une tradition, mais pas à son origine géographique.
+                </p>
+                <div class="certificat-buttons">
+                    <button>
+                        <a href="https://www.inao.gouv.fr/stg-specialite-traditionnelle-garantie">En savoir plus</a>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </section>
         <section id="logos">
-            <div class="logo-body">
-                <div class="logo-image">
-                    <img src="" alt="Une icône dédiée à la traçabilité">
-                    <h3>Traçabilité intelligente</h3>
-                </div>
-                <div class="logo-image">
-                    <img src="" alt="Une icône dédiée à la transparence et l'équitabilité">
-                    <h3>Commerce transparent et équitable</h3>
-                </div>
-                <div class="logo-image">
-                    <img src="" alt="Une icône dédiée à la Logistique ">
-                    <h3>Logistique facilitée</h3>
-                </div>
-                <div class="logo-image">
-                    <img src="" alt="Une icône dédiée au contrôle de qualité des produits">
-                    <h3>Contrôle de qualité des produits</h3>
-                </div>
-                
+        <div class="logo-body">
+            <div class="logo-image">
+                <img src="/AgriMai/assets/styles/img/blockchain.png" alt="Une icône dédiée à la traçabilité">
+                <h4>Traçabilité intelligente</h4>
             </div>
-            
+            <div class="logo-image">
+                <img src="/AgriMai/assets/styles/img/honesty.png" alt="Une icône dédiée à la transparence et à l’équité">
+                <h4>Commerce transparent et équitable</h4>
+            </div>
+            <div class="logo-image">
+                <img src="/AgriMai/assets/styles/img/truck.png" alt="Une icône dédiée à la Logistique ">
+                <h4>Logistique facilitée</h4>
+            </div>
+            <div class="logo-image">
+                <img src="/AgriMai/assets/styles/img/best-seller.png" alt="Une icône dédiée au contrôle de qualité">
+                <h4>Contrôle de qualité des produits</h4>
+            </div>
+
+        </div>
         </section>
 
-    </main>
+    <section id="contact">
+        <div class="contact-body">
+            <table class="contact-form">
+                <!-- Titre et description -->
+                <tr class="contact-title">
+                    <td colspan="2" class="title">
+                        <h3>CONTACTEZ-NOUS</h3>
+                        <p>Veuillez remplir ce formulaire pour toute question, suggestion ou demande d’information.</p>
+                    </td>
+                </tr>
 
+                <!-- Ligne Nom -->
+                <tr>
+                    <td colspan="2" class="champs">
+                        <label for="name">Nom :</label><br>
+                        <input type="text" id="name" name="name" placeholder="Votre nom" required>
+                    </td>
+                </tr>
 
-    <!-- Marché par région -->
-    <section id="regions">
-        <h2>Marché par région</h2>
-        <div class="regions-buttons">
-            {% for region, products in regionProducts %}
-                <a href="/index.php?route=products-by-region&region={{ region }}">{{ region }}</a>
-            {% endfor %}
+                <!-- Ligne Email -->
+                <tr>
+                    <td colspan="2" class="champs">
+                        <label for="email">E-mail :</label><br>
+                        <input type="email" id="email" name="email" placeholder="Votre e-mail" required>
+                    </td>
+                </tr>
+
+                <!-- Ligne Message -->
+                <tr>
+                    <td colspan="2" class="champs">
+                        <label for="message">Message :</label><br>
+                        <textarea id="message" name="message" rows="5" placeholder="Votre message" required></textarea>
+                    </td>
+                </tr>
+
+                <!-- Ligne Bouton -->
+                <tr>
+                    <td colspan="2" class="submit">
+                        <button type="submit">Envoyer</button>
+                    </td>
+                </tr>
+            </table>
         </div>
     </section>
 
-    <!-- Newsletter -->
     <section id="newsletter">
-        <h2>Inscrivez-vous à notre newsletter</h2>
-        {% if session['success-message'] is defined %}
-            <p style="color: green">{{ session['success-message'] }}</p>
-        {% endif %}
-        <form action="/index.php?route=newsletter" method="POST">
-            <input type="email" name="email" placeholder="Votre e-mail" required aria-label="Votre e-mail">
-            <button type="submit">S'inscrire</button>
-        </form>
+        <div class="newsletter-body">
+            <h3>Nos actus et bons plans</h3>
+            <p>Inscrivez-vous dès maintenant à notre newsletter <br>
+            pour recevoir les dernières actualités sur les nouveaux produits agricoles,<br>
+            les opportunités d’exportation, les offres exclusives et les tendances du marché.</p>
+            {% if session['success-message'] is defined %}
+                <p style="color: green">{{ session['success-message'] }}</p>
+            {% endif %}
+            <form action="/index.php?route=newsletter" method="POST">
+                <input type="email" name="email" placeholder="Votre e-mail" required aria-label="Votre e-mail">
+                <button type="submit">OK</button>
+            </form>
+            <p class="cdg">En cliquant sur S’inscrire, vous confirmez que vous acceptez nos <span class="cdgStyle">Conditions générales d’utilisation</span>.</p>
+        </div>
     </section>
-{% endblock %}
+
+</main>
+    {% endblock %}
