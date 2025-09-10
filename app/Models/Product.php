@@ -12,6 +12,7 @@ class Product
     private int $quantity;
     private string $image;
     private int $user_id;
+    private string $producteur;
     private ProductLocation $location;
     private DateTime $created_at;
     private DateTime $updated_at;
@@ -20,6 +21,7 @@ class Product
     public function __construct(
         string $title,
         string $description,
+        string $producteur,
         float $price,
         int $quantity,
         string $image,
@@ -28,6 +30,7 @@ class Product
     ) {
         $this->title = $title;
         $this->description = $description;
+        $this->producteur = $producteur;
         $this->price = $price;
         $this->quantity = $quantity;
         $this->image = $image;
@@ -52,6 +55,11 @@ class Product
     public function getDescription(): string
     {
         return $this->description;
+    }
+
+    public function getProducteur(): string
+    {
+        return $this->producteur;
     }
 
     public function getPrice(): float
@@ -84,6 +92,14 @@ class Product
         return $this->created_at;
     }
 
+    /**
+     * @return DateTime
+     */
+    public function getUpdatedAt(): DateTime
+    {
+        return $this->updated_at;
+    }
+
     public function getDeletedAt(): ?DateTime
     {
         return $this->deleted_at;
@@ -103,6 +119,14 @@ class Product
     public function setDescription(string $description): void
     {
         $this->description = $description;
+    }
+
+    /**
+     * @param string $producteur
+     */
+    public function setProducteur(string $producteur): void
+    {
+        $this->producteur = $producteur;
     }
 
     public function setPrice(float $price): void
@@ -133,6 +157,14 @@ class Product
     public function setCreatedAt(DateTime $created_at): void
     {
         $this->created_at = $created_at;
+    }
+
+    /**
+     * @param DateTime $updated_at
+     */
+    public function setUpdatedAt(DateTime $updated_at): void
+    {
+        $this->updated_at = $updated_at;
     }
 
     public function setDeletedAt(?DateTime $deleted_at): void

@@ -2,91 +2,142 @@
 @use "../vars/fonts" as *;
 
 footer {
-  background-color: $color5;
-  display: flex;
-  flex-direction: row;
-  gap: 0.5rem;
-  padding: 2rem;
-  justify-content: space-evenly;
-}
-.footer-logoAm img{
-  width: 50px;
-  height: 50px;
-}
-#newsletters {
-  .newsletters-body {
+  .footer-body {
+    background-color: $color5;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    gap: 0.5rem;
+    padding: 2rem;
   }
-  .newsletters-body h4 {
-    @include roboto(500, normal, 16px);
-    color: $color3;
-  }
-  .newsletters-body p{
-    color: $color3;
-    @include roboto(400, normal, 14px);
-  }
-}
 
-.newsletters-body form{
-  input{
-    width: 450px;
-    padding: 0.5rem;
-    @include roboto(400, normal, 14px);
-    border: 1px solid $color4;
+  .footer-logoAm img {
+    width: 50px;
+    height: 50px;
   }
-  button{
-    padding: 0.5rem 0.2rem;
-    border:1px solid $color4;
-    background: $color3;
-    color: $color4;
-    cursor: pointer;
-    @include inter(600, normal, 14px);
 
-    &:hover {
-      background: $color7;
+  #newsletters {
+    .newsletters-body {
+      h4 {
+        @include roboto(500, normal, 16px);
+        color: $color3;
+      }
+      p {
+        color: $color3;
+        @include roboto(400, normal, 14px);
+      }
+    }
+
+    form {
+      label input {
+        width: 450px;
+        padding: 0.5rem;
+        @include roboto(400, normal, 14px);
+        border: 1px solid $color4;
+      }
+
+      button {
+        padding: 0.5rem 0.2rem;
+        border: 1px solid $color4;
+        background: $color3;
+        color: $color4;
+        cursor: pointer;
+        @include inter(600, normal, 14px);
+
+        &:hover {
+          background: $color7;
+        }
+      }
+    }
+
+    .cdg2 {
+      @include roboto(400, normal, 14px);
+    }
+
+    .cdgStyle2 {
+      color: $color7;
+    }
+  }
+
+  #footer-social {
+    .footer-social-body {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      gap: 5rem;
+    }
+
+    .footer-social-icon {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+
+      h4 {
+        @include roboto(500, normal, 16px);
+        color: $color3;
+      }
+
+      a {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        color: $color3;
+        @include roboto(400, normal, 16px);
+
+        img {
+          width: 24px;
+          height: auto;
+          margin-right: 0.5rem;
+        }
+      }
+    }
+
+    .footer-text {
+      h4 {
+        @include roboto(500, normal, 16px);
+        color: $color3;
+      }
+
+      ul {
+        list-style-type: none;
+        padding-left: 0;
+        margin: 0;
+
+        li a {
+          @include roboto(400, normal, 14px);
+          text-decoration: none;
+          color: $color3;
+        }
+      }
+    }
+  }
+
+  #footer-legal {
+    .footer-legal-body {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+      background-color: $color5;
+      text-align: center;
+      padding-top: 2rem;
+      border-top: 1px solid $color3;
+      padding-bottom: 4rem;
+
+      p {
+        margin: 0.3rem 0;
+        @include roboto(400, normal, 14px);
+
+        a {
+          color: $color3;
+          text-decoration: none;
+        }
+      }
     }
   }
 }
-.cdg2{
-  @include roboto(400, normal, 14px);
-}
-.cdgStyle2{
-  color: $color7;
-}
-
-.footer-social-body {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  gap: 5rem;
-}
-
-.footer-social-icon {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  h4{
-    @include roboto(500, normal, 16px);
-    color: $color3;
-  }
-  a {
-    text-decoration: none;
-    color:$color3;
-    @include roboto(400, normal, 16px);
-  }
-}
-.footer-text h4{
-  @include roboto(500, normal, 16px);
-  color: $color3;
-}
-.footer-text ul{
-  list-style-type: none;
-  padding-left: 0;
-  margin: 0;
-}
-.footer-text ul li a {
-  @include roboto(400, normal, 14px);
-  text-decoration: none;
-  color:$color3;
-}
+ .copyright{
+      @include roboto(400, normal, 14px);
+      color: $color3;
+ }
 
 

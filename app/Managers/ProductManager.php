@@ -67,14 +67,14 @@ class ProductManager extends AbstractManager
     public function findRecent(int $limit = 5): array
     {
         $query = $this->db->prepare("
-        SELECT * FROM products
-        ORDER BY created_at DESC
-        LIMIT :limit
-    ");
-        $query->bindValue(':limit', $limit, \PDO::PARAM_INT);
+            SELECT * FROM products
+            ORDER BY created_at DESC
+            LIMIT :limit
+        ");
+        $query->bindValue(':limit', $limit, PDO::PARAM_INT);
         $query->execute();
 
-        $results = $query->fetchAll(\PDO::FETCH_ASSOC);
+        $results = $query->fetchAll(PDO::FETCH_ASSOC);
 
         $products = [];
         foreach ($results as $row) {
@@ -84,22 +84,25 @@ class ProductManager extends AbstractManager
     }
 
     // Crée un produit
-    public function createProduct(Product $product): void
+    public function createProduct(Product $product): Product
     {
         $stmt = $this->db->prepare("
-            INSERT INTO products (title, description, price, quantity, image, user_id, location, created_at)
-            VALUES (:title, :description, :price, :quantity, :image, :user_id, :location, NOW())
+            INSERT INTO products (title, description, producer, price, quantity, image, user_id, location, created_at)
+            VALUES (:title, :description, :producer, :price, :quantity, :image, :user_id, :location, NOW())
         ");
         $stmt->execute([
             'title'       => $product->getTitle(),
             'description' => $product->getDescription(),
+            'producer'    => $product->getProducteur(),
             'price'       => $product->getPrice(),
             'quantity'    => $product->getQuantity(),
             'image'       => $product->getImage(),
             'user_id'     => $product->getUserId(),
-            'location'    => $product->getLocation()->value,
+            'location'    => $product->getLocation()->value
         ]);
+
         $product->setId((int)$this->db->lastInsertId());
+        return $product;
     }
 
     // Met à jour un produit
@@ -109,6 +112,7 @@ class ProductManager extends AbstractManager
             UPDATE products
             SET title = :title,
                 description = :description,
+                producer = :producer,
                 price = :price,
                 quantity = :quantity,
                 image = :image,
@@ -119,6 +123,7 @@ class ProductManager extends AbstractManager
         $stmt->execute([
             'title'       => $product->getTitle(),
             'description' => $product->getDescription(),
+            'producer'    => $product->getProducteur(),
             'price'       => $product->getPrice(),
             'quantity'    => $product->getQuantity(),
             'image'       => $product->getImage(),
@@ -140,25 +145,56 @@ class ProductManager extends AbstractManager
         $product = new Product(
             $row['title'],
             $row['description'],
+            $row['producer'] ?? 'Producteur inconnu', // ✅ utiliser producer
             (float)$row['price'],
             (int)$row['quantity'],
             $row['image'],
             (int)$row['user_id'],
             ProductLocation::from($row['location'])
         );
+
         $product->setId((int)$row['id']);
         return $product;
     }
-    public function findByRegion(string $region): array
+
+    // Récupère les produits par région et par nom
+    public function findByRegionAndName(string $region, string $name): array
     {
-        $query = $this->db->prepare("
+        $stmt = $this->db->prepare("
+            SELECT * 
+            FROM products 
+            WHERE location = :region AND title = :name AND deleted_at IS NULL
+            ORDER BY created_at DESC
+        ");
+        $stmt->execute([
+            'region' => $region,
+            'name'   => $name
+        ]);
+
+        $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $products = [];
+        foreach ($rows as $row) {
+            $products[] = $this->createProductFromRow($row);
+        }
+
+        return $products;
+    }
+    // Dans ProductManager
+    public function findByRegionAndNameAndProducer(string $region, string $title, string $producer): array
+    {
+        $stmt = $this->db->prepare("
         SELECT * 
         FROM products 
-        WHERE location = :region AND deleted_at IS NULL
+        WHERE location = :region AND title = :title AND producer = :producer AND deleted_at IS NULL
         ORDER BY created_at DESC
     ");
-        $query->execute(['region' => $region]);
-        $rows = $query->fetchAll(PDO::FETCH_ASSOC);
+        $stmt->execute([
+            'region'   => $region,
+            'title'    => $title,
+            'producer' => $producer
+        ]);
+
+        $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         $products = [];
         foreach ($rows as $row) {
@@ -167,4 +203,5 @@ class ProductManager extends AbstractManager
 
         return $products;
     }
+
 }

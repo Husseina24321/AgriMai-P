@@ -18,6 +18,7 @@ class Router {
                     $controller->index();
                     break;
 
+
                 // Newsletter
                 case "newsletter":
                     $controller = new HomeController();
@@ -89,48 +90,28 @@ class Router {
 
 
                 // PRODUCTS
-                case "list-products":
-                    $controller = new ProductController();
-                    $controller->listProducts();
+                case "products-normandie":
+                    $productController = new ProductController();
+                    $productController->normandie();
                     break;
 
-                case "list-products-by-user":
-                    $controller = new ProductController();
-                    $userId = $_GET["user_id"] ?? 0;
-                    $controller->listProductsByUser((int)$userId);
+                case "products-loire":
+                    $productController = new ProductController();
+                    $productController->loire();
                     break;
 
-                case "list-products-by-location":
-                    $controller = new ProductController();
-                    $location = $_GET["location"] ?? '';
-                    $controller->listProductsByLocation($location);
+                case "products-alsace":
+                    $productController = new ProductController();
+                    $productController->alsace();
                     break;
 
-                case "products-by-location":
-                    $controller = new HomeController();
-                    $region = $_GET['location'] ?? '';
-                    $controller->showByRegion($region);
+                case "product-detail":
+                    $productController = new ProductController();
+                    $productController->detail();
                     break;
 
-                case "create-product":
-                    $controller = new ProductController();
-                    $controller->createProduct();
-                    break;
 
-                case "edit-product":
-                    $controller = new ProductController();
-                    $controller->editProduct();
-                    break;
 
-                case 'producerForm':
-                    $controller = new ProductController();
-                    $controller->showForm();
-                    break;
-
-                case "delete-product":
-                    $controller = new ProductController();
-                    $controller->deleteProduct();
-                    break;
 
                 //dashboard
                 case 'dashboard':

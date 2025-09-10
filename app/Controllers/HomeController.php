@@ -2,8 +2,7 @@
 namespace app\Controllers;
 
 use app\Managers\ProductManager;
-use app\Managers\UserManager;
-use app\Managers\ContactManager;
+
 
 class HomeController extends AbstractController
 {
@@ -12,13 +11,13 @@ class HomeController extends AbstractController
         $productManager = new ProductManager();
 
         // Exemple : afficher les 5 derniers produits
-        $recentProducts = $productManager->findRecent(5);
+        $recentProducts = $productManager->findRecent(3);
 
-        // Récupérer les produits par région si besoin
+        // Récupérer les produits par région avec findByLocation()
         $regionProducts = [
-            'Normandie' => $productManager->findByRegion('Normandie'),
-            'Alsace' => $productManager->findByRegion('Alsace'),
-            'Loire' => $productManager->findByRegion('Loire')
+            'Normandie' => $productManager->findByLocation('Normandie'),
+            'Alsace'    => $productManager->findByLocation('Alsace'),
+            'Loire'     => $productManager->findByLocation('Loire')
         ];
 
         // Affichage page d'accueil
@@ -34,18 +33,21 @@ class HomeController extends AbstractController
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['email'])) {
             $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
             // TODO : enregistre l'email dans une table newsletter
-            $_SESSION['success-message'] = "Merci pour votre inscription à la newsletter, vous auriez bientot de nos nouvelles !";
+            $_SESSION['success-message'] = "Merci pour votre inscription à la newsletter, vous aurez bientôt de nos nouvelles !";
             $this->redirect('index.php');
         }
     }
-    public function showByRegion(string $region): void
+
+   /* public function showByRegion(string $region): void
     {
         $productManager = new ProductManager();
-        $products = $productManager->findByRegion($region);
+        $products = $productManager->findByLocation($region); // correction ici
 
         $this->render('front/home.html.twig', [
             'regionProducts' => [$region => $products],
             'session' => $_SESSION
         ]);
     }
+   */
 }
+

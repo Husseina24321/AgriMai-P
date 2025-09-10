@@ -1,0 +1,67 @@
+{% extends "/front/layout.html.twig" %}
+
+{% block content %}
+    <section class="product-detail">
+        <div class="breadcrumb">
+            <a href="/AgriMai/index.php?route=home">Voir tout</a> >
+            <a href="/AgriMai/index.php?route=product-detail&id=1={{ product.getId() }}">Catégorie</a> >
+            <span>{{ product.getTitle() }}</span>
+        </div>
+
+        <div class="detail-grid">
+            <!-- Partie gauche : infos -->
+            <div class="detail-info">
+                <h1>{{ product.getTitle() }}</h1>
+                <p class="price">{{ product.getPrice() }} € / kg</p>
+
+                <div class="rating">
+                    ⭐⭐⭐⭐☆ <span>(3,5 étoiles) - 10 avis</span>
+                </div>
+
+                <!-- Onglets -->
+                <div class="tabs">
+                    <button class="active">Détails</button>
+                    <button>Livraison</button>
+                    <button>Retours</button>
+                </div>
+
+                <!-- Description depuis ta BDD -->
+                <div class="description">
+                    <p>{{ product.getDescription() }}</p>
+                </div>
+            </div>
+
+            <!-- Partie droite : image + achat -->
+            <div class="detail-buy">
+                <img src="/AgriMai/assets/styles/img/{{ product.getImage() }}" alt="{{ product.getTitle() }}">
+
+                <div class="lots">
+                    <p>Les lots :</p>
+                    <button class="lot">2kg</button>
+                    <button class="lot">5kg</button>
+                </div>
+
+                <a href="/index.php?route=contact" class="contact-link">Pour une grande quantité ? Contactez-nous</a>
+
+                <form action="/index.php?route=cart&action=add" method="POST">
+                    <input type="hidden" name="id" value="{{ product.getId() }}">
+
+                    <label for="lot">Les lots</label>
+                    <select id="lot" name="lot">
+                        <option value="2">2 kg</option>
+                        <option value="5">5 kg</option>
+                    </select>
+
+                    <label for="qty">Qté</label>
+                    <input type="number" id="qty" name="qty" value="1" min="1">
+
+                    <button type="submit" class="btn primary">Ajouter au panier</button>
+                    <button type="button" class="btn secondary">Acheter maintenant</button>
+                </form>
+
+                <p class="delivery">Livraison gratuite à partir de 50 €</p>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

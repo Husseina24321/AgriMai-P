@@ -16,21 +16,19 @@ body {
   padding: 4rem;
 }
 
-footer {
+footer .footer-body {
   background-color: #5F5628;
   display: flex;
   flex-direction: row;
+  justify-content: space-evenly;
   gap: 0.5rem;
   padding: 2rem;
-  justify-content: space-evenly;
 }
-
-.footer-logoAm img {
+footer .footer-logoAm img {
   width: 50px;
   height: 50px;
 }
-
-#newsletters .newsletters-body h4 {
+footer #newsletters .newsletters-body h4 {
   font-family: "Roboto", sans-serif;
   font-optical-sizing: auto;
   font-weight: 500;
@@ -38,7 +36,7 @@ footer {
   font-size: 16px;
   color: #FFFFFF;
 }
-#newsletters .newsletters-body p {
+footer #newsletters .newsletters-body p {
   color: #FFFFFF;
   font-family: "Roboto", sans-serif;
   font-optical-sizing: auto;
@@ -46,8 +44,7 @@ footer {
   font-style: normal;
   font-size: 14px;
 }
-
-.newsletters-body form input {
+footer #newsletters form label input {
   width: 450px;
   padding: 0.5rem;
   font-family: "Roboto", sans-serif;
@@ -57,7 +54,7 @@ footer {
   font-size: 14px;
   border: 1px solid #000000;
 }
-.newsletters-body form button {
+footer #newsletters form button {
   padding: 0.5rem 0.2rem;
   border: 1px solid #000000;
   background: #FFFFFF;
@@ -70,35 +67,31 @@ footer {
   font-variation-settings: "wdth" 100;
   font-size: 14px;
 }
-.newsletters-body form button:hover {
+footer #newsletters form button:hover {
   background: #E2801D;
 }
-
-.cdg2 {
+footer #newsletters .cdg2 {
   font-family: "Roboto", sans-serif;
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
   font-size: 14px;
 }
-
-.cdgStyle2 {
+footer #newsletters .cdgStyle2 {
   color: #E2801D;
 }
-
-.footer-social-body {
+footer #footer-social .footer-social-body {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   gap: 5rem;
 }
-
-.footer-social-icon {
+footer #footer-social .footer-social-icon {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
 }
-.footer-social-icon h4 {
+footer #footer-social .footer-social-icon h4 {
   font-family: "Roboto", sans-serif;
   font-optical-sizing: auto;
   font-weight: 500;
@@ -106,7 +99,9 @@ footer {
   font-size: 16px;
   color: #FFFFFF;
 }
-.footer-social-icon a {
+footer #footer-social .footer-social-icon a {
+  display: flex;
+  align-items: center;
   text-decoration: none;
   color: #FFFFFF;
   font-family: "Roboto", sans-serif;
@@ -115,8 +110,12 @@ footer {
   font-style: normal;
   font-size: 16px;
 }
-
-.footer-text h4 {
+footer #footer-social .footer-social-icon a img {
+  width: 24px;
+  height: auto;
+  margin-right: 0.5rem;
+}
+footer #footer-social .footer-text h4 {
   font-family: "Roboto", sans-serif;
   font-optical-sizing: auto;
   font-weight: 500;
@@ -124,20 +123,49 @@ footer {
   font-size: 16px;
   color: #FFFFFF;
 }
-
-.footer-text ul {
+footer #footer-social .footer-text ul {
   list-style-type: none;
   padding-left: 0;
   margin: 0;
 }
-
-.footer-text ul li a {
+footer #footer-social .footer-text ul li a {
   font-family: "Roboto", sans-serif;
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
   font-size: 14px;
   text-decoration: none;
+  color: #FFFFFF;
+}
+footer #footer-legal .footer-legal-body {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  background-color: #5F5628;
+  text-align: center;
+  padding-top: 2rem;
+  border-top: 1px solid #FFFFFF;
+  padding-bottom: 4rem;
+}
+footer #footer-legal .footer-legal-body p {
+  margin: 0.3rem 0;
+  font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 14px;
+}
+footer #footer-legal .footer-legal-body p a {
+  color: #FFFFFF;
+  text-decoration: none;
+}
+
+.copyright {
+  font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 14px;
   color: #FFFFFF;
 }
 
@@ -201,6 +229,7 @@ header nav .aBorder2 {
 }
 
 #hero {
+  position: relative;
   background: url("/AgriMai/assets/styles/img/image1.png") no-repeat center center/cover;
   color: white;
   min-height: 100vh; /* plein écran */
@@ -208,6 +237,16 @@ header nav .aBorder2 {
   align-items: center;
   justify-content: center;
   padding: 2rem;
+}
+#hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 0;
 }
 
 #hero p {
@@ -220,8 +259,10 @@ header nav .aBorder2 {
 }
 
 .hero-body {
+  position: relative;
+  z-index: 1;
   display: flex;
-  gap: 2rem;
+  gap: 4rem;
   max-width: 1200px;
   width: 100%;
   align-items: center;
@@ -247,7 +288,7 @@ header nav .aBorder2 {
   font-weight: 700;
   font-style: normal;
   font-variation-settings: "wdth" 100;
-  font-size: 40px;
+  font-size: 32px;
   margin: 0;
 }
 
@@ -344,14 +385,61 @@ header nav .aBorder2 {
   color: inherit;
 }
 
-#recent-products {
+#recent-products .recentP-body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: dashed;
+  margin: 100px;
+}
+#recent-products .recentP-body h3 {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+  font-size: 22px;
+}
+#recent-products .recentP-body .products-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+#recent-products .recentP-body .product-card {
+  background-color: #FDD087;
+  border: 1px solid #6E093B;
+  border-radius: 10px;
+  padding: 1rem;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+#recent-products .recentP-body .product-card img {
+  width: 100px;
+  height: 110px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+#recent-products .recentP-body .product-card h4 {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+  font-size: 20px;
+}
+#recent-products .recentP-body .product-card p {
+  font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 18px;
 }
 
 #certificats {
+  margin: 90px;
   padding: 2rem;
 }
 #certificats .certificat-body {
@@ -448,6 +536,7 @@ header nav .aBorder2 {
   }
 }
 #logos {
+  margin: 50px;
   padding: 2rem;
 }
 #logos .logo-body {
@@ -491,11 +580,18 @@ header nav .aBorder2 {
   align-items: center;
 }
 
+.contact-form {
+  border: 2px solid #F5F5DC;
+  border-radius: 30px;
+  background: #FDD087;
+  margin: 2rem;
+}
 .contact-form input,
 .contact-form textarea {
   background-color: #F5F5DC;
-  color: #285829;
-  border: 1px solid #FFFFFF;
+  color: #000000;
+  border: 1px solid #6E093B;
+  border-radius: 10px;
   padding: 0.5rem;
   font-family: "Roboto", sans-serif;
   font-optical-sizing: auto;
@@ -505,11 +601,11 @@ header nav .aBorder2 {
 }
 .contact-form input::placeholder,
 .contact-form textarea::placeholder {
-  color: black;
+  color: #788079;
   opacity: 1;
 }
 .contact-form label {
-  color: #F5F5DC;
+  color: #05450B;
   margin-bottom: 0.3rem;
   font-family: "Roboto", sans-serif;
   font-optical-sizing: auto;
@@ -524,7 +620,7 @@ header nav .aBorder2 {
   align-items: center;
 }
 .title h3 {
-  color: #F5F5DC;
+  color: #05450B;
   font-family: "Montserrat", sans-serif;
   font-optical-sizing: auto;
   font-weight: 600;
@@ -533,7 +629,7 @@ header nav .aBorder2 {
   font-size: 22px;
 }
 .title p {
-  color: #F5F5DC;
+  color: #05450B;
   font-family: "Roboto", sans-serif;
   font-optical-sizing: auto;
   font-weight: 400;
@@ -551,6 +647,7 @@ header nav .aBorder2 {
 .submit {
   display: flex;
   justify-content: center;
+  padding: 20px;
 }
 .submit button {
   font-family: "Inter", sans-serif;
@@ -559,14 +656,15 @@ header nav .aBorder2 {
   font-style: normal;
   font-variation-settings: "wdth" 100;
   font-size: 18px;
-  background: #F5F5DC;
-  color: #000000;
+  background: #6E093B;
+  color: #F5F5DC;
   border: 1px solid #FFFFFF;
+  border-radius: 30px;
   padding: 0.6rem 1.2rem;
   cursor: pointer;
 }
 .submit button:hover {
-  background: #E2801D;
+  background: #4CAF50;
 }
 
 #newsletter {
@@ -601,7 +699,7 @@ header nav .aBorder2 {
   font-size: 18px;
   color: #FFFFFF;
 }
-#newsletter form input {
+#newsletter form label input {
   width: 530px;
   padding: 0.8rem;
   font-family: "Roboto", sans-serif;
@@ -649,9 +747,213 @@ header nav .aBorder2 {
   font-style: normal;
   font-size: 14px;
 }
+.cdg .cdgStyle {
+  color: #E2801D;
+}
 
 .cdgStyle {
   color: #E2801D;
+}
+
+#login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px;
+}
+#login .login-body {
+  width: 500px;
+  border: 1px solid;
+  border-radius: 10px;
+  padding: 100px;
+  background: #FDD087;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#login .login-body h3 {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+  font-size: 22px;
+  color: #000000;
+}
+#login .login-body img {
+  width: 150px;
+}
+#login .login-body p {
+  font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 18px;
+  margin: 0;
+  padding-bottom: 50px;
+  color: #000000;
+}
+#login .login-body form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+#login .login-body form label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  width: 450px;
+  font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 18px;
+  color: #000000;
+}
+#login .login-body form input,
+#login .login-body form textarea {
+  background-color: #F5F5DC;
+  color: #000000;
+  padding: 0.5rem;
+  font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 16px;
+}
+#login .login-body form input::placeholder,
+#login .login-body form textarea::placeholder {
+  color: #788079;
+  opacity: 1;
+}
+#login .login-body form button {
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+  font-size: 18px;
+  background: #6E093B;
+  color: #FFFFFF;
+  border: 1px solid #FFFFFF;
+  padding: 0.6rem 1.2rem;
+  cursor: pointer;
+}
+
+.login-link {
+  padding-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+.login-link p {
+  font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 16px;
+  color: #000000;
+}
+.login-link a {
+  font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 16px;
+  color: #000000;
+}
+
+.produits-normands {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+.produits-normands .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  padding: 0 20px;
+}
+.produits-normands .header a {
+  text-decoration: none;
+  color: #000000;
+}
+.produits-normands .header a:hover {
+  background: #6E093B;
+  color: #FFFFFF;
+}
+.produits-normands .grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin: 60px;
+}
+.produits-normands .card {
+  background: #FDD087;
+  border: 1px solid #6E093B;
+  border-radius: 10px;
+  padding: 1rem;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  transition: transform 0.4s cubic-bezier(0.25, 1.25, 0.5, 1), box-shadow 0.3s ease;
+}
+.produits-normands .card:hover {
+  transform: scale(1.1) rotate(30deg);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+.produits-normands .card .actions {
+  margin-top: 10px;
+}
+.produits-normands .card .actions a.btn {
+  width: 110px;
+  height: 40px;
+  display: inline-block;
+  border-radius: 0 20px;
+  border: 1px solid #000000;
+  background: #6E093B;
+  color: #F5F5DC;
+  padding: 8px 16px;
+  text-decoration: none;
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+  font-size: 18px;
+}
+.produits-normands .card .actions a.btn:hover {
+  background: #F5F5DC;
+  color: #285829;
+}
+.produits-normands .card .actions a.btn:active {
+  background: rgb(60.5577689243, 139.4422310757, 63.7450199203);
+  color: #F5F5DC;
+}
+.produits-normands .card img {
+  width: 200px;
+  height: 210px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+.produits-normands .card h3 {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+  font-size: 22px;
+  color: #000000;
+}
+.produits-normands .card p {
+  font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 18px;
+  color: #000000;
 }
 
 /*# sourceMappingURL=style.css.map */

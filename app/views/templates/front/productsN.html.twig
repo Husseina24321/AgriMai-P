@@ -1,0 +1,28 @@
+{% extends "/front/layout.html.twig" %}
+
+{% block content %}
+    <section class="produits-normands">
+        <div class="header">
+            <h1>Nos Reinette Grise du Canada de la Normandie</h1>
+            <a href="#" class="btn">Voir tout</a>
+        </div>
+
+        <div class="grid">
+            {% if products is not empty %}
+                {% for product in products %}
+                    <div class="card">
+                        <img src="/AgriMai//assets/styles/img/{{ product.getImage() }}" alt="{{ product.getTitle() }}">
+                        <h3>{{ product.getTitle() }}</h3>
+                        <p class="producteur">{{ product.getProducteur() }}</p>
+                        <p class="prix">{{ product.getPrice() }} € / kg</p>
+                        <div class="actions">
+                            <a href="/AgriMai/index.php?route=product-detail&id=1={{ product.getId() }}" class="btn">Voir</a>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p>Aucun produit disponible pour le moment.</p>
+            {% endif %}
+        </div>
+    </section>
+{% endblock %}

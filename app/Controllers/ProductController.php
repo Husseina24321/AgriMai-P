@@ -3,8 +3,8 @@ namespace app\Controllers;
 
 use app\Managers\ProductManager;
 use app\Models\Product;
+use app\Enum\ProductLocation;
 use Services\CSRFTokenManager;
-
 
 class ProductController extends AbstractController
 {
@@ -16,7 +16,7 @@ class ProductController extends AbstractController
         $this->pm = new ProductManager();
     }
 
-    // Récupère un produit depuis l'ID passé en GET
+    // Méthode privée pour récupérer un produit depuis l'ID passé en GET
     private function getProductFromRequest(): ?Product
     {
         if (!isset($_GET["id"])) {
@@ -33,61 +33,132 @@ class ProductController extends AbstractController
         return $product;
     }
 
-    // Liste tous les produits disponibles
-    public function listProducts(): void
-    {
-        $products = $this->pm->findAll();
-        $this->render("/front/products.html.twig", ["products" => $products]);
-    }
+    // Liste des pommes Grise du Canada en Normandie
 
-    // Liste tous les produits créés par un utilisateur spécifique
-    public function listProductsByUser(int $userId): void
-    {
-        $products = $this->pm->findByUser($userId);
-        $this->render("/front/productsByUser.html.twig", ["products" => $products]);
-    }
 
-    // Liste les produits disponibles dans une localisation donnée
-    public function listProductsByLocation(string $location): void
+    public function normandie(): void
     {
-        $products = $this->pm->findByLocation($location);
-        $this->render("/front/productsByLocation.html.twig", ["products" => $products]);
-    }
+        $products = []; // tableau vide pour éviter les doublons
 
-    // Affiche le formulaire de création d’un nouveau produit avec token CSRF
-    public function createProduct(): void
-    {
-        $csrfToken = (new CSRFTokenManager())->generateCSRFToken();
-        $this->render("/front/productTable.html.twig", ["csrfToken" => $csrfToken]);
-    }
+        $defaultProductsData = [
+            [
+                'title' => 'Pommes Grise du Canada',
+                'description' => 'Pommes bio cultivées en Normandie',
+                'producer' => 'Les Fruits de la Plaine',
+                'price' => 2.50,
+                'quantity' => 10,
+                'image' => 'pomme.jpg',
+                'user_id' => 1
+            ],
+            [
+                'title' => 'Pommes Grise du Canada',
+                'description' => 'Variété locale de qualité',
+                'producer' => 'Domaine Reinettes & Co',
+                'price' => 1.90,
+                'quantity' => 10,
+                'image' => 'pomme.jpg',
+                'user_id' => 2
+            ],
+            [
+                'title' => 'Pommes Grise du Canada',
+                'description' => '',
+                'producer' => 'Pommes du Val de Loire',
+                'price' => 1.90,
+                'quantity' => 10,
+                'image' => 'pomme.jpg',
+                'user_id' => 3
+            ],
+            [
+                'title' => 'Pommes Grise du Canada',
+                'description' => '',
+                'producer' => 'La Cueillette de Mathilde',
+                'price' => 1.80,
+                'quantity' => 10,
+                'image' => 'pomme2.jpg',
+                'user_id' => 4
+            ],
+            [
+                'title' => 'Pommes Grise du Canada',
+                'description' => '',
+                'producer' => 'Producteur Bio du Limousin',
+                'price' => 2.00,
+                'quantity' => 10,
+                'image' => 'pomme2.jpg',
+                'user_id' => 5
+            ],
+            [
+                'title' => 'Pommes Grise du Canada',
+                'description' => '',
+                'producer' => 'Ferme des Vergers Normands',
+                'price' => 2.10,
+                'quantity' => 10,
+                'image' => 'pomme2.jpg',
+                'user_id' => 6
+            ],
 
-    // Affiche le formulaire d’édition pour un produit existant
-    public function editProduct(): void
-    {
-        $product = $this->getProductFromRequest();
-        if (!$product) return;
+        ];
 
-        $csrfToken = (new CSRFTokenManager())->generateCSRFToken();
-        $this->render("/admin/productsEdit.html.twig", [
-            "product" => $product,
-            "csrfToken" => $csrfToken
+        foreach ($defaultProductsData as $data) {
+            // Vérifie si le produit existe déjà pour ce producteur
+            $exists = $this->pm->findByRegionAndNameAndProducer(
+                ProductLocation::Normandy->value,
+                $data['title'],
+                $data['producer']
+            );
+
+            if (empty($exists)) {
+                $product = new Product(
+                    $data['title'],
+                    $data['description'],
+                    $data['producer'],
+                    $data['price'],
+                    $data['quantity'],
+                    $data['image'],
+                    $data['user_id'],
+                    ProductLocation::Normandy
+                );
+                $product = $this->pm->createProduct($product);
+                $products[] = $product;
+            } else {
+                $products[] = $exists[0]; // ajoute le produit existant
+            }
+        }
+
+        $this->render("/front/productsN.html.twig", [
+            "categorie" => "Pommes Grise du Canada",
+            "products" => $products
         ]);
     }
 
-    // Supprime un produit existant
-    public function deleteProduct(): void
+
+    // Liste des pommes Grise du Canada en Loire
+    public function loire(): void
+    {
+        $products = $this->pm->findByRegionAndName('Loire', 'Pommes Grise du Canada');
+        $this->render("/front/productsL.html.twig", [
+            "categorie" => "Pommes Grise du Canada",
+            "products" => $products
+        ]);
+    }
+
+    // Liste des pommes Grise du Canada en Alsace
+    public function alsace(): void
+    {
+        $products = $this->pm->findByRegionAndName('Alsace', 'Pommes Grise du Canada');
+        $this->render("/front/productsA.html.twig", [
+            "categorie" => "Pommes Grise du Canada",
+            "products" => $products
+        ]);
+    }
+
+    // Affiche les détails d'un produit
+    public function detail(): void
     {
         $product = $this->getProductFromRequest();
         if (!$product) return;
 
-        $this->pm->delete($product);
-        $this->redirect("index.php?route=list-products");
-    }
-
-    // Affiche le formulaire spécifique au producteur
-    public function showForm(): void
-    {
-        $csrfToken = (new CSRFTokenManager())->generateCSRFToken();
-        $this->render("/front/producerDashboard.html.twig", ["csrfToken" => $csrfToken]);
+        $this->render("/front/productDetail.html.twig", [
+            "product" => $product
+        ]);
     }
 }

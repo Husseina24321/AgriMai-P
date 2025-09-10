@@ -1,18 +1,35 @@
 {% extends "/front/layout.html.twig" %}
 {% block content %}
-<img src="/AgriMai/assets/styles/img/logo.png" alt="Logo AgriMai">
-<h1>Connexion </h1>
-    <p style="color: red;">
-        {{ session["error-message"] }}
-    </p>
-<form action="/AgriMai/index.php?route=check-login" method="POST">
-    <label>E-mail
-        <input type="email" name="email" placeholder="E-mail" required>
-    </label>
-    <label>Mot de passe
-        <input type="password" name="password" placeholder="Mot de passe" required>
-    </label>
-    <input type="hidden" name="csrf-token" value="{{ csrfToken|e }}">
-    <button type="submit">Se connecter</button>
-</form>
+<section id="login">
+    <div class="login-body">
+        <img src="/AgriMai/assets/styles/img/logo.png" alt="Logo d'AgriMai">
+        <h3>CONNEXION </h3>
+        <p>
+            Connexion sécurisée à votre compte producteur ou acheteur.
+            {{ session["error-message"] }}
+        </p>
+        <form action="/AgriMai/index.php?route=check-login" method="POST">
+            <label>Nom:
+                <input type="text" name="nom" placeholder="Nom" required>
+            </label>
+            <label>E-mail:
+                <input type="email" name="email" placeholder="E-mail" required>
+            </label>
+            <label>Mot de passe:
+                <input type="password" name="password" placeholder="Mot de passe" required>
+            </label>
+            <input type="hidden" name="csrf-token" value="{{ csrfToken|e }}">
+            <button type="submit">Se connecter</button>
+        </form>
+        <div class="login-link">
+            <a href="">Mot de passe oublié ?</a>
+            <p>Vous n’avez pas de compte ?
+            <a href="">Inscrivez-vous</a>
+            </p>
+        </div>
+    </div>
+
+
+</section>
+
 {% endblock %}

@@ -1,0 +1,131 @@
+@use "../vars/colors" as *;
+@use "../vars/fonts" as *;
+@use "../partials/header"as *;
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f8f9fa;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2 {
+  color: #2c3e50;
+  margin-bottom: 15px;
+}
+
+section {
+  background: #fff;
+  padding: 20px;
+  margin: 20px auto;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  max-width: 900px;
+}
+
+/* --- Formulaire --- */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+label {
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+input[type="text"],
+input[type="file"],
+input[type="number"],
+button {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+button {
+  background: #27ae60;
+  color: #fff;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+button:hover {
+  background: #219150;
+}
+
+/* --- Table --- */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+}
+
+table th, table td {
+  border: 1px solid #ddd;
+  padding: 12px;
+  text-align: center;
+}
+
+table th {
+  background: #2c3e50;
+  color: #fff;
+}
+
+table tr:nth-child(even) {
+  background: #f2f2f2;
+}
+
+img {
+  border-radius: 6px;
+}
+
+/* --- Boutons actions --- */
+form[action*="editProduct"] button {
+  background: #2980b9;
+}
+
+form[action*="editProduct"] button:hover {
+  background: #1f6691;
+}
+
+form[action*="deleteProduct"] button {
+  background: #c0392b;
+}
+
+form[action*="deleteProduct"] button:hover {
+  background: #962d22;
+}
+
+/* --- Grille d’aperçu (si tu veux montrer les produits comme sur la page d’accueil) --- */
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.product-card {
+  background: #fff;
+  padding: 15px;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+  transition: transform 0.2s;
+}
+
+.product-card:hover {
+  transform: scale(1.03);
+}
+
+.product-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+}

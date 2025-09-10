@@ -15,7 +15,7 @@
             <div class="hero-text">
                 <h1>Où souhaitez-vous acheter vos produits ?</h1>
                 <div class="hero-buttons">
-                    <button><a href="/index.php?route=products">Normandie</a></button>
+                    <button><a href="/AgriMai/index.php?route=products-normandie">Normandie</a></button>
                     <button><a href="/index.php?route=products">Loire</a></button>
                     <button><a href="/index.php?route=products">Alsace</a></button>
                 </div>
@@ -52,44 +52,32 @@
     </div>
 <main>
 
-</main>
-
-    </section>
     <!-- Produits récents -->
     <section id="recent-products">
-        <h2>Nos nouvelles petites</h2>
-
-        {% if recentProducts is not empty %}
-            <table class="products-table">
-                <thead>
-                <tr>
-                    <th>Image</th>
-                    <th>Titre</th>
-                    <th>Description</th>
-                    <th>Prix/kg</th>
-                </tr>
-                </thead>
-                <tbody>
-                {% for product in recentProducts %}
-                    <tr>
-                        <td>
+        <div class="recentP-body">
+            <h3>Nos nouvelles petites</h3>
+            {% if recentProducts is not empty %}
+                <div class="products-grid">
+                    {% for product in recentProducts %}
+                        <div class="product-card">
                             {% if product.getImage() %}
-                                <img src="assets/uploads/{{ product.getImage() }}" alt="{{ product.getTitle() }}">
+                                <img src="/AgriMai/assets/styles/img/{{ product.getImage() }}" alt="{{ product.getTitle() }}">
                             {% else %}
-                                -
+                                <p class="no-image">Pas d’image</p>
                             {% endif %}
-                        </td>
-                        <td>{{ product.getTitle() }}</td>
-                        <td>{{ product.getDescription() }}</td>
-                        <td>{{ product.getPrice() }} €</td>
-                    </tr>
-                {% endfor %}
-                </tbody>
-            </table>
-        {% else %}
-            <p>Aucun produit récent disponible.</p>
-        {% endif %}
+
+                            <h4>{{ product.getTitle() }}</h4>
+                            <p class="producteur">{{ product.getProducteur() }}</p>
+                            <p class="prix">{{ product.getPrice() }} € / kg</p>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <p>Aucun produit récent disponible.</p>
+            {% endif %}
+        </div>
     </section>
+
     <section id="certificats">
         <div class="certificat-body">
 
@@ -217,7 +205,9 @@
                 <p style="color: green">{{ session['success-message'] }}</p>
             {% endif %}
             <form action="/index.php?route=newsletter" method="POST">
-                <input type="email" name="email" placeholder="Votre e-mail" required aria-label="Votre e-mail">
+                <label for="email">
+                    <input type="email" id="email" name="email" placeholder="Votre e-mail" required>
+                </label>
                 <button type="submit">OK</button>
             </form>
             <p class="cdg">En cliquant sur S’inscrire, vous confirmez que vous acceptez nos <span class="cdgStyle">Conditions générales d’utilisation</span>.</p>
