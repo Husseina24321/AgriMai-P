@@ -1,7 +1,7 @@
 {% extends "/front/layout.html.twig" %}
 
 {% block content %}
-    <section class="produits-normands">
+    <section id="products-nor">
         <div class="header">
             <h1>Nos Reinette Grise du Canada de la Normandie</h1>
             <a href="#" class="btn">Voir tout</a>
@@ -16,7 +16,7 @@
                         <p class="producteur">{{ product.getProducteur() }}</p>
                         <p class="prix">{{ product.getPrice() }} € / kg</p>
                         <div class="actions">
-                            <a href="/AgriMai/index.php?route=product-detail&id=1={{ product.getId() }}" class="btn">Voir</a>
+                            <a href="/AgriMai/index.php?route=product-detail&id={{ product.getId() }}" class="btn">Voir</a>
                         </div>
                     </div>
                 {% endfor %}

@@ -59,6 +59,7 @@
 
 .hero-text h1 {
   @include montserrat(700, normal, 32px);
+  color:$color4;
   margin: 0;
 
 }
@@ -131,24 +132,24 @@ background:$color7;
 }
 
 #recent-products {
-.recentP-body{
+  .recentP-body{
   display: flex;
   flex-direction: column;
   align-items: center;
   margin: 100px;
 
-  h3{
-    @include montserrat(600, normal, 22px);
-  }
+    h3{
+      @include montserrat(600, normal, 22px);
+    }
 
-  .products-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); // j'ai mes 3 produits sur la meme ligne
-    gap: 20px;
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr); // j'ai mes 3 produits sur la meme ligne
+      gap: 20px;
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
 
     .product-card {
       background-color:$color11;
@@ -173,6 +174,29 @@ background:$color7;
       p{
         @include roboto(400, normal, 18px);
       }
+
+      .btn2{
+        width: 100px;
+        height: 20px;
+        display: inline-block;
+        border-radius: 0 20px;
+        border: 1px solid $color4;
+        background: $color12;
+        color: $color1;
+        padding: 8px 16px;
+        text-decoration: none;
+        @include inter(600, normal, 18px);
+
+        &:hover {
+          background: $color1;
+          color: $color8;
+        }
+        &:active {
+          background-color: $color12;
+          color: $color1;
+        }
+      }
+
     }
   }
 }

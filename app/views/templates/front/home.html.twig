@@ -69,6 +69,8 @@
                             <h4>{{ product.getTitle() }}</h4>
                             <p class="producteur">{{ product.getProducteur() }}</p>
                             <p class="prix">{{ product.getPrice() }} € / kg</p>
+                            <a href="/AgriMai/index.php?route=product-detail&id=1={{ product.getId() }}" class="btn2">Voir</a>
+
                         </div>
                     {% endfor %}
                 </div>

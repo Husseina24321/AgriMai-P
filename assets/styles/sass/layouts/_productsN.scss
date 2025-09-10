@@ -1,7 +1,7 @@
 @use "../vars/colors" as *;
 @use "../vars/fonts" as *;
 
-.produits-normands {
+#products-nor {
   display: flex;
   flex-direction: column;
   align-items: stretch;
@@ -63,7 +63,7 @@
           color: $color8;
         }
         &:active {
-          background: darken($color2, 10%);
+          background: $color2;
           color: $color1;
         }
       }

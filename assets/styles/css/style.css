@@ -289,6 +289,7 @@ header nav .aBorder2 {
   font-style: normal;
   font-variation-settings: "wdth" 100;
   font-size: 32px;
+  color: #000000;
   margin: 0;
 }
 
@@ -436,6 +437,31 @@ header nav .aBorder2 {
   font-weight: 400;
   font-style: normal;
   font-size: 18px;
+}
+#recent-products .recentP-body .product-card .btn2 {
+  width: 100px;
+  height: 20px;
+  display: inline-block;
+  border-radius: 0 20px;
+  border: 1px solid #000000;
+  background: #6E093B;
+  color: #F5F5DC;
+  padding: 8px 16px;
+  text-decoration: none;
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+  font-size: 18px;
+}
+#recent-products .recentP-body .product-card .btn2:hover {
+  background: #F5F5DC;
+  color: #285829;
+}
+#recent-products .recentP-body .product-card .btn2:active {
+  background-color: #6E093B;
+  color: #F5F5DC;
 }
 
 #certificats {
@@ -864,33 +890,33 @@ header nav .aBorder2 {
   color: #000000;
 }
 
-.produits-normands {
+#products-nor {
   display: flex;
   flex-direction: column;
   align-items: stretch;
 }
-.produits-normands .header {
+#products-nor .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-top: 20px;
   padding: 0 20px;
 }
-.produits-normands .header a {
+#products-nor .header a {
   text-decoration: none;
   color: #000000;
 }
-.produits-normands .header a:hover {
+#products-nor .header a:hover {
   background: #6E093B;
   color: #FFFFFF;
 }
-.produits-normands .grid {
+#products-nor .grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
   margin: 60px;
 }
-.produits-normands .card {
+#products-nor .card {
   background: #FDD087;
   border: 1px solid #6E093B;
   border-radius: 10px;
@@ -899,14 +925,14 @@ header nav .aBorder2 {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
   transition: transform 0.4s cubic-bezier(0.25, 1.25, 0.5, 1), box-shadow 0.3s ease;
 }
-.produits-normands .card:hover {
+#products-nor .card:hover {
   transform: scale(1.1) rotate(30deg);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 }
-.produits-normands .card .actions {
+#products-nor .card .actions {
   margin-top: 10px;
 }
-.produits-normands .card .actions a.btn {
+#products-nor .card .actions a.btn {
   width: 110px;
   height: 40px;
   display: inline-block;
@@ -923,22 +949,22 @@ header nav .aBorder2 {
   font-variation-settings: "wdth" 100;
   font-size: 18px;
 }
-.produits-normands .card .actions a.btn:hover {
+#products-nor .card .actions a.btn:hover {
   background: #F5F5DC;
   color: #285829;
 }
-.produits-normands .card .actions a.btn:active {
-  background: rgb(60.5577689243, 139.4422310757, 63.7450199203);
+#products-nor .card .actions a.btn:active {
+  background: #4CAF50;
   color: #F5F5DC;
 }
-.produits-normands .card img {
+#products-nor .card img {
   width: 200px;
   height: 210px;
   object-fit: cover;
   border-radius: 8px;
   margin-bottom: 1rem;
 }
-.produits-normands .card h3 {
+#products-nor .card h3 {
   font-family: "Montserrat", sans-serif;
   font-optical-sizing: auto;
   font-weight: 600;
@@ -947,7 +973,7 @@ header nav .aBorder2 {
   font-size: 22px;
   color: #000000;
 }
-.produits-normands .card p {
+#products-nor .card p {
   font-family: "Roboto", sans-serif;
   font-optical-sizing: auto;
   font-weight: 400;
