@@ -1,0 +1,25 @@
+#success .success-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 300px;
+  gap: 1rem;
+}
+#success .success-body p {
+  font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: oblique;
+  font-size: 22px;
+  color: #000000;
+}
+#success .success-body a {
+  color: #6E093B;
+  font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+  font-size: 18px;
+}
+
+/*# sourceMappingURL=successMessage.css.map */

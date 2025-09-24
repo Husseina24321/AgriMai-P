@@ -1,11 +1,132 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="utf-8" />
-    <title> gri Mai</title>
-    <link rel="stylesheet" href="../../assets/styles/css/style.css">
-</head>
-<body>
-<h1>About</h1>
-</body>
-</html>
+{% extends "/front/layout.html.twig" %}
+
+{% block content %}
+    <section id="header-about">
+        <div class="about-body">
+            <div class="about-text">
+                <h1>AgriMai</h1>
+                <p>Des produits de qualité, des producteurs de confiance, un achat sans effort.</p>
+            </div>
+        </div>
+    </section>
+    <section id="agMai-about">
+        <div class="agMai-body">
+            <div class="agMaiAbout-text">
+                <p class="about-titleP">À propos d’AgriMai</p>
+                <p>Notre plateforme a été conçue pour faciliter l’accès des petits producteurs<br>
+                    de pommes non traitées aux circuits de distribution français.<br>
+                    Grâce à une interface simple et intuitive, nous aidons les producteurs à mieux <br>
+                    valoriser leurs récoltes en les connectant directement avec des acheteurs de <br>
+                    proximité (particuliers, magasins spécialisés, restaurateurs…).<br>
+                    Les acheteurs peuvent être aussi bien de simples particuliers en quête de produits sains,<br>
+                    que des professionnels souhaitant acheter en lot. Notre solution permet un commerce local,<br>
+                    direct et transparent, en mettant en avant un produit unique : la pomme non traitée, <br>
+                    récoltée en France, notamment en Normandie, Loire, Alsace.<br>
+                    Parce que les producteurs manquent parfois de temps pour se faire connaître ou pour gérer <br>
+                    des canaux complexes de distribution, la plateforme leur propose un outil simple de mise en ligne,<br>
+                    de gestion des lots, et d’échanges avec les acheteurs. Notre mission: soutenir les producteurs <br>
+                    locaux en valorisant leurs fruits, tout en garantissant la qualité, la traçabilité et la confiance<br>
+                    dans chaque échange.</p>
+            </div>
+            <div class="agMaiAbout-img">
+                <img src="/AgriMai/assets/styles/img/logo-remo.png" alt="logo de l'entreprise AgriMai">
+            </div>
+        </div>
+
+    </section>
+    <section id="team">
+        <div class="team-body">
+            <div class="team1">
+                <div class="team-member">
+                    <img src="/AgriMai/assets/styles/img/imgPhoto.png" alt="la photo de Nadia Konaté, menbre de l'équipe Agrimai">
+                    <h3>Nadia Konaté</h3>
+                    <p class="team-title">Product Owner (Client)</p>
+                    <p>Porte la vision des projets, <br>valide les fonctionnalités, priorise le backlog.</p>
+                    <div class="team-logo">
+                        <img src="/AgriMai/assets/styles/img/in2.png" alt="logo">
+                        <img src="/AgriMai/assets/styles/img/x2.png" alt="logo">
+                        <img src="/AgriMai/assets/styles/img/facebook2.png" alt="logo">
+                    </div>
+                </div>
+                <div class="team-member">
+                    <img src="/AgriMai/assets/styles/img/imgPhoto.png" alt="photo de Husseina Aoudou Pacco, menbre de l'équipe AgriMai">
+                    <h3>Husseina Aoudou</h3>
+                    <p class="team-title">Développeur Full stack</p>
+                    <p>Conçoit la plateforme côté front <br>(React, Vue,) et back (Node.js, PHP)</p>
+                    <div class="team-logo">
+                        <img src="/AgriMai/assets/styles/img/in2.png" alt="logo">
+                        <img src="/AgriMai/assets/styles/img/x2.png" alt="logo">
+                        <img src="/AgriMai/assets/styles/img/facebook2.png" alt="logo">
+                    </div>
+                </div>
+                <div class="team-member">
+                    <img src="/AgriMai/assets/styles/img/imgPhoto.png" alt="photo de Chloé Martins, menbre de l'équipe AgriMai">
+                    <h3>Chloé Martins</h3>
+                    <p class="team-title">Designer UI/UX</p>
+                    <p>Conçoit les maquettes, optimise<br> l’expérience utilisateur,
+                        travaille sur l’accessibilité.</p>
+                    <div class="team-logo">
+                        <img src="/AgriMai/assets/styles/img/in2.png" alt="logo">
+                        <img src="/AgriMai/assets/styles/img/x2.png" alt="logo">
+                        <img src="/AgriMai/assets/styles/img/facebook2.png" alt="logo">
+                    </div>
+                </div>
+
+            </div>
+            <div class="team2">
+                <div class="team-member2">
+                    <img src="/AgriMai/assets/styles/img/imgPhoto.png" alt="la photo de Luca Moretti, menbre de l'équipe Agrimai">
+                    <h3>Luca Moretti</h3>
+                    <p class="team-title2">Administrateur système</p>
+                    <p>Gère le déploiement, la sécurité serveur, les sauvegardes.</p>
+                    <div class="team-logo2">
+                        <img src="/AgriMai/assets/styles/img/in2.png" alt="logo">
+                        <img src="/AgriMai/assets/styles/img/x2.png" alt="logo">
+                        <img src="/AgriMai/assets/styles/img/facebook2.png" alt="logo">
+                    </div>
+                </div>
+                <div class="team-member2">
+                    <img src="/AgriMai/assets/styles/img/imgPhoto.png" alt="la photo de Romain Lefèvre, menbre de l'équipe Agrimai">
+                    <h3>Romain Lefèvre</h3>
+                    <p class="team-title2">Testeur QA</p>
+                    <p>Vérifie les bugs, fait des tests fonctionnels et utilisateurs</p>
+                    <div class="team-logo2">
+                        <img src="/AgriMai/assets/styles/img/in2.png" alt="logo">
+                        <img src="/AgriMai/assets/styles/img/x2.png" alt="logo">
+                        <img src="/AgriMai/assets/styles/img/facebook2.png" alt="logo">
+                    </div>
+
+                </div>
+                <div class="team-member2">
+                    <img src="/AgriMai/assets/styles/img/imgPhoto.png" alt="la photo de Sarah Benhamou, menbre de l'équipe Agrimai">
+                    <h3>Sarah Benhamou</h3>
+                    <p class="team-title2">Chef de projet</p>
+                    <p>Organise les sprints, anime les <br>réunions Agile, supprime les obstacles.</p>
+                    <div class="team-logo2">
+                        <img src="/AgriMai/assets/styles/img/in2.png" alt="logo">
+                        <img src="/AgriMai/assets/styles/img/x2.png" alt="logo">
+                        <img src="/AgriMai/assets/styles/img/facebook2.png" alt="logo">
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+    <section id="address">
+        <div class="address-body">
+            <div class="address-text">
+                <h3>Paris</h3>
+                <p>3 rue du Bourdon, 75016 Paris</p>
+                <h3>Contactez-nous</h3>
+                <p>+33 7 06 75 23 30</p>
+            </div>
+            <div class="address-img">
+                <img src="/AgriMai/assets/styles/img/map.png" alt="image d'une carte montrant l'adresse de l'entreprise AgriMai">
+            </div>
+        </div>
+
+    </section>
+{% endblock %}

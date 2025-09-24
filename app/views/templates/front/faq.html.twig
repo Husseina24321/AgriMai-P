@@ -1,11 +1,63 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="utf-8" />
-    <title> gri Mai</title>
-    <link rel="stylesheet" href="../../assets/styles/css/style.css">
-</head>
-<body>
-<h1>FAQ</h1>
-</body>
-</html>
+{% extends "/front/layout.html.twig" %}
+{% block content %}
+    <section id="faq">
+        <div class="faq-body">
+            <div class="faq-title">
+                <h3>FAQ</h3>
+                <p>Consultez notre foire aux questions pour trouver rapidement des réponses à vos questions.</p>
+            </div>
+            <div class="faq-text">
+                <a class="btnX" href="#">x</a>
+                <p class="question">Comment s’assurer que les pommes proposées sont vraiment non traitées ?</p>
+                <p>
+                    Les producteurs doivent indiquer le type de traitement appliqué
+                    à leurs pommes <br>lors de la mise en ligne.
+                    Pour les pommes non traitées, <br> une vérification est effectuée par notre équipe.
+                    Des justificatifs peuvent être demandés, et chaque lot est accompagné d’informations
+                    claires sur la variété, la région et les pratiques agricoles.
+                </p>
+            </div>
+            <div class="faq-text">
+                <a class="btnX" href="#">x</a>
+                <p class="question">Puis-je acheter en petite quantité ou uniquement en gros ?</p>
+                <p>Notre plateforme permet les deux !<br>
+                    Les producteurs peuvent proposer des lots variés (petites ou grandes quantités). <br>
+                    Chaque fiche produit précise les volumes disponibles.
+                    Vous pouvez donc passer commande en tant que particulier ou professionnel selon vos besoins.</p>
+            </div>
+            <div class="faq-text">
+                <a class="btnX" href="#">x</a>
+                <p class="question">Comment se déroule la transaction entre le producteur et l’acheteur ?</p>
+                <p>
+                    Une fois le compte validé, l’acheteur peut consulter
+                    les lots disponibles et contacter directement
+                    le producteur via la messagerie interne.
+                    Le paiement se fera en suite <br> via le système de paiement mise en place par la plateforme
+                    garantissant la sécurité et le respect des producteurs et acheteurs.<br>
+                </p>
+            </div>
+            <div class="faq-text">
+                <a class="btnX" href="#">x</a>
+                <p class="question">Je suis producteur, comment mettre mes pommes en ligne ?</p>
+                <p>
+                    Après votre inscription en tant que producteur,
+                    vous accédez à votre tableau de bord. <br>
+                    Vous pouvez y ajouter un lot en remplissant un formulaire : <br>
+                    variété, quantité, prix, description, photo, type de traitement, et localisation.<br>
+                    Une fois publié, votre lot sera visible après validation.<br>
+                </p>
+            </div>
+            <div class="faq-text">
+                <a class="btnX" href="#">x</a>
+                <p class="question">Que se passe-t-il si je perds ma connexion internet ?</p>
+                <p>
+                    La plateforme est principalement en ligne.
+                    Une fois reconnecté,<br> vos modifications seront synchronisées automatiquement.<br>
+                </p>
+            </div>
+            <p class="moreQuestion">Vous avez encore des questions supplémentaires?</p>
+            <button>Contactez-nous </button>
+        </div>
+
+    </section>
+{% endblock %}

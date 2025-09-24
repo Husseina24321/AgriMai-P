@@ -1,10 +1,13 @@
 <?php
 namespace services;
+use app\Controllers\AboutController;
 use app\Controllers\UserController;
+use app\Controllers\FaqController;
 use app\Controllers\HomeController;
 use app\Controllers\ContactController;
 use app\Controllers\ProductController;
 use app\Controllers\AuthController;
+use app\Controllers\ProducerProductController;
 use app\Controllers\DashboardController;
 
 class Router {
@@ -17,6 +20,12 @@ class Router {
                     $controller = new HomeController();
                     $controller->index();
                     break;
+
+                    //about
+                case "about":
+                        $controller = new AboutController();
+                        $controller->index();
+                        break;
 
 
                 // Newsletter
@@ -71,11 +80,23 @@ class Router {
                     break;
 
                 // MESSAGES
+
+                case "sendMessage":
+                    $contactController = new ContactController();
+                    $contactController->sendMessage();
+                    break;
+
+                case "successMessage":
+                    $contactController = new ContactController();
+                    $contactController->successMessage();
+                    break;
+
+
                 case "list-messages":
                     $ContactController = new ContactController();
                     $ContactController->listMessages();
-                    //ContactController::listMessages();
                     break;
+
                 case "list-messages-by-user":
                     $ContactController = new ContactController();
                     $userId = isset($_GET["user_id"]) ? (int) $_GET["user_id"] : 0; // récupère l'id utilisateur depuis l'URL
@@ -86,6 +107,11 @@ class Router {
                     $ContactController = new ContactController();
                     $messageId = isset($_GET["id"]) ? (int) $_GET["id"] : 0; // récupère l'id du message pour la suppression
                     $ContactController->deleteMessage($messageId);
+                    break;
+
+                case "contactForm":
+                    $contactController = new ContactController();
+                    $contactController->showForm();
                     break;
 
 
@@ -111,6 +137,62 @@ class Router {
                     break;
 
 
+                //faq
+                case 'faq':
+                    $controller = new FaqController();
+                    $controller->index();
+                    break;
+
+                // PRODUCTS CRUD - Producteur
+                case "list-products":
+                    $productController = new ProducerProductController();
+                    $productController->listProducts();
+                    break;
+
+                case "list-products-by-user":
+                    $productController = new ProducerProductController();
+
+                    // Si user_id n'est pas passé dans l'URL, on prend celui de la session
+                    if (isset($get["user_id"])) {
+                        $userId = (int)$get["user_id"];
+                    } elseif (isset($_SESSION['user_id'])) {
+                        $userId = (int)$_SESSION['user_id'];
+                    } else {
+                        // Aucun utilisateur connecté -> redirige vers login
+                        header("Location: index.php?route=login");
+                        exit;
+                    }
+                    $productController->listProductsByUser($userId);
+
+                case "show-product":
+                    $productController = new ProducerProductController();
+                    $productController->showProduct();
+                    break;
+
+                case "create-product":
+                    $productController = new ProducerProductController();
+                    $productController->createProduct();
+                    break;
+
+                case "store-product":
+                    $productController = new ProducerProductController();
+                    $productController->storeProduct();
+                    break;
+
+                case "edit-product":
+                    $productController = new ProducerProductController();
+                    $productController->editProduct();
+                    break;
+
+                case "update-product":
+                    $productController = new ProducerProductController();
+                    $productController->updateProduct();
+                    break;
+
+                case "delete-product":
+                    $productController = new ProducerProductController();
+                    $productController->deleteProduct();
+                    break;
 
 
                 //dashboard

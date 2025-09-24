@@ -3,7 +3,7 @@
 {% block content %}
     <section id="products-nor">
         <div class="header">
-            <h1>Nos Reinette Grise du Canada de la Normandie</h1>
+            <h1>Nos Reinettes Grise du Canada de la Normandie</h1>
             <a href="#" class="btn">Voir tout</a>
         </div>
 
@@ -11,7 +11,7 @@
             {% if products is not empty %}
                 {% for product in products %}
                     <div class="card">
-                        <img src="/AgriMai//assets/styles/img/{{ product.getImage() }}" alt="{{ product.getTitle() }}">
+                        <img src="/AgriMai/public/uploads/{{ product.getImage() }}" alt="{{ product.getTitle() }}">
                         <h3>{{ product.getTitle() }}</h3>
                         <p class="producteur">{{ product.getProducteur() }}</p>
                         <p class="prix">{{ product.getPrice() }} € / kg</p>

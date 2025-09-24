@@ -1,0 +1,177 @@
+@use "../vars/colors" as *;
+@use "../vars/fonts" as *;
+
+#header-about{
+  position: relative;
+  background: url("/AgriMai/assets/styles/img/imageAbout1.jpg") no-repeat center center/cover;
+  color: white;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 0;
+  }
+  .about-body{
+    position: relative;
+    z-index: 1;
+    display: flex;
+    gap: 4rem;
+    align-items: center;
+    flex-direction: column;
+
+    .about-text{
+      h1{
+        @include montserrat(700, normal, 32px);
+        color:$color3;
+        text-align: center;
+      }
+      p{
+        @include playfair(600, oblique, 28px, 1.6);
+        text-align: center;
+        color: $color3;
+      }
+    }
+  }
+}
+
+#agMai-about{
+  .agMai-body{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin: 4rem;
+    gap: 0.2rem;
+
+    .agMaiAbout-text{
+      p{
+        @include roboto-light(300, normal, 18px);
+      }
+      .about-titleP{
+        @include roboto(500, normal, 22px);
+      }
+    }
+    .agMaiAbout-img{
+      img{
+        width: 270px;
+        height: 270px;
+        padding: 30px;
+        border-radius: 70px;
+      }
+    }
+  }
+}
+
+#team{
+  margin: 5rem;
+  .team-body{
+    margin: 4rem;
+    .team1{
+      display: flex;
+      flex-direction: row;
+      gap: 12rem;
+      justify-content: space-between;
+      border-top: inset;
+      padding-top: 30px;
+
+      .team-member{
+        img{
+          width: 130px;
+          height: 130px;
+        }
+        h3{
+          @include montserrat(600, normal, 20px);
+        }
+        .team-title{
+          @include roboto-light(600, oblique, 18px);
+        }
+        p{
+          @include roboto(300, normal, 16px);
+        }
+        .team-logo{
+          display: flex;
+          flex-direction: row;
+          justify-content: flex-start;
+          gap: 1rem;
+          img{
+            gap: 1rem;
+            width: 30px;
+            height: 30px;
+          }
+        }
+      }
+    }
+
+    .team2{
+      margin-top: 40px;
+      display: flex;
+      flex-direction: row;
+      gap: 12rem;
+      justify-content: space-between;
+      border-top: inset;
+      padding-top: 30px;
+
+      .team-member2{
+        img{
+          width: 130px;
+          height: 130px;
+        }
+        h3{
+          @include montserrat(600, normal, 20px);
+        }
+        .team-title2{
+          @include roboto-light(600, oblique, 18px);
+        }
+        p{
+          @include roboto(300, normal, 16px);
+        }
+        .team-logo2{
+          display: flex;
+          flex-direction: row;
+          justify-content: flex-start;
+          gap: 1rem;
+          img{
+            gap: 1rem;
+            width: 30px;
+            height: 30px;
+          }
+        }
+      }
+    }
+  }
+}
+#address{
+  margin: 6rem;
+  .address-body{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 15rem;
+    background:$color31;
+
+    .address-text{
+      padding: 20px;
+        h3{
+          @include montserrat(600, normal, 20px);
+        }
+        p{
+          @include roboto(300, normal, 16px);
+        }
+    }
+    .address-img{
+      img{
+        width: 250px;
+        height: 250px;
+        padding: 20px;
+      }
+
+    }
+  }
+}

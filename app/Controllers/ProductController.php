@@ -4,7 +4,7 @@ namespace app\Controllers;
 use app\Managers\ProductManager;
 use app\Models\Product;
 use app\Enum\ProductLocation;
-use Services\CSRFTokenManager;
+use services\CsrfTokenManager;
 
 class ProductController extends AbstractController
 {
@@ -38,92 +38,7 @@ class ProductController extends AbstractController
 
     public function normandie(): void
     {
-        $products = []; // tableau vide pour éviter les doublons
-
-        $defaultProductsData = [
-            [
-                'title' => 'Pommes Grise du Canada',
-                'description' => 'Pommes bio cultivées en Normandie',
-                'producer' => 'Les Fruits de la Plaine',
-                'price' => 2.50,
-                'quantity' => 10,
-                'image' => 'pomme.jpg',
-                'user_id' => 1
-            ],
-            [
-                'title' => 'Pommes Grise du Canada',
-                'description' => 'Variété locale de qualité',
-                'producer' => 'Domaine Reinettes & Co',
-                'price' => 1.90,
-                'quantity' => 10,
-                'image' => 'pomme.jpg',
-                'user_id' => 2
-            ],
-            [
-                'title' => 'Pommes Grise du Canada',
-                'description' => '',
-                'producer' => 'Pommes du Val de Loire',
-                'price' => 1.90,
-                'quantity' => 10,
-                'image' => 'pomme.jpg',
-                'user_id' => 3
-            ],
-            [
-                'title' => 'Pommes Grise du Canada',
-                'description' => '',
-                'producer' => 'La Cueillette de Mathilde',
-                'price' => 1.80,
-                'quantity' => 10,
-                'image' => 'pomme2.jpg',
-                'user_id' => 4
-            ],
-            [
-                'title' => 'Pommes Grise du Canada',
-                'description' => '',
-                'producer' => 'Producteur Bio du Limousin',
-                'price' => 2.00,
-                'quantity' => 10,
-                'image' => 'pomme2.jpg',
-                'user_id' => 5
-            ],
-            [
-                'title' => 'Pommes Grise du Canada',
-                'description' => '',
-                'producer' => 'Ferme des Vergers Normands',
-                'price' => 2.10,
-                'quantity' => 10,
-                'image' => 'pomme2.jpg',
-                'user_id' => 6
-            ],
-
-        ];
-
-        foreach ($defaultProductsData as $data) {
-            // Vérifie si le produit existe déjà pour ce producteur
-            $exists = $this->pm->findByRegionAndNameAndProducer(
-                ProductLocation::Normandy->value,
-                $data['title'],
-                $data['producer']
-            );
-
-            if (empty($exists)) {
-                $product = new Product(
-                    $data['title'],
-                    $data['description'],
-                    $data['producer'],
-                    $data['price'],
-                    $data['quantity'],
-                    $data['image'],
-                    $data['user_id'],
-                    ProductLocation::Normandy
-                );
-                $product = $this->pm->createProduct($product);
-                $products[] = $product;
-            } else {
-                $products[] = $exists[0]; // ajoute le produit existant
-            }
-        }
-
+        $products = $this->pm->findByRegionAndName(ProductLocation::Normandy->value, 'Reinette Grise du Canada');
         $this->render("/front/productsN.html.twig", [
             "categorie" => "Pommes Grise du Canada",
             "products" => $products

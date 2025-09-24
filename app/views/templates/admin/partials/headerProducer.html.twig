@@ -1,0 +1,14 @@
+<header>
+    <nav>
+        <img src="/AgriMai/assets/styles/img/logo.png" alt="logo">
+        <ul>
+            <li><a href="/AgriMai/index.php?route=home">ACCUEIL</a></li>
+            <li><a href="/AgriMai/index.php?route=about">À PROPOS DE NOUS</a></li>
+            <li><a href="/AgriMai/index.php?route=products-normandie">MARCHÉ</a></li>
+
+            {% if session.user is defined %}
+                <li><a href="/AgriMai/index.php?route=logout">Déconnexion</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+</header>

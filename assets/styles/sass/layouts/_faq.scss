@@ -1,0 +1,81 @@
+@use "../vars/colors" as *;
+@use "../vars/fonts" as *;
+#faq {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px;
+  margin: 2rem;
+
+  .faq-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: $color22;
+    width: 600px;
+    padding: 50px;
+    gap: 2rem;
+
+    .faq-title {
+      h3 {
+        @include montserrat(600, normal, 22px);
+        color: $color4;
+        text-align: center;
+      }
+      p {
+        @include roboto(400, oblique, 20px);
+        color: $color4;
+        margin: 0 0 10px 0;
+        text-align: center;
+      }
+    }
+
+    .faq-text {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      border: 1px solid $color3;
+      width: 100%;
+
+      .question{
+        @include roboto(600, oblique, 18px);
+
+      }
+      p {
+        text-align: center;
+        margin-bottom: 15px;
+        @include roboto-light(300, normal, 16px);
+      }
+
+      .btnX {
+        align-self: flex-end;
+        color: $color4;
+      }
+    }
+    .moreQuestion{
+      @include roboto(600, normal, 18px);
+      margin: 40px 0 0 0;
+    }
+    button{
+      width: 150px;
+      height: 40px;
+      display: inline-block;
+      border-radius:10px;
+      border: 1px solid $color3;
+      background: $color12;
+      color: $color1;
+      padding: 8px 16px;
+      text-decoration: none;
+      @include inter(600, normal, 14px);
+
+      &:hover {
+        background: $color1;
+        color: $color8;
+      }
+      &:active {
+        background: $color2;
+        color: $color1;
+      }
+    }
+  }
+}

@@ -6,12 +6,15 @@
 @use "partials/navbar"as *;
 @use "layouts/about"as *;
 @use "layouts/contact"as *;
+@use "layouts/successMessage"as *;
 @use "layouts/faq"as *;
 @use "layouts/home"as *;
 @use "layouts/login"as *;
 @use "layouts/order"as *;
 @use "layouts/productsN"as *;
 @use "layouts/register"as *;
+@use "layouts/productD" as *;
+@use "layouts/producerDashboard" as *;
 @use "components/arrow"as *;
 @use "components/buttons"as *;
 @use "components/link"as *;

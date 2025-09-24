@@ -1,0 +1,29 @@
+<section class="contact">
+    <div class="contact-body">
+        <div class="contact-form">
+            <form method="post" action="/AgriMai/index.php?route=sendMessage" >
+                <h3>CONTACTEZ-NOUS</h3>
+                <p>Veuillez remplir ce formulaire pour toute question, suggestion ou demande d’information.</p>
+
+                <div class="champs">
+                    <label for="name">Nom :</label>
+                    <input type="text" id="name" name="name" placeholder="Votre nom" required>
+                </div>
+
+                <div class="champs">
+                    <label for="email">E-mail :</label>
+                    <input type="email" id="email" name="email" placeholder="Votre e-mail" required>
+                </div>
+
+                <div class="champs">
+                    <label for="message">Message :</label>
+                    <textarea id="message" name="message" rows="5" placeholder="Votre message" required></textarea>
+                </div>
+
+                <div class="submit">
+                    <button type="submit">Envoyer</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>

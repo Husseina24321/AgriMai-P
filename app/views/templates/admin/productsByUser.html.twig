@@ -1,0 +1,34 @@
+{% extends "/front/layout.html.twig" %}
+
+{% block content %}
+    <section id="user-products">
+        <div class="header">
+            <h1>Mes Produits</h1>
+            <a href="/AgriMai/index.php?route=create-product" class="btn">+ Ajouter un produit</a>
+        </div>
+
+        <div class="grid">
+            {% if products is not empty %}
+                {% for product in products %}
+                    <div class="card">
+                        <img src="/AgriMai/public/uploads/{{ product.getImage() }}" alt="{{ product.getTitle() }}">
+                        <h3>{{ product.getTitle() }}</h3>
+                        <p class="producteur">{{ product.getProducteur() }}</p>
+                        <p class="prix">{{ product.getPrice() }} €</p>
+                        <p class="quantity">Stock : {{ product.getQuantity() }}</p>
+
+                        <div class="actions">
+                            <a href="/AgriMai/index.php?route=edit-product&id={{ product.getId() }}" class="btn">Modifier</a>
+                            <form method="POST" action="/AgriMai/index.php?route=delete-product&id={{ product.getId() }}" style="display:inline;" onsubmit="return confirm('Voulez-vous vraiment supprimer ce produit ?');">
+                                <button type="submit" class="btn">Supprimer</button>
+                            </form>
+                            <a href="/AgriMai/index.php?route=product-detail&id={{ product.getId() }}" class="btn">Voir</a>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p>Vous n'avez pas encore ajouté de produit.</p>
+            {% endif %}
+        </div>
+    </section>
+{% endblock %}

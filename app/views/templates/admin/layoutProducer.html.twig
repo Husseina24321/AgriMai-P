@@ -7,13 +7,10 @@
     <link rel="stylesheet" href="assets/styles/css/style.css">
 </head>
 <body>
+{% include "/admin/partials/headerProducer.html.twig"  %}
 {% block content %}
-    <nav>
-        <ul>
-            <li><a href="">Tableau de bord</a></li>
-            <li><a href="">Gestion des utilisateurs</a></li>
-        </ul>
-    </nav>
 {% endblock %}
+{% include "/front/partials/footer.html.twig"  %}
+<script src="/AgriMai/assets/javascript/main.js"></script>
 </body>
 </html>

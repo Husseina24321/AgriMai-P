@@ -21,3 +21,18 @@
   font-variation-settings: "wdth" 100;
   font-size: $size;
 }
+@mixin roboto-light($weight: 300, $style: normal, $size: 70px) {
+  font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: $weight;
+  font-style: $style;
+  font-size: $size;
+}
+
+@mixin playfair($weight: 400, $style: normal, $size: 20px, $lineHeight: 1.4) {
+  font-family: 'Playfair Display', serif;
+  font-weight: $weight;
+  font-style: $style;
+  font-size: $size;
+  line-height: $lineHeight;
+}

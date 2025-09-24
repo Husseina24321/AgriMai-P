@@ -1,0 +1,109 @@
+@use "../vars/colors" as *;
+@use "../vars/fonts" as *;
+
+
+.contact {
+  background:$color21;
+  margin: 0;
+  .contact-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .contact-form {
+      background: $color22;
+      border: 2px solid $color1;
+      border-radius: 30px;
+      margin: 2rem;
+      width: 570px;
+
+      form{
+        padding: 30px;
+        h3 {
+          text-align: center;
+          color: $color27;
+          @include montserrat(600, normal, 22px);
+          margin-bottom: 0.8rem;
+        }
+
+        p {
+          color: $color27;
+          @include roboto(400, oblique, 18px);
+          text-align: center;
+          margin: 1.5rem 0 1.5rem 0;
+        }
+      }
+      input,
+      textarea {
+        background-color: $color1;
+        color: $color4;
+        border: 1px solid $color12;
+        border-radius: 10px;
+        padding: 0.5rem;
+        @include roboto(400, normal, 16px);
+
+        &::placeholder {
+          color: $color6;
+          opacity: 1;
+        }
+      }
+
+      label {
+        color: $color4;
+        margin-bottom: 0.3rem;
+        display: block;
+        @include roboto(400, normal, 18px);
+      }
+
+      .title {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+      }
+
+      .champs {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        margin-bottom: 1rem;
+      }
+
+      .submit {
+        display: flex;
+        justify-content: center;
+        padding: 20px;
+        button {
+          @include inter(600, normal, 18px);
+          background: $color12;
+          color: $color1;
+          border: 1px solid $color3;
+          border-radius: 30px;
+          padding: 0.6rem 1.2rem;
+          cursor: pointer;
+
+          &:hover {
+            background: $color2;
+          }
+        }
+      }
+
+      .errors {
+        margin-bottom: 1rem;
+        padding: 0.5rem;
+        background-color: $color2;
+        border-radius: 10px;
+        color: $color1;
+
+        ul {
+          margin: 0;
+          padding-left: 1.2rem;
+        }
+
+        li {
+          margin-bottom: 0.3rem;
+        }
+      }
+    }
+  }
+}

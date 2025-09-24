@@ -3,7 +3,7 @@
 
 footer {
   .footer-body {
-    background-color: $color5;
+    background-color: $color19;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
@@ -18,9 +18,10 @@ footer {
 
   #newsletters {
     .newsletters-body {
-      h4 {
+      h6 {
         @include roboto(500, normal, 16px);
         color: $color3;
+        margin: 30px 0 0 0;
       }
       p {
         color: $color3;
@@ -55,7 +56,7 @@ footer {
     }
 
     .cdgStyle2 {
-      color: $color7;
+      color: $color25;
     }
   }
 
@@ -72,9 +73,10 @@ footer {
       flex-direction: column;
       gap: 0.5rem;
 
-      h4 {
+      h6 {
         @include roboto(500, normal, 16px);
         color: $color3;
+        margin: 40px 0 10px 0;
       }
 
       a {
@@ -93,9 +95,10 @@ footer {
     }
 
     .footer-text {
-      h4 {
+      h6 {
         @include roboto(500, normal, 16px);
         color: $color3;
+        margin: 40px 0 10px 0;
       }
 
       ul {
@@ -117,7 +120,7 @@ footer {
       display: flex;
       flex-direction: row;
       justify-content: space-evenly;
-      background-color: $color5;
+      background-color: $color19;
       text-align: center;
       padding-top: 2rem;
       border-top: 1px solid $color3;
@@ -126,6 +129,7 @@ footer {
       p {
         margin: 0.3rem 0;
         @include roboto(400, normal, 14px);
+
 
         a {
           color: $color3;

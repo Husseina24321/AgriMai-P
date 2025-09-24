@@ -13,12 +13,12 @@
     padding: 0 20px;
 
     a{
-      text-decoration: none;
       color: $color4;
       &:hover {
         background: $color12;
         color: $color3;
       }
+      @include inter(600, normal, 16px);
     }
   }
 
@@ -30,7 +30,7 @@
   }
 
   .card {
-    background: $color12;
+    background: $color11;
     border: 1px solid $color12;
     border-radius: 10px;
     padding: 1rem;

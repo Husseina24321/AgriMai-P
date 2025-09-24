@@ -1,11 +1,6 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="utf-8" />
-    <title> gri Mai</title>
-    <link rel="stylesheet" href="../../assets/styles/css/style.css">
-</head>
-<body>
-<h1>Contact</h1>
-</body>
-</html>
+
+{% extends "/front/layout.html.twig" %}
+
+{% block content %}
+    {% include "front/partials/contactForm.html.twig" %}
+{% endblock %}

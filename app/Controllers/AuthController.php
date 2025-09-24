@@ -1,9 +1,10 @@
 <?php
 namespace app\Controllers;
-use services\CSRFTokenManager;
+use services\CsrfTokenManager;
 use app\Managers\UserManager;
 use app\Enum\UserRole;
 use app\Models\User;
+
 
 
 class AuthController extends AbstractController
@@ -14,6 +15,7 @@ class AuthController extends AbstractController
         $csrfToken = $csrfManager->generateCSRFToken();
 
         $this->render("/front/login.html.twig", ["csrfToken" => $csrfToken]);
+
     }
 
     public function checkLogin(): void
@@ -32,15 +34,32 @@ class AuthController extends AbstractController
         $um = new UserManager();
         $user = $um->findByEmail($_POST["email"]);
 
+        var_dump($user);
+
+        // 🔧 Sécurise la récupération du rôle
+        $roleEnum = null;
+        if (isset($_POST["role"])) {
+            $roleEnum = UserRole::tryFrom($_POST["role"]); // pas d'erreur si la valeur est inconnue
+        }
+
         if ($user && password_verify($_POST["password"], $user->getPassword())) {
-            $_SESSION["user"] = $user->getId();
+            $_SESSION["user_id"] = $user->getId();
             unset($_SESSION["error-message"]);
-            $this->redirect("index.php");
+
+            // Vérifie si un rôle est défini et fais la redirection en fonction
+            if ($roleEnum === UserRole::Buyer) {
+                $this->redirect("/AgriMai/index.php?route=home"); // page d'accueil acheteur
+            } elseif ($roleEnum === UserRole::Producer) {
+                $this->redirect("/AgriMai/index.php?route=create-product");
+            } else {
+                $this->redirect("/AgriMai/index.php?route=home");
+            }
         } else {
             $_SESSION["error-message"] = "Invalid login information";
             $this->redirect("index.php?route=login");
         }
     }
+
 
     public function register(): void
     {
@@ -50,10 +69,9 @@ class AuthController extends AbstractController
         $this->render("/front/register.html.twig", ["csrfToken" => $csrfToken, "roles" => $roles, "session" => $_SESSION]);
     }
 
-
     public function checkRegister(): void
     {
-      var_dump("yes");
+        var_dump("yes");
         // Vérifie que tous les champs obligatoires sont présents
         if (!isset(
             $_POST["first_name"],
@@ -82,7 +100,6 @@ class AuthController extends AbstractController
 
 
         $um = new UserManager();
-
         // Vérifie si l'email existe déjà
         if ($um->findByEmail($_POST["email"]) !== null) {
             $_SESSION["error-message"] = "Un utilisateur avec cet email existe déjà.";
@@ -107,14 +124,13 @@ class AuthController extends AbstractController
         // Redirige en fonction du rôle que l'user a choisi
         if ($roleEnum === UserRole::Buyer) {
             // Acheteur va dans page d'accueil
-            $this->redirect("index.php");
+            $this->redirect("/AgriMai/index.php?route=login");
         } elseif ($roleEnum === UserRole::Producer) {
             // Producteur va dans page pour renseigner les infos produit
-            $this->redirect("index.php?route=producerDashboard");
+            $this->redirect("/AgriMai/index.php?route=login");
         } else {
             // Par défaut va dans la page d'accueil
             $this->redirect("index.php");
         }
+    }
 }
-}
-

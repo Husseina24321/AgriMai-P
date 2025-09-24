@@ -15,11 +15,20 @@
             <label>E-mail:
                 <input type="email" name="email" placeholder="E-mail" required>
             </label>
+            <div class="loginForm-group">
+                <label for="role">Rôle :</label>
+                <select id="role" name="role" required>
+                    <option value="Acheteur">Acheteur</option>
+                    <option value="Producteur">Producteur</option>
+                </select>
+            </div>
             <label>Mot de passe:
                 <input type="password" name="password" placeholder="Mot de passe" required>
             </label>
             <input type="hidden" name="csrf-token" value="{{ csrfToken|e }}">
-            <button type="submit">Se connecter</button>
+            <div class="login-btn">
+                <button type="submit">Se connecter</button>
+            </div>
         </form>
         <div class="login-link">
             <a href="">Mot de passe oublié ?</a>

@@ -1,0 +1,257 @@
+#productDetail {
+  margin: 100px;
+}
+#productDetail .productDetail-body {
+  display: grid;
+  grid-template-columns: 0.8fr 1fr 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+#productDetail .productDetail-body .productDetail-centerPart img {
+  width: 400px;
+  padding: 0 50px 50px 70px;
+}
+#productDetail .productDetail-body .productDetail-leftPart .productDetail-link {
+  padding: 0;
+  margin-bottom: 30px;
+}
+#productDetail .productDetail-body .productDetail-leftPart .productDetail-link a {
+  font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+  font-size: 16px;
+  color: #000000;
+}
+#productDetail .productDetail-body .productDetail-leftPart .productDetail-link span {
+  font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 16px;
+}
+#productDetail .productDetail-body .productDetail-leftPart .productDetail-info h2 {
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+  font-size: 22px;
+  color: #000000;
+}
+#productDetail .productDetail-body .productDetail-leftPart .productDetail-info .separator {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+#productDetail .productDetail-body .productDetail-leftPart .productDetail-info .separator p {
+  font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 16px;
+}
+#productDetail .productDetail-body .productDetail-leftPart .productDetail-info .separator .productDetail-stars {
+  border-left: 1px solid;
+  padding: 10px;
+  margin: 20px;
+  color: #000000;
+}
+#productDetail .productDetail-body .productDetail-leftPart .productDetail-info .separator .productDetail-stars span {
+  font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 16px;
+  color: #000000;
+}
+#productDetail .productDetail-body .productDetail-leftPart .productDetail-info .p-description {
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+  font-size: 16px;
+}
+#productDetail .productDetail-body .productDetail-leftPart .productDetail-info .productDetail-btn {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  gap: 3rem;
+}
+#productDetail .productDetail-body .productDetail-leftPart .productDetail-info .productDetail-btn h3 {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+  font-size: 16px;
+  text-decoration: underline;
+  color: #000000;
+}
+#productDetail .productDetail-body .productDetail-leftPart .productDetail-info .productDetail-btn h3 a {
+  font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+  font-size: 16px;
+  text-decoration: underline;
+  color: #000000;
+}
+#productDetail .productDetail-body .productDetail-rightPart {
+  margin-top: 60px;
+}
+#productDetail .productDetail-body .productDetail-rightPart .productDetail-lots {
+  margin: 0 0 30px 0;
+}
+#productDetail .productDetail-body .productDetail-rightPart .productDetail-lots p {
+  font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 20px;
+}
+#productDetail .productDetail-body .productDetail-rightPart .productDetail-lots button {
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+  font-size: 16px;
+  border: 1px solid #FFFFFF;
+  background: black;
+  color: white;
+  width: 100px;
+  height: 35px;
+}
+#productDetail .productDetail-body .productDetail-rightPart .productDetail-formOrder {
+  display: ruby-text;
+}
+#productDetail .productDetail-body .productDetail-rightPart .productDetail-formOrder label {
+  font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+#productDetail .productDetail-body .productDetail-rightPart .productDetail-formOrder label .lots {
+  width: 160px;
+  height: 40px;
+  margin: 0 5px 0 0;
+}
+#productDetail .productDetail-body .productDetail-rightPart .productDetail-formOrder label .qty {
+  width: 50px;
+  height: 40px;
+}
+#productDetail .productDetail-body .productDetail-rightPart .productDetail-textOrder button {
+  margin: 10px 0 10px 0;
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+  font-size: 16px;
+  background: #000000;
+  color: #FFFFFF;
+  width: auto;
+  height: 35px;
+  border: 1px solid #FFFFFF;
+}
+#productDetail .productDetail-body .productDetail-rightPart .productDetail-textOrder button a {
+  color: #FFFFFF;
+  text-decoration: none;
+}
+#productDetail .productDetail-body .productDetail-rightPart .productDetail-textOrder p {
+  font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+  font-size: 16px;
+}
+#productDetail .productDetail-body .productDetail-rightPart .productDetail-textOrder p a {
+  font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 16px;
+  color: #000000;
+}
+#productDetail .productDetail-body .productDetail-rightPart .productDetail-textOrder .order-Condition {
+  font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+  font-size: 14px;
+}
+
+.popup-livraison {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  position: fixed;
+  background-color: rgba(22, 22, 22, 0.5);
+  border-radius: 0.5rem;
+  z-index: 1;
+  display: none;
+}
+
+.popup-livraison .popup {
+  position: relative;
+  margin: 0 auto;
+  top: 25%;
+  width: 75%;
+  height: 50%;
+  background-color: #CBB799;
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  box-sizing: border-box;
+}
+
+.popup-livraison .content {
+  padding: 2rem;
+  box-sizing: border-box;
+}
+
+.popup-livraison .close-button {
+  position: absolute;
+  float: right;
+  width: 1.5rem;
+  height: 1.5rem;
+  right: 0;
+  top: 0.1rem;
+  text-decoration: none;
+  color: #788079;
+}
+
+.popup-livraison .content p {
+  text-align: center;
+  font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+  font-size: 18px;
+  color: #000000;
+}
+
+.popup-livraison .content h5 {
+  text-align: center;
+  text-decoration: underline;
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+  font-size: 20px;
+  color: #000000;
+}
+
+.visible, .visible::after {
+  display: block;
+}
+
+/*# sourceMappingURL=productD.css.map */

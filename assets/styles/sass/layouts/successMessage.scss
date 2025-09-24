@@ -1,0 +1,22 @@
+@use "../vars/colors" as *;
+@use "../vars/fonts" as *;
+
+#success{
+  .success-body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 300px;
+    gap: 1rem;
+
+    p{
+      @include roboto(600, oblique, 22px);
+      color: $color4;
+    }
+
+    a{
+      color: $color12;
+      @include roboto-light(300, normal, 18px);
+    }
+  }
+}

@@ -56,6 +56,38 @@ class ContactManager extends AbstractManager
         $query->execute(["id" => $message->getId()]);
     }
 
+
+    public function create(array $data): Message
+    {
+        $sentAt = $data['sent_at'] ?? (new DateTime())->format('Y-m-d H:i:s');
+
+        $stmt = $this->db->prepare("
+        INSERT INTO messages (sender_id, receiver_id, content, sent_at)
+        VALUES (:sender_id, :receiver_id, :content, :sent_at)
+    ");
+
+        $stmt->execute([
+            'sender_id'   => $data['sender_id'] ?? null,
+            'receiver_id' => $data['receiver_id'] ?? null,
+            'content'     => $data['content'],
+            'sent_at'     => $sentAt,
+        ]);
+
+        // Récupérer l'ID du message créé
+        $id = (int) $this->db->lastInsertId();
+
+        // Construire une "fake row" pour réutiliser createMessageFromRow()
+        $row = [
+            'id' => $id,
+            'sender_id' => $data['sender_id'] ?? null,
+            'receiver_id' => $data['receiver_id'] ?? null,
+            'content' => $data['content'],
+            'sent_at' => $sentAt,
+        ];
+
+        return $this->createMessageFromRow($row);
+    }
+
     private function createMessageFromRow(array $row): Message
     {
         $sentAt = isset($row["sent_at"]) ? new DateTime($row["sent_at"]) : null;

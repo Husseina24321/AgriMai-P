@@ -1,50 +1,57 @@
 {% extends "/front/layout.html.twig" %}
 {% block content %}
-    <img src="/AgriMai/assets/styles/img/logo.png" alt="Logo AgriMai">
-    <h1>Formulaire d'inscription </h1>
+    <section id="register">
+        <div class="register-body">
+            <img src="/AgriMai/assets/styles/img/logo.png" alt="Logo AgriMai">
+            <h3>FORMULAIRE D'INSCRIPTION</h3>
+            <p>Remplissez ce formulaire pour rejoindre notre plateforme.</p>
 
-    <p style="color: red;">
-        {{ session["error-message"] }}
-    </p>
+            <p style="color: whitesmoke;">
+                {{ session["error-message"] }}
+            </p>
 
-    <form action="/AgriMai/index.php?route=check-register" method="POST">
-        <table>
-            <tr>
-                <td><label for="first_name">Prénom :</label></td>
-                <td><input type="text" id="first_name" name="first_name" placeholder="Prénom" required></td>
-            </tr>
-            <tr>
-                <td><label for="last_name">Nom :</label></td>
-                <td><input type="text" id="last_name" name="last_name" placeholder="Nom" required></td>
-            </tr>
-            <tr>
-                <td><label for="email">E-mail :</label></td>
-                <td><input type="email" id="email" name="email" placeholder="E-mail" required></td>
-            </tr>
-            <tr>
-                <td><label for="password">Mot de passe :</label></td>
-                <td><input type="password" id="password" name="password" placeholder="Mot de passe" required></td>
-            </tr>
-            <tr>
-                <td><label for="confirm-password">Confirmation :</label></td>
-                <td><input type="password" id="confirm-password" name="confirm-password" placeholder="Confirmer le mot de passe" required></td>
-            </tr>
-            <tr>
-                <td><label for="role">Rôle :</label></td>
-                <td>
+            <form action="/AgriMai/index.php?route=check-register" method="POST" class="register-form">
+                <div class="form-group">
+                    <label for="first_name">Prénom :</label>
+                    <input type="text" id="first_name" name="first_name" placeholder="Prénom" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="last_name">Nom :</label>
+                    <input type="text" id="last_name" name="last_name" placeholder="Nom" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">E-mail :</label>
+                    <input type="email" id="email" name="email" placeholder="E-mail" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Mot de passe :</label>
+                    <input type="password" id="password" name="password" placeholder="Mot de passe" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="confirm-password">Confirmation :</label>
+                    <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirmer le mot de passe" required>
+                </div>
+
+                <div class="form-group">
                     <select id="role" name="role" required>
                         {% for role in roles %}
                             <option value="{{ role.value|e }}">{{ role.value|e }}</option>
                         {% endfor %}
                     </select>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <input type="hidden" name="csrf-token" value="{{ csrfToken|e }}">
-                    <button type="submit">S'inscrire</button>
-                </td>
-            </tr>
-        </table>
-    </form>
+                    <label for="role">Rôle :</label>
+                </div>
+
+                <input type="hidden" name="csrf-token" value="{{ csrfToken|e }}">
+
+                <button type="submit">S'inscrire</button>
+                <p>Vous avez déjà un compte ?
+                    <a href="/AgriMai/index.php?route=login">Connectez-vous</a>
+                </p>
+            </form>
+        </div>
+    </section>
 {% endblock %}

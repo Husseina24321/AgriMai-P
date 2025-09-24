@@ -2,66 +2,76 @@
 
 {% block content %}
 
-    <div class="productDetail-page">
-        <div class="productDetail-breadcrumb">
-            <a href="#">Voir tout</a>
-            <a href="#">Catégorie</a> >
-            <span>{{ product.getTitle() }}</span>
-        </div>
-
-        <div class="productDetail-container">
-            <!-- Partie gauche : infos -->
-            <div class="productDetail-info">
-                <h1>{{ product.name }}</h1>
-                <p>{{ product.price }} € / kg</p>
-
-                <div class="productDetail-rating">
-                    ★★★★☆ <span>({{ product.rating }} étoiles) - {{ product.reviewsCount }} avis</span>
+    <section id="productDetail">
+        <div class="productDetail-body">
+            <div class="productDetail-leftPart">
+                <div class="productDetail-link">
+                    <a href="/AgriMai/index.php?route=home">Voir tout</a> &gt
+                    <a href="AgriMai/index.php?route=products-normandie">Catégorie</a> &gt
+                    <span>{{ product.getTitle() }}</span>
+                </div>
+                <div class="productDetail-info">
+                    <h2>{{ product.getTitle() }}</h2>
+                    <div class="separator">
+                        <p>{{ product.price }} € / kg </p>
+                        <div class="productDetail-stars">
+                             ★★★★☆ <span><br> ({{ product.rating }} étoiles) - {{ product.reviewsCount }} avis</span>
+                        </div>
+                    </div>
+                    <div class="productDetail-btn">
+                        <h3>Détails</h3>
+                        <h3> <a href="#" id="openModal">Livraison</a></h3>
+                        <!-- La modale / Livraison-->
+                        <div id="popup-livraison" class="popup-livraison">
+                            <div class="popup">
+                                <a class="js-close-button close-button" href="#">x</a>
+                                <div class="content">
+                                    <h5>Livraison</h5>
+                                    <p>
+                                        Nous livrons vos produits directement chez vous sous 48 h. <br>
+                                        Les frais de livraison sont calculés en fonction de votre région.<br>
+                                        Pour plus d’informations, contactez notre support via le formulaire de contact.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="p-description">{{ product.description }}</p>
                 </div>
 
-                <!-- Onglets -->
-                <div class="productDetail-tabs">
-                    <button class="productDetail-tab active">Détails</button>
-                    <button class="productDetail-tab">Livraison</button>
-                    <button class="productDetail-tab">Retours</button>
-                </div>
-
-                <!-- Description venant de la BD -->
-                <div class="productDetail-description">
-                    {{ product.description|raw }}
-                </div>
             </div>
-
-            <!-- Partie droite : image + achat -->
-            <div class="productDetail-purchase">
+            <div class="productDetail-centerPart">
                 <img src="/AgriMai//assets/styles/img/{{ product.image }}" alt="{{ product.name }}">
-
-
+            </div>
+            <div class="productDetail-rightPart">
                 <div class="productDetail-lots">
                     <p>Les lots:</p>
-                    <button class="productDetail-lot-btn active">2Kg</button>
+                    <button class="productDetail-lot-btn">2Kg</button>
                     <button class="productDetail-lot-btn">5Kg</button>
                 </div>
-
-                <p class="productDetail-contact-text">Pour une grande quantité? <a href="#">Contactez-nous</a></p>
-
-                <div class="productDetail-order">
-                    <label for="lots">Les lots</label>
-                    <select id="lots" name="lots">
-                        <option value="">Sélectionner</option>
-                        <option value="2kg">2 Kg</option>
-                        <option value="5kg">5 Kg</option>
-                    </select>
-
-                    <label for="qty">Qté</label>
-                    <input type="number" id="qty" name="qty" min="1" value="1">
+                <div class="productDetail-formOrder">
+                    <label for="lots">les lots
+                        <select class="lots" name="lots">
+                            <option class="option" value="">Sélectionner</option>
+                            <option class="option" value="2kg">2 Kg</option>
+                            <option class="option" value="5kg">5 Kg</option>
+                        </select>
+                    </label>
+                    <label for="qty">Qté
+                        <select class="qty" id="qty" name="qty">
+                            <option class="option" value="1">1</option>
+                            <option class="option" value="2">2</option>
+                            <option class="option" value="3">3</option>
+                        </select>
+                    </label>
                 </div>
-
-                <button class="productDetail-btn productDetail-add-cart">Ajouter au panier</button>
-                <button class="productDetail-btn productDetail-buy-now">Acheter maintenant</button>
-                <p class="productDetail-free-shipping">Livraison gratuite à partir de 50 €</p>
+                <div class="productDetail-textOrder">
+                    <button><a class="lien" href="/AgriMai/index.php?route=sendMessage">Acheter maintenant</a></button>
+                    <p>Pour une grande quantité? <a class="lien" href="/AgriMai/index.php?route=sendMessage">Contactez-nous</a></p>
+                    <p class="order-Condition">Livraison gratuite à partir de 50 €</p>
+                </div>
             </div>
         </div>
-    </div>
+    </section>
 
 {% endblock %}

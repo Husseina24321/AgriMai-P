@@ -87,11 +87,11 @@ class UserManager extends AbstractManager
     public function createUser(User $user): User
     {
         $stmt = $this->db->prepare("
-            INSERT INTO users (first_name, last_name, email, password, role, status, created_at)
-            VALUES (:first_name, :last_name, :email, :password, :role, :status, NOW())
-        ");
+        INSERT INTO users (first_name, last_name, email, password, role, status, created_at)
+        VALUES (:first_name, :last_name, :email, :password, :role, :status, NOW())
+    ");
 
-        $stmt->execute([
+        $result = $stmt->execute([
             'first_name' => $user->getFirstName(),
             'last_name'  => $user->getLastName(),
             'email'      => $user->getEmail(),
@@ -100,12 +100,14 @@ class UserManager extends AbstractManager
             'status'     => UserStatus::Pending->value
         ]);
 
+
         $user->setId((int)$this->db->lastInsertId());
         $user->setStatus(UserStatus::Pending);
         $user->setCreatedAt(new DateTime());
 
         return $user;
     }
+
 
     public function updateUser(User $user): void
     {

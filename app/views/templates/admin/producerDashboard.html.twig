@@ -1,70 +1,56 @@
-{% extends "/admin/layout.html.twig" %}
+{% extends "/admin/layoutProducer.html.twig" %}
 
 {% block content %}
-    <h1>Bienvenue sur ton tableau de bord Producteur</h1>
+    <section id="product-form">
+        <div class="product-form-body">
+            <h3>CRÉER UN PRODUIT</h3>
 
-    {# --- Formulaire d’ajout --- #}
-    <section>
-        <h2>Ajouter un nouveau produit</h2>
-        <form action="/AgriMai/index.php?route=createProduct" method="POST" enctype="multipart/form-data">
-            <label>Nom du produit
-                <input type="text" name="product_name" required>
-            </label>
+            <form action="/AgriMai/index.php?route=store-product" method="post" enctype="multipart/form-data" class="product-form">
+                <div class="form-content">
+                    <label for="title">Nom du produit</label>
+                    <input type="text" id="title" name="title" placeholder="Reinette Grise du Canada" required>
+                </div>
 
-            <label>Photo
-                <input type="file" name="product_image" accept="image/*" required>
-            </label>
+                <div class="form-content">
+                    <label for="description" class="descriptionPP">Description</label>
+                    <textarea id="description" name="description" placeholder="Décrivez le produit..."></textarea>
+                </div>
 
-            <label>Prix/kg
-                <input type="number" step="0.01" name="price_per_kg" required>
-            </label>
+                <div class="form-content">
+                    <label for="producer">Producteur</label>
+                    <input type="text" id="producer" name="producer" placeholder="Nom du producteur">
+                </div>
 
-            <input type="hidden" name="csrf-token" value="{{ csrfToken }}">
-            <button type="submit">➕ Enregistrer</button>
-        </form>
-    </section>
+                <div class="form-content">
+                    <label for="price">Prix (€)</label>
+                    <input type="number" id="price" name="price" step="0.01" min="0" required>
+                </div>
 
-    <hr>
+               <!-- <div class="form-content">
+                    <label for="quantity">Quantité</label>
+                    <input type="number" id="quantity" name="quantity" min="0" required>
+                </div>-->
 
-    {# --- Liste des produits du producteur --- #}
-    <section>
-        <h2>Mes Produits</h2>
-        {% if products is not empty %}
-            <table>
-                <thead>
-                <tr>
-                    <th>Image</th>
-                    <th>Nom</th>
-                    <th>Prix/kg</th>
-                    <th>Actions</th>
-                </tr>
-                </thead>
-                <tbody>
-                {% for product in products %}
-                    <tr>
-                        <td><img src="{{ product.imagePath }}" alt="{{ product.name }}" width="80"></td>
-                        <td>{{ product.name }}</td>
-                        <td>{{ product.pricePerKg }} €</td>
-                        <td>
-                            {# --- Modifier --- #}
-                            <form action="/AgriMai/index.php?route=editProduct={{ product.id }}" method="POST" style="display:inline;">
-                                <input type="hidden" name="csrf-token" value="{{ csrfToken }}">
-                                <button type="submit">✏️ Modifier</button>
-                            </form>
+                <div class="form-content">
+                    <label for="location">Localisation</label>
+                    <select id="location" name="location" required>
+                        <option value="">-- Sélectionnez une région --</option>
+                        <option value="Normandie">Normandie</option>
+                        <option value="Alsace">Alsace</option>
+                        <option value="Loire">Loire</option>
 
-                            {# --- Supprimer --- #}
-                            <form action="/AgriMai/index.php?route=deleteProduct={{ product.id }}" method="POST" style="display:inline;"
-                                  onsubmit="return confirm('Supprimer ce produit ?');">
-                                <input type="hidden" name="csrf-token" value="{{ csrfToken }}">
-                                <button type="submit">🗑️ Supprimer</button>
-                            </form>
-                        </td>
-                    </tr>
-                {% endfor %}
-                </tbody>
-            </table>
-        {% else %}
-            <p>Tu n’as encore ajouté aucun produit.</p>
-        {% endif %}
+                    </select>
+                </div>
+
+                <div class="form-content">
+                    <label for="image">Image du produit</label>
+                    <input type="file" id="image" name="image" accept="image/*">
+                </div>
+
+                <input type="hidden" name="_csrf_token" value="{{ csrfToken }}">
+
+                <button type="submit" class="btn-submit">Créer</button>
+            </form>
+        </div>
     </section>
 {% endblock %}
