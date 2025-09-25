@@ -1,14 +1,14 @@
-{% extends "/front/layout.html.twig" %}
+{% extends "/admin/layoutProducer.html.twig" %}
 
 {% block content %}
-    <section id="user-products">
+    <section id="producer-dashboard">
         <div class="header">
-            <h1>Mes Produits</h1>
+            <h1>Tableau de bord producteur</h1>
             <a href="/AgriMai/index.php?route=create-product" class="btn">+ Ajouter un produit</a>
         </div>
 
-        <div class="grid">
-            {% if products is not empty %}
+        {% if products is not empty %}
+            <div class="grid">
                 {% for product in products %}
                     <div class="card">
                         <img src="/AgriMai/public/uploads/{{ product.getImage() }}" alt="{{ product.getTitle() }}">
@@ -26,9 +26,10 @@
                         </div>
                     </div>
                 {% endfor %}
-            {% else %}
-                <p>Vous n'avez pas encore ajouté de produit.</p>
-            {% endif %}
-        </div>
+            </div>
+        {% else %}
+            <p>Vous n'avez pas encore ajouté de produit.</p>
+            <a href="/AgriMai/index.php?route=create-product" class="btn btn-primary">Créer mon premier produit</a>
+        {% endif %}
     </section>
 {% endblock %}

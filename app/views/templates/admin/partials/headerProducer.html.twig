@@ -8,6 +8,12 @@
 
             {% if session.user is defined %}
                 <li><a href="/AgriMai/index.php?route=logout">Déconnexion</a></li>
+
+                {% if session.role is defined and session.role == 'admin' %}
+                    <li><a href="/index.php?route=dashboard">Dashboard</a></li>
+                {% endif %}
+            {% else %}
+                <li><a class="aBorder1" href="/AgriMai/index.php?route=login"><i class="fa-duotone fa-regular fa-user"></i>S'IDENTIFIER</a></li>
             {% endif %}
         </ul>
     </nav>

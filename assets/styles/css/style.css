@@ -1276,19 +1276,19 @@ header nav .aBorder2 {
   height: 30px;
 }
 
-#products-nor {
+#products-Regions {
   display: flex;
   flex-direction: column;
   align-items: stretch;
 }
-#products-nor .header {
+#products-Regions .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-top: 20px;
   padding: 0 20px;
 }
-#products-nor .header a {
+#products-Regions .header a {
   color: #000000;
   font-family: "Inter", sans-serif;
   font-optical-sizing: auto;
@@ -1297,17 +1297,17 @@ header nav .aBorder2 {
   font-variation-settings: "wdth" 100;
   font-size: 16px;
 }
-#products-nor .header a:hover {
+#products-Regions .header a:hover {
   background: #6E093B;
   color: #FFFFFF;
 }
-#products-nor .grid {
+#products-Regions .grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
   margin: 60px;
 }
-#products-nor .card {
+#products-Regions .card {
   background: #FDD087;
   border: 1px solid #6E093B;
   border-radius: 10px;
@@ -1316,14 +1316,14 @@ header nav .aBorder2 {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
   transition: transform 0.4s cubic-bezier(0.25, 1.25, 0.5, 1), box-shadow 0.3s ease;
 }
-#products-nor .card:hover {
+#products-Regions .card:hover {
   transform: scale(1.1) rotate(30deg);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 }
-#products-nor .card .actions {
+#products-Regions .card .actions {
   margin-top: 10px;
 }
-#products-nor .card .actions a.btn {
+#products-Regions .card .actions a.btn {
   width: 110px;
   height: 40px;
   display: inline-block;
@@ -1340,22 +1340,22 @@ header nav .aBorder2 {
   font-variation-settings: "wdth" 100;
   font-size: 18px;
 }
-#products-nor .card .actions a.btn:hover {
+#products-Regions .card .actions a.btn:hover {
   background: #F5F5DC;
   color: #285829;
 }
-#products-nor .card .actions a.btn:active {
+#products-Regions .card .actions a.btn:active {
   background: #4CAF50;
   color: #F5F5DC;
 }
-#products-nor .card img {
+#products-Regions .card img {
   width: 200px;
   height: 210px;
   object-fit: cover;
   border-radius: 8px;
   margin-bottom: 1rem;
 }
-#products-nor .card h3 {
+#products-Regions .card h3 {
   font-family: "Montserrat", sans-serif;
   font-optical-sizing: auto;
   font-weight: 600;
@@ -1364,7 +1364,7 @@ header nav .aBorder2 {
   font-size: 22px;
   color: #000000;
 }
-#products-nor .card p {
+#products-Regions .card p {
   font-family: "Roboto", sans-serif;
   font-optical-sizing: auto;
   font-weight: 400;

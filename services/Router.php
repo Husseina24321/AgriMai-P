@@ -116,20 +116,12 @@ class Router {
 
 
                 // PRODUCTS
-                case "products-normandie":
+
+                case "products-region":
                     $productController = new ProductController();
-                    $productController->normandie();
+                    $productController->byRegion();
                     break;
 
-                case "products-loire":
-                    $productController = new ProductController();
-                    $productController->loire();
-                    break;
-
-                case "products-alsace":
-                    $productController = new ProductController();
-                    $productController->alsace();
-                    break;
 
                 case "product-detail":
                     $productController = new ProductController();
@@ -144,6 +136,10 @@ class Router {
                     break;
 
                 // PRODUCTS CRUD - Producteur
+                case "producer-dashboard":
+                    $productController = new ProducerProductController();
+                    $productController->listProductsByUserDashboard();
+                    break;
                 case "list-products":
                     $productController = new ProducerProductController();
                     $productController->listProducts();
@@ -163,6 +159,7 @@ class Router {
                         exit;
                     }
                     $productController->listProductsByUser($userId);
+                    break;
 
                 case "show-product":
                     $productController = new ProducerProductController();
@@ -232,7 +229,8 @@ class Router {
                     $authController->checkRegister();
                     break;
                 case "logout":
-                    // AuthController::logout();
+                    $authController = new AuthController();
+                    $authController->logout();
                     break;
 
                 // -------- 404 --------

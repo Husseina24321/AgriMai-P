@@ -1,0 +1,54 @@
+{% extends "/front/layout.html.twig" %}
+
+{% block content %}
+    <section id="edit-product">
+        <h1>Modifier le produit</h1>
+
+        <form method="POST" action="/AgriMai/index.php?route=update-product&id={{ product.getId() }}" enctype="multipart/form-data">
+            <input type="hidden" name="id" value="{{ product.getId() }}">
+            <input type="hidden" name="csrf-token" value="{{ csrfToken }}">
+
+            <div>
+                <label for="title">Titre :</label>
+                <input type="text" id="title" name="title" value="{{ product.getTitle() }}" required>
+            </div>
+
+            <div>
+                <label for="description">Description :</label>
+                <textarea id="description" name="description" required>{{ product.getDescription() }}</textarea>
+            </div>
+
+            <div>
+                <label for="producteur">Producteur :</label>
+                <input type="text" id="producteur" name="producteur" value="{{ product.getProducteur() }}" required>
+            </div>
+
+            <div>
+                <label for="price">Prix (€) :</label>
+                <input type="number" step="0.01" id="price" name="price" value="{{ product.getPrice() }}" required>
+            </div>
+
+            <div>
+                <label for="quantity">Quantité :</label>
+                <input type="number" id="quantity" name="quantity" value="{{ product.getQuantity() }}" required>
+            </div>
+
+            <div>
+                <label for="location">Localisation :</label>
+                <select id="location" name="location">
+                    <option value="Normandie" {% if product.getLocation().value == 'Normandie' %}selected{% endif %}>Normandie</option>
+                    <option value="Loire" {% if product.getLocation().value == 'Loire' %}selected{% endif %}>Loire</option>
+                    <option value="Alsace" {% if product.getLocation().value == 'Alsace' %}selected{% endif %}>Alsace</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="image">Image (laisser vide pour conserver l'actuelle) :</label>
+                <input type="file" id="image" name="image">
+                <p>Image actuelle : <img src="/AgriMai/public/uploads/{{ product.getImage() }}" alt="{{ product.getTitle() }}" width="100"></p>
+            </div>
+
+            <button type="submit">Mettre à jour</button>
+        </form>
+    </section>
+{% endblock %}

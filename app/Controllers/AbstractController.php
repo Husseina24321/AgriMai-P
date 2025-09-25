@@ -20,23 +20,38 @@ abstract class AbstractController
         $this->twig->addExtension(new DebugExtension());
     }
 
-    //Rend un template Twig. Les attributs sont données par PhpStorm
     protected function render(string $name, array $context = []): void
     {
-        // Twig  lance des exceptions (LoaderError, RuntimeError, SyntaxError) pour éviter "Unhandled exceptions"
+        // Démarre la session si ce n'est pas déjà fait
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+
+        // Ajoute automatiquement la session dans le contexte Twig
+        $context['session'] = $_SESSION;
+
         try {
-            echo $this->twig->render("$name", $context);
+            echo $this->twig->render($name, $context);
         } catch (LoaderError | RuntimeError | SyntaxError $e) {
             die("Erreur de rendu Twig : " . $e->getMessage());
         }
     }
 
-    //Redirige vers une autre page.
-
-    #[NoReturn]
     protected function redirect(string $route): void
     {
         header("Location: $route");
         exit();
+    }
+    protected function requireLogin(): void
+    {
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+
+        if (!isset($_SESSION['user']) || empty($_SESSION['user']['id'])) {
+            $_SESSION["error-message"] = "Vous devez être connecté.";
+            header("Location: /AgriMai/index.php?route=login");
+            exit;
+        }
     }
 }

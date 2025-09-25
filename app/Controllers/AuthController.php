@@ -2,6 +2,7 @@
 namespace app\Controllers;
 use services\CsrfTokenManager;
 use app\Managers\UserManager;
+use app\Managers\ProductManager;
 use app\Enum\UserRole;
 use app\Models\User;
 
@@ -20,45 +21,71 @@ class AuthController extends AbstractController
 
     public function checkLogin(): void
     {
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+
+        // Vérifie que les champs sont présents
         if (!isset($_POST["email"], $_POST["password"], $_POST["csrf-token"])) {
             $_SESSION["error-message"] = "Missing fields";
             $this->redirect("index.php?route=login");
+            return;
         }
 
+        // Vérifie le CSRF token
         $tokenManager = new CSRFTokenManager();
         if (!$tokenManager->validateCSRFToken($_POST["csrf-token"])) {
             $_SESSION["error-message"] = "Invalid CSRF token";
             $this->redirect("index.php?route=login");
+            return;
         }
 
         $um = new UserManager();
         $user = $um->findByEmail($_POST["email"]);
 
-        var_dump($user);
-
-        // 🔧 Sécurise la récupération du rôle
+        // Sécurise la récupération du rôle depuis le POST
         $roleEnum = null;
         if (isset($_POST["role"])) {
-            $roleEnum = UserRole::tryFrom($_POST["role"]); // pas d'erreur si la valeur est inconnue
+            $roleEnum = UserRole::tryFrom($_POST["role"]);
         }
 
+        // Vérifie le mot de passe
         if ($user && password_verify($_POST["password"], $user->getPassword())) {
-            $_SESSION["user_id"] = $user->getId();
+
+            // Stocker les infos utiles dans la session
+            $_SESSION["user"] = [
+                "id"    => $user->getId(),
+                "email" => $user->getEmail(),
+                "role"  => $user->getRole()->value // Assure-toi que getRole() renvoie bien un enum
+            ];
             unset($_SESSION["error-message"]);
 
-            // Vérifie si un rôle est défini et fais la redirection en fonction
+            // Redirections en fonction du rôle choisi
             if ($roleEnum === UserRole::Buyer) {
-                $this->redirect("/AgriMai/index.php?route=home"); // page d'accueil acheteur
+                $this->redirect("/AgriMai/index.php?route=home");
+
             } elseif ($roleEnum === UserRole::Producer) {
-                $this->redirect("/AgriMai/index.php?route=create-product");
+                $pm = new ProductManager();
+                $hasProducts = $pm->userLogProducts($user->getId());
+
+                if ($hasProducts) {
+                    $this->redirect("/AgriMai/index.php?route=list-products-by-user&user_id=" . $user->getId());
+                } else {
+                    $this->redirect("/AgriMai/index.php?route=create-product");
+                }
+
             } else {
+                // Si le rôle n'est pas précisé → page d'accueil
                 $this->redirect("/AgriMai/index.php?route=home");
             }
+
         } else {
             $_SESSION["error-message"] = "Invalid login information";
             $this->redirect("index.php?route=login");
         }
     }
+
+
 
 
     public function register(): void
@@ -132,5 +159,22 @@ class AuthController extends AbstractController
             // Par défaut va dans la page d'accueil
             $this->redirect("index.php");
         }
+    }
+    public function logout(): void
+    {
+        // démarre la session si elle n'est pas déjà active
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+
+        // supprime toutes les variables de session
+        $_SESSION = [];
+
+        // détruit complètement la session
+        session_destroy();
+
+        // redirige vers la page de connexion
+        header("Location: /AgriMai/index.php?route=login");
+        exit;
     }
 }

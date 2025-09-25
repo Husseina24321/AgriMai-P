@@ -104,6 +104,13 @@ class ProductManager extends AbstractManager
         $product->setId((int)$this->db->lastInsertId());
         return $product;
     }
+    public function userLogProducts(int $userId): bool
+    {
+        $sql = "SELECT COUNT(*) FROM products WHERE user_id = :user_id";
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute(['user_id' => $userId]);
+        return $stmt->fetchColumn() > 0;
+    }
 
     // Met à jour un produit
     public function updateProduct(Product $product): void
@@ -135,7 +142,7 @@ class ProductManager extends AbstractManager
     // Supprime un produit (soft delete)
     public function delete(Product $product): void
     {
-        $stmt = $this->db->prepare("UPDATE products SET deleted_at = NOW() WHERE id = :id");
+        $stmt = $this->db->prepare("DELETE FROM products WHERE id = :id");
         $stmt->execute(['id' => $product->getId()]);
     }
 

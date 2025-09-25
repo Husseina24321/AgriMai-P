@@ -55,6 +55,30 @@ class ProducerProductController extends AbstractController
         return $fileName;
     }
 
+    // Tableau de bord du producteur
+    public function listProductsByUserDashboard(): void
+    {
+        // Vérifie que l'utilisateur est connecté
+        if (!isset($_SESSION['user_id'])) {
+            // Redirige vers la page de login si non connecté
+            $this->redirect("index.php?route=login");
+            return;
+        }
+
+        $userId = $_SESSION['user_id'];
+
+        // Récupère tous les produits du producteur
+        $products = $this->pm->findByUser($userId);
+
+        // Rend le template productsByUser
+        $csrfToken = (new CSRFTokenManager())->generateCSRFToken();
+        $this->render("/admin/productsByUser.html.twig", [
+            "products" => $products,
+            "csrfToken" => $csrfToken
+        ]);
+    }
+
+
     // Liste tous les produits
     public function listProducts(): void
     {
@@ -68,7 +92,7 @@ class ProducerProductController extends AbstractController
         // Récupère les produits de l'utilisateur
         $products = $this->pm->findByUser($userId);
 
-        // 🔹 Vérifie que $products n'est pas vide
+        // Vérifie que $products n'est pas vide
         if (!empty($products)) {
             foreach ($products as $product) {
                 echo "ID produit : " . $product->getId() . "<br>";
@@ -95,15 +119,27 @@ class ProducerProductController extends AbstractController
     // Affiche le formulaire de création
     public function createProduct(): void
     {
+        // Vérifie si l'utilisateur est connecté
+        if (!isset($_SESSION['user_id'])) {
+            echo "Vous devez être connecté.";
+            return;
+        }
+
+        $userId = $_SESSION['user_id'];
+
+        // Important : ici, on ne bloque jamais l'accès au formulaire
+        // même si le producteur a déjà des produits.
         $csrfToken = (new CSRFTokenManager())->generateCSRFToken();
-        $this->render("/admin/producerDashboard.html.twig", ["csrfToken" => $csrfToken]);
+
+        $this->render("/admin/createProduct.html.twig", ["csrfToken" => $csrfToken]);
     }
 
-    // Traite la création d’un produit
     public function storeProduct(): void
     {
+        // Vérifie que la requête est en POST
         if ($_SERVER['REQUEST_METHOD'] !== 'POST') return;
 
+        // Vérifie si l'utilisateur est connecté
         if (!isset($_SESSION['user_id'])) {
             echo "Vous devez être connecté pour créer un produit.";
             return;
@@ -111,48 +147,52 @@ class ProducerProductController extends AbstractController
 
         $userId = $_SESSION['user_id'];
 
-        if (empty($_FILES['image']['name'])) {
-            echo "Erreur : vous devez télécharger une image pour ce produit.";
+        // Vérifie si un fichier image a bien été uploadé
+        if (!isset($_FILES['image']) || $_FILES['image']['error'] !== UPLOAD_ERR_OK) {
+            echo "Erreur : vous devez télécharger une image valide.";
             return;
         }
 
-        $imageName = $this->handleImageUpload($_FILES['image']);
+        // Vérifie que les champs obligatoires sont remplis
+        if (empty($_POST['title']) || empty($_POST['producer']) || empty($_POST['price'])) {
+            echo "Veuillez remplir tous les champs obligatoires.";
+            return;
+        }
 
+        // Gère l'upload de l'image
+        $imageName = $this->handleImageUpload($_FILES['image']);
         if (!$imageName) {
             echo "Erreur lors du téléchargement de l'image.";
             return;
         }
 
-        // Gestion de la localisation
+        // Gestion de la localisation (Normandie, Loire, Alsace)
         $validLocations = ['Normandie', 'Loire', 'Alsace'];
         $locationValue = $_POST['location'] ?? 'Normandie';
-
-        // Si la valeur n'est pas valide, on met Normandie par défaut
         if (!in_array($locationValue, $validLocations)) {
             $locationValue = 'Normandie';
         }
-
-        // Conversion en enum pour éviter l'erreur TypeError
         $locationEnum = ProductLocation::tryFrom($locationValue) ?? ProductLocation::Normandy;
 
-        // Création du produit
+        // Création du produit avec toutes les informations fournies
         $product = new Product(
-            $_POST['title'] ?? '',
+            $_POST['title'],
             $_POST['description'] ?? '',
-            $_POST['producer'] ?? '',
-            (float)($_POST['price'] ?? 0),
+            $_POST['producer'],
+            (float)$_POST['price'],
             (int)($_POST['quantity'] ?? 0),
             $imageName,
             $userId,
             $locationEnum
         );
 
-        // Sauvegarde en base
+        // Sauvegarde du produit en base
         $this->pm->createProduct($product);
 
         // Redirection vers la liste des produits du producteur
-        $this->redirect("index.php?route=list-products-by-user");
+        $this->redirect("index.php?route=list-products-by-user&user_id=$userId");
     }
+
 
     // Affiche le formulaire d’édition
     public function editProduct(): void
@@ -161,7 +201,7 @@ class ProducerProductController extends AbstractController
         if (!$product) return;
 
         $csrfToken = (new CSRFTokenManager())->generateCSRFToken();
-        $this->render("/admin/productsEdit.html.twig", [
+        $this->render("/admin/editProducts.html.twig", [
             "product" => $product,
             "csrfToken" => $csrfToken
         ]);
@@ -172,21 +212,42 @@ class ProducerProductController extends AbstractController
     {
         if ($_SERVER['REQUEST_METHOD'] !== 'POST') return;
 
-        $product = $this->pm->findById((int)$_POST['id']);
-        if (!$product) return;
+        // Vérifie que l'ID du produit est bien envoyé
+        if (!isset($_POST['id'])) {
+            echo "ID produit manquant.";
+            return;
+        }
 
+        $productId = (int)$_POST['id'];
+        $product = $this->pm->findById($productId);
+
+        if (!$product) {
+            echo "Produit introuvable.";
+            return;
+        }
+
+        // Mise à jour des champs si fournis
         $product->setTitle($_POST['title'] ?? $product->getTitle());
         $product->setDescription($_POST['description'] ?? $product->getDescription());
         $product->setProducteur($_POST['producer'] ?? $product->getProducteur());
         $product->setPrice((float)($_POST['price'] ?? $product->getPrice()));
         $product->setQuantity((int)($_POST['quantity'] ?? $product->getQuantity()));
-        $product->setLocation(ProductLocation::from($_POST['location'] ?? $product->getLocation()->value));
 
+        // Gestion de la localisation avec sécurité
+        if (!empty($_POST['location'])) {
+            $product->setLocation(ProductLocation::tryFrom($_POST['location']) ?? $product->getLocation());
+        }
+
+        // Gestion de l'image si une nouvelle est uploadée
         $imageName = $this->handleImageUpload($_FILES['image'] ?? []);
-        if ($imageName) $product->setImage($imageName);
+        if ($imageName) {
+            $product->setImage($imageName);
+        }
 
+        // Sauvegarde en base
         $this->pm->updateProduct($product);
 
+        // Redirection vers la liste des produits du producteur
         $this->redirect("index.php?route=list-products-by-user&user_id=" . $_SESSION['user_id']);
     }
 
@@ -199,4 +260,5 @@ class ProducerProductController extends AbstractController
         $this->pm->delete($product);
         $this->redirect("index.php?route=list-products-by-user&user_id=" . $_SESSION['user_id']);
     }
+
 }

@@ -36,35 +36,30 @@ class ProductController extends AbstractController
     // Liste des pommes Grise du Canada en Normandie
 
 
-    public function normandie(): void
+    public function byRegion(): void
     {
-        $products = $this->pm->findByRegionAndName(ProductLocation::Normandy->value, 'Reinette Grise du Canada');
-        $this->render("/front/productsN.html.twig", [
-            "categorie" => "Pommes Grise du Canada",
+        if (!isset($_GET['region'])) {
+            echo "Région manquante.";
+            return;
+        }
+
+        $region = $_GET['region'];
+
+        // Vérifie que la région est valide
+        $validRegions = ['Normandie', 'Loire', 'Alsace'];
+        if (!in_array($region, $validRegions)) {
+            echo "Région invalide.";
+            return;
+        }
+
+        $products = $this->pm->findByRegionAndName($region, 'Reinette Grise du Canada');
+
+        $this->render("/front/productsByRegion.html.twig", [
+            "region"   => $region,
             "products" => $products
         ]);
     }
 
-
-    // Liste des pommes Grise du Canada en Loire
-    public function loire(): void
-    {
-        $products = $this->pm->findByRegionAndName('Loire', 'Pommes Grise du Canada');
-        $this->render("/front/productsL.html.twig", [
-            "categorie" => "Pommes Grise du Canada",
-            "products" => $products
-        ]);
-    }
-
-    // Liste des pommes Grise du Canada en Alsace
-    public function alsace(): void
-    {
-        $products = $this->pm->findByRegionAndName('Alsace', 'Pommes Grise du Canada');
-        $this->render("/front/productsA.html.twig", [
-            "categorie" => "Pommes Grise du Canada",
-            "products" => $products
-        ]);
-    }
 
     // Affiche les détails d'un produit
     public function detail(): void
