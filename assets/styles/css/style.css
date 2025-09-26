@@ -1793,6 +1793,13 @@ header nav .aBorder2 {
   flex-direction: column;
   align-items: flex-start;
 }
+#product-form .product-form-body .product-form .bnt-createDsh {
+  align-self: center;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 20px;
+}
 #product-form .product-form-body .product-form textarea {
   min-height: 140px;
   width: 100%;

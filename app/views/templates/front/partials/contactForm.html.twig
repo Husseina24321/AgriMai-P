@@ -1,7 +1,7 @@
 <section class="contact">
     <div class="contact-body">
         <div class="contact-form">
-            <form method="post" action="/AgriMai/index.php?route=sendMessage" >
+            <form method="post" action="/AgriMai/index.php?route=sendMessage">
                 <h3>CONTACTEZ-NOUS</h3>
                 <p>Veuillez remplir ce formulaire pour toute question, suggestion ou demande d’information.</p>
 
@@ -19,6 +19,12 @@
                     <label for="message">Message :</label>
                     <textarea id="message" name="message" rows="5" placeholder="Votre message" required></textarea>
                 </div>
+
+                <!-- Champ caché pour passer l'ID du produit -->
+                <input type="hidden" name="product_id" value="<?= $produit['id']; ?>">
+
+                <!-- Champ caché pour passer l'ID du producteur -->
+                <input type="hidden" name="receiver_id" value="<?= $produit['user_id']; ?>">
 
                 <div class="submit">
                     <button type="submit">Envoyer</button>

@@ -28,6 +28,7 @@ class Router {
                         break;
 
 
+
                 // Newsletter
                 case "newsletter":
                     $controller = new HomeController();

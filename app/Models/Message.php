@@ -6,17 +6,20 @@ class Message
     private ?int $id = null;
     private int $sender_id;
     private int $receiver_id;
+    private ?int $product_id;
     private string $content;
     private ?DateTime $sent_at;
 
     public function __construct(
         int $sender_id,
         int $receiver_id,
+        int $product_id,
         string $content,
         ?DateTime $sent_at = null
     ) {
         $this->sender_id = $sender_id;
         $this->receiver_id = $receiver_id;
+        $this->product_id = $product_id;
         $this->content = $content;
         $this->sent_at = $sent_at ?? new DateTime();
     }
@@ -36,6 +39,11 @@ class Message
     {
         return $this->receiver_id;
     }
+    public function getProductId(): ?int
+    {
+        return $this->product_id;
+    }
+
 
     public function getContent(): string
     {
@@ -63,6 +71,10 @@ class Message
         $this->receiver_id = $receiver_id;
     }
 
+    public function setProductId(?int $productId): void
+    {
+        $this->product_id = $productId;
+    }
     public function setContent(string $content): void
     {
         $this->content = $content;
