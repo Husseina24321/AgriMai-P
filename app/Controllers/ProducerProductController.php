@@ -144,7 +144,7 @@ class ProducerProductController extends AbstractController
 
     public function editProduct(): void
     {
-        $this->requireLogin(); // ✅ sécurisation
+        $this->requireLogin(); //  sécurisation
         $product = $this->getProductFromRequest();
         if (!$product) return;
 

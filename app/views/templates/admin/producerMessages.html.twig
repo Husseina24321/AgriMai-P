@@ -1,0 +1,59 @@
+{% extends "/admin/layoutProducer.html.twig" %}
+
+{% block content %}
+    <section id="producer-messages">
+        <div class="header">
+            <h1>Mes messages</h1>
+            {% set unreadCount = messages|filter(m => m.isRead == false)|length %}
+            {% if unreadCount > 0 %}
+                <span class="notification-badge">
+                {{ unreadCount }} nouveau{{ unreadCount > 1 ? 'x' : '' }}
+            </span>
+            {% endif %}
+        </div>
+
+        {% if messages is not empty %}
+            <div class="messages-list">
+                {% for msg in messages %}
+                    <div class="message-card {{ msg.isRead ? '' : 'unread' }}">
+                        <div class="message-header">
+                            <strong>{{ msg.senderFirstName }} {{ msg.senderLastName }}</strong>
+                            {% if msg.productTitle %}
+                                <span class="product-title">Produit: {{ msg.productTitle }}</span>
+                            {% endif %}
+                            <span class="date">{{ msg.sentAt ? msg.sentAt|date("d/m/Y H:i") : "" }}</span>
+                            {% if not msg.isRead %}
+                                <span class="new-badge">Nouveau</span>
+                            {% endif %}
+                        </div>
+                        <div class="message-body">
+                            <p>{{ msg.content|nl2br }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p>Vous n'avez aucun message pour le moment.</p>
+        {% endif %}
+
+        {# ✅ Formulaire de réponse unique en bas #}
+        <div class="reply-form">
+            <h2>Envoyer un nouveau message</h2>
+            <form method="post" action="/AgriMai/index.php?route=sendMessage">
+                <input type="hidden" name="receiver_id" value="{{ receiver_id|default('') }}">
+                <input type="hidden" name="product_id" value="{{ product_id|default('') }}">
+
+                <label>Votre nom :</label>
+                <input type="text" name="name" value="{{ session.user.first_name }} {{ session.user.last_name }}" required>
+
+                <label>Votre email :</label>
+                <input type="email" name="email" value="{{ session.user.email }}" required>
+
+                <label>Votre message :</label>
+                <textarea name="message" placeholder="Écrire un message..." required></textarea>
+
+                <button type="submit">Envoyer</button>
+            </form>
+        </div>
+    </section>
+{% endblock %}

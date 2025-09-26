@@ -1,0 +1,65 @@
+{% extends "/admin/layoutProducer.html.twig" %}
+
+{% block content %}
+    <section id="buyer-messages">
+        <div class="header">
+            <h1>Mes messages</h1>
+            {% set unreadCount = messages|filter(m => m.isRead == false)|length %}
+            {% if unreadCount > 0 %}
+                <span class="notification-badge">{{ unreadCount }} nouveau{{ unreadCount > 1 ? 'x' : '' }}</span>
+            {% endif %}
+        </div>
+
+        {% if messages is not empty %}
+            <div class="messages-list">
+                {% for msg in messages %}
+                    <div class="message-card {{ msg.isRead ? '' : 'unread' }}">
+                        <div class="message-header">
+                            <strong>{{ msg.senderFirstName }} {{ msg.senderLastName }}</strong>
+                            {% if msg.productTitle %}
+                                <span class="product-title">Produit: {{ msg.productTitle }}</span>
+                            {% endif %}
+                            <span class="date">{{ msg.sentAt ? msg.sentAt|date("d/m/Y H:i") : "" }}</span>
+                            {% if not msg.isRead %}
+                                <span class="new-badge">Nouveau</span>
+                            {% endif %}
+                        </div>
+
+                        <div class="message-body">
+                            <p>{{ msg.content|nl2br }}</p>
+                        </div>
+
+                        <!-- Formulaire de réponse -->
+                        <div class="reply-form">
+                            <form method="post" action="/AgriMai/index.php?route=sendMessage">
+                                <input type="hidden" name="receiver_id" value="{{ msg.senderId }}">
+                                <input type="hidden" name="product_id" value="{{ msg.productId }}">
+
+                                <div class="champs">
+                                    <label for="name-{{ msg.id }}">Nom :</label>
+                                    <input type="text" id="name-{{ msg.id }}" name="name" placeholder="Votre nom" required>
+                                </div>
+
+                                <div class="champs">
+                                    <label for="email-{{ msg.id }}">E-mail :</label>
+                                    <input type="email" id="email-{{ msg.id }}" name="email" placeholder="Votre e-mail" required>
+                                </div>
+
+                                <div class="champs">
+                                    <label for="message-{{ msg.id }}">Message :</label>
+                                    <textarea id="message-{{ msg.id }}" name="message" placeholder="Écrire une réponse..." required></textarea>
+                                </div>
+
+                                <div class="submit">
+                                    <button type="submit">Envoyer</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p>Vous n'avez aucun message pour le moment.</p>
+        {% endif %}
+    </section>
+{% endblock %}

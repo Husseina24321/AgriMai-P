@@ -10,12 +10,18 @@ class Message
     private string $content;
     private ?DateTime $sent_at;
 
+    public ?string $senderFirstName = null;
+    public ?string $senderLastName  = null;
+    public ?string $productTitle    = null;
+
     public function __construct(
         int $sender_id,
         int $receiver_id,
-        int $product_id,
+        ?int $product_id,
         string $content,
         ?DateTime $sent_at = null
+
+
     ) {
         $this->sender_id = $sender_id;
         $this->receiver_id = $receiver_id;
@@ -84,4 +90,13 @@ class Message
     {
         $this->sent_at = $sent_at;
     }
+
+    public function setSenderFirstName(?string $firstName): void { $this->senderFirstName = $firstName; }
+    public function getSenderFirstName(): ?string { return $this->senderFirstName; }
+
+    public function setSenderLastName(?string $lastName): void { $this->senderLastName = $lastName; }
+    public function getSenderLastName(): ?string { return $this->senderLastName; }
+
+    public function setProductTitle(?string $title): void { $this->productTitle = $title; }
+    public function getProductTitle(): ?string { return $this->productTitle; }
 }

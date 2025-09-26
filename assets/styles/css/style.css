@@ -580,6 +580,29 @@ header nav .aBorder2 {
   font-size: 18px;
 }
 
+.notification-badge {
+  background: #e74c3c;
+  color: #fff;
+  padding: 0.3rem 0.6rem;
+  border-radius: 50%;
+  font-weight: bold;
+  margin-left: 1rem;
+}
+
+.message-card.unread {
+  background-color: #fff8e1;
+  border-left: 4px solid #f39c12;
+}
+
+.new-badge {
+  background-color: #f39c12;
+  color: #fff;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  margin-left: 0.5rem;
+}
+
 #faq {
   display: flex;
   flex-direction: column;
@@ -1409,7 +1432,7 @@ header nav .aBorder2 {
   font-style: oblique;
   font-size: 20px;
   color: #FFFFFF;
-  margin: 0 0 60px 0;
+  margin: 0 0 40px 0;
 }
 #register .register-body form {
   gap: 1rem;
@@ -1419,7 +1442,7 @@ header nav .aBorder2 {
 }
 #register .register-body form .form-group {
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: column;
   width: 500px;
 }
 #register .register-body form .form-group label {

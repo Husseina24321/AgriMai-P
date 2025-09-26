@@ -37,12 +37,12 @@
                 </div>
 
                 <div class="form-group">
+                    <label for="role">Rôle :</label>
                     <select id="role" name="role" required>
                         {% for role in roles %}
                             <option value="{{ role.value|e }}">{{ role.value|e }}</option>
                         {% endfor %}
                     </select>
-                    <label for="role">Rôle :</label>
                 </div>
 
                 <input type="hidden" name="csrf-token" value="{{ csrfToken|e }}">

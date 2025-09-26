@@ -1,0 +1,24 @@
+.notification-badge {
+  background: #e74c3c;
+  color: #fff;
+  padding: 0.3rem 0.6rem;
+  border-radius: 50%;
+  font-weight: bold;
+  margin-left: 1rem;
+}
+
+.message-card.unread {
+  background-color: #fff8e1;
+  border-left: 4px solid #f39c12;
+}
+
+.new-badge {
+  background-color: #f39c12;
+  color: #fff;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  margin-left: 0.5rem;
+}
+
+/*# sourceMappingURL=producerMessages.css.map */

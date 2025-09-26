@@ -11,20 +11,17 @@ class ContactController extends AbstractController
         $this->contactManager = new ContactManager();
     }
 
-    /**
-     * Validation des champs de formulaire
-     */
     private function validateFields(array $fields, array $rules): array
     {
         $errors = [];
 
         foreach ($rules as $field => $rule) {
-            $value = trim($fields[$field] ?? '');
-
-            if ($rule === 'required' && empty($value))
-                $errors[] = "Le champ $field est obligatoire.";
-            elseif ($rule === 'email' && !empty($value) && !filter_var($value, FILTER_VALIDATE_EMAIL))
-                $errors[] = "Le champ $field doit être un email valide.";
+            if ($rule === 'required' && empty($fields[$field])) {
+                $errors[] = "Le champ '$field' est obligatoire.";
+            }
+            if ($rule === 'email' && !empty($fields[$field]) && !filter_var($fields[$field], FILTER_VALIDATE_EMAIL)) {
+                $errors[] = "Le champ '$field' doit être un email valide.";
+            }
         }
 
         return $errors;
@@ -33,14 +30,14 @@ class ContactController extends AbstractController
     /**
      * Affiche le formulaire de contact
      */
-    public function showForm(array $old = [], array $errors = [], bool $success = false): void
+    public function showForm(array $fields = [], array $errors = []): void
     {
-        $this->render("front/contact.html.twig", [
-            "old"     => $old,
-            "errors"  => $errors,
-            "success" => $success
+        $this->render("/front/contact.html.twig", [
+            "fields" => $fields,
+            "errors" => $errors
         ]);
     }
+
 
     public function sendMessage(): void
     {
@@ -49,12 +46,16 @@ class ContactController extends AbstractController
             return;
         }
 
+        // Récupération des données du formulaire
         $fields = [
-            'name'    => $_POST['name'] ?? '',
-            'email'   => $_POST['email'] ?? '',
-            'message' => $_POST['message'] ?? ''
+            'name'        => trim($_POST['name'] ?? ''),
+            'email'       => trim($_POST['email'] ?? ''),
+            'message'     => trim($_POST['message'] ?? ''),
+            'receiver_id' => $_POST['receiver_id'] ?? null,
+            'product_id'  => $_POST['product_id'] ?? null
         ];
 
+        // Validation des champs
         $rules = [
             'name'    => 'required',
             'email'   => 'email',
@@ -63,28 +64,77 @@ class ContactController extends AbstractController
 
         $errors = $this->validateFields($fields, $rules);
 
+        // Vérifie que le destinataire existe
+        $receiver = null;
+        if ($fields['receiver_id']) {
+            $receiver = $this->contactManager->getUserById((int)$fields['receiver_id']);
+            if (!$receiver) {
+                $errors[] = "Le destinataire du message n'existe pas.";
+            }
+        } else {
+            $errors[] = "Aucun destinataire sélectionné.";
+        }
+
         if (!empty($errors)) {
             $this->showForm($fields, $errors);
             return;
         }
 
+        // Prépare le contenu du message
         $content = "Nom: {$fields['name']}\nEmail: {$fields['email']}\n\n{$fields['message']}";
 
+        // ID de l'expéditeur connecté (acheteur ou producteur)
+        $senderId = $_SESSION['user']['id'] ?? 0;
+
+        // Création du message
         $this->contactManager->create([
-            "sender_id"   => 0, // remplace null pour éviter ton erreur PDO
-            "receiver_id" => 1,
+            "sender_id"   => $senderId,
+            "receiver_id" => (int)$fields['receiver_id'],
+            "product_id"  => !empty($fields['product_id']) ? (int)$fields['product_id'] : null,
             "content"     => $content
         ]);
 
-        header("Location: /AgriMai/index.php?route=successMessage");
-        exit();
-    }
-    public function successMessage(): void
-    {
-        $this->render("front/successMessage.html.twig", [
-            "message" => "Eh ! Nous avons bien reçu votre message, nous reviendrons vers vous très bientôt."
+        // Si le destinataire a un email, on peut lui envoyer une notification
+        if ($receiver && isset($receiver['email'])) {
+            $subject = "Nouveau message reçu";
+            $body = "Vous avez reçu un nouveau message :\n\n" . $fields['message'];
+            mail($receiver['email'], $subject, $body);
+        }
+
+        // Redirection vers la page de succès
+        $this->render("/front/successMessage.html.twig", [
+            "name" => $fields['name']
         ]);
     }
+
+
+    public function successMessage(): void
+    {
+        $this->render("front/successMessage.html.twig");
+    }
+
+    public function listMessagesByProducer(): void
+    {
+        $producerId = $_SESSION['user']['id'] ?? 0;
+        $messages = $this->contactManager->findMessagesForProducer($producerId);
+
+
+        $this->render("admin/producerMessages.html.twig", [
+            "messages" => $messages
+        ]);
+    }
+    public function listMessagesByBuyer(): void
+    {
+        $this->requireLogin();
+
+        $userId = $_SESSION['user']['id'];
+        $messages = $this->contactManager->findByReceiverId($userId);
+
+        $this->render("/admin/buyerMessages.html.twig", [
+            "messages" => $messages
+        ]);
+    }
+
 
 
     // Liste tous les messages

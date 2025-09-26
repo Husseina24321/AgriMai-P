@@ -66,11 +66,41 @@
                     </label>
                 </div>
                 <div class="productDetail-textOrder">
-                    <button><a class="lien" href="/AgriMai/index.php?route=sendMessage">Acheter maintenant</a></button>
+                    <button><a class="lien" href="">Acheter maintenant</a></button>
                     <p>Pour une grande quantité? <a class="lien" href="/AgriMai/index.php?route=sendMessage">Contactez-nous</a></p>
                     <p class="order-Condition">Livraison gratuite à partir de 50 €</p>
                 </div>
+                <!-- 🔽 Formulaire de contact producteur 🔽 -->
+                <div class="contact">
+                    <h3>Contacter le producteur</h3>
+                    <form method="post" action="/AgriMai/index.php?route=sendMessage">
+                        <div class="champs">
+                            <label for="name">Nom :</label>
+                            <input type="text" id="name" name="name" placeholder="Votre nom" required>
+                        </div>
+
+                        <div class="champs">
+                            <label for="email">E-mail :</label>
+                            <input type="email" id="email" name="email" placeholder="Votre e-mail" required>
+                        </div>
+
+                        <div class="champs">
+                            <label for="message">Message :</label>
+                            <textarea id="message" name="message" rows="5" placeholder="Votre message" required></textarea>
+                        </div>
+
+                        <!-- Champs cachés pour identifier le producteur et le produit -->
+                        <input type="hidden" name="receiver_id" value="{{ product.getUserId() }}">
+                        <input type="hidden" name="product_id" value="{{ product.getId() }}">
+
+                        <div class="submit">
+                            <button type="submit">Envoyer au producteur</button>
+                        </div>
+                    </form>
+                </div>
+
             </div>
+
         </div>
     </section>
 

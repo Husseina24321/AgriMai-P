@@ -104,6 +104,30 @@ class Router {
                     $ContactController->listMessagesByUser($userId);
                     break;
 
+                case "listMessagesByProducer":
+                    // Vérifie que le producteur est connecté
+                    $ContactController = new ContactController();
+
+                    // Récupère l'ID depuis la session
+                    $producerId = $_SESSION['user']['id'];
+
+                    $ContactController->listMessagesByProducer($producerId);
+                    break;
+
+                case "producerMessages":
+                    // Vérifie que le producteur est connecté
+                    $ContactController = new ContactController();
+                    $producerId = $_SESSION['user']['id']; // ID du producteur connecté
+                    $ContactController->listMessagesByProducer($producerId);
+                    break;
+
+                case "buyerMessages":
+                    // Vérifie que l'acheteur est connecté
+                    $contactController = new ContactController();
+                    $buyerId = $_SESSION['user']['id']; // ID de l'acheteur connecté
+                    $contactController->listMessagesByBuyer($buyerId);
+                    break;
+
                 case "delete-message":
                     $ContactController = new ContactController();
                     $messageId = isset($_GET["id"]) ? (int) $_GET["id"] : 0; // récupère l'id du message pour la suppression
