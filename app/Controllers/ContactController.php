@@ -48,11 +48,12 @@ class ContactController extends AbstractController
 
         // Récupération des données du formulaire
         $fields = [
-            'name'        => trim($_POST['name'] ?? ''),
-            'email'       => trim($_POST['email'] ?? ''),
-            'message'     => trim($_POST['message'] ?? ''),
-            'receiver_id' => $_POST['receiver_id'] ?? null,
-            'product_id'  => $_POST['product_id'] ?? null
+            'name'         => trim($_POST['name'] ?? ''),
+            'email'        => trim($_POST['email'] ?? ''),
+            'message'      => trim($_POST['message'] ?? ''),
+            'receiver_id'  => $_POST['receiver_id'] ?? null,
+            'product_id'   => $_POST['product_id'] ?? null,
+            'selected_lot' => $_POST['selected_lot'] ?? null // récupération de la quantité choisie
         ];
 
         // Validation des champs
@@ -80,8 +81,11 @@ class ContactController extends AbstractController
             return;
         }
 
-        // Prépare le contenu du message
-        $content = $fields['message']; // juste le texte du message
+        // Ajout automatique de la quantité choisie dans le message
+        $content = $fields['message'];
+        if (!empty($fields['selected_lot'])) {
+            $content = "Quantité souhaitée : " . htmlspecialchars($fields['selected_lot']) . "\n\n" . $content;
+        }
 
         // ID de l'expéditeur connecté (acheteur ou producteur)
         $senderId = $_SESSION['user']['id'] ?? 0;
@@ -94,10 +98,10 @@ class ContactController extends AbstractController
             "content"     => $content
         ]);
 
-        // Si le destinataire a un email, on peut lui envoyer une notification
+        // Notification email (si dispo)
         if ($receiver && isset($receiver['email'])) {
             $subject = "Nouveau message reçu";
-            $body = "Vous avez reçu un nouveau message :\n\n" . $fields['message'];
+            $body = "Vous avez reçu un nouveau message concernant votre produit.\n\n" . $content;
             mail($receiver['email'], $subject, $body);
         }
 
@@ -284,22 +288,17 @@ class ContactController extends AbstractController
     // Supprimer un message
     public function deleteMessage(): void
     {
-
         if (!isset($_GET['id'])) {
             header("Location: /AgriMai/index.php?route=producerMessages");
             exit();
         }
 
         $messageId = (int) $_GET['id'];
-        // Supprime le message
         $this->contactManager->deleteMessage($messageId);
 
         // Redirection après suppression
-        $route = 'messages'; // ou 'product' si tu veux rediriger vers un produit
         header("Location: /AgriMai/index.php?route=producerMessages");
         exit();
-
-
     }
 
 

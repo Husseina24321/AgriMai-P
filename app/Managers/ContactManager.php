@@ -144,10 +144,10 @@ class ContactManager extends AbstractManager
         ]);
     }
 
-    public function deleteMessage(int $messageId): bool
+    public function deleteMessage(int $messageId)
     {
         $stmt = $this->db->prepare("DELETE FROM messages WHERE id = :id");
-        return $stmt->execute(['id' => $messageId]);
+        $stmt->execute(['id' => $messageId]);
     }
 
     public function getUserById(int $userId): ?array

@@ -152,7 +152,7 @@ class ProductManager extends AbstractManager
         $product = new Product(
             $row['title'],
             $row['description'],
-            $row['producer'] ?? 'Producteur inconnu', // ✅ utiliser producer
+            $row['producer'] ?? 'Producteur inconnu', // utiliser producer
             (float)$row['price'],
             (int)$row['quantity'],
             $row['image'],

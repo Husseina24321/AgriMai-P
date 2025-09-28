@@ -25,7 +25,7 @@ class AuthController extends AbstractController
             session_start();
         }
 
-        // Vérifie que les champs sont présents
+        // Vérification des champs,si, ils sont présents
         if (!isset($_POST["email"], $_POST["password"], $_POST["csrf-token"])) {
             $_SESSION["error-message"] = "Missing fields";
             $this->redirect("index.php?route=login");
@@ -80,7 +80,7 @@ class AuthController extends AbstractController
             }
 
         } else {
-            $_SESSION["error-message"] = "Invalid login information";
+            $_SESSION["error-message"] = "Identifiants incorrects";
             $this->redirect("index.php?route=login");
         }
     }
