@@ -2,33 +2,41 @@
 
 {% block content %}
     <section id="producer-messages">
-        <div class="header">
-            <h1>Mes messages</h1>
-            {% set unreadCount = messages|filter(m => m.isRead == false)|length %}
-            {% if unreadCount > 0 %}
-                <span class="notification-badge">
-                {{ unreadCount }} nouveau{{ unreadCount > 1 ? 'x' : '' }}
-            </span>
-            {% endif %}
-        </div>
+        <h1>Mes messages</h1>
 
         {% if messages is not empty %}
             <div class="messages-list">
                 {% for msg in messages %}
-                    <div class="message-card {{ msg.isRead ? '' : 'unread' }}">
+                    <div class="message-card {% if msg.is_sender %}sent{% else %}received{% endif %}">
                         <div class="message-header">
-                            <strong>{{ msg.senderFirstName }} {{ msg.senderLastName }}</strong>
+                            <strong>
+                                {% if msg.is_sender %}
+                                    Vous (à {{ msg.receiverFirstName }} {{ msg.receiverLastName }})
+                                {% else %}
+                                    {{ msg.senderFirstName }} {{ msg.senderLastName }}
+                                {% endif %}
+                            </strong
+
                             {% if msg.productTitle %}
-                                <span class="product-title">Produit: {{ msg.productTitle }}</span>
+                                <span class="product-title">Produit : {{ msg.productTitle }}</span>
                             {% endif %}
+
                             <span class="date">{{ msg.sentAt ? msg.sentAt|date("d/m/Y H:i") : "" }}</span>
-                            {% if not msg.isRead %}
-                                <span class="new-badge">Nouveau</span>
-                            {% endif %}
                         </div>
+
                         <div class="message-body">
                             <p>{{ msg.content|nl2br }}</p>
                         </div>
+
+                        {% if msg.is_sender %}
+                            <div class="message-actions">
+                                <a href="/AgriMai/index.php?route=editMessageProducer&id={{ msg.id }}">Modifier</a>
+                                <a href="/AgriMai/index.php?route=deleteMessage&id={{ msg.id }}"
+                                   onclick="return confirm('Voulez-vous vraiment supprimer ce message ?');">
+                                    Supprimer
+                                </a>
+                            </div>
+                        {% endif %}
                     </div>
                 {% endfor %}
             </div>
@@ -36,24 +44,29 @@
             <p>Vous n'avez aucun message pour le moment.</p>
         {% endif %}
 
-        {# ✅ Formulaire de réponse unique en bas #}
-        <div class="reply-form">
-            <h2>Envoyer un nouveau message</h2>
-            <form method="post" action="/AgriMai/index.php?route=sendMessage">
-                <input type="hidden" name="receiver_id" value="{{ receiver_id|default('') }}">
-                <input type="hidden" name="product_id" value="{{ product_id|default('') }}">
+        {% if receiver_id %}
+            <div class="reply-form">
+                <h2>Envoyer un nouveau message</h2>
+                <form method="post" action="/AgriMai/index.php?route=sendMessage">
+                    <input type="hidden" name="receiver_id" value="{{ receiver_id }}">
+                    <input type="hidden" name="product_id" value="{{ product_id }}">
 
-                <label>Votre nom :</label>
-                <input type="text" name="name" value="{{ session.user.first_name }} {{ session.user.last_name }}" required>
+                    <label for="name">Votre nom :</label>
+                    <input type="text" id="name" name="name"
+                           value="{{ session.user.first_name }} {{ session.user.last_name }}" required>
 
-                <label>Votre email :</label>
-                <input type="email" name="email" value="{{ session.user.email }}" required>
+                    <label for="email">Votre email :</label>
+                    <input type="email" id="email" name="email"
+                           value="{{ session.user.email }}" required>
 
-                <label>Votre message :</label>
-                <textarea name="message" placeholder="Écrire un message..." required></textarea>
+                    <label for="message">Votre message :</label>
+                    <textarea id="message" name="message" placeholder="Écrire un message..." required></textarea>
 
-                <button type="submit">Envoyer</button>
-            </form>
-        </div>
+                    <button type="submit">Envoyer</button>
+                </form>
+            </div>
+        {% else %}
+            <p>Aucun destinataire disponible pour le moment.</p>
+        {% endif %}
     </section>
 {% endblock %}

@@ -105,34 +105,64 @@ class Router {
                     break;
 
                 case "listMessagesByProducer":
-                    // Vérifie que le producteur est connecté
                     $ContactController = new ContactController();
-
-                    // Récupère l'ID depuis la session
-                    $producerId = $_SESSION['user']['id'];
-
-                    $ContactController->listMessagesByProducer($producerId);
+                    $ContactController->listMessagesByProducer();
                     break;
 
                 case "producerMessages":
                     // Vérifie que le producteur est connecté
                     $ContactController = new ContactController();
-                    $producerId = $_SESSION['user']['id']; // ID du producteur connecté
-                    $ContactController->listMessagesByProducer($producerId);
+                    $ContactController->listMessagesByProducer();
                     break;
 
                 case "buyerMessages":
                     // Vérifie que l'acheteur est connecté
                     $contactController = new ContactController();
-                    $buyerId = $_SESSION['user']['id']; // ID de l'acheteur connecté
-                    $contactController->listMessagesByBuyer($buyerId);
+                    $contactController->listMessagesByBuyer();
                     break;
 
-                case "delete-message":
-                    $ContactController = new ContactController();
-                    $messageId = isset($_GET["id"]) ? (int) $_GET["id"] : 0; // récupère l'id du message pour la suppression
-                    $ContactController->deleteMessage($messageId);
+                case "delete-messages":
+                    $contactController = new ContactController();
+                    $contactController->deleteMessage();
                     break;
+
+                case 'editMessage':
+                    $contactController = new ContactController();
+                    $userRole = $_SESSION['user']['role'] ?? '';
+                    if ($userRole === 'Producteur') {
+                        $contactController->editMessageProducer();
+                    } elseif ($userRole === 'Acheteur') {
+                        $contactController->editMessageBuyer();
+                    } else {
+                        echo "Accès non autorisé.";
+                    }
+                    break;
+
+                case "editMessageProducer":
+                    $contactController = new ContactController();
+                    $contactController->editMessageProducer();
+                    break;
+
+                // Mettre à jour un message pour le producteur
+                case "updateMessageProducer":
+                    $contactController = new ContactController();
+                    $contactController->updateMessageProducer();
+                    break;
+
+                // Éditer un message pour l’acheteur
+                case "editMessageBuyer":
+                    $contactController = new ContactController();
+                    $contactController->editMessageBuyer();
+                    break;
+
+                // Mettre à jour un message pour l’acheteur
+                case "updateMessageBuyer":
+                    $contactController = new ContactController();
+                    $contactController->updateMessageBuyer();
+                    break;
+
+
+
 
                 case "contactForm":
                     $contactController = new ContactController();

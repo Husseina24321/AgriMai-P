@@ -99,4 +99,5 @@ class Message
 
     public function setProductTitle(?string $title): void { $this->productTitle = $title; }
     public function getProductTitle(): ?string { return $this->productTitle; }
+
 }

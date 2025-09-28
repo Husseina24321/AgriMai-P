@@ -81,7 +81,7 @@ class ContactController extends AbstractController
         }
 
         // Prépare le contenu du message
-        $content = "Nom: {$fields['name']}\nEmail: {$fields['email']}\n\n{$fields['message']}";
+        $content = $fields['message']; // juste le texte du message
 
         // ID de l'expéditeur connecté (acheteur ou producteur)
         $senderId = $_SESSION['user']['id'] ?? 0;
@@ -113,27 +113,78 @@ class ContactController extends AbstractController
         $this->render("front/successMessage.html.twig");
     }
 
-    public function listMessagesByProducer(): void
+
+    private function getMessagesForCurrentUser(): array
     {
-        $producerId = $_SESSION['user']['id'] ?? 0;
-        $messages = $this->contactManager->findMessagesForProducer($producerId);
+        $userId = $_SESSION['user']['id'];
+        $receiverId = isset($_GET['receiver_id']) ? (int) $_GET['receiver_id'] : null;
+
+        if ($receiverId) {
+            $messages = $this->contactManager->findMessagesByUserPair($userId, $receiverId);
+        } else {
+            $received = $this->contactManager->findByReceiverId($userId);
+            $sent     = $this->contactManager->findBySenderId($userId);
+            $messages = array_merge($received, $sent);
+        }
+
+        // Trier par date ASC pour conversation chronologique
+        usort($messages, fn($a, $b) => $a->getSentAt() <=> $b->getSentAt());
+
+        $result = [];
+        foreach ($messages as $msg) {
+            // Récupérer le nom du destinataire si possible
+            $receiver = $this->contactManager->getUserById($msg->getReceiverId());
+
+            $result[] = [
+                'id' => $msg->getId(),
+                'senderId' => $msg->getSenderId(),
+                'receiverId' => $msg->getReceiverId(),
+                'receiverFirstName' => $receiver['first_name'] ?? '',
+                'receiverLastName'  => $receiver['last_name'] ?? '',
+                'content' => $msg->getContent(),
+                'sentAt' => $msg->getSentAt(),
+                'is_sender' => $msg->getSenderId() === $userId,
+                'senderFirstName' => $msg->getSenderFirstName(),
+                'senderLastName' => $msg->getSenderLastName(),
+                'productTitle' => $msg->getProductTitle(),
+                'productId' => $msg->getProductId()
+            ];
+        }
 
 
-        $this->render("admin/producerMessages.html.twig", [
-            "messages" => $messages
-        ]);
+        return $result;
     }
+
+    private function getMessagesWithReceiver(): array
+    {
+        $messages = $this->getMessagesForCurrentUser();
+        $receiver_id = null;
+        $product_id  = null;
+
+        if (!empty($messages)) {
+            $lastMessage = end($messages);
+            $receiver_id = $lastMessage['is_sender'] ? $lastMessage['receiverId'] : $lastMessage['senderId'];
+            $product_id  = $lastMessage['productId'];
+        }
+
+        return [
+            'messages' => $messages,
+            'receiver_id' => $receiver_id,
+            'product_id' => $product_id
+        ];
+    }
+
+    public function listMessagesByProducer(): void
+    {  $data = $this->getMessagesWithReceiver();
+        $this->render("/admin/producerMessages.html.twig", $data);
+    }
+
     public function listMessagesByBuyer(): void
     {
-        $this->requireLogin();
-
-        $userId = $_SESSION['user']['id'];
-        $messages = $this->contactManager->findByReceiverId($userId);
-
-        $this->render("/admin/buyerMessages.html.twig", [
-            "messages" => $messages
-        ]);
+        $data = $this->getMessagesWithReceiver();
+        $this->render("/admin/buyerMessages.html.twig", $data);
     }
+
 
 
 
@@ -152,13 +203,104 @@ class ContactController extends AbstractController
     }
 
     // Supprimer un message
-    public function deleteMessage(int $id): void
+    public function deleteMessage(): void
     {
-        $message = $this->contactManager->findById($id);
-        if ($message)
-            $this->contactManager->delete($message);
+        if (!isset($_GET['id'])) {
+            header("Location: /AgriMai/index.php?route=producerMessages");
+            exit();
+        }
 
-        header("Location: /admin/messages");
+        $messageId = (int) $_GET['id'];
+        $this->contactManager->deleteMessage($messageId);
+
+        // Redirection après suppression
+        if ($_SESSION['user']['role'] === 'Producteur') {
+            header("Location: /AgriMai/index.php?route=producerMessages");
+        } else {
+            header("Location: /AgriMai/index.php?route=buyerMessages");
+        }
         exit();
     }
+
+
+
+
+    public function updateMessageProducer(): void
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id = (int)$_POST['id'];
+            $content = $_POST['message'];
+
+            $this->contactManager->updateMessage($id, $content);
+
+            // Redirection vers la liste des messages du producteur
+            header("Location: /AgriMai/index.php?route=producerMessages");
+            exit();
+        }
+    }
+
+    public function editMessageProducer(): void
+    {
+        $this->requireLogin();
+
+        if (!isset($_GET['id'])) {
+            echo "ID du message manquant.";
+            return;
+        }
+
+        $messageId = (int)$_GET['id'];
+        $message = $this->contactManager->findById($messageId);
+
+        if (!$message) {
+            echo "Message introuvable.";
+            return;
+        }
+
+        $this->render("/admin/editMessages.html.twig", [
+            "message" => $message,
+            "actionRoute" => "/AgriMai/index.php?route=updateMessageProducer",
+            "backRoute" => "/AgriMai/index.php?route=producerMessages"
+        ]);
+    }
+
+    public function editMessageBuyer(): void
+    {
+        $this->requireLogin();
+
+        if (!isset($_GET['id'])) {
+            echo "ID du message manquant.";
+            return;
+        }
+
+        $messageId = (int)$_GET['id'];
+        $message = $this->contactManager->findById($messageId);
+
+        if (!$message) {
+            echo "Message introuvable.";
+            return;
+        }
+
+        $this->render("/admin/editMessages.html.twig", [
+            "message"     => $message,
+            "actionRoute" => "/AgriMai/index.php?route=updateMessageBuyer",
+            "backRoute"   => "/AgriMai/index.php?route=buyerMessages"
+        ]);
+    }
+
+    public function updateMessageBuyer(): void
+    {
+        $this->requireLogin();
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id = (int)$_POST['id'];
+            $content = $_POST['message'];
+
+            $this->contactManager->updateMessage($id, $content);
+
+            header("Location: /AgriMai/index.php?route=buyerMessages");
+            exit();
+        }
+    }
+
+
 }
