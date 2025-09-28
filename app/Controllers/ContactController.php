@@ -202,27 +202,6 @@ class ContactController extends AbstractController
         $this->render("admin/messages/user", ["messages" => $messages]);
     }
 
-    // Supprimer un message
-    public function deleteMessage(): void
-    {
-        if (!isset($_GET['id'])) {
-            header("Location: /AgriMai/index.php?route=producerMessages");
-            exit();
-        }
-
-        $messageId = (int) $_GET['id'];
-        $this->contactManager->deleteMessage($messageId);
-
-        // Redirection après suppression
-        if ($_SESSION['user']['role'] === 'Producteur') {
-            header("Location: /AgriMai/index.php?route=producerMessages");
-        } else {
-            header("Location: /AgriMai/index.php?route=buyerMessages");
-        }
-        exit();
-    }
-
-
 
 
     public function updateMessageProducer(): void
@@ -301,6 +280,29 @@ class ContactController extends AbstractController
             exit();
         }
     }
+
+    // Supprimer un message
+    public function deleteMessage(): void
+    {
+
+        if (!isset($_GET['id'])) {
+            header("Location: /AgriMai/index.php?route=producerMessages");
+            exit();
+        }
+
+        $messageId = (int) $_GET['id'];
+        // Supprime le message
+        $this->contactManager->deleteMessage($messageId);
+
+        // Redirection après suppression
+        $route = 'messages'; // ou 'product' si tu veux rediriger vers un produit
+        header("Location: /AgriMai/index.php?route=producerMessages");
+        exit();
+
+
+    }
+
+
 
 
 }

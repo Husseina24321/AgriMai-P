@@ -4,6 +4,7 @@ require __DIR__ . "/vendor/autoload.php";
 use services\Router;
 
 session_start();
+
 $router = new Router();
 $router->handleRequest($_GET);
 

@@ -31,7 +31,7 @@
                         {% if msg.is_sender %}
                             <div class="message-actions">
                                 <a href="/AgriMai/index.php?route=editMessageProducer&id={{ msg.id }}">Modifier</a>
-                                <a href="/AgriMai/index.php?route=deleteMessage&id={{ msg.id }}"
+                                <a href="/AgriMai/index.php?route=delete-messages&id={{ msg.id }}"
                                    onclick="return confirm('Voulez-vous vraiment supprimer ce message ?');">
                                     Supprimer
                                 </a>
