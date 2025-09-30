@@ -8,29 +8,16 @@
 
             {% if session.user is defined and session.user.role is defined %}
                 {% if session.user.role == 'Producteur' %}
-                    <li>
-                        <a href="/AgriMai/index.php?route=list-products-by-user">
-                            MES PRODUITS
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/AgriMai/index.php?route=producerMessages">
-                            MES MESSAGES
-                        </a>
-                    </li>
+                    <li><a href="/AgriMai/index.php?route=list-products-by-user">MES PRODUITS</a></li>
+                    <li><a href="/AgriMai/index.php?route=producerMessages">MES MESSAGES</a></li>
                 {% elseif session.user.role == 'Acheteur' %}
-                    <li>
-                        <a href="/AgriMai/index.php?route=buyerMessages">
-                            MES MESSAGES
-                        </a>
-                    </li>
+                    <li><a href="/AgriMai/index.php?route=buyerMessages">MES MESSAGES</a></li>
+                {% elseif session.user.role == 'Admin' %}
+                    <li><a href="/AgriMai/index.php?route=list-users">GESTION DES UTILISATEURS</a></li>
+                    <li><a href="/AgriMai/index.php?route=list-AdminMessage">MESSAGES ADMIN</a></li>
                 {% endif %}
 
                 <li><a href="/AgriMai/index.php?route=logout">DÉCONNEXION</a></li>
-
-                {% if session.user.role == 'admin' %}
-                    <li><a href="/index.php?route=dashboard">Dashboard</a></li>
-                {% endif %}
             {% else %}
                 <li><a class="aBorder1" href="/AgriMai/index.php?route=login">
                         <i class="fa-duotone fa-regular fa-user"></i>S'IDENTIFIER

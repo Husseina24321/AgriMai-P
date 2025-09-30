@@ -21,14 +21,14 @@ class UserController extends AbstractController
     private function getUserFromRequest(): ?User
     {
         if (!isset($_GET["id"])) {
-            echo "ID utilisateur manquant.";
-            return null;
+            $_SESSION["error-message"] = "ID utilisateur manquant.";
+            $this->redirect("/Agrimai/index.php?route=list-users");
         }
 
         $user = $this->um->findById((int)$_GET["id"]);
         if (!$user) {
-            echo "Utilisateur introuvable.";
-            return null;
+            $_SESSION["error-message"] = "Utilisateur introuvable.";
+            $this->redirect("/Agrimai/index.php?route=list-users");
         }
 
         return $user;
@@ -38,15 +38,10 @@ class UserController extends AbstractController
     public function list(): void
     {
         $users = $this->um->findAll();
-        $this->render("user/list", ["users" => $users]);
+        $this->render('admin/users/list.html.twig', ["users" => $users]);
     }
 
     // Liste les utilisateurs en attente
-    public function listPending(): void
-    {
-        $users = $this->um->findPending();
-        $this->render("user/pending", ["users" => $users]);
-    }
 
     // Affiche les détails d’un utilisateur
     public function detailsUser(): void
@@ -57,14 +52,22 @@ class UserController extends AbstractController
         $this->render("user/details", ["user" => $user]);
     }
 
-    // Affiche le formulaire de création d’utilisateur
+    // Valide un utilisateur
+    public function validateUser(): void
+    {
+        $user = $this->getUserFromRequest();
+        if (!$user) return;
+
+        $this->um->validateUser($user);
+
+        $_SESSION["success-message"] = "Utilisateur validé.";
+        $this->redirect("/AgriMai/index.php?route=list-users");
+    }
     public function createUser(): void
     {
         $this->render("user/create");
     }
 
-    // Vérifie et enregistre un nouvel utilisateur
-    #[NoReturn]
     public function checkCreateUser(): void
     {
         if (!isset($_POST["first_name"], $_POST["last_name"], $_POST["email"], $_POST["password"], $_POST["role"])) {
@@ -130,19 +133,10 @@ class UserController extends AbstractController
         $this->redirect("index.php?route=list-users");
     }
 
-    // Valide un utilisateur
-    public function validateUser(): void
-    {
-        $user = $this->getUserFromRequest();
-        if (!$user) return;
 
-        $this->um->validateUser($user);
 
-        $_SESSION["success-message"] = "Utilisateur validé.";
-        $this->redirect("index.php?route=list-users");
-    }
-
-    // Supprime un utilisateur
+    // Supprime un utilisateur en Soft delete car je veux garder des traces.
+    // Les informations de l'utilisateur sont toujours visible dans la base de donné
     public function deleteUser(): void
     {
         $user = $this->getUserFromRequest();
@@ -151,6 +145,6 @@ class UserController extends AbstractController
         $this->um->deleteUser($user);
 
         $_SESSION["success-message"] = "Utilisateur supprimé.";
-        $this->redirect("index.php?route=list-users");
+        $this->redirect("/Agrimai/index.php?route=list-users");
     }
 }

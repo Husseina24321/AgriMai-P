@@ -6,8 +6,11 @@
         <h3>CONNEXION </h3>
         <p>
             Connexion sécurisée à votre compte producteur ou acheteur.
-            {{ session["error-message"] }}
         </p>
+
+        {% if session['error-message'] is defined %}
+            <span class="error">{{ session['error-message'] }}</span>
+        {% endif %}
         <form action="/AgriMai/index.php?route=check-login" method="POST">
             <label>Nom:
                 <input type="text" name="nom" placeholder="Nom" required>
@@ -20,6 +23,7 @@
                 <select id="role" name="role" required>
                     <option value="Acheteur">Acheteur</option>
                     <option value="Producteur">Producteur</option>
+                    <option value="Admin">Admin</option>
                 </select>
             </div>
             <label>Mot de passe:

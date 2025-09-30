@@ -1,0 +1,59 @@
+{% extends "/admin/layoutProducer.html.twig" %}
+{% block content %}
+
+    <h1>Messages - Admin</h1>
+
+    {% if app.session.get('success-message') %}
+        <div class="success">{{ app.session.get('success-message') }}</div>
+    {% endif %}
+
+    {% if messages is empty %}
+        <p>Aucun message trouvé.</p>
+    {% else %}
+        <table>
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Expéditeur</th>
+                <th>Destinataire</th>
+                <th>Produit</th>
+                <th>Message</th>
+                <th>Date</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for msg in messages %}
+                <tr>
+                    <td>{{ msg.id }}</td>
+
+                    {# Expéditeur #}
+                    <td>{{ msg.senderFirstName }} {{ msg.senderLastName }}</td>
+
+                    {# Destinataire #}
+                    {% set receiver = msg.receiverId ? app.contactManager.getUserById(msg.receiverId) : null %}
+                    <td>{{ receiver.first_name ?? '' }} {{ receiver.last_name ?? '' }}</td>
+
+                    {# Produit #}
+                    <td>{{ msg.productTitle ?? '-' }}</td>
+
+                    {# Message #}
+                    <td>{{ msg.content|e }}</td>
+
+                    {# Date #}
+                    <td>{{ msg.sentAt ? msg.sentAt|date("d/m/Y H:i") : '' }}</td>
+
+                    {# Actions #}
+                    <td>
+                        <a href="/AgriMai/index.php?route=deleteMessage&id={{ msg.id }}"
+                           onclick="return confirm('Voulez-vous vraiment supprimer ce message ?');">
+                            Supprimer
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+
+{% endblock %}

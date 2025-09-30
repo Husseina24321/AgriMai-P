@@ -12,12 +12,21 @@ class AuthController extends AbstractController
 {
     public function login(): void
     {
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+
+        // Génère le token CSRF
         $csrfManager = new CSRFTokenManager();
         $csrfToken = $csrfManager->generateCSRFToken();
 
-        $this->render("/front/login.html.twig", ["csrfToken" => $csrfToken]);
-
+        // Affiche la page de login avec les éventuels messages de session
+        $this->render("/front/login.html.twig", [
+            "csrfToken" => $csrfToken
+        ]);
     }
+
+
 
     public function checkLogin(): void
     {
@@ -25,9 +34,9 @@ class AuthController extends AbstractController
             session_start();
         }
 
-        // Vérification des champs,si, ils sont présents
-        if (!isset($_POST["email"], $_POST["password"], $_POST["csrf-token"])) {
-            $_SESSION["error-message"] = "Missing fields";
+        // Vérifie que tous les champs sont présents
+        if (!isset($_POST["email"], $_POST["password"], $_POST["csrf-token"], $_POST["role"])) {
+            $_SESSION["error-message"] = "Tous les champs sont obligatoires.";
             $this->redirect("index.php?route=login");
             return;
         }
@@ -35,7 +44,7 @@ class AuthController extends AbstractController
         // Vérifie le CSRF token
         $tokenManager = new CSRFTokenManager();
         if (!$tokenManager->validateCSRFToken($_POST["csrf-token"])) {
-            $_SESSION["error-message"] = "Invalid CSRF token";
+            $_SESSION["error-message"] = "Token CSRF invalide.";
             $this->redirect("index.php?route=login");
             return;
         }
@@ -43,47 +52,59 @@ class AuthController extends AbstractController
         $um = new UserManager();
         $user = $um->findByEmail($_POST["email"]);
 
-        // Sécurise la récupération du rôle depuis le POST
-        $roleEnum = null;
-        if (isset($_POST["role"])) {
-            $roleEnum = UserRole::tryFrom($_POST["role"]);
+        // Récupère le rôle choisi dans le formulaire
+        $roleEnum = UserRole::tryFrom($_POST["role"]);
+
+        // Vérifie que l'utilisateur existe
+        if (!$user) {
+            $_SESSION["error-message"] = "Utilisateur inexistant.";
+            $this->redirect("index.php?route=login");
+            return;
         }
 
         // Vérifie le mot de passe
-        if ($user && password_verify($_POST["password"], $user->getPassword())) {
+        if (!password_verify($_POST["password"], $user->getPassword())) {
+            $_SESSION["error-message"] = "Mot de passe incorrect.";
+            $this->redirect("index.php?route=login");
+            return;
+        }
 
-            // Stocker les infos utiles dans la session
-            $_SESSION["user"] = [
-                "id"    => $user->getId(),
-                "email" => $user->getEmail(),
-                "role"  => $user->getRole()->value // Assure-toi que getRole() renvoie bien un enum
-            ];
-            unset($_SESSION["error-message"]);
+        // Vérifie que le rôle choisi correspond au rôle réel
+        if ($user->getRole() !== $roleEnum) {
+            $_SESSION["error-message"] = "Rôle incorrect pour cet utilisateur.";
+            $this->redirect("index.php?route=login");
+            return;
+        }
 
-            // Redirections en fonction du rôle choisi
-            if ($roleEnum === UserRole::Buyer) {
+        // Tout est correct → on stocke les infos en session
+        $_SESSION["user"] = [
+            "id"    => $user->getId(),
+            "email" => $user->getEmail(),
+            "role"  => $user->getRole()->value
+        ];
+        unset($_SESSION["error-message"]);
+
+        // Redirection selon le rôle réel
+        switch ($user->getRole()) {
+            case UserRole::Buyer:
                 $this->redirect("/AgriMai/index.php?route=home");
+                break;
 
-            } elseif ($roleEnum === UserRole::Producer) {
+            case UserRole::Producer:
                 $pm = new ProductManager();
-                $hasProducts = $pm->userLogProducts($user->getId());
-
-                if ($hasProducts) {
+                if ($pm->userLogProducts($user->getId())) {
                     $this->redirect("/AgriMai/index.php?route=list-products-by-user&user_id=" . $user->getId());
                 } else {
                     $this->redirect("/AgriMai/index.php?route=create-product");
                 }
+                break;
 
-            } else {
-                // Si le rôle n'est pas précisé → page d'accueil
-                $this->redirect("/AgriMai/index.php?route=home");
-            }
-
-        } else {
-            $_SESSION["error-message"] = "Identifiants incorrects";
-            $this->redirect("index.php?route=login");
+            case UserRole::Admin:
+                $this->redirect("/AgriMai/index.php?route=list-usersAdmin");
+                break;
         }
     }
+
 
 
 

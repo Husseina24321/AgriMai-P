@@ -2,6 +2,7 @@
 namespace services;
 use app\Controllers\AboutController;
 use app\Controllers\UserController;
+use app\Controllers\MessageAdminController;
 use app\Controllers\FaqController;
 use app\Controllers\HomeController;
 use app\Controllers\ContactController;
@@ -34,17 +35,17 @@ class Router {
                     $controller = new HomeController();
                     $controller->subscribeNewsletter();
                     break;
-                // USERS
+
+
+
+
+                // USERS Admin gestion
                 case "list-users":
                     $userController = new UserController();
                     $userController->list();
                     // UserController::list();
                     break;
-                case "pending-user":
-                    $userController = new UserController();
-                    $userController->listPending();
-                    // UserController::listPending();
-                    break;
+
                 case "details-user":
                     $userController = new UserController();
                     $userController->detailsUser();
@@ -78,6 +79,16 @@ class Router {
                     $userController = new UserController();
                     $userController->deleteUser();
                     //UserController::deleteUser();
+                    break;
+
+                    //Admin Messages
+                case "list-AdminMessage":
+                    $MessageAdminController = new MessageAdminController();
+                    $MessageAdminController->listAdminMessage();
+                    break;
+                case "delete-AdminMessage":
+                    $MessageAdminController = new MessageAdminController();
+                    $MessageAdminController->deleteAdminMessage();
                     break;
 
                 // MESSAGES
@@ -209,7 +220,7 @@ class Router {
                     } elseif (isset($_SESSION['user_id'])) {
                         $userId = (int)$_SESSION['user_id'];
                     } else {
-                        // Aucun utilisateur connecté -> redirige vers login
+                        // Aucun utilisateur connecté redirige vers login
                         header("Location: index.php?route=login");
                         exit;
                     }
@@ -253,18 +264,18 @@ class Router {
                     $controller->index();
                     break;
                 // ORDERS
-                case "list-orders":
-                    break;
-                case "details-order":
-                    break;
-                case "list-orders-by-user":
-                    break;
-                case "update-order":
-                    break;
-                case "check-update-order":
-                    break;
-                case "delete-order":
-                    break;
+                //case "list-orders":
+                   // break;
+                //case "details-order":
+                   // break;
+                //case "list-orders-by-user":
+                   // break;
+                //case "update-order":
+                    //break;
+                //case "check-update-order":
+                    //break;
+                //case "delete-order":
+                   // break;
 
                 // AUTH
                 case "login":

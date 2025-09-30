@@ -14,181 +14,125 @@ class UserManager extends AbstractManager
         parent::__construct();
     }
 
+    // Récupère tous les utilisateurs non supprimés
     public function findAll(): array
     {
-        $query = $this->db->prepare("SELECT * FROM users WHERE deleted_at IS NULL");
-        $query->execute();
-        $rows = $query->fetchAll(PDO::FETCH_ASSOC);
+        $stmt = $this->db->query("SELECT * FROM users WHERE deleted_at IS NULL ORDER BY created_at DESC");
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         $users = [];
-        foreach ($rows as $row) {
+        foreach ($results as $row) {
             $users[] = $this->createUserFromRow($row);
         }
         return $users;
     }
 
-    public function findById(int $id): ?User
-    {
-        $query = $this->db->prepare("SELECT * FROM users WHERE id = :id AND deleted_at IS NULL");
-        $query->execute(['id' => $id]);
-        $row = $query->fetch(PDO::FETCH_ASSOC);
-
-        return $row ? $this->createUserFromRow($row) : null;
-    }
-
-    public function findByEmail(string $email): ?User
-    {
-        $query = $this->db->prepare("SELECT * FROM users WHERE email = :email AND deleted_at IS NULL");
-        $query->execute(['email' => $email]);
-        $row = $query->fetch(PDO::FETCH_ASSOC);
-
-        return $row ? $this->createUserFromRow($row) : null;
-    }
-
+    // Récupère les utilisateurs en attente (pending)
     public function findPending(): array
     {
-        $query = $this->db->prepare("SELECT * FROM users WHERE status = 'pending' AND deleted_at IS NULL");
-        $query->execute();
-        $rows = $query->fetchAll(PDO::FETCH_ASSOC);
+        $stmt = $this->db->query("SELECT * FROM users WHERE status = 'Pending' AND deleted_at IS NULL ORDER BY created_at ASC");
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         $users = [];
-        foreach ($rows as $row) {
+        foreach ($results as $row) {
             $users[] = $this->createUserFromRow($row);
         }
         return $users;
     }
 
-    public function findActiveUsers(): array
+    // Récupère un utilisateur par ID
+    public function findById(int $id): ?User
     {
-        $query = $this->db->prepare("SELECT * FROM users WHERE status = 'active' AND deleted_at IS NULL");
-        $query->execute();
-        $rows = $query->fetchAll(PDO::FETCH_ASSOC);
-
-        $users = [];
-        foreach ($rows as $row) {
-            $users[] = $this->createUserFromRow($row);
-        }
-        return $users;
+        $stmt = $this->db->prepare("SELECT * FROM users WHERE id = :id AND deleted_at IS NULL");
+        $stmt->execute(['id' => $id]);
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $row ? $this->createUserFromRow($row) : null;
     }
 
-    public function findBannedUsers(): array
+    // Récupère un utilisateur par email
+    public function findByEmail(string $email): ?User
     {
-        $query = $this->db->prepare("SELECT * FROM users WHERE status = 'banned' AND deleted_at IS NULL");
-        $query->execute();
-        $rows = $query->fetchAll(PDO::FETCH_ASSOC);
-
-        $users = [];
-        foreach ($rows as $row) {
-            $users[] = $this->createUserFromRow($row);
-        }
-        return $users;
+        $stmt = $this->db->prepare("SELECT * FROM users WHERE email = :email AND deleted_at IS NULL");
+        $stmt->execute(['email' => $email]);
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $row ? $this->createUserFromRow($row) : null;
     }
 
+    // Crée un nouvel utilisateur
     public function createUser(User $user): User
     {
         $stmt = $this->db->prepare("
         INSERT INTO users (first_name, last_name, email, password, role, status, created_at)
         VALUES (:first_name, :last_name, :email, :password, :role, :status, NOW())
     ");
-
-        $result = $stmt->execute([
+        $stmt->execute([
             'first_name' => $user->getFirstName(),
             'last_name'  => $user->getLastName(),
             'email'      => $user->getEmail(),
             'password'   => $user->getPassword(),
             'role'       => $user->getRole()->value,
-            'status'     => UserStatus::Pending->value
+            'status'     => $user->getStatus()->value,
         ]);
 
-
         $user->setId((int)$this->db->lastInsertId());
-        $user->setStatus(UserStatus::Pending);
-        $user->setCreatedAt(new DateTime());
-
         return $user;
     }
 
-
+    // Met à jour un utilisateur
     public function updateUser(User $user): void
     {
-        $currentDateTime = date('Y-m-d H:i:s');
-
         $stmt = $this->db->prepare("
-            UPDATE users SET 
-                first_name = :firstname,
-                last_name  = :lastname,
-                role       = :role,
-                status     = :status,
-                email      = :email,
-                password   = :password,
-                updated_at = :updated_at
+            UPDATE users
+            SET first_name = :first_name,
+                last_name = :last_name,
+                email = :email,
+                password = :password,
+                role = :role,
+                status = :status,
+                updated_at = NOW()
             WHERE id = :id
         ");
-
         $stmt->execute([
-            "firstname"  => $user->getFirstName(),
-            "lastname"   => $user->getLastName(),
-            "role"       => $user->getRole()->value,
-            "status"     => $user->getStatus()->value,
-            "email"      => $user->getEmail(),
-            "password"   => $user->getPassword(),
-            "updated_at" => $currentDateTime,
-            "id"         => $user->getId()
+            'first_name' => $user->getFirstName(),
+            'last_name'  => $user->getLastName(),
+            'email'      => $user->getEmail(),
+            'password'   => $user->getPassword(),
+            'role'       => $user->getRole()->value,
+            'status'     => $user->getStatus()->value,
+            'id'         => $user->getId()
         ]);
     }
 
+    // Supprime un utilisateur (soft delete)
     public function deleteUser(User $user): void
     {
-        $currentDateTime = date('Y-m-d H:i:s');
-
-        $stmt = $this->db->prepare("UPDATE users SET deleted_at = :deleted_at WHERE id = :id");
-        $stmt->execute([
-            "deleted_at" => $currentDateTime,
-            "id"         => $user->getId()
-        ]);
+        $stmt = $this->db->prepare("UPDATE users SET deleted_at = NOW() WHERE id = :id");
+        $stmt->execute(['id' => $user->getId()]);
     }
 
+    // Valide un utilisateur (changer le statut)
     public function validateUser(User $user): void
     {
-        $stmt = $this->db->prepare("UPDATE users SET status = 'active', updated_at = :updated_at WHERE id = :id");
-        $stmt->execute([
-            "updated_at" => date('Y-m-d H:i:s'),
-            "id"         => $user->getId()
-        ]);
         $user->setStatus(UserStatus::Active);
+        $this->updateUser($user);
     }
 
-    // Statistiques
-    public function getTotalUsers(): int
-    {
-        $query = $this->db->query("SELECT COUNT(*) FROM users WHERE deleted_at IS NULL");
-        return (int)$query->fetchColumn();
-    }
-
-    public function getPendingUsers(): int
-    {
-        $query = $this->db->query("SELECT COUNT(*) FROM users WHERE status = 'pending' AND deleted_at IS NULL");
-        return (int)$query->fetchColumn();
-    }
-
-    public function getBannedUsers(): int
-    {
-        $query = $this->db->query("SELECT COUNT(*) FROM users WHERE status = 'banned' AND deleted_at IS NULL");
-        return (int)$query->fetchColumn();
-    }
-
+    // Transforme une ligne DB en objet User
     private function createUserFromRow(array $row): User
     {
         $user = new User(
-            $row["first_name"],
-            $row["last_name"],
-            $row["email"],
-            $row["password"],
-            UserRole::from($row["role"]),
-            UserStatus::from($row["status"])
+            $row['first_name'],
+            $row['last_name'],
+            $row['email'],
+            $row['password'],
+            UserRole::from($row['role']),
+            UserStatus::from($row['status'])
         );
-        $user->setId((int)$row["id"]);
+        $user->setId((int)$row['id']);
+        $user->setCreatedAt(new DateTime($row['created_at']));
+        $user->setUpdatedAt(!empty($row['updated_at']) ? new DateTime($row['updated_at']) : null);
+        $user->setDeletedAt(!empty($row['deleted_at']) ? new DateTime($row['deleted_at']) : null);
+
         return $user;
     }
 }
-
