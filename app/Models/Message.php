@@ -12,6 +12,8 @@ class Message
 
     public ?string $senderFirstName = null;
     public ?string $senderLastName  = null;
+    private ?string $receiverFirstName = null;
+    private ?string $receiverLastName = null;
     public ?string $productTitle    = null;
 
     public function __construct(
@@ -99,5 +101,9 @@ class Message
 
     public function setProductTitle(?string $title): void { $this->productTitle = $title; }
     public function getProductTitle(): ?string { return $this->productTitle; }
+    public function setReceiverFirstName(?string $firstName): void { $this->receiverFirstName = $firstName; }
+    public function setReceiverLastName(?string $lastName): void { $this->receiverLastName = $lastName; }
+    public function getReceiverFirstName(): ?string { return $this->receiverFirstName; }
+    public function getReceiverLastName(): ?string { return $this->receiverLastName; }
 
 }

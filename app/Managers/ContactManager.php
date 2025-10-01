@@ -16,15 +16,44 @@ class ContactManager extends AbstractManager
 
     public function findAll(): array
     {
-        $query = $this->db->query("SELECT * FROM messages ORDER BY sent_at DESC");
-        $results = $query->fetchAll(PDO::FETCH_ASSOC);
+        $sql = "
+        SELECT 
+            m.id,
+            m.sender_id,
+            m.receiver_id,
+            m.product_id,
+            m.content,
+            m.sent_at,
+            u.first_name AS sender_first_name,
+            u.last_name AS sender_last_name,
+            ur.first_name AS receiver_first_name,
+            ur.last_name AS receiver_last_name,
+            p.title AS product_title
+        FROM messages m
+        LEFT JOIN users u ON m.sender_id = u.id
+        LEFT JOIN users ur ON m.receiver_id = ur.id
+        LEFT JOIN products p ON m.product_id = p.id
+        ORDER BY m.sent_at DESC
+    ";
+
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute();
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         $messages = [];
         foreach ($results as $row) {
-            $messages[] = $this->createMessageFromRow($row);
+            $message = $this->createMessageFromRow($row);
+            $message->setSenderFirstName($row['sender_first_name']);
+            $message->setSenderLastName($row['sender_last_name']);
+            $message->setReceiverFirstName($row['receiver_first_name']);
+            $message->setReceiverLastName($row['receiver_last_name']);
+            $message->setProductTitle($row['product_title']);
+            $messages[] = $message;
         }
+
         return $messages;
     }
+
 
     public function findByReceiverId(int $receiverId): array
     {
@@ -202,7 +231,7 @@ class ContactManager extends AbstractManager
     }
 
 
-    // --- Nouvelle méthode : récupérer tous les messages entre deux utilisateurs ---
+    //  Nouvelle méthode : récupérer tous les messages entre deux utilisateurs
     public function findMessagesByUserPair(int $userId1, int $userId2): array
     {
         $sql = "

@@ -1,5 +1,7 @@
 <?php
 namespace app\Controllers;
+use app\Enum\UserStatus;
+use app\Managers\UserManager;
 use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
 use Twig\Extension\DebugExtension;
@@ -53,5 +55,26 @@ abstract class AbstractController
             header("Location: /AgriMai/index.php?route=login");
             exit;
         }
+
+        // Récupérer l'utilisateur depuis la DB
+        $um = new UserManager();
+        $user = $um->findById($_SESSION['user']['id']);
+
+        if (!$user) {
+            // utilisateur introuvable, déconnecter
+            unset($_SESSION['user']);
+            $_SESSION["error-message"] = "Utilisateur introuvable.";
+            header("Location: /AgriMai/index.php?route=login");
+            exit;
+        }
+
+        if ($user->getStatus() === UserStatus::Pending) {
+            // compte en attente, bloquer l'accès
+            unset($_SESSION['user']); // on déconnecte
+            $_SESSION["error-message"] = "Votre compte est en attente de validation par l'administrateur.";
+            header("Location: /AgriMai/index.php?route=login");
+            exit;
+        }
     }
+
 }

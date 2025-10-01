@@ -131,7 +131,7 @@ class ContactController extends AbstractController
             $messages = array_merge($received, $sent);
         }
 
-        // Trier par date ASC pour conversation chronologique
+        // Trier par date ASC pour conversation chronologique, on faire cela directement par la requette via le manager avec la notion By
         usort($messages, fn($a, $b) => $a->getSentAt() <=> $b->getSentAt());
 
         $result = [];

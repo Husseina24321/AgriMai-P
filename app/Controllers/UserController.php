@@ -4,7 +4,7 @@ namespace app\Controllers;
 use app\Managers\UserManager;
 use app\Models\User;
 use app\Enum\UserRole;
-use JetBrains\PhpStorm\NoReturn;
+
 
 
 class UserController extends AbstractController
@@ -41,7 +41,6 @@ class UserController extends AbstractController
         $this->render('admin/users/list.html.twig', ["users" => $users]);
     }
 
-    // Liste les utilisateurs en attente
 
     // Affiche les détails d’un utilisateur
     public function detailsUser(): void
@@ -104,7 +103,7 @@ class UserController extends AbstractController
     }
 
     // Vérifie et applique les modifications d’un utilisateur
-    #[NoReturn]
+
     public function checkUpdateUser(): void
     {
         if (!isset($_POST["id"], $_POST["first_name"], $_POST["last_name"], $_POST["email"], $_POST["role"])) {

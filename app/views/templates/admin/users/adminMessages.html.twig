@@ -23,29 +23,26 @@
             </tr>
             </thead>
             <tbody>
-            {% for msg in messages %}
+            {% for message in messages %}
                 <tr>
-                    <td>{{ msg.id }}</td>
-
                     {# Expéditeur #}
-                    <td>{{ msg.senderFirstName }} {{ msg.senderLastName }}</td>
+                    <td>{{ message.getSenderFirstName() }} {{ message.getSenderLastName() }}</td>
 
                     {# Destinataire #}
-                    {% set receiver = msg.receiverId ? app.contactManager.getUserById(msg.receiverId) : null %}
-                    <td>{{ receiver.first_name ?? '' }} {{ receiver.last_name ?? '' }}</td>
+                    <td>{{ message.getReceiverFirstName() }} {{ message.getReceiverLastName() }}</td>
 
                     {# Produit #}
-                    <td>{{ msg.productTitle ?? '-' }}</td>
+                    <td>{{ message.getProductTitle() ?? '-' }}</td>
 
-                    {# Message #}
-                    <td>{{ msg.content|e }}</td>
+                    {# Contenu du message #}
+                    <td>{{ message.getContent()|e }}</td>
 
                     {# Date #}
-                    <td>{{ msg.sentAt ? msg.sentAt|date("d/m/Y H:i") : '' }}</td>
+                    <td>{{ message.getSentAt().format('d/m/Y H:i') }}</td>
 
                     {# Actions #}
                     <td>
-                        <a href="/AgriMai/index.php?route=deleteMessage&id={{ msg.id }}"
+                        <a href="/AgriMai/index.php?route=deleteMessage&id={{ message.getId() }}"
                            onclick="return confirm('Voulez-vous vraiment supprimer ce message ?');">
                             Supprimer
                         </a>

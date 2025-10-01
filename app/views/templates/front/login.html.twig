@@ -8,8 +8,13 @@
             Connexion sécurisée à votre compte producteur ou acheteur.
         </p>
 
-        {% if session['error-message'] is defined %}
-            <span class="error">{{ session['error-message'] }}</span>
+        {# Messages d'erreur #}
+        {% if errorMessage %}
+            <div class="alert alert-danger">{{ errorMessage }}</div>
+        {% endif %}
+
+        {% if successMessage %}
+            <div class="alert alert-success">{{ successMessage }}</div>
         {% endif %}
         <form action="/AgriMai/index.php?route=check-login" method="POST">
             <label>Nom:
