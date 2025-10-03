@@ -60,6 +60,16 @@ class ProductController extends AbstractController
         ]);
     }
 
+    public function market(): void
+    {
+        // Récupère tous les produits
+        $products = $this->pm->findAll();
+
+        // Affiche la page marché
+        $this->render("/front/market.html.twig", [
+            "products" => $products
+        ]);
+    }
 
     // Affiche les détails d'un produit
     public function detail(): void

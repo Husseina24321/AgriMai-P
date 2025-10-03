@@ -10,11 +10,11 @@
 
         {# Messages d'erreur #}
         {% if errorMessage %}
-            <div class="alert alert-danger">{{ errorMessage }}</div>
+            <p class="alert-danger">{{ errorMessage }}</p>
         {% endif %}
 
         {% if successMessage %}
-            <div class="alert alert-success">{{ successMessage }}</div>
+            <p class="alert-success">{{ successMessage }}</p>
         {% endif %}
         <form action="/AgriMai/index.php?route=check-login" method="POST">
             <label>Nom:

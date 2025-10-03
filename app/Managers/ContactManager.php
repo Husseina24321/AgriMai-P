@@ -12,7 +12,6 @@ class ContactManager extends AbstractManager
         parent::__construct();
     }
 
-    // --- Méthodes existantes ---
 
     public function findAll(): array
     {
@@ -93,30 +92,35 @@ class ContactManager extends AbstractManager
     public function findMessagesForProducer(int $producerId): array
     {
         $sql = "
-            SELECT 
-                m.id AS message_id,
-                m.content,
-                m.sent_at,
-                m.sender_id,
-                m.receiver_id,
-                m.product_id,
-                u.first_name AS sender_first_name,
-                u.last_name AS sender_last_name,
-                p.title AS product_title
-            FROM messages m
-            JOIN users u ON m.sender_id = u.id
-            LEFT JOIN products p ON m.product_id = p.id
-            WHERE m.receiver_id = :producer_id
-            ORDER BY m.sent_at DESC
-        ";
+        SELECT 
+            m.id AS message_id,
+            m.content,
+            m.sent_at,
+            m.sender_id,
+            m.receiver_id,
+            m.product_id,
+            u.first_name AS sender_first_name,
+            u.last_name AS sender_last_name,
+            p.title AS product_title
+        FROM messages m
+        JOIN users u ON m.sender_id = u.id
+        LEFT JOIN products p ON m.product_id = p.id
+        WHERE m.receiver_id = :producer_id
+        ORDER BY m.sent_at DESC
+    ";
 
         $stmt = $this->db->prepare($sql);
         $stmt->execute(['producer_id' => $producerId]);
         $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+        return $this->simplifieMessages($results);
+    }
+
+    private function simplifieMessages(array $results): array
+    {
         $messages = [];
         foreach ($results as $row) {
-            $messageRow = [
+            $messages[] = $this->createMessageFromRow([
                 'id' => $row['message_id'],
                 'sender_id' => $row['sender_id'],
                 'receiver_id' => $row['receiver_id'],
@@ -126,11 +130,38 @@ class ContactManager extends AbstractManager
                 'sender_first_name' => $row['sender_first_name'],
                 'sender_last_name' => $row['sender_last_name'],
                 'product_title' => $row['product_title']
-            ];
-            $messages[] = $this->createMessageFromRow($messageRow);
+            ]);
         }
-
         return $messages;
+    }
+//  Nouvelle méthode : récupérer tous les messages entre deux utilisateurs
+    public function findMessagesByUserPair(int $userId1, int $userId2): array
+    {
+        $sql = "
+            SELECT 
+                m.id AS message_id,
+                m.sender_id,
+                m.receiver_id,
+                m.product_id,
+                m.content,
+                m.sent_at,
+                u.first_name AS sender_first_name,
+                u.last_name AS sender_last_name,
+                p.title AS product_title
+            FROM messages m
+            JOIN users u ON m.sender_id = u.id
+            LEFT JOIN products p ON m.product_id = p.id
+            WHERE 
+                (m.sender_id = :user1 AND m.receiver_id = :user2) OR
+                (m.sender_id = :user2 AND m.receiver_id = :user1)
+            ORDER BY m.sent_at ASC
+        ";
+
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute(['user1' => $userId1, 'user2' => $userId2]);
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        return $this->simplifieMessages($results);
     }
 
     public function create(array $data): Message
@@ -173,7 +204,7 @@ class ContactManager extends AbstractManager
         ]);
     }
 
-    public function deleteMessage(int $messageId)
+    public function deleteMessage(int $messageId): void
     {
         $stmt = $this->db->prepare("DELETE FROM messages WHERE id = :id");
         $stmt->execute(['id' => $messageId]);
@@ -195,13 +226,13 @@ class ContactManager extends AbstractManager
         $sentAt = null;
         if (!empty($row['sent_at'])) {
             try {
-                if ($row['sent_at'] instanceof \DateTime) {
+                if ($row['sent_at'] instanceof DateTime) {
                     $sentAt = $row['sent_at'];
                 } else {
-                    $sentAt = new \DateTime($row['sent_at']);
+                    $sentAt = new DateTime($row['sent_at']);
                 }
-            } catch (\Exception $e) {
-                $sentAt = new \DateTime(); // fallback si la date est invalide
+            } catch (Exception) {
+                $sentAt = new DateTime(); // fallback si la date est invalide
             }
         }
 
@@ -231,53 +262,5 @@ class ContactManager extends AbstractManager
     }
 
 
-    //  Nouvelle méthode : récupérer tous les messages entre deux utilisateurs
-    public function findMessagesByUserPair(int $userId1, int $userId2): array
-    {
-        $sql = "
-            SELECT 
-                m.id AS message_id,
-                m.sender_id,
-                m.receiver_id,
-                m.product_id,
-                m.content,
-                m.sent_at,
-                u.first_name AS sender_first_name,
-                u.last_name AS sender_last_name,
-                p.title AS product_title
-            FROM messages m
-            JOIN users u ON m.sender_id = u.id
-            LEFT JOIN products p ON m.product_id = p.id
-            WHERE 
-                (m.sender_id = :user1 AND m.receiver_id = :user2) OR
-                (m.sender_id = :user2 AND m.receiver_id = :user1)
-            ORDER BY m.sent_at ASC
-        ";
 
-        $stmt = $this->db->prepare($sql);
-        $stmt->execute([
-            'user1' => $userId1,
-            'user2' => $userId2
-        ]);
-
-        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-        $messages = [];
-        foreach ($results as $row) {
-            $messageRow = [
-                'id' => $row['message_id'],
-                'sender_id' => $row['sender_id'],
-                'receiver_id' => $row['receiver_id'],
-                'product_id' => $row['product_id'],
-                'content' => $row['content'],
-                'sent_at' => $row['sent_at'],
-                'sender_first_name' => $row['sender_first_name'],
-                'sender_last_name' => $row['sender_last_name'],
-                'product_title' => $row['product_title']
-            ];
-            $messages[] = $this->createMessageFromRow($messageRow);
-        }
-
-        return $messages;
-    }
 }

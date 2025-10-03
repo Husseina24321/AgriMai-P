@@ -4,7 +4,7 @@
         <ul>
             <li><a href="/AgriMai/index.php?route=home">ACCUEIL</a></li>
             <li><a href="/AgriMai/index.php?route=about">À PROPOS DE NOUS</a></li>
-            <li><a href="/AgriMai/index.php?route=products-region&region=Normandie">MARCHÉ</a></li>
+            <li><a href="/AgriMai/index.php?route=market">MARCHÉ</a></li>
 
             {% if session.user is defined and session.user.role is defined %}
                 {% if session.user.role == 'Producteur' %}

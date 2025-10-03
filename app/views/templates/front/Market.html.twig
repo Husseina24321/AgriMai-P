@@ -1,0 +1,27 @@
+{% extends "/front/layout.html.twig" %}
+
+{% block content %}
+    <section id="products-market">
+        <div class="header">
+            <h1>Marché de tous les produits</h1>
+        </div>
+
+        <div class="grid">
+            {% if products is not empty %}
+                {% for product in products %}
+                    <div class="card">
+                        <img src="/AgriMai/public/uploads/{{ product.getImage() }}" alt="{{ product.getTitle() }}">
+                        <h3>{{ product.getTitle() }}</h3>
+                        <p class="producteur">{{ product.getProducteur() }}</p>
+                        <p class="prix">{{ product.getPrice() }} € / kg</p>
+                        <div class="actions">
+                            <a href="/AgriMai/index.php?route=product-detail&id={{ product.getId() }}" class="btn">Voir</a>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p>Aucun produit disponible pour le moment.</p>
+            {% endif %}
+        </div>
+    </section>
+{% endblock %}

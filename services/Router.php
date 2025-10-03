@@ -60,6 +60,7 @@ class Router {
                 case "check-update-user":
                     $userController = new UserController();
                     $userController->checkUpdateUser();
+                    break;
 
                 case "create-user":
                     $userController = new UserController();
@@ -69,7 +70,7 @@ class Router {
                 case "check-create-user":
                     $userController = new UserController();
                     $userController->checkCreateUser();
-                    //UserController::checkCreateUser();
+                    break;
                 case "validate-user":
                     $userController = new UserController();
                     $userController->validateUser();
@@ -257,6 +258,11 @@ class Router {
                     $productController->deleteProduct();
                     break;
 
+                    //page Marché
+                case "market":
+                    $productController = new ProductController();
+                    $productController->market();
+                    break;
 
                 //dashboard
                 case 'dashboard':
@@ -301,12 +307,12 @@ class Router {
 
                 // -------- 404 --------
                 default:
-                    // PageController::error404();
+                    echo "Erreur 404 : page non trouvée.";
                     break;
             }
         } else {
-            // pas de route -> home
-            // PageController::home();
+            $homeController = new HomeController();
+            $homeController->index();
         }
     }
 }

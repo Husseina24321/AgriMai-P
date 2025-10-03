@@ -1,35 +1,40 @@
 {% extends "/admin/layoutProducer.html.twig" %}
 
 {% block content %}
-    <section id="producer-dashboard">
-        <div class="header">
-            <h1>Tableau de bord producteur</h1>
-            <a href="/AgriMai/index.php?route=create-product" class="btn">+ Ajouter un produit</a>
-        </div>
-
-        {% if products is not empty %}
-            <div class="grid">
-                {% for product in products %}
-                    <div class="card">
-                        <img src="/AgriMai/public/uploads/{{ product.getImage() }}" alt="{{ product.getTitle() }}">
-                        <h3>{{ product.getTitle() }}</h3>
-                        <p class="producteur">{{ product.getProducteur() }}</p>
-                        <p class="prix">{{ product.getPrice() }} €</p>
-                        <p class="quantity">Stock : {{ product.getQuantity() }}</p>
-
-                        <div class="actions">
-                            <a href="/AgriMai/index.php?route=edit-product&id={{ product.getId() }}" class="btn">Modifier</a>
-                            <form method="POST" action="/AgriMai/index.php?route=delete-product&id={{ product.getId() }}" style="display:inline;" onsubmit="return confirm('Voulez-vous vraiment supprimer ce produit ?');">
-                                <button type="submit" class="btn">Supprimer</button>
-                            </form>
-                            <a href="/AgriMai/index.php?route=product-detail&id={{ product.getId() }}" class="btn">Voir</a>
-                        </div>
-                    </div>
-                {% endfor %}
+    <section id="producer-dash">
+        <div class="producerDash-body">
+            <div class="producerDash-text">
+                <h1>Tableau de bord producteur</h1>
             </div>
-        {% else %}
-            <p>Vous n'avez pas encore ajouté de produit.</p>
-            <a href="/AgriMai/index.php?route=create-product" class="btn btn-primary">Créer mon premier produit</a>
-        {% endif %}
+
+
+            {% if products is not empty %}
+                <div class="grid-producerDash">
+                    {% for product in products %}
+                        <div class="card-producerDash">
+                            <img src="/AgriMai/public/uploads/{{ product.getImage() }}" alt="{{ product.getTitle() }}">
+                            <h3>{{ product.getTitle() }}</h3>
+                            <p>{{ product.getProducteur() }}</p>
+                            <p>{{ product.getPrice() }} €</p>
+                            <p>Stock : {{ product.getQuantity() }}</p>
+
+                            <div class="actions-producerDash">
+                                <div class="actions-producerDashText">
+                                    <a href="/AgriMai/index.php?route=edit-product&id={{ product.getId() }}" class="btn">Modifier</a>
+                                    <a href="/AgriMai/index.php?route=product-detail&id={{ product.getId() }}" class="btn">Voir</a>
+                                    <a href="/AgriMai/index.php?route=create-product" class="btn-producerDash"> + Ajouter un produit</a>
+                                </div>
+                                <form method="POST" action="/AgriMai/index.php?route=delete-product&id={{ product.getId() }}" style="display:inline;" onsubmit="return confirm('Voulez-vous vraiment supprimer ce produit ?');">
+                                    <button type="submit" class="btn">Supprimer</button>
+                                </form>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <p>Vous n'avez pas encore ajouté de produit.</p>
+                <a href="/AgriMai/index.php?route=create-product" class="btn btn-primary">Créer mon premier produit</a>
+            {% endif %}
+        </div>
     </section>
 {% endblock %}

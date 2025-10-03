@@ -128,11 +128,29 @@ class UserManager extends AbstractManager
             UserRole::from($row['role']),
             UserStatus::from($row['status'])
         );
+
         $user->setId((int)$row['id']);
-        $user->setCreatedAt(new DateTime($row['created_at']));
-        $user->setUpdatedAt(!empty($row['updated_at']) ? new DateTime($row['updated_at']) : null);
-        $user->setDeletedAt(!empty($row['deleted_at']) ? new DateTime($row['deleted_at']) : null);
+
+        // Création sécurisée des dates
+        try {
+            $user->setCreatedAt(!empty($row['created_at']) ? new DateTime($row['created_at']) : new DateTime());
+        } catch (\Exception) {
+            $user->setCreatedAt(new DateTime());
+        }
+
+        try {
+            $user->setUpdatedAt(!empty($row['updated_at']) ? new DateTime($row['updated_at']) : null);
+        } catch (\Exception) {
+            $user->setUpdatedAt(null);
+        }
+
+        try {
+            $user->setDeletedAt(!empty($row['deleted_at']) ? new DateTime($row['deleted_at']) : null);
+        } catch (\Exception) {
+            $user->setDeletedAt(null);
+        }
 
         return $user;
     }
+
 }
