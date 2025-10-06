@@ -1,47 +1,50 @@
 {% extends "/admin/layoutProducer.html.twig" %}
 {% block content %}
+<section id ="listUsers">
+    <div class="listUsersBody">
+        <h1>Liste des utilisateurs</h1>
 
-    {% if app.session.get('success-message') %}
-        <div class="success">{{ app.session.get('success-message') }}</div>
-    {% endif %}
+        {% if app.session.get('success-message') %}
+            <p class="success">{{ app.session.get('success-message') }}</p>
+        {% endif %}
 
-    <h1>Liste des utilisateurs</h1>
 
-    {% if users is empty %}
-        <p>Aucun utilisateur trouvé.</p>
-    {% else %}
-        <table>
-            <thead>
-            <tr>
-                <th>ID</th>
-                <th>Nom complet</th>
-                <th>Email</th>
-                <th>Rôle</th>
-                <th>Status</th>
-                <th>Créé le</th>
-                <th>Actions</th>
-            </tr>
-            </thead>
-            <tbody>
-            {% for user in users %}
+        {% if users is empty %}
+            <p>Aucun utilisateur trouvé.</p>
+        {% else %}
+            <table class="table-adminUserList">
+                <thead>
                 <tr>
-                    <td>{{ user.getId() }}</td>
-                    <td>{{ user.getFirstName() }} {{ user.getLastName() }}</td>
-                    <td>{{ user.getEmail() }}</td>
-                    <td>{{ user.getRole().value }}</td>
-                    <td>{{ user.getStatus().value }}</td>
-                    <td>{{ user.getCreatedAt().format('d/m/Y H:i') }}</td>
-                    <td>
-                        <a href="index.php?route=delete-user&id={{ user.getId() }}"
-                           onclick="return confirm('Supprimer cet utilisateur ?')">Supprimer</a>
-                        {% if user.getStatus() == constant('app\\Enum\\UserStatus::Pending') %}
-                            | <a href="index.php?route=validate-user&id={{ user.getId() }}">Valider</a>
-                        {% endif %}
-                    </td>
+                    <th>ID</th>
+                    <th>Nom complet</th>
+                    <th>Email</th>
+                    <th>Rôle</th>
+                    <th>Status</th>
+                    <th>Créé le</th>
+                    <th>Actions</th>
                 </tr>
-            {% endfor %}
-            </tbody>
-        </table>
-    {% endif %}
-
+                </thead>
+                <tbody>
+                {% for user in users %}
+                    <tr>
+                        <td>{{ user.getId() }}</td>
+                        <td>{{ user.getFirstName() }} {{ user.getLastName() }}</td>
+                        <td>{{ user.getEmail() }}</td>
+                        <td>{{ user.getRole().value }}</td>
+                        <td>{{ user.getStatus().value }}</td>
+                        <td>{{ user.getCreatedAt().format('d/m/Y H:i') }}</td>
+                        <td>
+                            <a href="index.php?route=delete-user&id={{ user.getId() }}"
+                               onclick="return confirm('Supprimer cet utilisateur ?')">Supprimer</a>
+                            {% if user.getStatus() == constant('app\\Enum\\UserStatus::Pending') %}
+                                | <a href="index.php?route=validate-user&id={{ user.getId() }}">Valider</a>
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        {% endif %}
+    </div>
+</section>
 {% endblock %}

@@ -175,3 +175,139 @@
     }
   }
 }
+
+/* Responsive - Mobile (max-width: 768px) */
+@media screen and (max-width: 768px) {
+
+  /* === HEADER ABOUT === */
+  #header-about {
+    padding: 1.5rem;
+    min-height: 80vh;
+
+    .about-body {
+      flex-direction: column;
+      gap: 1.5rem;
+      text-align: center;
+
+      .about-text {
+        h1 {
+          font-size: 24px;
+        }
+
+        p {
+          font-size: 20px;
+          line-height: 1.4;
+        }
+      }
+    }
+  }
+
+  /* AGMAI ABOUT */
+  #agMai-about {
+    .agMai-body {
+      flex-direction: column;
+      align-items: center;
+      margin: 2rem 1rem;
+      gap: 1.5rem;
+
+      .agMaiAbout-text {
+        text-align: center;
+
+        p {
+          font-size: 16px;
+        }
+
+        .about-titleP {
+          font-size: 20px;
+        }
+      }
+
+      .agMaiAbout-img img {
+        width: 200px;
+        height: 200px;
+        padding: 20px;
+        border-radius: 50px;
+      }
+    }
+  }
+
+  /* TEAM */
+  #team {
+    margin: 2rem 1rem;
+
+    .team-body {
+      margin: 2rem 0;
+
+      .team1,
+      .team2 {
+        flex-direction: column;
+        gap: 2rem;
+        padding-top: 20px;
+        border-top-width: 1px;
+
+        .team-member,
+        .team-member2 {
+          text-align: center;
+
+          img {
+            width: 100px;
+            height: 100px;
+          }
+
+          h3 {
+            font-size: 18px;
+          }
+
+          .team-title,
+          .team-title2 {
+            font-size: 16px;
+          }
+
+          p {
+            font-size: 14px;
+          }
+
+          .team-logo,
+          .team-logo2 {
+            justify-content: center;
+
+            img {
+              width: 25px;
+              height: 25px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  /* ADDRESS  */
+  #address {
+    margin: 2rem 1rem;
+
+    .address-body {
+      flex-direction: column;
+      gap: 2rem;
+      background: $color31;
+      text-align: center;
+
+      .address-text {
+        padding: 10px;
+
+        h3 {
+          font-size: 18px;
+        }
+
+        p {
+          font-size: 14px;
+        }
+      }
+
+      .address-img img {
+        width: 200px;
+        height: 200px;
+        padding: 10px;
+      }
+    }
+  }
+}

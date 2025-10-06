@@ -91,3 +91,52 @@
 
 }
 
+/* Responsive - Mobile (max-width: 768px) */
+@media screen and (max-width: 768px) {
+
+  #products-Regions {
+    .header {
+      flex-direction: column;
+      gap: 0.5rem;
+      align-items: center;
+
+      a {
+        font-size: 14px;
+        padding: 0.3rem 0.6rem;
+      }
+    }
+
+    .grid {
+      grid-template-columns: 1fr; // une seule colonne
+      margin: 30px 10px; // réduire les marges
+      gap: 15px;
+    }
+
+    .card {
+      padding: 0.8rem;
+
+      img {
+        width: 100%;
+        height: auto; // adapter l'image à la largeur
+      }
+
+      h3 {
+        font-size: 18px;
+      }
+
+      p {
+        font-size: 15px;
+      }
+
+      .actions {
+        margin-top: 8px;
+
+        a.btn {
+          width: 100%;
+          font-size: 14px;
+          padding: 0.3rem 0.6rem;
+        }
+      }
+    }
+  }
+}

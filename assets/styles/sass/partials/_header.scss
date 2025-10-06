@@ -57,3 +57,58 @@ header {
     }
   }
 }
+
+/* Responsive - Mobile max-width: 768px */
+@media screen and (max-width: 768px) {
+
+  header {
+    padding: 1rem;
+
+    nav {
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+
+      img {
+        width: 50px;
+        height: auto;
+      }
+
+      ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+      }
+
+      li {
+        margin: 0.5rem 0;
+      }
+
+      a {
+        font-size: 16px;
+        gap: 0.3rem;
+
+        img {
+          width: 16px;
+        }
+
+        i {
+          font-size: 1rem;
+        }
+      }
+
+      .aBorder1 {
+        border-width: 1px;
+      }
+
+      .aBorder2 {
+        font-size: 15px;
+        padding: 0.3rem 0.6rem;
+      }
+    }
+  }
+}
+

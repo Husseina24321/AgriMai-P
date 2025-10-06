@@ -145,3 +145,104 @@ footer {
  }
 
 
+/* Responsive - Mobile max-width: 768px */
+@media screen and (max-width: 768px) {
+
+  footer {
+    .footer-body {
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      padding: 1.5rem;
+    }
+
+    .footer-logoAm img {
+      width: 40px;
+      height: 40px;
+    }
+
+    #newsletters {
+      .newsletters-body {
+        h6 {
+          font-size: 14px;
+          margin: 20px 0 0 0;
+        }
+        p {
+          font-size: 13px;
+        }
+      }
+
+      form {
+        label input {
+          width: 100%;
+          max-width: 280px;
+          padding: 0.4rem;
+          font-size: 13px;
+        }
+
+        button {
+          width: 100%;
+          max-width: 200px;
+          padding: 0.5rem;
+          font-size: 13px;
+        }
+      }
+
+      .cdg2 {
+        font-size: 12px;
+      }
+    }
+
+    #footer-social {
+      .footer-social-body {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .footer-social-icon {
+        h6 {
+          font-size: 14px;
+          margin: 20px 0 5px 0;
+        }
+
+        a {
+          font-size: 14px;
+
+          img {
+            width: 20px;
+          }
+        }
+      }
+
+      .footer-text {
+        h6 {
+          font-size: 14px;
+          margin: 20px 0 5px 0;
+        }
+
+        ul li a {
+          font-size: 13px;
+        }
+      }
+    }
+
+    #footer-legal {
+      .footer-legal-body {
+        flex-direction: column;
+        gap: 0.8rem;
+        padding-top: 1.5rem;
+        padding-bottom: 2rem;
+
+        p {
+          font-size: 12px;
+        }
+      }
+    }
+  }
+
+  .copyright {
+    font-size: 12px;
+    text-align: center;
+  }
+}

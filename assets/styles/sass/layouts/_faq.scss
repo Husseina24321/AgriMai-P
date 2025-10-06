@@ -79,3 +79,57 @@
     }
   }
 }
+/* Responsive - Mobile max-width: 768px */
+@media screen and (max-width: 768px) {
+
+  #faq {
+    padding: 1.5rem;
+    margin: 1rem;
+
+    .faq-body {
+      width: 100%;
+      padding: 2rem;
+      gap: 1.2rem;
+
+      .faq-title {
+        h3 {
+          font-size: 20px;
+        }
+        p {
+          font-size: 16px;
+          margin-bottom: 8px;
+        }
+      }
+
+      .faq-text {
+        width: 100%;
+        border-width: 1px;
+
+        .question {
+          font-size: 16px;
+        }
+
+        p {
+          font-size: 14px;
+        }
+
+        .btnX {
+          align-self: center;
+        }
+      }
+
+      .moreQuestion {
+        font-size: 16px;
+        margin: 20px 0 0 0;
+        text-align: center;
+      }
+
+      button {
+        width: 100%;
+        max-width: 150px;
+        font-size: 14px;
+        padding: 6px 12px;
+      }
+    }
+  }
+}

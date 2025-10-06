@@ -1,0 +1,138 @@
+@use "../vars/colors" as *;
+@use "../vars/fonts" as *;
+
+#products-market{
+  .market-body{
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    .header-market{
+      display: flex;
+      margin-top: 20px;
+      padding: 0 20px;
+      flex-direction: row;
+      justify-content: center;
+      h1{
+        @include montserrat(600, normal, 26px);
+        color: $color4;
+        text-decoration: underline;
+      }
+    }
+    .grid-market{
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin: 60px;
+      .card-market{
+        img {
+          width: 200px;
+          height: 210px;
+          object-fit: cover;
+          border-radius: 8px;
+          margin-bottom: 1rem;
+        }
+        h3{
+          @include montserrat(600, normal, 22px);
+          color: $color4;
+        }
+        p{
+          @include roboto(400, normal, 18px);
+          color: $color4;
+        }
+        background: $color11;
+        border: 1px solid $color12;
+        border-radius: 10px;
+        padding: 1rem;
+        text-align: center;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+
+        transition: transform 0.4s cubic-bezier(0.25, 1.25, 0.5, 1),
+        box-shadow 0.3s ease;
+
+        &:hover {
+          transform: scale(1.1) rotate(30deg);
+          box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+        .actions{
+          margin-top: 10px;
+          a.btn{
+            width: 110px;
+            height: 40px;
+            display: inline-block;
+            border-radius: 0 20px;
+            border: 1px solid $color4;
+            background: $color12;
+            color: $color1;
+            padding: 8px 16px;
+            text-decoration: none;
+            @include inter(600, normal, 18px);
+
+            &:hover {
+              background: $color1;
+              color: $color8;
+            }
+            &:active {
+              background: $color2;
+              color: $color1;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/* Responsive - Mobile max-width: 768px */
+@media screen and (max-width: 768px) {
+
+  #products-market {
+    .market-body {
+      .header-market {
+        flex-direction: column;
+        margin-top: 10px;
+        padding: 0 10px;
+
+        h1 {
+          font-size: 22px;
+        }
+      }
+
+      .grid-market {
+        display: grid;
+        grid-template-columns: 1fr; // 1 carte par ligne
+        gap: 15px;
+        margin: 20px;
+
+        .card-market {
+          padding: 0.8rem;
+
+          img {
+            width: 100%;
+            height: auto;
+            max-height: 200px;
+            border-radius: 8px;
+          }
+
+          h3 {
+            font-size: 18px;
+          }
+
+          p {
+            font-size: 15px;
+          }
+
+          .actions {
+            margin-top: 10px;
+
+            a.btn {
+              width: 100%;
+              max-width: 180px;
+              font-size: 16px;
+              padding: 0.5rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,56 +1,57 @@
 {% extends "/admin/layoutProducer.html.twig" %}
 {% block content %}
+<section id="admin-messages">
+    <div class="admin-body">
+        <h1>Liste des Messages des Utilisateurs</h1>
 
-    <h1>Messages - Admin</h1>
+        {% if app.session.get('success-message') %}
+            <p class="success">{{ app.session.get('success-message') }}</p>
+        {% endif %}
 
-    {% if app.session.get('success-message') %}
-        <div class="success">{{ app.session.get('success-message') }}</div>
-    {% endif %}
-
-    {% if messages is empty %}
-        <p>Aucun message trouvé.</p>
-    {% else %}
-        <table>
-            <thead>
-            <tr>
-                <th>ID</th>
-                <th>Expéditeur</th>
-                <th>Destinataire</th>
-                <th>Produit</th>
-                <th>Message</th>
-                <th>Date</th>
-                <th>Actions</th>
-            </tr>
-            </thead>
-            <tbody>
-            {% for message in messages %}
+        {% if messages is empty %}
+            <p>Aucun message trouvé.</p>
+        {% else %}
+            <table class="messages-table">
+                <thead>
                 <tr>
-                    {# Expéditeur #}
-                    <td>{{ message.getSenderFirstName() }} {{ message.getSenderLastName() }}</td>
-
-                    {# Destinataire #}
-                    <td>{{ message.getReceiverFirstName() }} {{ message.getReceiverLastName() }}</td>
-
-                    {# Produit #}
-                    <td>{{ message.getProductTitle() ?? '-' }}</td>
-
-                    {# Contenu du message #}
-                    <td>{{ message.getContent()|e }}</td>
-
-                    {# Date #}
-                    <td>{{ message.getSentAt().format('d/m/Y H:i') }}</td>
-
-                    {# Actions #}
-                    <td>
-                        <a href="/AgriMai/index.php?route=deleteMessage&id={{ message.getId() }}"
-                           onclick="return confirm('Voulez-vous vraiment supprimer ce message ?');">
-                            Supprimer
-                        </a>
-                    </td>
+                    <th>Expéditeur</th>
+                    <th>Destinataire</th>
+                    <th>Produit</th>
+                    <th>Message</th>
+                    <th>Date</th>
+                    <th>Actions</th>
                 </tr>
-            {% endfor %}
-            </tbody>
-        </table>
-    {% endif %}
+                </thead>
+                <tbody>
+                {% for message in messages %}
+                    <tr>
+                        {# Expéditeur #}
+                        <td>{{ message.getSenderFirstName() }} {{ message.getSenderLastName() }}</td>
 
+                        {# Destinataire #}
+                        <td>{{ message.getReceiverFirstName() }} {{ message.getReceiverLastName() }}</td>
+
+                        {# Produit #}
+                        <td>{{ message.getProductTitle() ?? '-' }}</td>
+
+                        {# Contenu du message #}
+                        <td>{{ message.getContent()|e }}</td>
+
+                        {# Date #}
+                        <td>{{ message.getSentAt().format('d/m/Y H:i') }}</td>
+
+                        {# Actions #}
+                        <td>
+                            <a href="/AgriMai/index.php?route=deleteMessage&id={{ message.getId() }}"
+                               onclick="return confirm('Voulez-vous vraiment supprimer ce message ?');">
+                                Supprimer
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        {% endif %}
+    </div>
+</section>
 {% endblock %}

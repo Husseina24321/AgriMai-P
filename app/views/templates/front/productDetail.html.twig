@@ -66,35 +66,49 @@
                             <option class="option" value="3">3</option>
                         </select>
                     </label>
+
                 </div>
-                <button type="submit">Acheter maintenant</button>
-                <form method="post" action="/AgriMai/index.php?route=sendMessage" id="contactForm">
-                    <div class="champs">
-                        <label for="name">Nom :</label>
-                        <input type="text" id="name" name="name" placeholder="Votre nom" required>
+                <div id="openForm">
+                <!-- Bouton pour ouvrir le formulaire -->
+                    <button >Acheter maintenant</button>
+                </div>
+
+
+                <!-- La modale / Formulaire -->
+                <div id="popup-form" class="popup-livraison">
+                    <div class="popup">
+                        <a class="js-close-button close-button" href="#">x</a>
+                        <div class="content">
+                            <h5>Formulaire d'achat</h5>
+                            <form method="post" action="/AgriMai/index.php?route=sendMessage" id="contactForm">
+                                <div class="champs-achat">
+                                    <label for="name">Nom :</label>
+                                    <input type="text" id="name" name="name" placeholder="Votre nom" required>
+                                </div>
+
+                                <div class="champs-achat">
+                                    <label for="email">E-mail :</label>
+                                    <input type="email" id="email" name="email" placeholder="Votre e-mail" required>
+                                </div>
+
+                                <div class="champs-achat">
+                                    <label for="message">Message :</label>
+                                    <textarea id="message" name="message" rows="5" placeholder="Votre message" required></textarea>
+                                </div>
+
+                                <!-- Champs cachés -->
+                                <input type="hidden" name="receiver_id" value="{{ product.getUserId() }}">
+                                <input type="hidden" name="product_id" value="{{ product.getId() }}">
+                                <input type="hidden" id="selected_lot" name="selected_lot" value="">
+
+                                <div class="submit">
+                                    <button type="submit">Envoyer au producteur</button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
+                </div>
 
-                    <div class="champs">
-                        <label for="email">E-mail :</label>
-                        <input type="email" id="email" name="email" placeholder="Votre e-mail" required>
-                    </div>
-
-                    <div class="champs">
-                        <label for="message">Message :</label>
-                        <textarea id="message" name="message" rows="5" placeholder="Votre message" required></textarea>
-                    </div>
-
-                    <!-- Champs cachés pour identifier le producteur et le produit -->
-                    <input type="hidden" name="receiver_id" value="{{ product.getUserId() }}">
-                    <input type="hidden" name="product_id" value="{{ product.getId() }}">
-
-                    <!-- champ caché pour quantité choisie -->
-                    <input type="hidden" id="selected_lot" name="selected_lot" value="">
-
-                    <div class="submit">
-                        <button type="submit">Envoyer au producteur</button>
-                    </div>
-                </form>
 
             </div>
 

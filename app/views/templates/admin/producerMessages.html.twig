@@ -2,18 +2,18 @@
 
 {% block content %}
     <section id="producer-messages">
-        <h1>Mes messages</h1>
 
         {% if messages is not empty %}
             <div class="messages-list">
+                <h1>Mes messages</h1>
                 {% for msg in messages %}
                     <div class="message-card {% if msg.is_sender %}sent{% else %}received{% endif %}">
                         <div class="message-header">
                             <strong>
                                 {% if msg.is_sender %}
-                                    Vous (à {{ msg.receiverFirstName }} {{ msg.receiverLastName }})
+                                    Vous avez écrit à {{ msg.receiverFirstName }} {{ msg.receiverLastName }}
                                 {% else %}
-                                    {{ msg.senderFirstName }} {{ msg.senderLastName }}
+                                    Vous avez reçu un message {{ msg.senderFirstName }} {{ msg.senderLastName }}
                                 {% endif %}
                             </strong
 
@@ -21,7 +21,7 @@
                                 <span class="product-title">Produit : {{ msg.productTitle }}</span>
                             {% endif %}
 
-                            <span class="date">{{ msg.sentAt ? msg.sentAt|date("d/m/Y H:i") : "" }}</span>
+                            <span class="date"> <strong>Le {{ msg.sentAt ? msg.sentAt|date("d/m/Y à H:i") : "" }}</strong> </span>
                         </div>
 
                         <div class="message-body">
@@ -47,7 +47,7 @@
         {% if receiver_id %}
             <div class="reply-form">
                 <h2>Envoyer un nouveau message</h2>
-                <form method="post" action="/AgriMai/index.php?route=sendMessage">
+                <form method="post" action="/AgriMai/index.php?route=sendMessage"class="form-messageProducer">
                     <input type="hidden" name="receiver_id" value="{{ receiver_id }}">
                     <input type="hidden" name="product_id" value="{{ product_id }}">
 
@@ -61,9 +61,12 @@
 
                     <label for="message">Votre message :</label>
                     <textarea id="message" name="message" placeholder="Écrire un message..." required></textarea>
-
-                    <button type="submit">Envoyer</button>
+                    <div class="reply-actions">
+                        <button type="submit">Envoyer</button>
+                    </div>
                 </form>
+
+
             </div>
         {% else %}
             <p>Aucun destinataire disponible pour le moment.</p>

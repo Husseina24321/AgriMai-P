@@ -98,3 +98,60 @@
   }
 
 }
+/* Responsive - Mobile (max-width: 768px) */
+@media screen and (max-width: 768px) {
+  #product-form {
+    padding: 1.5rem;
+    margin: 1rem;
+
+    .product-form-body {
+      width: 100%;
+      padding: 1.5rem;
+      border-radius: 20px;
+
+      h3 {
+        font-size: 20px;
+        margin: 0 0 1.5rem 0;
+      }
+
+      .product-form {
+        gap: 1rem;
+        align-items: stretch; // pour que les champs prennent toute la largeur
+
+        label {
+          font-size: 16px;
+        }
+
+        input,
+        select,
+        textarea {
+          width: 100%;
+          font-size: 15px;
+          padding: 0.5rem 0.7rem;
+        }
+
+        textarea {
+          min-height: 100px;
+        }
+
+        select {
+          width: 100%;
+          height: 38px;
+        }
+
+        .bnt-createDsh {
+          width: 100%;
+          margin-top: 1rem;
+          justify-content: center;
+        }
+      }
+
+      button {
+        width: 100%;
+        font-size: 16px;
+        padding: 0.5rem 0.8rem;
+        border-radius: 20px;
+      }
+    }
+  }
+}

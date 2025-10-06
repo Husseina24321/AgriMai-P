@@ -28,7 +28,7 @@
     p{
       @include roboto(400, oblique, 20px);
       color: $color3;
-      margin: 0 0 60px 0;
+      margin: 0 0 30px 10px;
     }
     form{
       display: flex;
@@ -104,3 +104,77 @@
 
 }
 
+/* Responsive - Mobile max-width: 768px */
+@media screen and (max-width: 768px) {
+
+  #login {
+    padding: 1.5rem;
+    margin: 1rem;
+
+    .login-body {
+      width: 100%;
+      max-width: 95%;
+      padding: 30px;
+      border-radius: 10px;
+
+      h3 {
+        font-size: 20px;
+        text-align: center;
+      }
+
+      img {
+        width: 150px;
+        margin: 0 auto;
+      }
+
+      p {
+        font-size: 16px;
+        margin: 0 0 20px 0;
+        text-align: center;
+      }
+
+      form {
+        width: 100%;
+        gap: 0.8rem;
+
+        label {
+          width: 100%;
+          font-size: 16px;
+        }
+
+        input,
+        textarea {
+          font-size: 14px;
+          padding: 0.4rem;
+        }
+
+        .login-btn {
+          margin-top: 0.8rem;
+          width: 100%;
+        }
+
+        button {
+          font-size: 16px;
+          padding: 0.5rem 1rem;
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  .login-link {
+    gap: 0.8rem;
+    p, a {
+      font-size: 14px;
+      text-align: center;
+    }
+  }
+
+  .loginForm-group {
+    select {
+      width: 100%;
+      max-width: 150px;
+      height: 30px;
+    }
+  }
+}

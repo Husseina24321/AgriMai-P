@@ -44,3 +44,20 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 });
+document.addEventListener("DOMContentLoaded", () => {
+    // Ouvrir le formulaire
+    const openFormBtn = document.getElementById("openForm");
+    const formModal = document.getElementById("popup-form");
+
+    openFormBtn.addEventListener('click', function(){
+        formModal.style.display = "block";
+    });
+
+    // Fermer le formulaire
+    const closeButton = formModal.querySelector('.js-close-button');
+    closeButton.addEventListener('click', function(e){
+        e.preventDefault();
+        formModal.style.display ='none';
+    });
+});
+
