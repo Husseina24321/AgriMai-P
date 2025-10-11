@@ -300,6 +300,27 @@ class Router {
                     $authController = new AuthController();
                     $authController->checkRegister();
                     break;
+
+                case 'forgot-password':
+                    $authController = new AuthController();
+                    $authController->forgotPassword();
+                    break;
+
+                case 'sendReset-link':
+                    $authController = new AuthController();
+                    $authController->sendResetLink();
+                    break;
+
+                case 'reset-password':
+                    $authController = new AuthController();
+                    $authController->resetPassword();
+                    break;
+
+                case 'update-password':
+                    $authController = new AuthController();
+                    $authController->updatePassword();
+                    break;
+
                 case "logout":
                     $authController = new AuthController();
                     $authController->logout();

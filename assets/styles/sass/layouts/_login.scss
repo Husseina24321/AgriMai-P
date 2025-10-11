@@ -74,6 +74,14 @@
         border: 1px solid $color3;
         padding: 0.6rem 1.2rem;
         cursor: pointer;
+        &:hover {
+          background: $color1;
+          color: $color4;
+        }
+        &:active {
+          background: $color2;
+          color: $color1;
+        }
       }
     }
 

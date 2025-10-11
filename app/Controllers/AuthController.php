@@ -6,6 +6,7 @@ use app\Managers\ProductManager;
 use app\Enum\UserRole;
 use app\Enum\UserStatus;
 use app\Models\User;
+use http\Exception;
 
 
 
@@ -227,4 +228,169 @@ class AuthController extends AbstractController
         header("Location: /AgriMai/index.php?route=login");
         exit;
     }
+
+    public function forgotPassword(): void
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $email = $_POST['email'] ?? null;
+
+            if (!$email) {
+                $_SESSION['error-message'] = "Veuillez saisir un email.";
+                $this->redirect("/AgriMai/index.php?route=forgot-password");
+                return;
+            }
+
+            $um = new UserManager();
+            $user = $um->findByEmail($email);
+
+            if ($user) {
+                // Génère un token pour sécuriser la page de reset
+                $token = bin2hex(random_bytes(50));
+                $expires = date('Y-m-d H:i:s', strtotime('+1 hour'));
+
+                // Supprime ancien token et crée le nouveau
+                $um->deleteResetByEmail($email);
+                $um->savePasswordReset($email, $token, $expires);
+
+                // Redirige directement vers le formulaire de reset avec le token
+                $this->redirect("/AgriMai/index.php?route=reset-password&token=$token");
+                return;
+            }
+
+            // Message générique pour ne pas révéler l’existence de l’email
+            $_SESSION["success-message"] = "Si un compte existe pour cet email, vous pouvez réinitialiser le mot de passe.";
+            $this->redirect("/AgriMai/index.php?route=login");
+        } else {
+            $csrfManager = new CSRFTokenManager();
+            $csrfToken = $csrfManager->generateCSRFToken();
+            $this->render("front/forgotPassword.html.twig", ['csrfToken' => $csrfToken]);
+        }
+    }
+
+
+    public function sendResetLink(): void
+    {
+        if (empty($_POST['email'])) {
+            $_SESSION["error-message"] = "Veuillez entrer votre email.";
+            $this->redirect("/AgriMai/index.php?route=forgot-password");
+            return;
+        }
+
+        $email = trim($_POST['email']);
+        $um = new UserManager();
+        $user = $um->findByEmail($email);
+
+        // Si l'utilisateur existe, on crée un token
+        if ($user) {
+            try {
+                // Génère un token sécurisé
+                $token = bin2hex(random_bytes(50)); // 100 caractères hexadécimaux
+            } catch (\Exception ) {
+                // Impossible de générer le token → message d'erreur générique
+                $_SESSION["error-message"] = "Impossible de générer le lien de réinitialisation. Veuillez réessayer.";
+                $this->redirect("/AgriMai/index.php?route=forgot-password");
+                return;
+            }
+
+            // Expiration du token dans 1 heure
+            $expires = date('Y-m-d H:i:s', strtotime('+1 hour'));
+
+            // Supprime l'ancien token pour cet email
+            $um->deleteResetByEmail($email);
+
+            // Sauvegarde le nouveau token en base
+            $um->savePasswordReset($email, $token, $expires);
+
+            // Génère le lien de réinitialisation
+            $resetLink = "http://localhost/AgriMai/index.php?route=reset-password&token=$token";
+
+            // Prépare l'email
+            $subject = "Réinitialisation de ton mot de passe";
+            $message = "Bonjour,\n\nClique sur ce lien pour réinitialiser ton mot de passe : $resetLink\n\nCe lien expire dans 1 heure.";
+            $headers = "From: noreply@agrimai.com";
+
+            // Envoie l'email
+            mail($email, $subject, $message, $headers);
+        }
+
+// Toujours afficher un message générique pour éviter de révéler l'existence d'un compte
+        $_SESSION["success-message"] = "Si un compte existe pour cet email, un lien de réinitialisation a été envoyé.";
+        $this->redirect("/AgriMai/index.php?route=login");
+
+    }
+
+
+    public function resetPassword(): void
+    {
+        $token = $_GET['token'] ?? null;
+        if (!$token) {
+            $_SESSION['error-message'] = "Token manquant.";
+            $this->redirect("/AgriMai/index.php?route=login");
+            return;
+        }
+
+        $um = new UserManager();
+        $resetData = $um->getResetByToken($token);
+
+        if (!$resetData || strtotime($resetData['expires_at']) < time()) {
+            $_SESSION['error-message'] = "Token invalide ou expiré.";
+            $this->redirect("/AgriMai/index.php?route=forgot-password");
+            return;
+        }
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $password = $_POST['password'] ?? '';
+            $confirm = $_POST['confirm_password'] ?? '';
+
+            if ($password !== $confirm) {
+                $_SESSION['error-message'] = "Les mots de passe ne correspondent pas.";
+                $this->redirect("/AgriMai/index.php?route=reset-password&token=$token");
+                return;
+            }
+
+            $hashed = password_hash($password, PASSWORD_BCRYPT);
+            $um->updatePasswordByEmail($resetData['email'], $hashed);
+            $um->deleteResetByEmail($resetData['email']);
+
+            $_SESSION['success-message'] = "Mot de passe réinitialisé avec succès.";
+            $this->redirect("/AgriMai/index.php?route=login");
+            return;
+        }
+
+        // Affiche le formulaire de reset
+        $csrfManager = new CSRFTokenManager();
+        $csrfToken = $csrfManager->generateCSRFToken();
+        $this->render("front/resetPassword.html.twig", [
+            'csrfToken' => $csrfToken,
+            'token' => $token
+        ]);
+    }
+
+
+    public function updatePassword(): void
+    {
+        if (!isset($_POST['token'], $_POST['password'])) {
+            $_SESSION["error-message"] = "Formulaire incomplet.";
+            $this->redirect("/AgriMai/index.php?route=login");
+            return;
+        }
+
+        $token = $_POST['token'];
+        $password = $_POST['password'];
+        $um = new UserManager();
+        $reset = $um->getResetByToken($token);
+
+        if ($reset && strtotime($reset['expires_at']) > time()) {
+            $hashed = password_hash($password, PASSWORD_BCRYPT);
+            $um->updatePasswordByEmail($reset['email'], $hashed);
+            $um->deleteResetByEmail($reset['email']);
+
+            $_SESSION["success-message"] = "Mot de passe mis à jour avec succès !";
+            $this->redirect("/AgriMai/index.php?route=login");
+        } else {
+            $_SESSION["error-message"] = "Lien invalide ou expiré.";
+            $this->redirect("/AgriMai/index.php?route=forgot-password");
+        }
+    }
+
 }

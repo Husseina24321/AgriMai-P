@@ -56,25 +56,50 @@
       @include roboto(600, normal, 18px);
       margin: 40px 0 0 0;
     }
-    button{
+    .btnFaq {
       width: 150px;
-      height: 40px;
-      display: inline-block;
-      border-radius:10px;
-      border: 1px solid $color3;
+      height: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border-radius: 10px;
+      border: 1px solid $color4;
       background: $color12;
-      color: $color1;
       padding: 8px 16px;
-      text-decoration: none;
+      cursor: pointer;
       @include inter(600, normal, 14px);
+
+      a {
+        text-align: center;
+        color: $color1;
+        text-decoration: none;
+        width: 100%;
+        height: 100%;
+
+        &:hover {
+          color: $color8;
+        }
+
+        &:active {
+          color: $color1;
+        }
+      }
 
       &:hover {
         background: $color1;
-        color: $color8;
+
+        a {
+          color: $color8;
+        }
       }
+
       &:active {
         background: $color2;
-        color: $color1;
+
+        a {
+          color: $color1;
+        }
       }
     }
   }
@@ -124,7 +149,7 @@
         text-align: center;
       }
 
-      button {
+      a {
         width: 100%;
         max-width: 150px;
         font-size: 14px;

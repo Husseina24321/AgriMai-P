@@ -152,5 +152,52 @@ class UserManager extends AbstractManager
 
         return $user;
     }
+    public function savePasswordReset(string $email, string $token, string $expires): void
+    {
+        $stmt = $this->db->prepare("
+        INSERT INTO password_resets (email, token, expires_at)
+        VALUES (:email, :token, :expires_at)
+    ");
+        $stmt->execute([
+            'email' => $email,
+            'token' => $token,
+            'expires_at' => $expires
+        ]);
+    }
+
+    public function getResetByToken(string $token): ?array
+    {
+        $stmt = $this->db->prepare("
+        SELECT * FROM password_resets
+        WHERE token = :token
+    ");
+        $stmt->execute(['token' => $token]);
+        $result = $stmt->fetch(\PDO::FETCH_ASSOC);
+
+        return $result ?: null;
+    }
+
+    public function updatePasswordByEmail(string $email, string $hashedPassword): void
+    {
+        $stmt = $this->db->prepare("
+        UPDATE users
+        SET password = :password
+        WHERE email = :email
+    ");
+        $stmt->execute([
+            'password' => $hashedPassword,
+            'email' => $email
+        ]);
+    }
+
+    public function deleteResetByEmail(string $email): void
+    {
+        $stmt = $this->db->prepare("
+        DELETE FROM password_resets
+        WHERE email = :email
+    ");
+        $stmt->execute(['email' => $email]);
+    }
+
 
 }

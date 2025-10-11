@@ -422,44 +422,57 @@ background:$color7;
     background-size: cover;
 
     .hero-body {
-      flex-direction: column;
+      position: relative;
+      display: flex;
       gap: 2rem;
-      text-align: center;
+      width: 100%;
+      align-items: center;
+      flex-direction: column-reverse;
+      margin-top: 2rem;
     }
 
     .hero-text {
+      display: flex;
+      gap: 1rem;
       align-items: center;
-      gap: 1.2rem;
+      flex-direction: column;
 
       h1 {
-        font-size: 24px;
+        @include montserrat(700, normal, 24px);
       }
 
-      p {
-        font-size: 18px;
-      }
     }
 
     .hero-buttons {
-      flex-direction: column;
-      gap: 0.8rem;
-      margin-top: 1rem;
+      display: flex;
+      align-items: center;
+      margin: 1rem 0;
+      gap: 0.5rem;
 
       button {
         width: 100%;
-        font-size: 16px;
+        @include inter(600, normal, 18px);
       }
     }
-
-    .hero-image2 img {
-      width: 200px;
+    .hero-image2{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      img {
+        width: 70%;
+      }
+      p{
+        @include roboto(500, normal , 20px);
+      }
     }
   }
 
   /* SECTION PRÉSENTATION */
   .Presentation-body {
-    flex-direction: column;
-    margin: 2rem 1rem;
+    margin: 2rem;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
     gap: 1.5rem;
     text-align: center;
 
@@ -470,20 +483,31 @@ background:$color7;
     }
 
     .Presentation-text {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       h2 {
-        font-size: 22px;
+        @include montserrat(700, normal, 22px);
       }
 
       p {
-        font-size: 16px;
+        @include roboto(500, normal , 16px);
         line-height: 1.5;
+        text-align: left;
       }
     }
 
-    .Presentation-buttons button {
-      font-size: 16px;
-      width: 100%;
-      padding: 0.6rem;
+    .Presentation-buttons{
+      display: flex;
+      flex-direction: row;
+      gap: 1rem;
+      button {
+        width: 230px;
+        padding: 0.6rem;
+        @include inter(600, normal, 16px);
+
+      }
+
     }
   }
 
@@ -493,16 +517,22 @@ background:$color7;
       margin: 2rem 1rem;
 
       h3 {
-        font-size: 20px;
+        @include montserrat(600, normal, 20px);
       }
 
       .products-grid {
         grid-template-columns: repeat(1, 1fr); // 1 produit par ligne
         gap: 1.5rem;
+        display: grid;
+        margin: 0 auto;
+        justify-items: center;
+
       }
 
       .product-card {
         padding: 1rem;
+        width: 360px;
+        height: 360px;
 
         img {
           width: 120px;
@@ -519,7 +549,6 @@ background:$color7;
         }
 
         .btn2 {
-          width: 100%;
           font-size: 15px;
           padding: 0.5rem;
           border-radius: 8px;
@@ -550,16 +579,15 @@ background:$color7;
       }
 
       h3 {
-        font-size: 18px;
+        @include montserrat(600, normal, 18px);
       }
 
       p {
-        font-size: 15px;
+        @include roboto(500, normal, 16px);
       }
 
       .certificat-buttons button {
-        width: 100%;
-        font-size: 15px;
+        @include inter(600, normal, 16px);
         padding: 0.6rem;
       }
     }

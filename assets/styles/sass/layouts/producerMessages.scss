@@ -170,7 +170,7 @@
           transition: all 0.3s ease;
 
           &:hover {
-            background: darken($color22, 5%);
+            background: rgba($color22, 0.4);
             color: $color4;
             transform: scale(1.03);
           }

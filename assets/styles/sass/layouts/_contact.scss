@@ -83,7 +83,12 @@
           cursor: pointer;
 
           &:hover {
+            background: $color1;
+            color: $color4;
+          }
+          &:active {
             background: $color2;
+            color: $color1;
           }
         }
       }

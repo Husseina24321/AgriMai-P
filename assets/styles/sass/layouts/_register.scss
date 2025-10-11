@@ -91,6 +91,16 @@
         margin-top: 1rem;
         padding: 0.5rem 1.2rem;
         cursor: pointer;
+        width:160px;
+        height: 40px;
+        &:hover {
+          background: $color1;
+          color: $color4;
+        }
+        &:active {
+          background: $color2;
+          color: $color1;
+        }
       }
       p{
         @include roboto(400, normal, 16px);
