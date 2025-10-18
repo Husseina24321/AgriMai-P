@@ -5,13 +5,16 @@
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  .header {
+  .header-card {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-top: 20px;
     padding: 0 20px;
 
+    h1{
+      @include montserrat(700, normal, 26px);
+    }
     a{
       color: $color4;
       &:hover {
@@ -95,45 +98,55 @@
 @media screen and (max-width: 768px) {
 
   #products-Regions {
-    .header {
-      flex-direction: column;
-      gap: 0.5rem;
+    .header-card {
+      display: flex;
       align-items: center;
+      flex-direction: row;
+
+      h1{
+        @include montserrat(700, normal, 20px);
+      }
 
       a {
-        font-size: 14px;
+        @include inter(600, normal, 14px);
         padding: 0.3rem 0.6rem;
       }
     }
 
     .grid {
-      grid-template-columns: 1fr; // une seule colonne
-      margin: 30px 10px; // réduire les marges
+      display: grid;
+      grid-template-columns: 1fr;// Les cartes les unes en dessous des autres. Une carte par ligne
       gap: 15px;
+      margin: 20px auto;
+      max-width: 300px;
+      width: 100%;
     }
 
     .card {
       padding: 0.8rem;
 
       img {
+        max-width: 150px;
         width: 100%;
         height: auto; // adapter l'image à la largeur
       }
 
       h3 {
-        font-size: 18px;
+        @include montserrat(600, normal, 18px);
       }
 
       p {
-        font-size: 15px;
+        @include roboto(400, normal, 16px);
       }
 
       .actions {
         margin-top: 8px;
 
         a.btn {
+          height: auto;
           width: 100%;
-          font-size: 14px;
+          max-width: 100px;
+          @include inter(600, normal, 14px);
           padding: 0.3rem 0.6rem;
         }
       }

@@ -12,7 +12,7 @@
                     {% for product in products %}
                         <div class="card-market">
                             <img src="/AgriMai/public/uploads/{{ product.getImage() }}" alt="{{ product.getTitle() }}">
-                            <h3>{{ product.getTitle() }}</h3>
+                            <h2>{{ product.getTitle() }}</h2>
                             <p class="producteur">{{ product.getProducteur() }}</p>
                             <p class="prix">{{ product.getPrice() }} € / kg</p>
                             <div class="actions">

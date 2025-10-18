@@ -64,7 +64,7 @@
       align-items: center;
       justify-content: center;
       border-radius: 10px;
-      border: 1px solid $color4;
+      border: 1px solid $color3;
       background: $color12;
       padding: 8px 16px;
       cursor: pointer;
@@ -104,7 +104,7 @@
     }
   }
 }
-/* Responsive - Mobile max-width: 768px */
+/* Responsive Mobile max-width: 768px */
 @media screen and (max-width: 768px) {
 
   #faq {
@@ -118,10 +118,10 @@
 
       .faq-title {
         h3 {
-          font-size: 20px;
+          @include montserrat(600, normal, 20px);
         }
         p {
-          font-size: 16px;
+          @include roboto(400, oblique, 16px);
           margin-bottom: 8px;
         }
       }
@@ -131,20 +131,30 @@
         border-width: 1px;
 
         .question {
-          font-size: 16px;
+          @include roboto(600, oblique, 16px);
         }
 
         p {
-          font-size: 14px;
+          @include roboto-light(300, normal, 14px);
         }
 
         .btnX {
-          align-self: center;
+          position: relative; // Pour que .btnX se place par rapport à ce conteneur
+          width: 100%;
+          padding: 1rem; // pour éviter que le X touche le texte
+          display: flex;
+          flex-direction: row;
+          justify-content: flex-end;
         }
+      }
+      .btnFaq {
+        @include inter(600, normal, 14px);
+        max-width: 120px;
+        width: 100%;
       }
 
       .moreQuestion {
-        font-size: 16px;
+        @include roboto(600, normal, 16px);
         margin: 20px 0 0 0;
         text-align: center;
       }
@@ -152,7 +162,7 @@
       a {
         width: 100%;
         max-width: 150px;
-        font-size: 14px;
+        @include inter(600, normal, 14px);
         padding: 6px 12px;
       }
     }

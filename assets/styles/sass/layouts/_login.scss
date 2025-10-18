@@ -121,38 +121,39 @@
 
     .login-body {
       width: 100%;
-      max-width: 95%;
+      max-width: 65%;
       padding: 30px;
       border-radius: 10px;
 
       h3 {
-        font-size: 20px;
+        @include montserrat(600, normal, 18px);
         text-align: center;
       }
 
       img {
-        width: 150px;
+        width: 100px;
         margin: 0 auto;
       }
 
       p {
-        font-size: 16px;
+        @include roboto(400, oblique, 16px);
         margin: 0 0 20px 0;
         text-align: center;
       }
 
       form {
+        max-width: 350px;
         width: 100%;
         gap: 0.8rem;
 
         label {
           width: 100%;
-          font-size: 16px;
+          @include roboto(400, normal, 16px);
         }
 
         input,
         textarea {
-          font-size: 14px;
+          @include roboto(400, normal, 14px);
           padding: 0.4rem;
         }
 
@@ -162,8 +163,9 @@
         }
 
         button {
-          font-size: 16px;
+          @include inter(600, normal, 16px);
           padding: 0.5rem 1rem;
+          max-width: 150px;
           width: 100%;
         }
       }
@@ -173,7 +175,7 @@
   .login-link {
     gap: 0.8rem;
     p, a {
-      font-size: 14px;
+      @include roboto(400, normal, 14px);
       text-align: center;
     }
   }

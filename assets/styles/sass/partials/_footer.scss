@@ -48,6 +48,10 @@ footer {
         &:hover {
           background: $color7;
         }
+        &:active {
+          background: $color2;
+          color: $color1;
+        }
       }
     }
 
@@ -85,6 +89,12 @@ footer {
         text-decoration: none;
         color: $color3;
         @include roboto(400, normal, 16px);
+        &:hover {
+          color: $color7;
+        }
+        &:active {
+          color: $color2;
+        }
 
         img {
           width: 24px;
@@ -110,6 +120,12 @@ footer {
           @include roboto(400, normal, 14px);
           text-decoration: none;
           color: $color3;
+          &:hover {
+            color: $color7;
+          }
+          &:active {
+            color: $color2;
+          }
         }
       }
     }
@@ -129,11 +145,23 @@ footer {
       p {
         margin: 0.3rem 0;
         @include roboto(400, normal, 14px);
+        &:hover {
+          color: $color7;
+        }
+        &:active {
+          color: $color2;
+        }
 
 
         a {
           color: $color3;
           text-decoration: none;
+          &:hover {
+            color: $color7;
+          }
+          &:active {
+            color: $color2;
+          }
         }
       }
     }
@@ -164,50 +192,55 @@ footer {
     #newsletters {
       .newsletters-body {
         h6 {
-          font-size: 14px;
+          @include roboto(500, normal, 14px);
           margin: 20px 0 0 0;
         }
         p {
-          font-size: 13px;
+          color: $color3;
+          @include roboto(400, normal, 13px);
         }
       }
 
       form {
         label input {
+          display: flex;
+          flex-direction: column;
           width: 100%;
           max-width: 280px;
           padding: 0.4rem;
-          font-size: 13px;
+          @include roboto(400, normal, 13px);
         }
 
         button {
           width: 100%;
-          max-width: 200px;
+          max-width: 100px;
           padding: 0.5rem;
-          font-size: 13px;
+          @include inter(600, normal, 13px);
         }
       }
 
       .cdg2 {
-        font-size: 12px;
+        @include roboto(400, normal, 12px);
       }
     }
 
     #footer-social {
       .footer-social-body {
-        flex-direction: column;
-        align-items: center;
-        gap: 1rem;
+
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;        // permet aux icônes de passer à la ligne si besoin
+        justify-content: center;
       }
 
       .footer-social-icon {
         h6 {
-          font-size: 14px;
+          @include roboto(500, normal, 14px);
           margin: 20px 0 5px 0;
         }
 
         a {
-          font-size: 14px;
+          @include roboto(400, normal, 14px);
 
           img {
             width: 20px;
@@ -216,33 +249,37 @@ footer {
       }
 
       .footer-text {
+        min-width: 120px;       // assure qu’ils ne deviennent pas trop petits
+        text-align: center;
         h6 {
-          font-size: 14px;
+          @include roboto(500, normal, 14px);
           margin: 20px 0 5px 0;
         }
 
         ul li a {
-          font-size: 13px;
+          @include roboto(400, normal, 13px);
         }
       }
     }
 
     #footer-legal {
       .footer-legal-body {
-        flex-direction: column;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
         gap: 0.8rem;
         padding-top: 1.5rem;
         padding-bottom: 2rem;
 
         p {
-          font-size: 12px;
+          @include roboto(400, normal, 12px);
         }
       }
     }
   }
 
   .copyright {
-    font-size: 12px;
+    @include roboto(400, normal, 14px);
     text-align: center;
   }
 }

@@ -100,13 +100,13 @@
       gap: 1rem;
 
       h1 {
-        font-size: 22px;
+        @include montserrat(600, normal, 22px);
         margin-bottom: 0.8rem;
         text-align: center;
       }
 
       p {
-        font-size: 16px;
+        @include roboto(400, oblique, 16px);
         text-align: center;
         margin-bottom: 1.5rem;
       }
@@ -117,7 +117,7 @@
         thead {
           tr {
             th {
-              font-size: 14px;
+              @include roboto(600, normal, 14px);
               padding: 0.5rem;
             }
           }
@@ -126,12 +126,14 @@
         tbody {
           tr {
             td {
-              font-size: 14px;
+              @include roboto(400, normal, 14px);
               padding: 0.4rem 0.6rem;
+              width: auto;
+              max-width: 650px;
             }
 
             a {
-              font-size: 13px;
+              @include roboto(500, normal, 14px);
               padding: 0.3rem 0.5rem;
             }
           }

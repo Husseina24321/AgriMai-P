@@ -5,24 +5,24 @@
             <li><a href="/AgriMai/index.php?route=home">ACCUEIL</a></li>
             <li><a href="/AgriMai/index.php?route=about">À PROPOS DE NOUS</a></li>
             <li><a href="/AgriMai/index.php?route=market">MARCHÉ</a></li>
+        </ul>
 
+        <div class="top-right">
             {% if session.user is defined and session.user.role is defined %}
                 {% if session.user.role == 'Producteur' %}
-                    <li><a href="/AgriMai/index.php?route=list-products-by-user&user_id={{ session.user.id }}">MES PRODUITS</a></li>
-                    <li><a href="/AgriMai/index.php?route=producerMessages">MES MESSAGES</a></li>
+                    <a class="aBorder3" href="/AgriMai/index.php?route=list-products-by-user&user_id={{ session.user.id }}">MES PRODUITS</a>
+                    <a class="aBorder4" href="/AgriMai/index.php?route=producerMessages">MES MESSAGES</a>
                 {% elseif session.user.role == 'Acheteur' %}
-                    <li><a href="/AgriMai/index.php?route=buyerMessages">MES MESSAGES</a></li>
+                    <a class="aBorder8" href="/AgriMai/index.php?route=buyerMessages">MES MESSAGES</a>
                 {% elseif session.user.role == 'Admin' %}
-                    <li><a href="/AgriMai/index.php?route=list-users">GESTION DES UTILISATEURS</a></li>
-                    <li><a href="/AgriMai/index.php?route=list-AdminMessage">MESSAGES ADMIN</a></li>
+                    <a class="aBorder6" href="/AgriMai/index.php?route=list-users">GESTION DES UTILISATEURS</a>
+                    <a class="aBorder7" href="/AgriMai/index.php?route=list-AdminMessage">MESSAGES ADMIN</a>
                 {% endif %}
 
-                <li><a href="/AgriMai/index.php?route=logout">DÉCONNEXION</a></li>
+                <a class="aBorder5" href="/AgriMai/index.php?route=logout">DÉCONNEXION</a>
             {% else %}
-                <li><a class="aBorder1" href="/AgriMai/index.php?route=login">
-                        <i class="fa-duotone fa-regular fa-user"></i>S'IDENTIFIER
-                    </a></li>
-                <li><a class="aBorder2" href="/AgriMai/index.php?route=register">S'INSCRIRE</a></li>
+                <a class="aBorder1" href="/AgriMai/index.php?route=login">S'IDENTIFIER</a>
+                <a class="aBorder2" href="/AgriMai/index.php?route=register">S'INSCRIRE</a>
             {% endif %}
 
             <!--<li>
@@ -30,6 +30,6 @@
                     PANIER <img src="/AgriMai/assets/styles/img/shopping-cart.png" alt="Panier">
                 </a>
             </li>-->
-        </ul>
+        </div>
     </nav>
 </header>

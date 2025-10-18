@@ -179,7 +179,6 @@
 /* Responsive - Mobile (max-width: 768px) */
 @media screen and (max-width: 768px) {
 
-  /* === HEADER ABOUT === */
   #header-about {
     padding: 1.5rem;
     min-height: 80vh;
@@ -191,18 +190,17 @@
 
       .about-text {
         h1 {
-          font-size: 24px;
+          @include montserrat(700, normal, 24px);
         }
 
         p {
-          font-size: 20px;
+          @include playfair(600, oblique, 22px, 1.6);
           line-height: 1.4;
         }
       }
     }
   }
 
-  /* AGMAI ABOUT */
   #agMai-about {
     .agMai-body {
       flex-direction: column;
@@ -211,27 +209,32 @@
       gap: 1.5rem;
 
       .agMaiAbout-text {
-        text-align: center;
+        max-width: 400px;
+        text-align: justify;
+        line-height: 1.6;
+        padding: 0 1rem;
 
         p {
-          font-size: 16px;
+          @include roboto-light(300, normal, 16px);
         }
 
         .about-titleP {
-          font-size: 20px;
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          @include roboto(500, normal, 20px);
         }
       }
 
       .agMaiAbout-img img {
-        width: 200px;
-        height: 200px;
+        width: 250px;
+        height: 250px;
         padding: 20px;
         border-radius: 50px;
       }
     }
   }
 
-  /* TEAM */
   #team {
     margin: 2rem 1rem;
 
@@ -255,16 +258,16 @@
           }
 
           h3 {
-            font-size: 18px;
+            @include montserrat(600, normal, 18px);
           }
 
           .team-title,
           .team-title2 {
-            font-size: 16px;
+            @include roboto-light(600, oblique, 16px);
           }
 
           p {
-            font-size: 14px;
+            @include roboto(300, normal, 14px);
           }
 
           .team-logo,
@@ -281,7 +284,6 @@
     }
   }
 
-  /* ADDRESS  */
   #address {
     margin: 2rem 1rem;
 
@@ -295,18 +297,20 @@
         padding: 10px;
 
         h3 {
-          font-size: 18px;
+          @include montserrat(600, normal, 18px);
         }
 
         p {
-          font-size: 14px;
+          @include roboto(300, normal, 14px);
         }
       }
 
       .address-img img {
-        width: 200px;
-        height: 200px;
+        width: 100%;
+        max-width: 270px;
+        height: auto;
         padding: 10px;
+        box-sizing: border-box;
       }
     }
   }

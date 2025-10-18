@@ -103,7 +103,7 @@
   .reply-form {
     flex: 1;
     background-color: rgba($color10, 0.08);
-    border: 1px solid rgba($color27, 0.4);
+    border-right: 4px solid $color12;
     border-radius: 15px;
     padding: 2rem 3rem 2rem 2rem;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -122,7 +122,7 @@
       gap: 0.8rem;
 
       label {
-        @include roboto(500, normal, 17px);
+        @include roboto(500, normal, 16px);
         color: $color4;
         margin-top: 0.5rem;
       }
@@ -193,30 +193,32 @@
       flex: none;
 
       h1 {
-        font-size: 22px;
+        @include montserrat(600, normal, 20px);
         margin-bottom: 1rem;
       }
 
       .message-card {
         padding: 1rem;
         margin-bottom: 1rem;
+        border-right: 4px solid $color12;
 
         .message-header {
+          @include roboto(500, normal, 16px);
           flex-direction: column;
           align-items: flex-start;
           gap: 0.4rem;
 
           .product-title {
-            font-size: 14px;
+            @include roboto(500, normal, 14px);
           }
 
           .date {
-            font-size: 13px;
+            @include roboto(500, normal, 14px);
           }
         }
 
         .message-body {
-          font-size: 15px;
+          @include roboto-light(400, italic, 16px);
           padding: 0.5rem 0;
         }
 
@@ -224,7 +226,7 @@
           justify-content: center;
 
           a {
-            font-size: 14px;
+            @include roboto(500, normal, 14px);
             padding: 0.3rem 0.8rem;
           }
         }
@@ -232,12 +234,18 @@
     }
 
     .reply-form {
-      width: 100%;
-      flex: none;
-      padding: 1.5rem;
+
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+      max-width: 500px;
+      height: auto;
+      border-left: 4px solid $color12;
+      margin: 0 auto;
+      box-sizing: border-box;
 
       h2 {
-        font-size: 20px;
+        @include montserrat(600, normal, 20px);
         margin-bottom: 1rem;
       }
 
@@ -245,13 +253,13 @@
         gap: 0.6rem;
 
         label {
-          font-size: 15px;
+          @include roboto(500, normal, 16px);
         }
 
         input,
         select,
         textarea {
-          font-size: 15px;
+          @include roboto(400, normal, 16px);
           padding: 0.5rem 0.7rem;
         }
 
@@ -261,7 +269,7 @@
 
         .reply-actions {
           button {
-            font-size: 16px;
+            @include inter(600, normal, 16px);
             padding: 0.4rem 1rem;
           }
         }
@@ -269,3 +277,4 @@
     }
   }
 }
+

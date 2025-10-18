@@ -2,7 +2,7 @@
 
 {% block content %}
     <section id="products-Regions">
-        <div class="header">
+        <div class="header-card">
             <h1>Les Reinettes Grise du Canada de notre région</h1>
             <a href="/AgriMai/index.php?route=market" class="btn">Voir tout</a>
         </div>
@@ -13,8 +13,8 @@
                     <div class="card">
                         <img src="/AgriMai/public/uploads/{{ product.getImage() }}" alt="{{ product.getTitle() }}">
                         <h3>{{ product.getTitle() }}</h3>
-                        <p class="producteur">{{ product.getProducteur() }}</p>
-                        <p class="prix">{{ product.getPrice() }} € / kg</p>
+                        <p>{{ product.getProducteur() }}</p>
+                        <p>{{ product.getPrice() }} € / kg</p>
                         <div class="actions">
                             <a href="/AgriMai/index.php?route=product-detail&id={{ product.getId() }}" class="btn">Voir</a>
                         </div>
