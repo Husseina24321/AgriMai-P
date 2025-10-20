@@ -21,9 +21,25 @@
     .grid-market{
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
+      gap: 15px 0;
+      padding: 0;
       margin: 60px;
       .card-market{
+        width: 390px;
+        background: $color11;
+        border: 1px solid $color12;
+        border-radius: 10px;
+        padding: 1rem;
+        text-align: center;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+
+        transition: transform 0.4s cubic-bezier(0.25, 1.25, 0.5, 1),
+        box-shadow 0.3s ease;
+
+        &:hover {
+          transform: scale(1.1) rotate(30deg);
+          box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
         img {
           width: 200px;
           height: 210px;
@@ -39,26 +55,13 @@
           @include roboto(400, normal, 18px);
           color: $color4;
         }
-        background: $color11;
-        border: 1px solid $color12;
-        border-radius: 10px;
-        padding: 1rem;
-        text-align: center;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
 
-        transition: transform 0.4s cubic-bezier(0.25, 1.25, 0.5, 1),
-        box-shadow 0.3s ease;
+        .actions {
 
-        &:hover {
-          transform: scale(1.1) rotate(30deg);
-          box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-        }
-        .actions{
-          margin-top: 10px;
-          a.btn{
-            width: 110px;
-            height: 40px;
+          a.btnMarket {
             display: inline-block;
+            width: 100px;
+            height: 40px;
             border-radius: 0 20px;
             border: 1px solid $color4;
             background: $color12;
@@ -66,11 +69,13 @@
             padding: 8px 16px;
             text-decoration: none;
             @include inter(600, normal, 18px);
+            transition: all 0.3s ease;
 
             &:hover {
               background: $color1;
               color: $color8;
             }
+
             &:active {
               background: $color2;
               color: $color1;
@@ -81,6 +86,7 @@
     }
   }
 }
+
 
 /* Responsive Mobile max-width: 768px */
 @media screen and (max-width: 768px) {

@@ -179,7 +179,6 @@ footer {
   footer {
     .footer-body {
       flex-direction: column;
-      align-items: center;
       gap: 1rem;
       padding: 1.5rem;
     }
@@ -228,9 +227,11 @@ footer {
       .footer-social-body {
 
         display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;        // permet aux icônes de passer à la ligne si besoin
+        flex-direction: column;
         justify-content: center;
+        flex-wrap: wrap;        // permet aux icônes de passer à la ligne si besoin
+        gap: 1rem;
+
       }
 
       .footer-social-icon {
@@ -249,8 +250,11 @@ footer {
       }
 
       .footer-text {
-        min-width: 120px;       // assure qu’ils ne deviennent pas trop petits
-        text-align: center;
+        min-width: 120px;       // assure qu’ils ne deviennent pas trop petits avec une taille minimale
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: unset;
         h6 {
           @include roboto(500, normal, 14px);
           margin: 20px 0 5px 0;

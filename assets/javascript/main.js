@@ -12,6 +12,26 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 
+document.addEventListener("DOMContentLoaded", () => {
+    // Sélection du bouton Retour
+    const openModalRetour = document.getElementById("openModal2");
+    const popupRetour = document.getElementById("popup-retour");
+    // Ouvrir la modale
+    openModalRetour.addEventListener('click', function(){
+        popupRetour.style.display ='block';
+    })
+
+    const closeModalRetour = document.querySelector(".js-close-button2");
+
+
+    // Fermer la modale
+    closeModalRetour.addEventListener('click', function(){
+        popupRetour.style.display ='none';
+    })
+
+});
+
+
 document.addEventListener("DOMContentLoaded", function () {
     const lotSelect = document.querySelector(".lots");
     const lotButtons = document.querySelectorAll(".productDetail-lot-btn");
@@ -60,4 +80,6 @@ document.addEventListener("DOMContentLoaded", () => {
         formModal.style.display ='none';
     });
 });
+
+
 
