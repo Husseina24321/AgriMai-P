@@ -5,6 +5,8 @@ html {
 }
 
 body {
+  display: flex;
+  flex-direction: column;
   margin: 0;
   padding: 0;
   min-height: 100vh;
@@ -90,6 +92,7 @@ footer #newsletters .cdg2 {
 }
 footer #newsletters .cdgStyle2 {
   color: #9EFFA2;
+  text-decoration: none;
 }
 footer #footer-social .footer-social-body {
   display: flex;
@@ -169,8 +172,8 @@ footer #footer-legal .footer-legal-body {
   background-color: #563729;
   text-align: center;
   padding-top: 2rem;
-  border-top: 1px solid #FFFFFF;
   padding-bottom: 4rem;
+  border-top: 1px solid #FFFFFF;
 }
 footer #footer-legal .footer-legal-body p {
   margin: 0.3rem 0;
@@ -289,7 +292,6 @@ footer #footer-legal .footer-legal-body p a:active {
     width: 20px;
   }
   footer #footer-social .footer-text {
-    min-width: 120px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -311,19 +313,12 @@ footer #footer-legal .footer-legal-body p a:active {
     font-size: 13px;
   }
   footer #footer-legal .footer-legal-body {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    gap: 0.8rem;
-    padding-top: 1.5rem;
-    padding-bottom: 2rem;
-  }
-  footer #footer-legal .footer-legal-body p {
-    font-family: "Roboto", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 400;
-    font-style: normal;
-    font-size: 12px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
   }
   .copyright {
     font-family: "Roboto", sans-serif;
@@ -332,6 +327,7 @@ footer #footer-legal .footer-legal-body p a:active {
     font-style: normal;
     font-size: 14px;
     text-align: center;
+    margin-bottom: 0;
   }
 }
 header {
@@ -395,6 +391,42 @@ header nav .aBorder2 {
   border: 2px solid #F5F5DC;
 }
 
+@media screen and (max-width: 1024px) {
+  header {
+    padding: 1rem 1.5rem;
+  }
+  header nav {
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  header nav img {
+    width: 65px;
+  }
+  header nav ul {
+    margin-left: 0;
+    gap: 1rem;
+  }
+  header nav li {
+    margin: 0 0.5rem;
+  }
+  header nav a {
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+    font-variation-settings: "wdth" 100;
+    font-size: 17px;
+  }
+  header nav .top-right a {
+    padding: 0.3rem 0.6rem;
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+    font-variation-settings: "wdth" 100;
+    font-size: 14px;
+  }
+}
 /* Responsive Mobile max-width: 768px */
 @media screen and (max-width: 768px) {
   header {
@@ -464,6 +496,56 @@ header nav .aBorder2 {
     font-variation-settings: "wdth" 100;
     font-size: 14px;
     white-space: nowrap;
+  }
+}
+/* Responsive très petit écran max-width: 480px */
+@media screen and (max-width: 480px) {
+  header {
+    padding: 0.8rem 1rem;
+  }
+  header nav {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6rem;
+  }
+  header nav img {
+    width: 40px;
+  }
+  header nav ul {
+    flex-direction: column;
+    gap: 0.6rem;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+  }
+  header nav li {
+    margin: 0.3rem 0;
+    text-align: center;
+  }
+  header nav a {
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+    font-variation-settings: "wdth" 100;
+    font-size: 14px;
+    white-space: normal;
+  }
+  header nav .top-right {
+    position: static;
+    flex-direction: row;
+    gap: 0.3rem;
+    justify-content: center;
+    margin: 0.5rem 0 0 0;
+  }
+  header nav .top-right a {
+    padding: 0.25rem 0.4rem;
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+    font-variation-settings: "wdth" 100;
+    font-size: 12px;
   }
 }
 #header-about {
@@ -2800,6 +2882,388 @@ header nav .aBorder2 {
     font-size: 12px;
     text-align: center;
     padding: 0 1rem;
+  }
+}
+/* --- Styles généraux --- */
+.cookies-message {
+  font-family: Arial, sans-serif;
+  margin: 2rem;
+}
+
+/* --- Bannière principale --- */
+.cookie-banner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #222;
+  color: #fff;
+  padding: 15px 20px;
+  display: none; /* cachée par défaut */
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+}
+
+.cookie-banner p {
+  margin: 0;
+  font-size: 14px;
+}
+
+.cookie-banner a {
+  color: #4aa3ff;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.cookie-banner button {
+  margin-left: 10px;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#accept-cookies {
+  background-color: #2ecc71;
+  color: white;
+}
+
+#reject-cookies {
+  background-color: #e74c3c;
+  color: white;
+}
+
+/* --- Formulaire de paramètres --- */
+.cookie-settings {
+  display: none; /* masqué tant que l’utilisateur ne clique pas sur “Personnaliser” */
+  background: #f9f9f9;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 20px;
+  margin-top: 20px;
+  max-width: 500px;
+}
+
+.cookie-settings h2 {
+  margin-top: 0;
+}
+
+.cookie-settings form label {
+  display: block;
+  margin: 10px 0;
+  font-size: 15px;
+}
+
+.cookie-settings input[type=checkbox] {
+  margin-right: 8px;
+}
+
+.cookie-settings .buttons {
+  margin-top: 15px;
+}
+
+.cookie-settings .buttons button {
+  margin-right: 10px;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#accept-all {
+  background-color: #2ecc71;
+  color: #fff;
+}
+
+#reject-all {
+  background-color: #e74c3c;
+  color: #fff;
+}
+
+.cookie-settings button[type=submit] {
+  background-color: #3498db;
+  color: #fff;
+}
+
+#cgu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 4rem;
+}
+#cgu .cgu-body {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 2rem;
+}
+#cgu .cgu-body h1 {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+  font-size: 26px;
+  text-align: center;
+  text-decoration: underline;
+}
+#cgu .cgu-body .cgu-text {
+  margin: 2rem 2rem 0 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+#cgu .cgu-body .cgu-text h2 {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+  font-size: 20px;
+  text-decoration: underline;
+}
+#cgu .cgu-body .cgu-text p {
+  font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 18px;
+}
+#cgu .cgu-body .cgu-text ul li {
+  font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 16px;
+}
+
+#cgv-body {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 2rem;
+}
+#cgv-body h1 {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+  font-size: 26px;
+  text-align: center;
+  text-decoration: underline;
+}
+#cgv-body .cgv-text {
+  margin: 2rem 2rem 0 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+#cgv-body .cgv-text h2 {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+  font-size: 20px;
+  text-decoration: underline;
+}
+#cgv-body .cgv-text p {
+  font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 18px;
+}
+#cgv-body .cgv-text ul li {
+  font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 16px;
+}
+
+@media (max-width: 1024px) {
+  #cgu .cgu-body {
+    padding: 1rem;
+  }
+  #cgu .cgu-body h1 {
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+    font-variation-settings: "wdth" 100;
+    font-size: 22px;
+  }
+  #cgu .cgu-body .cgu-text {
+    margin: 0;
+    padding: 0 1rem;
+  }
+  #cgu .cgu-body h2 {
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+    font-variation-settings: "wdth" 100;
+    font-size: 20px;
+  }
+  #cgu .cgu-body p {
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 18px;
+  }
+  #cgu .cgu-body ul li {
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 18px;
+  }
+  #cgu #cgv-body {
+    padding: 1rem;
+  }
+  #cgu #cgv-body h1 {
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+    font-variation-settings: "wdth" 100;
+    font-size: 22px;
+  }
+  #cgu #cgv-body .cgv-text h2 {
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+    font-variation-settings: "wdth" 100;
+    font-size: 20px;
+  }
+  #cgu #cgv-body .cgv-text p {
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 18px;
+  }
+  #cgu #cgv-body .cgv-text ul li {
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 18px;
+  }
+}
+@media (max-width: 768px) {
+  #cgu {
+    margin: 1rem;
+    padding: 1rem 1rem 1rem 0;
+  }
+  #cgu .cgu-body h1 {
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+    font-variation-settings: "wdth" 100;
+    font-size: 20px;
+  }
+  #cgu .cgu-body .cgu-text {
+    margin: 0.5rem;
+  }
+  #cgu .cgu-body .cgu-text h2 {
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+    font-variation-settings: "wdth" 100;
+    font-size: 18px;
+  }
+  #cgu .cgu-body .cgu-text p {
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 16px;
+  }
+  #cgu .cgu-body .cgu-text ul li {
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 16px;
+  }
+  #cgu #cgv-body h1 {
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+    font-variation-settings: "wdth" 100;
+    font-size: 18px;
+  }
+  #cgu #cgv-body .cgv-text {
+    margin: 0.5rem;
+  }
+  #cgu #cgv-body .cgv-text h2 {
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+    font-variation-settings: "wdth" 100;
+    font-size: 16px;
+  }
+  #cgu #cgv-body .cgv-text p {
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 14px;
+  }
+  #cgu #cgv-body .cgv-text ul li {
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 14px;
+  }
+}
+@media (max-width: 480px) {
+  #cgu, #cgv-body {
+    margin: 0.5rem;
+    padding: 0.5rem;
+  }
+  .cgu-text, .cgv-text {
+    margin: 0.5rem 0;
+  }
+  h1 {
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+    font-variation-settings: "wdth" 100;
+    font-size: 16px;
+  }
+  h2 {
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+    font-variation-settings: "wdth" 100;
+    font-size: 14px;
+  }
+  p {
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 12px;
+  }
+  ul li {
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 12px;
   }
 }
 #login {
@@ -5165,12 +5629,11 @@ header nav .aBorder2 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 30px;
   margin: 2rem;
 }
 #product-form .product-form-body {
   width: 600px;
-  padding: 50px;
+  padding: 80px;
   display: flex;
   flex-direction: column;
   border-radius: 30px;
@@ -5265,6 +5728,31 @@ header nav .aBorder2 {
   background: #4CAF50;
 }
 
+/* Responsive : Tablette */
+@media (max-width: 1089px) {
+  #product-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2rem;
+    min-height: calc(100vh - 700px);
+  }
+  #product-form .product-form-body {
+    margin: 4rem;
+    padding: 40px;
+    width: 100%;
+    max-width: 600px;
+    height: 100%;
+  }
+  #product-form .product-form-body h3 {
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+    font-variation-settings: "wdth" 100;
+    font-size: 20px;
+  }
+}
 /* Responsive - Mobile (max-width: 768px) */
 @media screen and (max-width: 768px) {
   #product-form {
@@ -5273,6 +5761,7 @@ header nav .aBorder2 {
   }
   #product-form .product-form-body {
     width: 100%;
+    max-width: 500px;
     padding: 1.5rem;
     border-radius: 20px;
   }
@@ -5291,6 +5780,7 @@ header nav .aBorder2 {
   #product-form .product-form-body .product-form select,
   #product-form .product-form-body .product-form textarea {
     width: 100%;
+    max-width: 450px;
     font-size: 15px;
     padding: 0.5rem 0.7rem;
   }
@@ -5298,6 +5788,7 @@ header nav .aBorder2 {
     min-height: 100px;
   }
   #product-form .product-form-body .product-form select {
+    max-width: 250px;
     width: 100%;
     height: 38px;
   }
@@ -5308,8 +5799,8 @@ header nav .aBorder2 {
   }
   #product-form .product-form-body button {
     width: 100%;
+    max-width: 150px;
     font-size: 16px;
-    padding: 0.5rem 0.8rem;
     border-radius: 20px;
   }
 }

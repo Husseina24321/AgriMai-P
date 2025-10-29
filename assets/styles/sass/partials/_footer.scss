@@ -61,6 +61,7 @@ footer {
 
     .cdgStyle2 {
       color: $color25;
+      text-decoration: none;
     }
   }
 
@@ -139,19 +140,19 @@ footer {
       background-color: $color19;
       text-align: center;
       padding-top: 2rem;
+      padding-bottom: 4rem; // 🔻 zone à modifier (voir responsive ci-dessous)
       border-top: 1px solid $color3;
-      padding-bottom: 4rem;
 
       p {
         margin: 0.3rem 0;
         @include roboto(400, normal, 14px);
+
         &:hover {
           color: $color7;
         }
         &:active {
           color: $color2;
         }
-
 
         a {
           color: $color3;
@@ -167,11 +168,11 @@ footer {
     }
   }
 }
- .copyright{
-      @include roboto(400, normal, 14px);
-      color: $color3;
- }
 
+.copyright {
+  @include roboto(400, normal, 14px);
+  color: $color3;
+}
 
 /* Responsive - Mobile max-width: 768px */
 @media screen and (max-width: 768px) {
@@ -250,7 +251,6 @@ footer {
       }
 
       .footer-text {
-        min-width: 120px;       // assure qu’ils ne deviennent pas trop petits avec une taille minimale
         display: flex;
         flex-direction: column;
         align-items: flex-start;
@@ -268,16 +268,12 @@ footer {
 
     #footer-legal {
       .footer-legal-body {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-        gap: 0.8rem;
-        padding-top: 1.5rem;
-        padding-bottom: 2rem;
-
-        p {
-          @include roboto(400, normal, 12px);
-        }
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
       }
     }
   }
@@ -285,5 +281,6 @@ footer {
   .copyright {
     @include roboto(400, normal, 14px);
     text-align: center;
+    margin-bottom: 0;
   }
 }

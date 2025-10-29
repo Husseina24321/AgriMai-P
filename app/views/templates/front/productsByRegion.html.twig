@@ -3,7 +3,15 @@
 {% block content %}
     <section id="products-Regions">
         <div class="header-card">
-            <h1>Les Reinettes Grise du Canada de notre région</h1>
+            {% if products is not empty %}
+                <h1>
+                    Les Reinettes Grise du Canada de la
+                    {{ products[0].getLocation().value }}
+                </h1>
+            {% else %}
+                <h1>Les Reinettes Grise du Canada de notre région</h1>
+            {% endif %}
+
             <a href="/AgriMai/index.php?route=market" class="btn">Voir tout</a>
         </div>
 

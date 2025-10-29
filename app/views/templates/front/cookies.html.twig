@@ -1,0 +1,50 @@
+{% block content %}
+<section>
+    <div class="cookies-message">
+        <h1>Bienvenue sur mon site</h1>
+        <p>Contenu de la page...</p>
+
+        <!-- Bannière du début -->
+        <div id="cookie-banner" class="cookie-banner">
+            <p>
+                Nous utilisons des cookies pour améliorer votre expérience.
+                <a href="#" id="open-page">Personnaliser</a>
+            </p>
+            <div>
+                <button id="accept-cookies">Tout accepter</button>
+                <button id="reject-cookies">Tout refuser</button>
+            </div>
+        </div>
+
+        <!-- Formulaire des paramètres -->
+        <div id="cookie-settings" class="cookie-settings">
+            <h2>Paramètres des cookies</h2>
+            <p>Vous pouvez choisir les cookies que vous acceptez.</p>
+
+            <form id="cookie-form">
+                <!-- Dans un formulaire une case à crocher se fait avec le type checkbox -->
+                <label>
+                    <input type="checkbox" checked disabled>
+                    Cookies nécessaires (toujours actifs)
+                </label>
+
+                <label>
+                    <input type="checkbox" name="analytics">
+                    Cookies de performance / statistiques
+                </label>
+
+                <label>
+                    <input type="checkbox" name="ads">
+                    Cookies de publicité
+                </label>
+
+                <div class="buttons">
+                    <button type="button" id="accept-all">Tout accepter</button>
+                    <button type="button" id="reject-all">Tout refuser</button>
+                    <button type="submit">Enregistrer mes préférences</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+{% endblock %}

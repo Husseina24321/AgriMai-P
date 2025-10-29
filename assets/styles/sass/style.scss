@@ -11,6 +11,8 @@
 @use "layouts/producerMessages"as *;
 @use "layouts/faq"as *;
 @use "layouts/home"as *;
+@use "layouts/cookies"as *;
+@use "layouts/cguCgv"as *;
 @use "layouts/login"as *;
 @use "layouts/resetPassword"as *;
 @use "layouts/forgotPassword"as *;
@@ -20,7 +22,7 @@
 @use "layouts/market" as *;
 @use "layouts/buyerMessages" as *;
 @use "layouts/productsByUsers" as *;
-@use "layouts/producerDashboard" as *;
+@use "layouts/createProducts" as *;
 @use "components/arrow"as *;
 @use "components/buttons"as *;
 @use "components/link"as *;

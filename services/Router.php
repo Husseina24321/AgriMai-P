@@ -1,6 +1,7 @@
 <?php
 namespace services;
 use app\Controllers\AboutController;
+use app\Controllers\CguCgvController;
 use app\Controllers\UserController;
 use app\Controllers\MessageAdminController;
 use app\Controllers\FaqController;
@@ -28,7 +29,10 @@ class Router {
                         $controller->index();
                         break;
 
-
+                case "cgu-cgv":
+                    $controller = new CguCgvController();
+                    $controller->index();
+                    break;
 
                 // Newsletter
                 case "newsletter":

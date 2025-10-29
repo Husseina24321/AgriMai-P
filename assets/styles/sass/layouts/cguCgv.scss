@@ -1,0 +1,190 @@
+@use "../vars/colors" as *;
+@use "../vars/fonts" as *;
+#cgu{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 4rem;
+  .cgu-body{
+    display: flex;
+    flex-direction: column;
+    padding: 2rem 2rem;
+
+    h1{
+      @include montserrat(700, normal, 26px);
+      text-align: center;
+      text-decoration: underline;
+    }
+    .cgu-text{
+      margin: 2rem 2rem 0 3rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      h2{
+        @include montserrat(700, normal, 20px);
+        text-decoration: underline;
+      }
+      p{
+        @include roboto(400, normal, 18px);
+      }
+      ul{
+        li{
+          @include roboto(400, normal, 16px);
+        }
+      }
+    }
+  }
+}
+#cgv-body{
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 2rem;
+
+  h1{
+    @include montserrat(700, normal, 26px);
+    text-align: center;
+    text-decoration: underline;
+  }
+
+  .cgv-text{
+    margin: 2rem 2rem 0 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    h2{
+      @include montserrat(700, normal, 20px);
+      text-decoration: underline;
+    }
+    p{
+      @include roboto(400, normal, 18px);
+    }
+    ul{
+      li{
+        @include roboto(400, normal, 16px);
+      }
+    }
+  }
+}
+@media (max-width: 1024px) {
+
+  #cgu{
+    .cgu-body{
+      padding: 1rem;
+      h1 {
+        @include montserrat(700, normal, 22px);
+      }
+      .cgu-text{
+        margin: 0;
+        padding: 0 1rem;
+      }
+      h2 {
+        @include montserrat(700, normal, 20px);
+      }
+      p {
+        @include roboto(400, normal, 18px);
+      }
+      ul li {
+        @include roboto(400, normal, 18px);
+      }
+    }
+    #cgv-body {
+      padding: 1rem;
+      h1 {
+        @include montserrat(700, normal, 22px);
+      }
+      .cgv-text{
+        h2 {
+          @include montserrat(700, normal, 20px);
+        }
+        p {
+          @include roboto(400, normal, 18px);
+        }
+        ul li {
+          @include roboto(400, normal, 18px);
+        }
+      }
+    }
+  }
+
+}
+
+
+// Responsive pour mobiles (max-width: 768px)
+@media (max-width: 768px) {
+  #cgu{
+    margin: 1rem;
+    padding: 1rem 1rem 1rem 0;
+
+    .cgu-body{
+      h1 {
+        @include montserrat(700, normal, 20px);
+      }
+      .cgu-text{
+        margin: 0.5rem;
+        h2 {
+          @include montserrat(700, normal, 18px);
+        }
+        p {
+          @include roboto(400, normal, 16px);
+        }
+        ul li {
+          @include roboto(400, normal, 16px);
+        }
+      }
+
+    }
+    #cgv-body {
+
+      h1 {
+        @include montserrat(700, normal, 18px);
+      }
+      .cgv-text {
+        margin: 0.5rem;
+
+        h2 {
+          @include montserrat(700, normal, 16px);
+        }
+        p {
+          @include roboto(400, normal, 14px);
+        }
+        ul li {
+          @include roboto(400, normal, 14px);
+        }
+      }
+
+
+    }
+
+  }
+
+}
+
+// Responsive pour très petits écrans (max-width: 480px)
+@media (max-width: 480px) {
+  #cgu, #cgv-body {
+    margin: 0.5rem;
+    padding: 0.5rem;
+  }
+
+  .cgu-text, .cgv-text {
+    margin: 0.5rem 0;
+  }
+
+  h1 {
+    @include montserrat(700, normal, 16px);
+  }
+
+  h2 {
+    @include montserrat(700, normal, 14px);
+  }
+
+  p {
+    @include roboto(400, normal, 12px);
+  }
+
+  ul li {
+    @include roboto(400, normal, 12px);
+  }
+}
+

@@ -88,7 +88,7 @@ class AuthController extends AbstractController
             return;
         }
 
-        // ⚡ Vérifie le statut du compte avant d'autoriser la connexion
+        //  Vérifie le statut du compte avant d'autoriser la connexion
         if ($user->getStatus() === UserStatus::Pending) {
             $_SESSION["error-message"] = "Votre compte est en attente de validation par l'administrateur.
             Veuillez vous connecter dans 1 minute";
@@ -184,15 +184,16 @@ class AuthController extends AbstractController
         $firstName = htmlspecialchars($_POST["first_name"]);
         $lastName  = htmlspecialchars($_POST["last_name"]);
         $email     = htmlspecialchars($_POST["email"]);
+        // Récupère et hache le mot de passe avec Bcrypt
         $password  = password_hash($_POST["password"], PASSWORD_BCRYPT);
         $roleEnum  = UserRole::from($_POST["role"]);
 
-        // ⚡ Crée l’utilisateur avec statut Pending
+        //  Crée l’utilisateur avec statut Pending
         $user = new User(
             $firstName,
             $lastName,
             $email,
-            $password,
+            $password, //  là on stocke le hash généré
             $roleEnum,
             UserStatus::Pending //  statut par défaut : attente de validation, utiliser pour la validation
         );

@@ -82,4 +82,71 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
+document.addEventListener("DOMContentLoaded", () => {
+    const banner = document.getElementById("cookie-banner");
+    const settings = document.getElementById("cookie-settings");
+    const openPage = document.getElementById("open-page");
+    const acceptBtn = document.getElementById("accept-cookies");
+    const rejectBtn = document.getElementById("reject-cookies");
+    const form = document.getElementById("cookie-form");
+    const acceptAll = document.getElementById("accept-all");
+    const rejectAll = document.getElementById("reject-all");
+
+    // Vérifie si l’utilisateur a déjà fait un choix
+    const preferences = JSON.parse(localStorage.getItem("cookiePreferences"));
+
+    if (!preferences) {
+        banner.style.display = "flex"; // Affiche la bannière
+    }
+
+    // Ouvrir les paramètres
+    openPage.addEventListener("click", (e) => {
+        e.preventDefault();
+        banner.style.display = "none";
+        settings.style.display = "block";
+    });
+
+    // Tout accepter depuis la bannière
+    acceptBtn.addEventListener("click", () => {
+        savePreferences({ analytics: true, ads: true });
+    });
+
+    // Tout refuser depuis la bannière
+    rejectBtn.addEventListener("click", () => {
+        savePreferences({ analytics: false, ads: false });
+    });
+
+    // Tout accepter depuis la page des paramètres
+    acceptAll.addEventListener("click", () => {
+        form.querySelectorAll('input[type="checkbox"]').forEach((box) => {
+            if (!box.disabled) box.checked = true;
+        });
+    });
+
+    // Tout refuser depuis la page des paramètres
+    rejectAll.addEventListener("click", () => {
+        form.querySelectorAll('input[type="checkbox"]').forEach((box) => {
+            if (!box.disabled) box.checked = false;
+        });
+    });
+
+    // Soumettre le formulaire
+    form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const analytics = form.querySelector('[name="analytics"]').checked;
+        const ads = form.querySelector('[name="ads"]').checked;
+        savePreferences({ analytics, ads });
+    });
+
+    // Fonction pour sauvegarder les préférences
+    function savePreferences(prefs) {
+        localStorage.setItem("cookiePreferences", JSON.stringify(prefs));
+        banner.style.display = "none";
+        settings.style.display = "none";
+        alert("Vos préférences ont été enregistrées !");
+    }
+});
+
+
+
 
