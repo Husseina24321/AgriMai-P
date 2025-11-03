@@ -104,6 +104,74 @@
     }
   }
 }
+
+
+/* Responsive - Tablette 769px à 1024px */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+
+  #faq {
+    padding: 2rem;
+    margin: 1.5rem;
+
+    .faq-body {
+      width: 85%; /* légèrement plus large que mobile, moins que desktop */
+      max-width: 700px;
+      padding: 3rem;
+      gap: 1.5rem;
+
+      .faq-title {
+        h3 {
+          @include montserrat(600, normal, 22px);
+        }
+        p {
+          @include roboto(400, oblique, 20px);
+          margin-bottom: 10px;
+          text-align: center;
+        }
+      }
+
+      .faq-text {
+        width: 100%;
+        border-width: 1px;
+        padding: 1rem;
+
+        .question {
+          @include roboto(600, oblique, 18px);
+        }
+
+        p {
+          @include roboto-light(300, normal, 16px);
+        }
+
+        .btnX {
+          align-self: flex-end;
+          padding: 0.5rem;
+        }
+      }
+
+      .moreQuestion {
+        @include roboto(600, normal, 18px);
+        margin: 30px 0 0 0;
+        text-align: center;
+      }
+
+      .btnFaq {
+        width: 140px;
+        height: auto;
+        padding: 7px 14px;
+        @include inter(600, normal, 16px);
+
+        a {
+          width: 100%;
+          height: 100%;
+          text-align: center;
+        }
+      }
+    }
+  }
+}
+
+
 /* Responsive Mobile max-width: 768px */
 @media screen and (max-width: 768px) {
 

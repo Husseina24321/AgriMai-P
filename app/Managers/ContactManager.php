@@ -2,6 +2,7 @@
 namespace app\Managers;
 
 use app\Models\Message;
+use DateTimeZone;
 use PDO;
 use DateTime;
 use Exception;
@@ -164,36 +165,52 @@ class ContactManager extends AbstractManager
         return $this->simplifieMessages($results);
     }
 
+    /**
+     * @throws \DateMalformedStringException
+     */
     public function create(array $data): Message
     {
-        $sentAt = $data['sent_at'] ?? (new DateTime())->format('Y-m-d H:i:s');
 
+        $timezone = new DateTimeZone('Europe/Paris');//Pour résoudre les problèmes de décalages d'heures
+        // Utilises le fuseau horaire Europe/Paris.
+
+        // Vérifie que $data['sent_at'] est défini et non vide, sinon utilise "now"
+        if (!empty($data['sent_at'])) {
+            $sentAt = (new DateTime($data['sent_at'], $timezone))->format('Y-m-d H:i:s');
+        } else {
+            $sentAt = (new DateTime('now', $timezone))->format('Y-m-d H:i:s');
+        }
+
+        // Filtrage du contenu pour éviter les injections HTML/JS (XSS)
+        $content = htmlspecialchars($data['content'], ENT_QUOTES, 'UTF-8');
         $stmt = $this->db->prepare("
-            INSERT INTO messages (sender_id, receiver_id, product_id, content, sent_at)
-            VALUES (:sender_id, :receiver_id, :product_id, :content, :sent_at)
-        ");
-
+        INSERT INTO messages (sender_id, receiver_id, product_id, content, sent_at)
+        VALUES (:sender_id, :receiver_id, :product_id, :content, :sent_at)
+    ");
+        // Utilisation de $content filtré
         $stmt->execute([
-            'sender_id' => $data['sender_id'] ?? 0,
+            'sender_id'   => $data['sender_id'] ?? 0,
             'receiver_id' => $data['receiver_id'],
-            'product_id' => $data['product_id'] ?? null,
-            'content' => $data['content'],
-            'sent_at' => $sentAt
+            'product_id'  => $data['product_id'] ?? null,
+            'content'     => $content,
+            'sent_at'     => $sentAt
         ]);
 
         $id = (int)$this->db->lastInsertId();
 
+        // Utilisation de $content filtré dans le tableau pour créer l'objet Message
         $row = [
-            'id' => $id,
-            'sender_id' => $data['sender_id'] ?? 0,
+            'id'          => $id,
+            'sender_id'   => $data['sender_id'] ?? 0,
             'receiver_id' => $data['receiver_id'],
-            'product_id' => $data['product_id'] ?? null,
-            'content' => $data['content'],
-            'sent_at' => $sentAt
+            'product_id'  => $data['product_id'] ?? null,
+            'content'     => $content,
+            'sent_at'     => $sentAt
         ];
 
         return $this->createMessageFromRow($row);
     }
+
 
     public function updateMessage(int $messageId, string $newContent): bool
     {

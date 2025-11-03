@@ -3,18 +3,32 @@
 
 #login{
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 30px;
-  margin: 2rem;
+  flex-direction: row;
+  align-items: stretch; /* pour que les deux div prennent la même hauteur */
+  justify-content: center;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  min-height: auto;
+
+  .login-image {
+    flex: 1;
+    background: url("/AgriMai/assets/styles/img/apples.png") no-repeat center center/cover;
+    border-radius: 0 5px 5px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+  }
+
   .login-body{
-    width: 600px;
+    flex: 1;
+    width: 300px;
     padding: 50px;
     display: flex;
     flex-direction: column;
     align-items: center;
     border: 1px solid;
-    border-radius: 5px;
+    border-radius: 5px 0 0 5px;
     background-color:$color30;
 
     h3{
@@ -23,7 +37,7 @@
     }
 
     img{
-      width: 200px;
+      width: 100px;
     }
     p{
       @include roboto(400, oblique, 20px);
@@ -112,18 +126,103 @@
 
 }
 
+/* Responsive - Tablette / écran moyen max-width: 1024px */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  #login {
+    padding: 2rem;
+    margin-bottom: 2rem; /* ou 1rem selon besoin */
+
+    .login-body {
+      width: 100%;
+      max-width: 400px; /* réduit la largeur */
+      padding: 40px; /* un peu moins que sur desktop */
+      border-radius: 5px 0 0 5px;
+
+      h3 {
+        @include montserrat(600, normal, 20px);
+      }
+
+      img {
+        width: 90px;
+      }
+
+      p {
+        @include roboto(400, oblique, 18px);
+        margin: 0 0 25px 0;
+        text-align: center;
+      }
+
+      form {
+        width: 100%;
+        gap: 0.8rem;
+
+        label {
+          width: 100%;
+          @include roboto(400, normal, 16px);
+        }
+
+        input,
+        textarea {
+          padding: 0.5rem;
+          @include roboto(400, normal, 16px);
+        }
+
+        .login-btn {
+          margin-top: 1rem;
+          width: 100%;
+        }
+
+        button {
+          @include inter(600, normal, 16px);
+          padding: 0.5rem 1rem;
+          max-width: 160px;
+          width: 100%;
+        }
+      }
+    }
+
+    .login-image {
+      flex: 1; /* garde côte à côte */
+      height: auto;
+      min-height: 500px;
+      border-radius: 0 5px 5px 0;
+      background-size: cover;
+      background-position: center;
+    }
+  }
+
+  .login-link {
+    gap: 0.8rem;
+    p,
+    a {
+      @include roboto(400, normal, 14px);
+    }
+  }
+
+  .loginForm-group select {
+    width: 150px; /* ajusté pour ne pas être trop large */
+    height: 30px;
+  }
+}
+
+
+
 /* Responsive - Mobile max-width: 768px */
 @media screen and (max-width: 768px) {
 
   #login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     padding: 1.5rem;
     margin: 1rem;
+
 
     .login-body {
       width: 100%;
       max-width: 65%;
       padding: 30px;
-      border-radius: 10px;
+      border-radius: 10px 10px 0 0;
 
       h3 {
         @include montserrat(600, normal, 18px);
@@ -170,6 +269,15 @@
         }
       }
     }
+    .login-image {
+      flex: 1;
+      width: 428px;
+      height: auto;
+      min-height: 250px;
+      border-radius: 0 0 5px 5px;
+      background-size: cover;
+      background-position: center;
+    }
   }
 
   .login-link {
@@ -187,4 +295,5 @@
       height: 30px;
     }
   }
+
 }

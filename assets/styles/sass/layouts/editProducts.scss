@@ -1,0 +1,183 @@
+@use "../vars/colors" as *;
+@use "../vars/fonts" as *;
+
+#edit-product {
+  max-width: 800px;
+  margin: 4rem auto;
+  padding: 2rem;
+  background-color: rgba($color4, 0.05);
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  h1 {
+    @include montserrat(600, normal, 26px);
+    color: $color4;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+
+  form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+
+    div {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+
+      label {
+        @include roboto(500, normal, 18px);
+        color: $color4;
+      }
+
+      input,
+      select,
+      textarea {
+        @include roboto(400, normal, 16px);
+        padding: 0.7rem 1rem;
+        border: 1px solid $color12;
+        border-radius: 8px;
+        background-color: rgba($color4, 0.03);
+        width: 100%;
+        transition: border-color 0.2s ease, box-shadow 0.2s ease;
+
+        &:focus {
+          border-color: $color22;
+          box-shadow: 0 0 5px rgba($color22, 0.4);
+          outline: none;
+        }
+      }
+
+      textarea {
+        @include roboto(400, normal, 16px);
+        resize: vertical;
+        min-height: 100px;
+      }
+
+      p {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        margin-top: 0.5rem;
+        gap: 0.8rem;
+        @include roboto(500, normal, 16px);
+        color: $color4;
+
+        img {
+          margin-top: 0.5rem;
+          border-radius: 8px;
+          border: 1px solid $color12;
+          width: 150px;
+          height: auto;
+          object-fit: cover;
+          transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+          &:hover {
+            transform: scale(1.05);
+            box-shadow: 0 2px 8px rgba($color4, 0.2);
+          }
+        }
+      }
+    }
+
+    button {
+      align-self: center;
+      background-color: $color12;
+      color: $color1;
+      border: 1px solid $color4;
+      border-radius: 20px;
+      padding: 10px 20px;
+      cursor: pointer;
+      @include inter(600, normal, 18px);
+      transition: background 0.3s ease, color 0.3s ease;
+
+      &:hover {
+        background-color: $color1;
+        color: $color8;
+      }
+
+      &:active {
+        background-color: $color2;
+        color: $color1;
+      }
+    }
+  }
+}
+
+/* Responsive TABLETTE 769–1024px */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  #edit-product {
+    max-width: 90%;
+    padding: 1.5rem;
+
+    h1 {
+      @include montserrat(600, normal, 24px);
+    }
+
+    form {
+      gap: 1.2rem;
+      div{
+        label {
+          @include roboto(500, normal, 18px);
+        }
+
+        input,
+        select,
+        textarea {
+          font-size:  18px;
+          padding: 0.6rem 0.8rem;
+        }
+
+        button {
+          @include inter(600, normal, 15px);
+          padding: 8px 16px;
+        }
+      }
+    }
+
+  }
+    }
+
+/* ✅ Responsive MOBILE ≤768px */
+@media screen and (max-width: 768px) {
+  #edit-product {
+    max-width: 95%;
+    margin: 2rem auto;
+    padding: 1rem;
+
+    h1 {
+      @include montserrat(600, normal, 20px);
+    }
+
+    form {
+      gap: 1rem;
+
+      div {
+        label {
+          @include roboto(500, normal, 14px);
+
+        }
+
+        input,
+        select,
+        textarea {
+          padding: 0.6rem 0.8rem;
+        }
+      }
+
+      button {
+        width: 100%;
+        max-width: 200px;
+        @include inter(600, normal, 15px);
+
+      }
+    }
+  }
+}

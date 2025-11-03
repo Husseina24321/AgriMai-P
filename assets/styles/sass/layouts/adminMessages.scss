@@ -9,7 +9,7 @@
     align-items: center;
     gap: 1.5rem;
     width: 100%;
-    padding: 2rem;
+    padding: 0 0 2rem 0;
 
     h1 {
       @include montserrat(600, normal, 26px);
@@ -87,6 +87,75 @@
     }
   }
 }
+
+/* Responsive Tablette (769px à 1024px) */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+
+  #admin-messages {
+
+    .admin-body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+
+        h1 {
+          @include montserrat(600, normal, 24px);
+        }
+
+        p {
+          @include roboto(400, oblique, 18px);
+        }
+
+        .messages-table {
+        width: 90%; /* Table moins large que l'écran */
+        margin: 0 auto;
+        font-size: 15px;
+        table-layout: fixed; /* ✅ Les colonnes ont une largeur fixe proportionnelle */
+        border-collapse: collapse;
+
+        thead {
+          tr {
+            th {
+              @include roboto(600, normal, 16px);
+              padding: 0.5rem 0.6rem;
+              max-width: 200px;              // Limite la largeur de la cellule
+              white-space: pre-wrap;          // Respecte les retours à la ligne
+              word-wrap: break-word;          // Coupe les mots trop longs
+              overflow: hidden;               // Cache l’excédent si besoin
+              text-overflow: ellipsis;        // Affiche "..." si le texte est trop long
+              line-height: 1.4;               // Rendre le texte lisible
+              text-align: left;
+            }
+          }
+        }
+
+        tbody {
+          tr {
+            td {
+              @include roboto(400, normal, 15px);
+              padding: 0.4rem 0.5rem;
+              text-align: center;
+              vertical-align: middle;
+              word-break: break-word; /* Permet de couper les mots longs proprement */
+              overflow: hidden;
+              text-overflow: ellipsis;
+            }
+
+            a {
+              @include roboto(500, normal, 15px);
+              padding: 0.3rem 0.5rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
+
 /* Responsive 768 */
 
 @media screen and (max-width: 768px) {

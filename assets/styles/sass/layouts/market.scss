@@ -87,6 +87,101 @@
   }
 }
 
+/* Responsive Tablette (entre 769px et 1024px) */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+
+  #products-market {
+    .market-body {
+
+      .header-market {
+        flex-direction: row;
+        justify-content: center;
+        margin-top: 15px;
+        padding: 0 1.5rem;
+
+        h1 {
+          @include montserrat(600, normal, 22px);
+          text-align: center;
+          max-width: 80%;
+        }
+      }
+
+      .grid-market {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        margin: 40px auto;
+        max-width: 90%;
+        width: 100%;
+        justify-items: center;
+
+        .card-market {
+          width: 90%;
+          max-width: 360px;
+          padding: 1rem;
+          border-radius: 10px;
+          background: $color11;
+          border: 1px solid $color12;
+          text-align: center;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+          transition: transform 0.4s cubic-bezier(0.25, 1.25, 0.5, 1),
+          box-shadow 0.3s ease;
+
+          &:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+          }
+
+          img {
+            width: 180px;
+            height: 190px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+          }
+
+          h2 {
+            @include montserrat(600, normal, 20px);
+            color: $color4;
+          }
+
+          p {
+            @include roboto(400, normal, 18px);
+            color: $color4;
+          }
+
+          .actions {
+            margin-top: 10px;
+
+            a.btnMarket {
+              display: inline-block;
+              width: 120px;
+              height: 38px;
+              border-radius: 0 20px;
+              border: 1px solid $color4;
+              background: $color12;
+              color: $color1;
+              padding: 0.4rem 0.8rem;
+              text-decoration: none;
+              @include inter(600, normal, 18px);
+              transition: all 0.3s ease;
+
+              &:hover {
+                background: $color1;
+                color: $color8;
+              }
+
+              &:active {
+                background: $color2;
+                color: $color1;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
 
 /* Responsive Mobile max-width: 768px */
 @media screen and (max-width: 768px) {

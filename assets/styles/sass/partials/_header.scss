@@ -65,21 +65,31 @@ header {
     }
   }
 }
-@media screen and (max-width: 1024px) {
+@media screen and (min-width: 769px) and (max-width: 1024px) {
   header {
-    padding: 1rem 1.5rem;
+    width: 100%;
+    padding: 1rem;
+    overflow-x: hidden;
 
     nav {
-      justify-content: space-between; // garde le layout horizontal
+      justify-content: space-between;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
       gap: 1rem;
 
       img {
-        width: 65px; // léger ajustement
+        height: auto;
+        width: 65px;
       }
 
       ul {
-        margin-left: 0;
-        gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin: 0;
+        gap: 0.8rem;
+        padding: 0;
       }
 
       li {
@@ -87,12 +97,19 @@ header {
       }
 
       a {
-        @include inter(700, normal, 17px);
+        @include inter(700, normal, 16px);
       }
 
-      .top-right a {
-        padding: 0.3rem 0.6rem;
-        @include inter(700, normal, 14px);
+      .top-right{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        gap: 0.5rem;
+        a {
+          white-space: nowrap;
+          padding: 0.3rem 0.6rem;
+          @include inter(700, normal, 16px);
+        }
       }
     }
   }
@@ -180,15 +197,16 @@ header {
       gap: 0.6rem;
 
       img {
-        width: 40px; // plus petite image pour mobile
+        width: 40px;
       }
 
       ul {
+        margin-left: 0;
+        gap: 1rem;
+        flex-wrap: wrap;
         flex-direction: column;
-        gap: 0.6rem;
         width: 100%;
         padding: 0;
-        margin: 0;
       }
 
       li {
@@ -198,7 +216,7 @@ header {
 
       a {
         @include inter(700, normal, 14px);
-        white-space: normal; // autorise le retour à la ligne
+        white-space: normal;
       }
 
       .top-right {

@@ -1,0 +1,178 @@
+@use "../vars/colors" as *;
+@use "../vars/fonts" as *;
+
+#edit-message {
+  width: 80%;
+  max-width: 800px;
+  margin: 5rem auto;
+  background-color: rgba($color10, 0.08);
+  border-left: 4px solid $color12;
+  border-radius: 12px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  padding: 2.5rem 3rem;
+
+  h1 {
+    @include montserrat(600, normal, 24px);
+    color: $color4;
+    text-decoration: underline;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+
+    div {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+
+      label {
+        @include roboto(500, normal, 16px);
+        color: $color4;
+      }
+
+      input,
+      textarea {
+        @include roboto(400, normal, 16px);
+        border: 1px solid $color12;
+        border-radius: 8px;
+        padding: 0.7rem 0.9rem;
+        background-color: rgba($color4, 0.03);
+        transition: border-color 0.2s ease, box-shadow 0.2s ease;
+
+        &:focus {
+          border-color: $color22;
+          box-shadow: 0 0 5px rgba($color22, 0.4);
+          outline: none;
+        }
+      }
+
+      textarea {
+        min-height: 150px;
+        resize: vertical;
+      }
+
+      input {
+        background-color: rgba($color10, 0.1);
+        cursor: not-allowed;
+      }
+    }
+
+    button {
+      @include inter(600, normal, 18px);
+      align-self: center;
+      color: $color22;
+      border: 1px solid $color22;
+      border-radius: 8px;
+      padding: 0.6rem 1.5rem;
+      margin-top: 1rem;
+      background-color: transparent;
+      cursor: pointer;
+      transition: all 0.3s ease;
+
+      &:hover {
+        background-color: $color22;
+        color: $color4;
+        transform: scale(1.03);
+      }
+    }
+  }
+
+  p {
+    text-align: center;
+    margin-top: 1.5rem;
+
+    a {
+      @include roboto(500, normal, 16px);
+      color: $color22;
+      text-decoration: none;
+      transition: color 0.2s ease;
+
+      &:hover {
+        color: rgba($color22, 0.08);
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+/* Responsive Tablette (max-width: 1024px) */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  #edit-message {
+    width: 90%;
+    padding: 2rem;
+
+    h1 {
+      @include montserrat(600, normal, 22px);
+    }
+
+    form {
+      gap: 1rem;
+
+      div {
+        label {
+          @include roboto(500, normal, 16px);
+        }
+
+        input,
+        textarea {
+          @include roboto(400, normal, 16px);
+        }
+      }
+
+      button {
+        @include inter(600, normal, 18px);
+        padding: 0.5rem 1.3rem;
+      }
+    }
+
+    p a {
+      @include roboto(500, normal, 16px);
+    }
+  }
+}
+
+/*Responsive Mobile (max-width: 768px) */
+@media screen and (max-width: 768px) {
+  #edit-message {
+    width: 95%;
+    padding: 1.5rem;
+
+    h1 {
+      @include montserrat(600, normal, 20px);
+      margin-bottom: 1.5rem;
+    }
+
+    form {
+      gap: 0.8rem;
+
+      div {
+        label {
+          @include roboto(500, normal, 14px);
+        }
+
+        input,
+        textarea {
+          @include roboto(400, normal, 14px);
+          padding: 0.6rem 0.8rem;
+        }
+
+        textarea {
+          min-height: 130px;
+        }
+      }
+
+      button {
+        @include inter(600, normal, 16px);
+        padding: 0.4rem 1.1rem;
+      }
+    }
+
+    p a {
+      @include roboto(500, normal, 14px);
+    }
+  }
+}

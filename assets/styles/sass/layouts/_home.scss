@@ -316,7 +316,7 @@
 @keyframes fadeUp {
   to {
     opacity: 1;
-    transform: translateY(0) scale(1);
+    transform: translateY(-1) scale(1);
   }
 }
 
@@ -428,6 +428,207 @@
 }
 .cdgStyle{
   color: $color7;
+}
+
+/* Responsive - Tablette 769px à 1024px */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+
+  /* SECTION HERO */
+  #hero {
+    padding: 2rem;
+    min-height: 20vh;
+    background-position: center;
+    background-size: cover;
+
+    .hero-body {
+      flex-direction: row;
+      justify-content: center;
+      gap: 2rem;
+      max-width: 1000px;
+    }
+
+    .hero-text {
+      max-width: 400px;
+
+      h1 {
+        @include montserrat(700, normal, 28px);
+      }
+
+      .hero-buttons {
+        gap: 0.5rem;
+        button {
+          padding: 0.5rem 0.8rem;
+          @include inter(600, normal, 16px);
+        }
+      }
+    }
+
+    .hero-image2 img {
+      width: 220px;
+    }
+
+    .hero-image2 p {
+      @include roboto(500, normal , 20px);
+    }
+  }
+
+  /* SECTION PRÉSENTATION */
+  .Presentation-body {
+    flex-direction: row;
+    margin: 3rem 2rem;
+    gap: 1.5rem;
+    justify-content: center;
+    align-items: center;
+
+    .Presentation-img img {
+      width: 400px;
+      height: auto;
+    }
+
+    .Presentation-text {
+      max-width: 400px;
+      h2 {
+        @include montserrat(700, normal, 26px);
+      }
+      p {
+        @include roboto(500, normal, 18px);
+        line-height: 1.5;
+      }
+
+      .Presentation-buttons button {
+        max-width: 230px;
+        padding: 0.5rem 0.8rem;
+        @include inter(600, normal, 16px);
+      }
+    }
+  }
+
+  /* SECTION PRODUITS RÉCENTS */
+  #recent-products {
+    .recentP-body {
+      margin: 3rem 2rem;
+
+      .products-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+        max-width: 800px;
+      }
+
+      .product-card {
+        img {
+          width: 90px;
+          height: 100px;
+        }
+        h4 {
+          @include montserrat(600, normal, 18px);
+        }
+        p, .producer {
+          @include roboto(400, normal, 16px);
+        }
+        .btn2 {
+          font-size: 15px;
+          padding: 0.5rem;
+        }
+      }
+    }
+  }
+
+  /* SECTION CERTIFICATS */
+  #certificats {
+    margin: 3rem 2rem;
+
+    .certificat-body {
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
+    }
+
+    .certificat {
+      flex: 1 1 20%;
+      max-width: 400px;
+
+      img {
+        width: 120px;
+      }
+
+      h3 {
+        @include montserrat(600, normal, 18px);
+      }
+
+      p {
+        @include roboto(400, normal, 16px);
+      }
+
+      .certificat-buttons button {
+        @include inter(600, normal, 16px);
+        padding: 0.5rem 1rem;
+      }
+    }
+  }
+
+  /* SECTION LOGOS */
+  #logos {
+    margin: 2rem;
+    padding: 1rem;
+
+    .logo-body {
+      gap: 1.5rem;
+      justify-content: space-around;
+    }
+
+    .logo-image {
+      max-width: 130px;
+      img {
+        width: 80px;
+      }
+      h5 {
+        @include inter(500, normal, 14px);
+      }
+    }
+  }
+
+  /* SECTION NEWSLETTER */
+  #newsletter {
+    padding: 3rem 2rem;
+
+    h3 {
+      @include montserrat(600, normal, 22px);
+    }
+
+    p {
+      @include roboto(400, normal, 17px);
+    }
+
+    .newsletter-body {
+      gap: 1rem;
+    }
+
+    form {
+      display: flex;
+      flex-direction: row;
+      gap: 1rem;
+
+      input {
+        width: 60%;
+        max-width: 300px;
+        padding: 0.6rem;
+        font-size: 16px;
+      }
+
+      button {
+        width: auto;
+        padding: 0.6rem 1rem;
+        @include inter(600, normal, 16px);
+      }
+    }
+
+    .cdg {
+      width: 100%;
+      font-size: 13px;
+      text-align: center;
+    }
+  }
 }
 
 

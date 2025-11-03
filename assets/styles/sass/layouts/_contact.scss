@@ -112,6 +112,77 @@
   }
 }
 
+/* Responsive - Tablette max-width: 1024px */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+
+  .contact {
+    .contact-body {
+      flex-direction: column;
+      align-items: center;
+      padding: 1.5rem;
+
+      .contact-form {
+        width: 80%;
+        max-width: 700px;
+        margin: 1.5rem;
+        border-radius: 25px;
+
+        form {
+          padding: 25px;
+
+          h3 {
+            @include montserrat(600, normal, 22px);
+            margin-bottom: 0.6rem;
+          }
+
+          p {
+            @include roboto(400, oblique, 17px);
+            margin: 1.2rem 0;
+            text-align: center;
+          }
+        }
+
+        input,
+        textarea {
+          @include roboto(400, normal, 15px);
+          padding: 0.45rem;
+        }
+
+        label {
+          @include roboto(400, normal, 17px);
+          margin-bottom: 0.25rem;
+        }
+
+        .champs {
+          margin-bottom: 0.9rem;
+        }
+
+        .submit {
+          padding: 18px;
+
+          button {
+            @include inter(600, normal, 16px);
+            padding: 0.55rem 1.1rem;
+          }
+        }
+
+        .errors {
+          @include inter(600, normal, 15px);
+          padding: 0.45rem;
+
+          ul {
+            padding-left: 1.1rem;
+          }
+
+          li {
+            margin-bottom: 0.25rem;
+          }
+        }
+      }
+    }
+  }
+}
+
 
 /* Responsive - Mobile max-width: 768px */
 @media screen and (max-width: 768px) {

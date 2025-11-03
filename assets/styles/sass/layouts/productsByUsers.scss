@@ -68,7 +68,7 @@
           .actions-producerDashText{
             display: flex;
             flex-direction: row;
-            justify-content: flex-start;
+            justify-content: space-around;
             gap: 1rem;
             margin-top: 2rem;
             padding-left: 4px;
@@ -106,6 +106,98 @@
     }
   }
 }
+
+/* Responsive Tablette (769px à 1024px) */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+
+  #producer-dash {
+    margin: 0 auto; // Centre le contenu
+    padding: 1rem; // Évite débordements
+    width: 100%;
+    box-sizing: border-box;
+
+    .producerDash-body {
+      width: 100%;
+      align-items: center;
+
+      .producerDash-text {
+        margin: 1rem auto;
+        width: 100%;
+        max-width: 960px; // Limite la largeur
+        text-align: center;
+
+        h1 {
+          @include montserrat(600, normal, 24px);
+          word-wrap: break-word; // Empêche le texte de déborder
+        }
+
+        a {
+          @include roboto(400, normal, 15px);
+          word-wrap: break-word;
+        }
+      }
+
+      .grid-producerDash {
+        width: 100%;
+        max-width: 760px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+        margin: 10px auto;
+        .card-producerDash {
+          width: 100%;
+          box-sizing: border-box;
+          padding: 0.9rem;
+
+          h3 {
+            @include montserrat(600, normal, 20px);
+            word-wrap: break-word;
+          }
+
+          p {
+            @include roboto(400, normal, 16px);
+            word-wrap: break-word;
+          }
+
+          img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 0.8rem;
+          }
+
+          .card-producerDashText {
+            flex-direction: column;
+            gap: 4px;
+          }
+
+          .actions-producerDash {
+            .actions-producerDashText {
+              flex-wrap: wrap;
+              justify-content: center;
+              gap: 0.8rem;
+              margin-top: 1rem;
+              padding-left: 0;
+            }
+
+            form {
+              button {
+                width: 100%;
+                max-width: 150px;
+                margin-top: 1rem;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  footer {
+    margin-top: 2rem; // Assure qu’il reste en bas
+    width: 100%;
+  }
+}
+
 
 /* Responsive - Mobile (max-width: 768px) */
 @media screen and (max-width: 768px) {

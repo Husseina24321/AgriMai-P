@@ -153,8 +153,108 @@
   }
 }
 
+/* Responsive Tablette (769px à 1024px) */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+
+  #buyer-messages {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0;
+    margin: 3rem auto;
+    width: 95%;
+
+    .messages-listB {
+      flex: 2;
+
+      h1 {
+        @include montserrat(600, normal, 20px);
+        margin-bottom: 1rem;
+        text-align: center;
+      }
+
+      .message-cardB {
+        padding: 1rem 1.2rem;
+        margin-bottom: 1.2rem;
+        border-radius: 10px;
+        border-right: 4px solid $color12;
+        width: 450px;
+        .sent{
+          border-left: 4px solid $color12
+        }
+        .message-headerB {
+          @include roboto(500, normal, 16px);
+          gap: 0.4rem;
+
+          .product-titleB {
+            @include roboto(500, normal, 14px);
+          }
+
+          .date {
+            @include roboto(500, normal, 12px);
+          }
+        }
+
+        .message-bodyB {
+          @include roboto-light(400, italic, 14px);
+          line-height: 1.4;
+          padding: 0.4rem 0 0.8rem 0;
+        }
+
+        .message-actionsB {
+          a {
+            @include roboto(500, normal, 14px);
+            padding: 0.3rem 0.8rem;
+          }
+        }
+      }
+    }
+
+    .reply-formB {
+      flex: 1;
+      margin-top: 2rem;
+      padding: 1.5rem 2rem;
+      height: auto;
+      border-left: 4px solid $color12;
+      border-radius: 12px;
+      width: 450px;
+
+      h2 {
+        @include montserrat(600, normal, 20px);
+        margin-bottom: 0.8rem;
+        text-align: center;
+      }
+
+      .formBuyer {
+        gap: 0.6rem;
+
+        label {
+          @include roboto(500, normal, 14px);
+        }
+
+        input,
+        select,
+        textarea {
+          @include roboto(400, normal, 14px);
+          padding: 0.4rem 0.6rem;
+        }
+
+        textarea {
+          min-height: 190px;
+        }
+
+        .reply-actionsBuyer button {
+          @include inter(600, normal, 16px);
+          padding: 0.4rem 0.8rem;
+        }
+      }
+    }
+  }
+}
+
+
 /* Responsive - Mobile max-width: 768px */
-@media screen and (max-width: 768px) {
+@media screen and (min-width: 769px) and (max-width: 768px) {
 
   #buyer-messages {
     flex-direction: column;

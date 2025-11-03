@@ -210,17 +210,28 @@ class ContactController extends AbstractController
 
     public function updateMessageProducer(): void
     {
+        $this->requireLogin();
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $id = (int)$_POST['id'];
             $content = $_POST['message'];
 
             $this->contactManager->updateMessage($id, $content);
 
-            // Redirection vers la liste des messages du producteur
-            header("Location: /AgriMai/index.php?route=producerMessages");
+            $user = $_SESSION['user'] ?? null;
+
+            if ($user && $user['role'] === 'Producteur') {
+                header("Location: /AgriMai/index.php?route=producerMessages");
+            } elseif ($user && $user['role'] === 'Acheteur') {
+                header("Location: /AgriMai/index.php?route=buyerMessages");
+            } else {
+                header("Location: /AgriMai/index.php?route=home");
+            }
+
             exit();
         }
     }
+
 
     public function editMessageProducer(): void
     {
@@ -239,12 +250,23 @@ class ContactController extends AbstractController
             return;
         }
 
+        $user = $_SESSION['user'] ?? null;
+
+        if ($user && $user['role'] === 'Producteur') {
+            $backRoute = "/AgriMai/index.php?route=producerMessages";
+        } elseif ($user && $user['role'] === 'Acheteur') {
+            $backRoute = "/AgriMai/index.php?route=buyerMessages";
+        } else {
+            $backRoute = "/AgriMai/index.php?route=home";
+        }
+
         $this->render("/admin/editMessages.html.twig", [
-            "message" => $message,
+            "message"     => $message,
             "actionRoute" => "/AgriMai/index.php?route=updateMessageProducer",
-            "backRoute" => "/AgriMai/index.php?route=producerMessages"
+            "backRoute"   => $backRoute
         ]);
     }
+
 
     public function editMessageBuyer(): void
     {
@@ -263,13 +285,22 @@ class ContactController extends AbstractController
             return;
         }
 
+        $user = $_SESSION['user'] ?? null;
+
+        if ($user && $user['role'] === 'Acheteur') {
+            $backRoute = "/AgriMai/index.php?route=buyerMessages";
+        } elseif ($user && $user['role'] === 'Producteur') {
+            $backRoute = "/AgriMai/index.php?route=producerMessages";
+        } else {
+            $backRoute = "/AgriMai/index.php?route=home";
+        }
+
         $this->render("/admin/editMessages.html.twig", [
             "message"     => $message,
             "actionRoute" => "/AgriMai/index.php?route=updateMessageBuyer",
-            "backRoute"   => "/AgriMai/index.php?route=buyerMessages"
+            "backRoute"   => $backRoute
         ]);
     }
-
     public function updateMessageBuyer(): void
     {
         $this->requireLogin();
@@ -280,10 +311,21 @@ class ContactController extends AbstractController
 
             $this->contactManager->updateMessage($id, $content);
 
-            header("Location: /AgriMai/index.php?route=buyerMessages");
+            $user = $_SESSION['user'] ?? null;
+
+            if ($user && $user['role'] === 'Acheteur') {
+                header("Location: /AgriMai/index.php?route=buyerMessages");
+            } elseif ($user && $user['role'] === 'Producteur') {
+                header("Location: /AgriMai/index.php?route=producerMessages");
+            } else {
+                header("Location: /AgriMai/index.php?route=home");
+            }
+
             exit();
         }
     }
+
+
 
     // Supprimer un message
     public function deleteMessage(): void

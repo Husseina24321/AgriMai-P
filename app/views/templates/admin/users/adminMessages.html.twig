@@ -25,22 +25,16 @@
                 <tbody>
                 {% for message in messages %}
                     <tr>
-                        {# Expéditeur #}
                         <td>{{ message.getSenderFirstName() }} {{ message.getSenderLastName() }}</td>
 
-                        {# Destinataire #}
                         <td>{{ message.getReceiverFirstName() }} {{ message.getReceiverLastName() }}</td>
 
-                        {# Produit #}
                         <td>{{ message.getProductTitle() ?? '-' }}</td>
 
-                        {# Contenu du message #}
                         <td>{{ message.getContent()|e }}</td>
 
-                        {# Date #}
                         <td>{{ message.getSentAt().format('d/m/Y H:i') }}</td>
 
-                        {# Actions #}
                         <td>
                             <a href="/AgriMai/index.php?route=deleteMessage&id={{ message.getId() }}"
                                onclick="return confirm('Voulez-vous vraiment supprimer ce message ?');">
