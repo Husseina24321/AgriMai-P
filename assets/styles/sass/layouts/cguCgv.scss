@@ -66,48 +66,61 @@
     }
   }
 }
-@media screen and (min-width: 769px) and (max-width: 1024px){
+@media screen and (min-width: 769px) and (max-width: 1024px) {
 
-  #cgu{
-    .cgu-body{
-      padding: 1rem;
-      h1 {
-        @include montserrat(700, normal, 22px);
-      }
-      .cgu-text{
-        margin: 0;
-        padding: 0 1rem;
-      }
-      h2 {
-        @include montserrat(700, normal, 20px);
-      }
-      p {
-        @include roboto(400, normal, 18px);
-      }
-      ul li {
-        @include roboto(400, normal, 18px);
-      }
-    }
+  #cgu {
+    margin: 2rem 0.8rem 2rem 0.8rem;
+    box-sizing: border-box;
+
+    .cgu-body,
     #cgv-body {
-      padding: 1rem;
+      padding: 1.5rem  1.5rem 1rem 0;
+      margin: 0 auto;
+      box-sizing: border-box;
+      overflow-x: hidden;
+      overflow-wrap: break-word;
+      word-wrap: break-word;
+
+
       h1 {
         @include montserrat(700, normal, 22px);
+        margin-bottom: 1rem;
+        text-align: center;
       }
-      .cgv-text{
+
+      .cgu-text,
+      .cgv-text {
+        margin: 0 auto;
+        padding-inline: 1.5rem;
+        max-width: 100%;
+        text-align: justify;
+
         h2 {
           @include montserrat(700, normal, 20px);
+          margin: 1.5rem 0 0 0;
         }
+
         p {
           @include roboto(400, normal, 18px);
+          line-height: 1.6;
+          margin-bottom: 1rem;
         }
-        ul li {
-          @include roboto(400, normal, 18px);
+
+        ul {
+          padding-left: 1.5rem;
+          list-style: disc;
+          li {
+            @include roboto(400, normal, 18px);
+            line-height: 1.4;
+            margin-bottom: 0.4rem;
+          }
         }
       }
     }
   }
-
 }
+
+
 
 
 // Responsive pour mobiles (max-width: 768px)

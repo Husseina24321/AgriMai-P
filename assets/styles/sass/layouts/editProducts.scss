@@ -124,6 +124,12 @@
     form {
       gap: 1.2rem;
       div{
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        p{
+          @include roboto(500, normal, 18px);
+        }
         label {
           @include roboto(500, normal, 18px);
         }
@@ -131,12 +137,16 @@
         input,
         select,
         textarea {
-          font-size:  18px;
+          @include roboto(400, normal, 14px);
           padding: 0.6rem 0.8rem;
         }
+        textarea  {
+          @include roboto(400, normal, 14px)
+        }
+
 
         button {
-          @include inter(600, normal, 15px);
+          @include inter(600, normal, 14px);
           padding: 8px 16px;
         }
       }
@@ -145,7 +155,7 @@
   }
     }
 
-/* ✅ Responsive MOBILE ≤768px */
+/* Responsive MOBILE 768px */
 @media screen and (max-width: 768px) {
   #edit-product {
     max-width: 95%;

@@ -2,37 +2,39 @@
 
 {% block content %}
     <section id="edit-message">
-        <h1>Modifier le message</h1>
+        <div class ="editMessage-body">
+            <h1>Modifier le message</h1>
 
-        {% if message is defined %}
-            <form method="post" action="{{ actionRoute }}">
-                <input type="hidden" name="id" value="{{ message.id }}">
+            {% if message is defined %}
+                <form method="post" action="{{ actionRoute }}">
+                    <input type="hidden" name="id" value="{{ message.id }}">
 
-                <div>
-                    <label for="sender">De :</label>
-                    <input id="sender" type="text" value="{{ message.senderFirstName }} {{ message.senderLastName }}" disabled>
-                </div>
-
-                {% if message.productTitle %}
                     <div>
-                        <label for="product">Produit :</label>
-                        <input id="product" type="text" value="{{ message.productTitle }}" disabled>
+                        <label for="sender">De :</label>
+                        <input id="sender" type="text" value="{{ message.senderFirstName }} {{ message.senderLastName }}" disabled>
                     </div>
-                {% endif %}
 
-                <div>
-                    <label for="message">Message :</label>
-                    <textarea id="message" name="message" required>{{ message.content }}</textarea>
-                </div>
+                    {% if message.productTitle %}
+                        <div>
+                            <label for="product">Produit :</label>
+                            <input id="product" type="text" value="{{ message.productTitle }}" disabled>
+                        </div>
+                    {% endif %}
 
-                <button type="submit">Enregistrer</button>
-            </form>
+                    <div>
+                        <label for="message">Message :</label>
+                        <textarea id="message" name="message" required>{{ message.content }}</textarea>
+                    </div>
 
-            <p>
-                <a href="{{ backRoute }}">Retour aux messages</a>
-            </p>
-        {% else %}
-            <p>Message introuvable.</p>
-        {% endif %}
+                    <button type="submit">Enregistrer</button>
+                </form>
+
+                <p>
+                    <a href="{{ backRoute }}">Retour aux messages</a>
+                </p>
+            {% else %}
+                <p>Message introuvable.</p>
+            {% endif %}
+        </div>
     </section>
 {% endblock %}

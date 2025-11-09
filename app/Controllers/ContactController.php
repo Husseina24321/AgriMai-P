@@ -46,17 +46,12 @@ class ContactController extends AbstractController
             return;
         }
 
-        // Récupération des données du formulaire
         $fields = [
-            'name'         => trim($_POST['name'] ?? ''),
-            'email'        => trim($_POST['email'] ?? ''),
-            'message'      => trim($_POST['message'] ?? ''),
-            'receiver_id'  => $_POST['receiver_id'] ?? null,
-            'product_id'   => $_POST['product_id'] ?? null,
-            'selected_lot' => $_POST['selected_lot'] ?? null // récupération de la quantité choisie
+            'name'    => trim($_POST['name'] ?? ''),
+            'email'   => trim($_POST['email'] ?? ''),
+            'message' => trim($_POST['message'] ?? '')
         ];
 
-        // Validation des champs
         $rules = [
             'name'    => 'required',
             'email'   => 'email',
@@ -65,15 +60,10 @@ class ContactController extends AbstractController
 
         $errors = $this->validateFields($fields, $rules);
 
-        // Vérifie que le destinataire existe
-        $receiver = null;
-        if ($fields['receiver_id']) {
-            $receiver = $this->contactManager->getUserById((int)$fields['receiver_id']);
-            if (!$receiver) {
-                $errors[] = "Le destinataire du message n'existe pas.";
-            }
-        } else {
-            $errors[] = "Aucun destinataire sélectionné.";
+        $receiverId = 1; // id d’un compte admin ou producteur principal
+        $receiver = $this->contactManager->getUserById($receiverId);
+        if (!$receiver) {
+            $errors[] = "Le destinataire du message est introuvable (id $receiverId).";
         }
 
         if (!empty($errors)) {
@@ -81,34 +71,27 @@ class ContactController extends AbstractController
             return;
         }
 
-        // Ajout automatique de la quantité choisie dans le message
-        $content = $fields['message'];
-        if (!empty($fields['selected_lot'])) {
-            $content = "Quantité souhaitée : " . htmlspecialchars($fields['selected_lot']) . "\n\n" . $content;
-        }
+        $content = htmlspecialchars($fields['message'], ENT_QUOTES, 'UTF-8');
 
-        // ID de l'expéditeur connecté (acheteur ou producteur)
         $senderId = $_SESSION['user']['id'] ?? 0;
 
-        // Création du message
         $this->contactManager->create([
             "sender_id"   => $senderId,
-            "receiver_id" => (int)$fields['receiver_id'],
-            "product_id"  => !empty($fields['product_id']) ? (int)$fields['product_id'] : null,
+            "receiver_id" => $receiverId,
+            "product_id"  => null,
             "content"     => $content
         ]);
 
-        // Notification email (si dispo)
+        // Envoi d’un mail au destinataire
         if ($receiver && isset($receiver['email'])) {
-            $subject = "Nouveau message reçu";
-            $body = "Vous avez reçu un nouveau message concernant votre produit.\n\n" . $content;
+            $subject = "Nouveau message reçu depuis le formulaire de contact";
+            $body = "Nom : {$fields['name']}\nEmail : {$fields['email']}\n\nMessage :\n{$fields['message']}";
             mail($receiver['email'], $subject, $body);
         }
 
-        // Redirection vers la page de succès
-        $this->render("/front/successMessage.html.twig", [
-            "name" => $fields['name']
-        ]);
+        // Redirection
+        header("Location: /AgriMai/index.php?route=successMessage");
+        exit;
     }
 
 

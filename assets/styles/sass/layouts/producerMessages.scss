@@ -48,32 +48,36 @@
       }
 
       .message-header {
-        @include roboto(500, normal, 19px);
+
         color: $color4;
         display: flex;
         justify-content: space-between;
         align-items: center;
         border-bottom: 1px dashed rgba($color27, 0.5);
-        padding-bottom: 0.5rem;
         margin-bottom: 0.5rem;
+          p{
+            @include roboto(500, italic, 18px);
+            color: rgba($color27, 0.8);
 
-        .product-title {
-          font-size: 15px;
-          font-style: italic;
-          color: $color6;
-        }
+          }
 
         .date {
-          font-size: 14px;
-          color: rgba($color4, 0.7);
+          @include roboto(500, Italic, 16px);
+          color: rgba($color27, 0.8);
         }
+      }
+      .product-title {
+        @include roboto(500, italic, 16px);
+        color: rgba($color27, 0.8);
+        border-bottom: 1px dashed rgba($color27, 0.5);
+        padding: 0.5rem 1rem 0.7rem 0 ;
       }
 
       .message-body {
         @include roboto-light(400, italic, 17px);
         color: rgba($color4, 0.9);
         line-height: 1.5;
-        padding: 0.5rem 0 1rem 0;
+        padding: 0.5rem 0 1rem 0 ;
       }
 
       .message-actions {
@@ -179,6 +183,127 @@
     }
   }
 }
+
+/* Responsive Tablette (769px à 1024px) */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+
+  #producer-messages {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0;
+    margin: 3rem auto;
+    width: 95%;
+
+    .messages-list {
+      flex: 2;
+
+      h1 {
+        @include montserrat(600, normal, 22px);
+        margin-bottom: 1.2rem;
+        text-align: center;
+      }
+
+      .message-card {
+        padding: 1rem 1.2rem;
+        margin-bottom: 1.2rem;
+        border-radius: 10px;
+        border-right: 4px solid $color12;
+        width: 450px;
+        margin-inline: auto;
+        background-color: rgba($color3, 0.9);
+
+        &.sent {
+          border-left: 4px solid $color12;
+        }
+
+        &.received {
+          border-left: 4px solid $color27;
+        }
+
+        .message-header {
+          @include roboto(500, normal, 16px);
+          gap: 0.4rem;
+          flex-direction: column;
+          align-items: flex-start;
+
+          .product-title {
+            @include roboto(500, normal, 14px);
+          }
+
+          .date {
+            @include roboto(500, normal, 12px);
+          }
+        }
+
+        .message-body {
+          @include roboto-light(400, italic, 14px);
+          line-height: 1.4;
+          padding: 0.4rem 0 0.8rem 0;
+        }
+
+        .message-actions {
+          display: flex;
+          justify-content: center;
+
+          a {
+            @include roboto(500, normal, 14px);
+            padding: 0.3rem 0.8rem;
+          }
+        }
+      }
+    }
+
+    .reply-form {
+      flex: 1;
+      margin-top: 2rem;
+      padding: 1.5rem 2rem;
+      height: auto;
+      border-left: 4px solid $color12;
+      border-radius: 12px;
+      width: 450px;
+      margin-inline: auto;
+
+      h2 {
+        @include montserrat(600, normal, 20px);
+        margin-bottom: 0.8rem;
+        text-align: center;
+      }
+
+      .form-messageProducer {
+        display: flex;
+        flex-direction: column;
+        gap: 0.6rem;
+
+        label {
+          @include roboto(500, normal, 14px);
+        }
+
+        input,
+        select,
+        textarea {
+          @include roboto(400, normal, 14px);
+          padding: 0.4rem 0.6rem;
+        }
+
+        textarea {
+          min-height: 190px;
+        }
+
+        .reply-actions {
+          display: flex;
+          justify-content: center;
+
+          button {
+            @include inter(600, normal, 16px);
+            padding: 0.4rem 0.8rem;
+          }
+        }
+      }
+    }
+  }
+}
+
 /* Responsive largeur inférieure ou égale à 768 */
 @media screen and (max-width: 768px) {
   #producer-messages {

@@ -43,6 +43,7 @@
       @include roboto(400, oblique, 20px);
       color: $color3;
       margin: 0 0 30px 10px;
+      text-align: center;
     }
     form{
       display: flex;
@@ -60,10 +61,11 @@
       input{
         border: 1px solid $color27;
         border-radius: 5px;
-        height: 20px;
+
       }
       input,
       textarea{
+        height: 40px;
         background-color: $color3;
         color: $color4;
         padding: 0.5rem;

@@ -57,27 +57,73 @@ class ContactManager extends AbstractManager
 
     public function findByReceiverId(int $receiverId): array
     {
-        $query = $this->db->prepare("SELECT * FROM messages WHERE receiver_id = :receiver_id ORDER BY sent_at DESC");
-        $query->execute(["receiver_id" => $receiverId]);
-        $results = $query->fetchAll(PDO::FETCH_ASSOC);
+        $sql = "
+        SELECT 
+            m.*,
+            u.first_name AS sender_first_name,
+            u.last_name AS sender_last_name,
+            ur.first_name AS receiver_first_name,
+            ur.last_name AS receiver_last_name,
+            p.title AS product_title
+        FROM messages m
+        LEFT JOIN users u ON m.sender_id = u.id
+        LEFT JOIN users ur ON m.receiver_id = ur.id
+        LEFT JOIN products p ON m.product_id = p.id
+        WHERE m.receiver_id = :receiver_id
+        ORDER BY m.sent_at DESC
+    ";
+
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute(['receiver_id' => $receiverId]);
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         $messages = [];
         foreach ($results as $row) {
-            $messages[] = $this->createMessageFromRow($row);
+            $msg = $this->createMessageFromRow($row);
+            $msg->setSenderFirstName($row['sender_first_name']);
+            $msg->setSenderLastName($row['sender_last_name']);
+            $msg->setReceiverFirstName($row['receiver_first_name']);
+            $msg->setReceiverLastName($row['receiver_last_name']);
+            $msg->setProductTitle($row['product_title']);
+            $messages[] = $msg;
         }
+
         return $messages;
     }
 
     public function findBySenderId(int $senderId): array
     {
-        $query = $this->db->prepare("SELECT * FROM messages WHERE sender_id = :sender_id ORDER BY sent_at DESC");
-        $query->execute(["sender_id" => $senderId]);
-        $results = $query->fetchAll(PDO::FETCH_ASSOC);
+        $sql = "
+        SELECT 
+            m.*,
+            u.first_name AS sender_first_name,
+            u.last_name AS sender_last_name,
+            ur.first_name AS receiver_first_name,
+            ur.last_name AS receiver_last_name,
+            p.title AS product_title
+        FROM messages m
+        LEFT JOIN users u ON m.sender_id = u.id
+        LEFT JOIN users ur ON m.receiver_id = ur.id
+        LEFT JOIN products p ON m.product_id = p.id
+        WHERE m.sender_id = :sender_id
+        ORDER BY m.sent_at DESC
+    ";
+
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute(['sender_id' => $senderId]);
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         $messages = [];
         foreach ($results as $row) {
-            $messages[] = $this->createMessageFromRow($row);
+            $msg = $this->createMessageFromRow($row);
+            $msg->setSenderFirstName($row['sender_first_name']);
+            $msg->setSenderLastName($row['sender_last_name']);
+            $msg->setReceiverFirstName($row['receiver_first_name']);
+            $msg->setReceiverLastName($row['receiver_last_name']);
+            $msg->setProductTitle($row['product_title']);
+            $messages[] = $msg;
         }
+
         return $messages;
     }
 

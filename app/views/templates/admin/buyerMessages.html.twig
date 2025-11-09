@@ -9,20 +9,18 @@
                 {% for msg in messages %}
                     <div class="message-cardB {% if msg.is_sender %}sent{% else %}received{% endif %}">
                         <div class="message-headerB">
-                            <strong>
+                            <p>
                                 {% if msg.is_sender %}
                                     Vous avez écrit à {{ msg.receiverFirstName }} {{ msg.receiverLastName }}
                                 {% else %}
                                     Vous avez reçu un message{{ msg.senderFirstName }} {{ msg.senderLastName }}
                                 {% endif %}
-                            </strong
-
-                            {% if msg.productTitle %}
-                                <span class="product-titleB">Produit : {{ msg.productTitle }}</span>
-                            {% endif %}
-
-                            <span class="date"><strong> Le {{ msg.sentAt ? msg.sentAt|date("d/m/Y à H:i") : "" }}</strong></span>
+                                 <span class="date"> Le {{ msg.sentAt ? msg.sentAt|date("d/m/Y à H:i") : "" }} </span>
+                            </p>
                         </div>
+                        {% if msg.productTitle %}
+                            <span class="product-titleB">Produit : {{ msg.productTitle }}</span>
+                        {% endif %}
 
                         <div class="message-bodyB">
                             <p>{{ msg.content|nl2br }}</p>
@@ -30,7 +28,7 @@
 
                         {% if msg.is_sender %}
                             <div class="message-actionsB">
-                                <a href="/AgriMai/index.php?route=editMessageProducer&id={{ msg.id }}">Modifier</a>
+                                <a href="/AgriMai/index.php?route=editMessageBuyer&id={{ msg.id }}">Modifier</a>
                                 <a href="/AgriMai/index.php?route=delete-messages&id={{ msg.id }}"
                                    onclick="return confirm('Voulez-vous vraiment supprimer ce message ?');">
                                     Supprimer

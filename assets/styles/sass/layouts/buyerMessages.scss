@@ -49,21 +49,25 @@
         justify-content: space-between;
         align-items: center;
         border-bottom: 1px dashed rgba($color27, 0.5);
-        padding-bottom: 0.5rem;
         margin-bottom: 0.5rem;
 
-        .product-titleB {
-          @include roboto(500, normal, 16px);
-          font-style: italic;
-          color: $color6;
+        p{
+          @include roboto(500, normal, 18px);
+          color: rgba($color27, 0.8);
         }
 
         .date {
-          @include roboto(500, normal, 14px);
-          color: rgba($color4, 0.7);
+          @include roboto(500, normal, 16px);
+          color: rgba($color27, 0.8);
         }
       }
+      .product-titleB {
+        @include roboto(500, normal, 16px);
+        color: rgba($color27, 0.8);
+        padding: 0.5rem 1rem 0.7rem 0 ;
+        border-bottom: 1px dashed rgba($color27, 0.5);
 
+      }
       .message-bodyB {
         @include roboto-light(400, italic, 16px);
         color: rgba($color4, 0.9);
@@ -101,7 +105,7 @@
     border-radius: 15px;
     padding: 2rem 3rem 2rem 2rem;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    height: 445px;
+    height: 500px;
 
     h2 {
       @include montserrat(600, normal, 22px);
@@ -164,6 +168,7 @@
     margin: 3rem auto;
     width: 95%;
 
+
     .messages-listB {
       flex: 2;
 
@@ -179,6 +184,7 @@
         border-radius: 10px;
         border-right: 4px solid $color12;
         width: 450px;
+
         .sent{
           border-left: 4px solid $color12
         }

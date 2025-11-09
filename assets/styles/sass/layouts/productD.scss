@@ -308,6 +308,242 @@
   }
 }
 
+/* Responsive Tablette 769px à 1024px */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+
+  #productDetail {
+    margin:0;
+    padding: 0;
+
+    .productDetail-body {
+      display: grid;
+      grid-template-columns: 1fr 1fr; /* gauche = texte + image, droite = formulaire a modifier */
+      gap: 2rem;
+      padding: 2rem;
+      background-color: rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+      align-items: start;
+
+
+      /* Partie gauche : texte + image */
+      .productDetail-leftPart {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+
+        .productDetail-link {
+          margin-bottom: 15px;
+
+          a, span {
+            @include roboto-light(300, normal, 15px);
+          }
+        }
+
+        .productDetail-info {
+          display: flex;
+          flex-direction: column;
+          gap: 1rem;
+
+          h2 {
+            @include montserrat(600, normal, 21px);
+          }
+
+          .separator {
+            display: flex;
+            flex-direction: row;
+            gap: 0.75rem;
+
+            p {
+              @include roboto(600, normal, 15px);
+            }
+
+            .productDetail-stars {
+              border-left: 1px solid rgba(0, 0, 0, 0.2);
+              padding: 6px 12px;
+              margin: 0;
+              span {
+                @include roboto-light(400, normal, 15px);
+              }
+            }
+          }
+
+          .p-description {
+            @include inter(400, normal, 15px);
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 0;
+          }
+
+          .productDetail-btn {
+            display: flex;
+            gap: 1.5rem;
+
+            h3 {
+              @include montserrat(300, normal, 15px);
+
+              a {
+                @include roboto-light(300, normal, 15px);
+              }
+            }
+          }
+        }
+      }
+
+      /* Image centrée */
+      .productDetail-centerPart {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        img {
+          max-width: 320px;
+          width: 100%;
+          height: auto;
+          border-radius: 8px;
+          border: 1px  solid $color12;
+        }
+      }
+
+      /* Partie droite : boutons / formulaire */
+      .productDetail-rightPart {
+        display: flex;
+        flex-direction: column;
+        margin: 0;
+
+        .productDetail-lots {
+          display: flex;
+          flex-direction: column;
+          gap: 0.5rem;
+
+          p {
+            @include roboto(600, normal, 18px);
+          }
+
+          .productDetail-lot-btn,
+          button {
+            width: 100%;
+            max-width: 160px;
+            height: 38px;
+            @include inter(600, normal, 1§px);
+          }
+        }
+
+        .productDetail-formOrder {
+          display: flex;
+          flex-direction: column;
+          gap: 0.75rem;
+
+          label {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+
+            .lots,
+            .qty {
+              width: 100%;
+              max-width: 160px;
+              height: 38px;
+              .option{
+                @include inter(600, normal, 18px)
+              }
+            }
+          }
+        }
+
+        .productDetail-textOrder {
+          display: flex;
+          flex-direction: column;
+          gap: 0.5rem;
+
+          button {
+            width: 100%;
+            max-width: 220px;
+            height: 38px;
+            @include inter(600, normal, 15px);
+          }
+
+          p {
+            @include roboto-light(300, normal, 15px);
+            a {
+              @include roboto-light(600, normal, 15px);
+            }
+          }
+
+          .order-Condition {
+            @include roboto-light(300, normal, 13px);
+          }
+        }
+      }
+    }
+
+    /* Popups Livraison / Formulaire */
+    .popup-livraison,
+    #popup-form {
+      .popup {
+        width: 70%;
+        max-width: 500px;
+        top: 20%;
+        padding: 1.5rem;
+        border-radius: 10px;
+        background-color: $color22;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+      }
+
+      .content {
+        display: flex;
+        flex-direction: column;
+        padding: 1.5rem;
+      }
+
+      .content h5 {
+        @include montserrat(600, normal, 18px);
+        text-align: center;
+      }
+
+      .content p {
+        @include roboto-light(300, normal, 14px);
+        text-align: center;
+      }
+    }
+
+    .js-close-button,
+    .close-button {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      cursor: pointer;
+    }
+
+    #openForm button {
+      width: 100%;
+      max-width: 220px;
+      height: 38px;
+      @include inter(600, normal, 15px);
+      margin-top: 1rem;
+    }
+
+    #popup-form .purchase {
+      flex-direction: column;
+      margin-bottom: 1rem;
+    }
+
+    #popup-form input,
+    #popup-form textarea {
+      @include roboto(400, normal, 15px);
+      padding: 0.55rem;
+    }
+
+    #popup-form .submit button {
+      width: 100%;
+      max-width: 220px;
+      height: 45px;
+      @include inter(600, normal, 15px);
+    }
+  }
+}
+
+
 /* Responsive - Mobile max-width: 768px */
 @media screen and (max-width: 768px) {
 
@@ -319,21 +555,29 @@
       flex-direction: column;
       gap: 1rem;
       padding:  0 4rem;
-      margin: 4rem auto;
+      margin: 2rem auto;
+      background-color: rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+      align-items: center;
 
       .productDetail-centerPart {
         order: 1;
         img {
+          margin-top: 2rem;
           max-width: 210px;
           width: 100%;
           height: auto;
           padding: 0 0 20px 40px;
+          border: 1px solid $color12;
         }
       }
 
       .productDetail-leftPart {
         order: 2;
-
+        display: flex;
+        flex-direction: column;
+        align-items: center;
         .productDetail-link {
           margin-bottom: 15px;
 
@@ -343,6 +587,9 @@
         }
 
         .productDetail-info {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
           h2 {
             @include montserrat(600, normal, 20px);
           }
@@ -365,7 +612,14 @@
           }
 
           .p-description {
-            @include inter(400, normal, 14px);
+            @include inter(400, normal, 15px);
+            text-align: left;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;                  // espace entre les lignes pour lisibilité
+            padding: 0.8rem;
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
           }
 
           .productDetail-btn {

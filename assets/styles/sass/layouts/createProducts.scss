@@ -97,13 +97,15 @@
   }
 
 }
-/* Responsive : Tablette */
-@media (max-width: 1089px) {
+
+
+/* Responsive Tablette (max-width: 1024px) */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
   #product-form {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 2rem;
+    margin: 2rem 1rem;
     min-height: calc(100vh - 700px);
 
     .product-form-body {

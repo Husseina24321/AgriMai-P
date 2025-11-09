@@ -65,55 +65,80 @@ header {
     }
   }
 }
+
+
+/* Responsive Tablette 769px à 1024px */
 @media screen and (min-width: 769px) and (max-width: 1024px) {
   header {
-    width: 100%;
     padding: 1rem;
-    overflow-x: hidden;
 
     nav {
-      justify-content: space-between;
-      width: 100%;
       display: flex;
       align-items: center;
-      flex-wrap: wrap;
-      gap: 1rem;
+      justify-content: space-between;
+      width: 100%;
+      flex-wrap: nowrap; /* empêche le retour à la ligne */
 
       img {
+        width: 70px;
         height: auto;
-        width: 65px;
+        flex-shrink: 0; /* empêche le logo de rétrécir */
       }
 
       ul {
-        flex-wrap: wrap;
-        justify-content: center;
-        margin: 0;
-        gap: 0.8rem;
+        display: flex
+      ;
+        align-items: flex-start;
+        gap: 0;
+        margin: 0 auto;
         padding: 0;
+        justify-content: center;
+        flex-direction: row;
+        flex: 1;
+        flex-wrap: nowrap;
       }
 
       li {
-        margin: 0 0.5rem;
+        margin: 0 1rem;
+        list-style: none;
       }
 
       a {
-        @include inter(700, normal, 16px);
+        @include inter(700, normal, 18px);
+        color: $color3;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        white-space: nowrap;
+
+        &:hover { color: $color7; }
+        &:active { color: $color2; }
+
+        img {
+          width: 18px;
+          height: auto;
+        }
       }
 
-      .top-right{
+      .top-right {
         display: flex;
-        flex-wrap: wrap;
-        justify-content: flex-end;
-        gap: 0.5rem;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 0;
+        flex-shrink: 0; /* reste à droite */
+
         a {
           white-space: nowrap;
-          padding: 0.3rem 0.6rem;
+          padding: 0.4rem 0.8rem;
           @include inter(700, normal, 16px);
         }
       }
     }
   }
 }
+
+
 
 
 /* Responsive Mobile max-width: 768px */
@@ -234,4 +259,46 @@ header {
     }
   }
 }
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  header.admin-header {
+    nav {
+      display: flex ;
+      flex-direction: column;
+      align-items: flex-start ;
+      width: 100% ;
+
+      .top-right {
+        position: static ;
+        order: 0 ;
+        width: 100% ;
+        display: flex ;
+        justify-content: flex-end ;
+        margin-bottom: 0.5rem ;
+      }
+
+      ul {
+        order: 1 ;
+        display: flex;
+        flex-wrap: wrap;
+
+        width: 100% ;
+        list-style: none ;
+        padding: 2rem 0 1rem 0;
+        margin: 0 ;
+        gap: 2rem;
+      }
+
+      li {
+        margin: 0.5rem 0 ;
+      }
+
+      a {
+        white-space: nowrap ;
+        color: $color3 ;
+        text-decoration: none;
+      }
+    }
+  }
+}
+
 

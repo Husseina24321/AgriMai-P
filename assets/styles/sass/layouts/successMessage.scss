@@ -1,50 +1,66 @@
 @use "../vars/colors" as *;
 @use "../vars/fonts" as *;
 
-#success{
-  .success-body{
+#success {
+
+  .success-body {
+    border: dotted;
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 300px;
-    gap: 1rem;
+    justify-content: center;
+    margin: 12rem auto;
+    gap: 1.2rem;
+    text-align: center;
+    width: 80%;
+    background-color: rgba($color3, 0.03);
+    border-radius: 12px;
+    padding: 2rem 3rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
 
-    p{
+    p {
       @include roboto(600, oblique, 22px);
       color: $color4;
+      line-height: 1.6;
+      max-width: 700px;
     }
 
-    a{
+    a {
       color: $color12;
       @include roboto-light(300, normal, 18px);
+      text-decoration: underline;
+      padding-bottom: 2rem;
+      transition: color 0.3s ease;
+
+      &:hover {
+        color: $color7;
+      }
     }
   }
 }
 
-/* Responsive - Mobile max-width: 768px */
-@media screen and (max-width: 768px) {
+/*  Responsive - Tablette (769px à 1024px) */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
   #success {
+    min-height: calc(100vh - 700px);
     .success-body {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      margin: 4rem 1rem;
+      margin: 6rem auto;
+      width: 85%;
       gap: 1rem;
       text-align: center;
 
+
       p {
-        @include roboto(600, oblique, 18px);
+        @include roboto(600, oblique, 20px);
         color: $color4;
         line-height: 1.5;
-        max-width: 90%;
+        max-width: 600px;
       }
 
       a {
+        @include roboto-light(300, normal, 17px);
         color: $color12;
-        @include roboto-light(300, normal, 16px);
         text-decoration: underline;
-        word-wrap: break-word; // pour éviter les débordements si lien long
         margin-top: 0.5rem;
 
         &:hover {
@@ -54,3 +70,35 @@
     }
   }
 }
+
+
+
+/*  Responsive - Mobile (max-width: 768px) */
+@media screen and (max-width: 768px) {
+  #success {
+    .success-body {
+      margin: 4rem 1rem;
+      width: 95%;
+      gap: 1rem;
+
+      p {
+        @include roboto(600, oblique, 18px);
+        line-height: 1.5;
+        color: $color4;
+        max-width: 90%;
+      }
+
+      a {
+        @include roboto-light(300, normal, 16px);
+        color: $color12;
+        margin-top: 0.5rem;
+        word-wrap: break-word;
+
+        &:hover {
+          color: $color7;
+        }
+      }
+    }
+  }
+}
+

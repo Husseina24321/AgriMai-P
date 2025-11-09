@@ -92,7 +92,7 @@
 @media screen and (min-width: 769px) and (max-width: 1024px) {
 
   #admin-messages {
-
+    min-height: calc(100vh - 700px);
     .admin-body {
       display: flex;
       flex-direction: column;

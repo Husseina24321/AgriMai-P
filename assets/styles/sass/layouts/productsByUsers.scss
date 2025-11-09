@@ -115,6 +115,7 @@
     padding: 1rem; // Évite débordements
     width: 100%;
     box-sizing: border-box;
+    min-height: calc(100vh - 700px);
 
     .producerDash-body {
       width: 100%;

@@ -1,4 +1,4 @@
-<header>
+<header class="{% if session.user is defined and session.user.role == 'Admin' %}admin-header{% endif %}">
     <nav>
         <img src="/AgriMai/assets/styles/img/logo.png" alt="logo">
         <ul>

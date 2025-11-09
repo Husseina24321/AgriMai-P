@@ -68,7 +68,7 @@
         input{
           border: 1px solid $color27;
           border-radius: 5px;
-          height: 20px;
+
         }
         input,
         textarea{
@@ -76,6 +76,7 @@
           color: $color4;
           padding: 0.5rem;
           @include roboto(400, normal, 16px);
+          height: 40px;
 
           &::placeholder {
             color:$color6;

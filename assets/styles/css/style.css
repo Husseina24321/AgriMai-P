@@ -1,7 +1,6 @@
 @charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Roboto:wght@400;500;700&family=Inter:wght@400;500;700&display=swap");
 html {
-  font-size: 16px;
   height: 100%;
   width: 100%;
   overflow-x: hidden;
@@ -569,33 +568,37 @@ header nav .aBorder2 {
   border: 2px solid #F5F5DC;
 }
 
+/* Responsive Tablette 769px à 1024px */
 @media screen and (min-width: 769px) and (max-width: 1024px) {
   header {
-    width: 100%;
     padding: 1rem;
-    overflow-x: hidden;
   }
   header nav {
-    justify-content: space-between;
-    width: 100%;
     display: flex;
     align-items: center;
-    flex-wrap: wrap;
-    gap: 1rem;
+    justify-content: space-between;
+    width: 100%;
+    flex-wrap: nowrap; /* empêche le retour à la ligne */
   }
   header nav img {
+    width: 70px;
     height: auto;
-    width: 65px;
+    flex-shrink: 0; /* empêche le logo de rétrécir */
   }
   header nav ul {
-    flex-wrap: wrap;
-    justify-content: center;
-    margin: 0;
-    gap: 0.8rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 0;
+    margin: 0 auto;
     padding: 0;
+    justify-content: center;
+    flex-direction: row;
+    flex: 1;
+    flex-wrap: nowrap;
   }
   header nav li {
-    margin: 0 0.5rem;
+    margin: 0 1rem;
+    list-style: none;
   }
   header nav a {
     font-family: "Inter", sans-serif;
@@ -603,17 +606,34 @@ header nav .aBorder2 {
     font-weight: 700;
     font-style: normal;
     font-variation-settings: "wdth" 100;
-    font-size: 16px;
+    font-size: 18px;
+    color: #FFFFFF;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    white-space: nowrap;
+  }
+  header nav a:hover {
+    color: #E2801D;
+  }
+  header nav a:active {
+    color: #4CAF50;
+  }
+  header nav a img {
+    width: 18px;
+    height: auto;
   }
   header nav .top-right {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-end;
-    gap: 0.5rem;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0;
+    flex-shrink: 0; /* reste à droite */
   }
   header nav .top-right a {
     white-space: nowrap;
-    padding: 0.3rem 0.6rem;
+    padding: 0.4rem 0.8rem;
     font-family: "Inter", sans-serif;
     font-optical-sizing: auto;
     font-weight: 700;
@@ -742,6 +762,40 @@ header nav .aBorder2 {
     font-style: normal;
     font-variation-settings: "wdth" 100;
     font-size: 12px;
+  }
+}
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  header.admin-header nav {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+  }
+  header.admin-header nav .top-right {
+    position: static;
+    order: 0;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 0.5rem;
+  }
+  header.admin-header nav ul {
+    order: 1;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    list-style: none;
+    padding: 2rem 0 1rem 0;
+    margin: 0;
+    gap: 2rem;
+  }
+  header.admin-header nav li {
+    margin: 0.5rem 0;
+  }
+  header.admin-header nav a {
+    white-space: nowrap;
+    color: #FFFFFF;
+    text-decoration: none;
   }
 }
 #header-about {
@@ -1016,16 +1070,19 @@ header nav .aBorder2 {
     border-radius: 65px;
   }
   #team {
-    margin: 4rem;
+    margin: 3rem auto;
+    width: 95%;
   }
   #team .team-body {
-    margin: 3rem;
+    margin: 2rem auto;
+    width: 100%;
   }
   #team .team-body .team1,
   #team .team-body .team2 {
     flex-direction: row;
-    gap: 10rem;
     padding-top: 25px;
+    gap: 5rem;
+    justify-content: space-around;
   }
   #team .team-body .team1 .team-member img,
   #team .team-body .team1 .team-member2 img,
@@ -1081,12 +1138,14 @@ header nav .aBorder2 {
     height: 28px;
   }
   #address {
-    margin: 5rem;
+    margin: 4rem auto;
+    width: 90%;
   }
   #address .address-body {
     flex-direction: row;
-    justify-content: center;
-    gap: 12rem;
+    justify-content: space-between;
+    gap: 4rem;
+    align-items: center;
   }
   #address .address-body .address-text {
     padding: 20px;
@@ -1573,11 +1632,19 @@ header nav .aBorder2 {
   }
 }
 #success .success-body {
+  border: dotted;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 300px;
-  gap: 1rem;
+  justify-content: center;
+  margin: 12rem auto;
+  gap: 1.2rem;
+  text-align: center;
+  width: 80%;
+  background-color: rgba(255, 255, 255, 0.03);
+  border-radius: 12px;
+  padding: 2rem 3rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
 }
 #success .success-body p {
   font-family: "Roboto", sans-serif;
@@ -1586,6 +1653,8 @@ header nav .aBorder2 {
   font-style: oblique;
   font-size: 22px;
   color: #000000;
+  line-height: 1.6;
+  max-width: 700px;
 }
 #success .success-body a {
   color: #6E093B;
@@ -1594,16 +1663,22 @@ header nav .aBorder2 {
   font-weight: 300;
   font-style: normal;
   font-size: 18px;
+  text-decoration: underline;
+  padding-bottom: 2rem;
+  transition: color 0.3s ease;
+}
+#success .success-body a:hover {
+  color: #E2801D;
 }
 
-/* Responsive - Mobile max-width: 768px */
-@media screen and (max-width: 768px) {
+/*  Responsive - Tablette (769px à 1024px) */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  #success {
+    min-height: calc(100vh - 700px);
+  }
   #success .success-body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin: 4rem 1rem;
+    margin: 6rem auto;
+    width: 85%;
     gap: 1rem;
     text-align: center;
   }
@@ -1612,21 +1687,51 @@ header nav .aBorder2 {
     font-optical-sizing: auto;
     font-weight: 600;
     font-style: oblique;
-    font-size: 18px;
+    font-size: 20px;
     color: #000000;
     line-height: 1.5;
+    max-width: 600px;
+  }
+  #success .success-body a {
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+    font-size: 17px;
+    color: #6E093B;
+    text-decoration: underline;
+    margin-top: 0.5rem;
+  }
+  #success .success-body a:hover {
+    color: #E2801D;
+  }
+}
+/*  Responsive - Mobile (max-width: 768px) */
+@media screen and (max-width: 768px) {
+  #success .success-body {
+    margin: 4rem 1rem;
+    width: 95%;
+    gap: 1rem;
+  }
+  #success .success-body p {
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: oblique;
+    font-size: 18px;
+    line-height: 1.5;
+    color: #000000;
     max-width: 90%;
   }
   #success .success-body a {
-    color: #6E093B;
     font-family: "Roboto", sans-serif;
     font-optical-sizing: auto;
     font-weight: 300;
     font-style: normal;
     font-size: 16px;
-    text-decoration: underline;
-    word-wrap: break-word;
+    color: #6E093B;
     margin-top: 0.5rem;
+    word-wrap: break-word;
   }
   #success .success-body a:hover {
     color: #E2801D;
@@ -1727,6 +1832,9 @@ header nav .aBorder2 {
 
 /* Responsive Tablette (769px à 1024px) */
 @media screen and (min-width: 769px) and (max-width: 1024px) {
+  #admin-messages {
+    min-height: calc(100vh - 700px);
+  }
   #admin-messages .admin-body {
     display: flex;
     flex-direction: column;
@@ -1941,6 +2049,82 @@ header nav .aBorder2 {
   color: #000000;
 }
 
+/* Responsive - Tablette entre 769px et 1024px */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  #listUsers {
+    margin: 2rem 0 3rem 0;
+  }
+  #listUsers .listUsersBody {
+    width: 95%;
+    gap: 1.5rem;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+  #listUsers .listUsersBody h1 {
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+    font-variation-settings: "wdth" 100;
+    font-size: 24px;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+  #listUsers .listUsersBody p {
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: oblique;
+    font-size: 18px;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  #listUsers .listUsersBody .table-adminUserList {
+    width: 100%;
+    max-width: 100%;
+    table-layout: fixed;
+    word-wrap: break-word;
+    border-radius: 8px;
+    overflow-x: auto;
+    display: block;
+  }
+  #listUsers .listUsersBody .table-adminUserList thead, #listUsers .listUsersBody .table-adminUserList tbody {
+    width: 100%;
+    display: table;
+    table-layout: fixed;
+  }
+  #listUsers .listUsersBody .table-adminUserList tbody tr td {
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 15px;
+    padding: 0.5rem 0.8rem;
+    text-align: center;
+    white-space: normal;
+  }
+  #listUsers .listUsersBody .table-adminUserList thead tr th {
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 15px;
+    padding: 0.5rem 0.8rem;
+    text-align: center;
+    white-space: normal;
+  }
+  #listUsers .listUsersBody .table-adminUserList tbody tr td a {
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 14px;
+    padding: 0.3rem 0.6rem;
+    display: inline-block;
+    text-align: center;
+    word-break: break-word;
+  }
+}
 /* Responsive - Mobile max-width: 768px */
 @media screen and (max-width: 768px) {
   #listUsers {
@@ -2075,27 +2259,38 @@ header nav .aBorder2 {
   border-left: 4px solid #2F0404;
 }
 #producer-messages .messages-list .message-card .message-header {
-  font-family: "Roboto", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 500;
-  font-style: normal;
-  font-size: 19px;
   color: #000000;
   display: flex;
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px dashed rgba(47, 4, 4, 0.5);
-  padding-bottom: 0.5rem;
   margin-bottom: 0.5rem;
 }
-#producer-messages .messages-list .message-card .message-header .product-title {
-  font-size: 15px;
+#producer-messages .messages-list .message-card .message-header p {
+  font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
   font-style: italic;
-  color: #788079;
+  font-size: 18px;
+  color: rgba(47, 4, 4, 0.8);
 }
 #producer-messages .messages-list .message-card .message-header .date {
-  font-size: 14px;
-  color: rgba(0, 0, 0, 0.7);
+  font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: Italic;
+  font-size: 16px;
+  color: rgba(47, 4, 4, 0.8);
+}
+#producer-messages .messages-list .message-card .product-title {
+  font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: italic;
+  font-size: 16px;
+  color: rgba(47, 4, 4, 0.8);
+  border-bottom: 1px dashed rgba(47, 4, 4, 0.5);
+  padding: 0.5rem 1rem 0.7rem 0;
 }
 #producer-messages .messages-list .message-card .message-body {
   font-family: "Roboto", sans-serif;
@@ -2220,6 +2415,148 @@ header nav .aBorder2 {
   transform: scale(1.03);
 }
 
+/* Responsive Tablette (769px à 1024px) */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  #producer-messages {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0;
+    margin: 3rem auto;
+    width: 95%;
+  }
+  #producer-messages .messages-list {
+    flex: 2;
+  }
+  #producer-messages .messages-list h1 {
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+    font-variation-settings: "wdth" 100;
+    font-size: 22px;
+    margin-bottom: 1.2rem;
+    text-align: center;
+  }
+  #producer-messages .messages-list .message-card {
+    padding: 1rem 1.2rem;
+    margin-bottom: 1.2rem;
+    border-radius: 10px;
+    border-right: 4px solid #6E093B;
+    width: 450px;
+    margin-inline: auto;
+    background-color: rgba(255, 255, 255, 0.9);
+  }
+  #producer-messages .messages-list .message-card.sent {
+    border-left: 4px solid #6E093B;
+  }
+  #producer-messages .messages-list .message-card.received {
+    border-left: 4px solid #2F0404;
+  }
+  #producer-messages .messages-list .message-card .message-header {
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 16px;
+    gap: 0.4rem;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  #producer-messages .messages-list .message-card .message-header .product-title {
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 14px;
+  }
+  #producer-messages .messages-list .message-card .message-header .date {
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 12px;
+  }
+  #producer-messages .messages-list .message-card .message-body {
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 14px;
+    line-height: 1.4;
+    padding: 0.4rem 0 0.8rem 0;
+  }
+  #producer-messages .messages-list .message-card .message-actions {
+    display: flex;
+    justify-content: center;
+  }
+  #producer-messages .messages-list .message-card .message-actions a {
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 14px;
+    padding: 0.3rem 0.8rem;
+  }
+  #producer-messages .reply-form {
+    flex: 1;
+    margin-top: 2rem;
+    padding: 1.5rem 2rem;
+    height: auto;
+    border-left: 4px solid #6E093B;
+    border-radius: 12px;
+    width: 450px;
+    margin-inline: auto;
+  }
+  #producer-messages .reply-form h2 {
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+    font-variation-settings: "wdth" 100;
+    font-size: 20px;
+    margin-bottom: 0.8rem;
+    text-align: center;
+  }
+  #producer-messages .reply-form .form-messageProducer {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+  #producer-messages .reply-form .form-messageProducer label {
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 14px;
+  }
+  #producer-messages .reply-form .form-messageProducer input,
+  #producer-messages .reply-form .form-messageProducer select,
+  #producer-messages .reply-form .form-messageProducer textarea {
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 14px;
+    padding: 0.4rem 0.6rem;
+  }
+  #producer-messages .reply-form .form-messageProducer textarea {
+    min-height: 190px;
+  }
+  #producer-messages .reply-form .form-messageProducer .reply-actions {
+    display: flex;
+    justify-content: center;
+  }
+  #producer-messages .reply-form .form-messageProducer .reply-actions button {
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+    font-variation-settings: "wdth" 100;
+    font-size: 16px;
+    padding: 0.4rem 0.8rem;
+  }
+}
 /* Responsive largeur inférieure ou égale à 768 */
 @media screen and (max-width: 768px) {
   #producer-messages {
@@ -2520,7 +2857,7 @@ header nav .aBorder2 {
     text-align: center;
   }
   #faq .faq-body .btnFaq {
-    width: 140px;
+    width: 180px;
     height: auto;
     padding: 7px 14px;
     font-family: "Inter", sans-serif;
@@ -2858,7 +3195,7 @@ header nav .aBorder2 {
 }
 #recent-products .recentP-body .product-card .btn2 {
   width: 100px;
-  height: 20px;
+  height: 35px;
   display: inline-block;
   border-radius: 0 20px;
   border: 1px solid #000000;
@@ -3799,46 +4136,20 @@ header nav .aBorder2 {
 }
 
 @media screen and (min-width: 769px) and (max-width: 1024px) {
-  #cgu .cgu-body {
-    padding: 1rem;
+  #cgu {
+    margin: 2rem 0.8rem 2rem 0.8rem;
+    box-sizing: border-box;
   }
-  #cgu .cgu-body h1 {
-    font-family: "Montserrat", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 700;
-    font-style: normal;
-    font-variation-settings: "wdth" 100;
-    font-size: 22px;
-  }
-  #cgu .cgu-body .cgu-text {
-    margin: 0;
-    padding: 0 1rem;
-  }
-  #cgu .cgu-body h2 {
-    font-family: "Montserrat", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 700;
-    font-style: normal;
-    font-variation-settings: "wdth" 100;
-    font-size: 20px;
-  }
-  #cgu .cgu-body p {
-    font-family: "Roboto", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 400;
-    font-style: normal;
-    font-size: 18px;
-  }
-  #cgu .cgu-body ul li {
-    font-family: "Roboto", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 400;
-    font-style: normal;
-    font-size: 18px;
-  }
+  #cgu .cgu-body,
   #cgu #cgv-body {
-    padding: 1rem;
+    padding: 1.5rem 1.5rem 1rem 0;
+    margin: 0 auto;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
   }
+  #cgu .cgu-body h1,
   #cgu #cgv-body h1 {
     font-family: "Montserrat", sans-serif;
     font-optical-sizing: auto;
@@ -3846,7 +4157,21 @@ header nav .aBorder2 {
     font-style: normal;
     font-variation-settings: "wdth" 100;
     font-size: 22px;
+    margin-bottom: 1rem;
+    text-align: center;
   }
+  #cgu .cgu-body .cgu-text,
+  #cgu .cgu-body .cgv-text,
+  #cgu #cgv-body .cgu-text,
+  #cgu #cgv-body .cgv-text {
+    margin: 0 auto;
+    padding-inline: 1.5rem;
+    max-width: 100%;
+    text-align: justify;
+  }
+  #cgu .cgu-body .cgu-text h2,
+  #cgu .cgu-body .cgv-text h2,
+  #cgu #cgv-body .cgu-text h2,
   #cgu #cgv-body .cgv-text h2 {
     font-family: "Montserrat", sans-serif;
     font-optical-sizing: auto;
@@ -3854,20 +4179,38 @@ header nav .aBorder2 {
     font-style: normal;
     font-variation-settings: "wdth" 100;
     font-size: 20px;
+    margin: 1.5rem 0 0 0;
   }
+  #cgu .cgu-body .cgu-text p,
+  #cgu .cgu-body .cgv-text p,
+  #cgu #cgv-body .cgu-text p,
   #cgu #cgv-body .cgv-text p {
     font-family: "Roboto", sans-serif;
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
     font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 1rem;
   }
+  #cgu .cgu-body .cgu-text ul,
+  #cgu .cgu-body .cgv-text ul,
+  #cgu #cgv-body .cgu-text ul,
+  #cgu #cgv-body .cgv-text ul {
+    padding-left: 1.5rem;
+    list-style: disc;
+  }
+  #cgu .cgu-body .cgu-text ul li,
+  #cgu .cgu-body .cgv-text ul li,
+  #cgu #cgv-body .cgu-text ul li,
   #cgu #cgv-body .cgv-text ul li {
     font-family: "Roboto", sans-serif;
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
     font-size: 18px;
+    line-height: 1.4;
+    margin-bottom: 0.4rem;
   }
 }
 @media (max-width: 768px) {
@@ -4030,6 +4373,7 @@ header nav .aBorder2 {
   font-size: 20px;
   color: #FFFFFF;
   margin: 0 0 30px 10px;
+  text-align: center;
 }
 #login .login-body form {
   display: flex;
@@ -4051,10 +4395,10 @@ header nav .aBorder2 {
 #login .login-body form input {
   border: 1px solid #2F0404;
   border-radius: 5px;
-  height: 20px;
 }
 #login .login-body form input,
 #login .login-body form textarea {
+  height: 40px;
   background-color: #FFFFFF;
   color: #000000;
   padding: 0.5rem;
@@ -5281,7 +5625,7 @@ header nav .aBorder2 {
     padding: 0.3rem 0.6rem;
   }
 }
-#edit-message {
+#edit-message .editMessage-body {
   width: 80%;
   max-width: 800px;
   margin: 5rem auto;
@@ -5291,7 +5635,7 @@ header nav .aBorder2 {
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
   padding: 2.5rem 3rem;
 }
-#edit-message h1 {
+#edit-message .editMessage-body h1 {
   font-family: "Montserrat", sans-serif;
   font-optical-sizing: auto;
   font-weight: 600;
@@ -5303,17 +5647,17 @@ header nav .aBorder2 {
   text-align: center;
   margin-bottom: 2rem;
 }
-#edit-message form {
+#edit-message .editMessage-body form {
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
 }
-#edit-message form div {
+#edit-message .editMessage-body form div {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
 }
-#edit-message form div label {
+#edit-message .editMessage-body form div label {
   font-family: "Roboto", sans-serif;
   font-optical-sizing: auto;
   font-weight: 500;
@@ -5321,8 +5665,8 @@ header nav .aBorder2 {
   font-size: 16px;
   color: #000000;
 }
-#edit-message form div input,
-#edit-message form div textarea {
+#edit-message .editMessage-body form div input,
+#edit-message .editMessage-body form div textarea {
   font-family: "Roboto", sans-serif;
   font-optical-sizing: auto;
   font-weight: 400;
@@ -5334,21 +5678,21 @@ header nav .aBorder2 {
   background-color: rgba(0, 0, 0, 0.03);
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
-#edit-message form div input:focus,
-#edit-message form div textarea:focus {
+#edit-message .editMessage-body form div input:focus,
+#edit-message .editMessage-body form div textarea:focus {
   border-color: #CBB799;
   box-shadow: 0 0 5px rgba(203, 183, 153, 0.4);
   outline: none;
 }
-#edit-message form div textarea {
+#edit-message .editMessage-body form div textarea {
   min-height: 150px;
   resize: vertical;
 }
-#edit-message form div input {
+#edit-message .editMessage-body form div input {
   background-color: rgba(206, 29, 226, 0.1);
   cursor: not-allowed;
 }
-#edit-message form button {
+#edit-message .editMessage-body form button {
   font-family: "Inter", sans-serif;
   font-optical-sizing: auto;
   font-weight: 600;
@@ -5365,16 +5709,16 @@ header nav .aBorder2 {
   cursor: pointer;
   transition: all 0.3s ease;
 }
-#edit-message form button:hover {
+#edit-message .editMessage-body form button:hover {
   background-color: #CBB799;
   color: #000000;
   transform: scale(1.03);
 }
-#edit-message p {
+#edit-message .editMessage-body p {
   text-align: center;
   margin-top: 1.5rem;
 }
-#edit-message p a {
+#edit-message .editMessage-body p a {
   font-family: "Roboto", sans-serif;
   font-optical-sizing: auto;
   font-weight: 500;
@@ -5384,7 +5728,7 @@ header nav .aBorder2 {
   text-decoration: none;
   transition: color 0.2s ease;
 }
-#edit-message p a:hover {
+#edit-message .editMessage-body p a:hover {
   color: rgba(203, 183, 153, 0.08);
   text-decoration: underline;
 }
@@ -5392,10 +5736,13 @@ header nav .aBorder2 {
 /* Responsive Tablette (max-width: 1024px) */
 @media screen and (min-width: 769px) and (max-width: 1024px) {
   #edit-message {
+    min-height: calc(100vh - 700px);
+  }
+  #edit-message .editMessage-body {
     width: 90%;
     padding: 2rem;
   }
-  #edit-message h1 {
+  #edit-message .editMessage-body h1 {
     font-family: "Montserrat", sans-serif;
     font-optical-sizing: auto;
     font-weight: 600;
@@ -5403,25 +5750,25 @@ header nav .aBorder2 {
     font-variation-settings: "wdth" 100;
     font-size: 22px;
   }
-  #edit-message form {
+  #edit-message .editMessage-body form {
     gap: 1rem;
   }
-  #edit-message form div label {
+  #edit-message .editMessage-body form div label {
     font-family: "Roboto", sans-serif;
     font-optical-sizing: auto;
     font-weight: 500;
     font-style: normal;
     font-size: 16px;
   }
-  #edit-message form div input,
-  #edit-message form div textarea {
+  #edit-message .editMessage-body form div input,
+  #edit-message .editMessage-body form div textarea {
     font-family: "Roboto", sans-serif;
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
     font-size: 16px;
   }
-  #edit-message form button {
+  #edit-message .editMessage-body form button {
     font-family: "Inter", sans-serif;
     font-optical-sizing: auto;
     font-weight: 600;
@@ -5430,7 +5777,7 @@ header nav .aBorder2 {
     font-size: 18px;
     padding: 0.5rem 1.3rem;
   }
-  #edit-message p a {
+  #edit-message .editMessage-body p a {
     font-family: "Roboto", sans-serif;
     font-optical-sizing: auto;
     font-weight: 500;
@@ -5440,11 +5787,11 @@ header nav .aBorder2 {
 }
 /*Responsive Mobile (max-width: 768px) */
 @media screen and (max-width: 768px) {
-  #edit-message {
+  #edit-message .editMessage-body {
     width: 95%;
     padding: 1.5rem;
   }
-  #edit-message h1 {
+  #edit-message .editMessage-body h1 {
     font-family: "Montserrat", sans-serif;
     font-optical-sizing: auto;
     font-weight: 600;
@@ -5453,18 +5800,18 @@ header nav .aBorder2 {
     font-size: 20px;
     margin-bottom: 1.5rem;
   }
-  #edit-message form {
+  #edit-message .editMessage-body form {
     gap: 0.8rem;
   }
-  #edit-message form div label {
+  #edit-message .editMessage-body form div label {
     font-family: "Roboto", sans-serif;
     font-optical-sizing: auto;
     font-weight: 500;
     font-style: normal;
     font-size: 14px;
   }
-  #edit-message form div input,
-  #edit-message form div textarea {
+  #edit-message .editMessage-body form div input,
+  #edit-message .editMessage-body form div textarea {
     font-family: "Roboto", sans-serif;
     font-optical-sizing: auto;
     font-weight: 400;
@@ -5472,10 +5819,10 @@ header nav .aBorder2 {
     font-size: 14px;
     padding: 0.6rem 0.8rem;
   }
-  #edit-message form div textarea {
+  #edit-message .editMessage-body form div textarea {
     min-height: 130px;
   }
-  #edit-message form button {
+  #edit-message .editMessage-body form button {
     font-family: "Inter", sans-serif;
     font-optical-sizing: auto;
     font-weight: 600;
@@ -5484,7 +5831,7 @@ header nav .aBorder2 {
     font-size: 16px;
     padding: 0.4rem 1.1rem;
   }
-  #edit-message p a {
+  #edit-message .editMessage-body p a {
     font-family: "Roboto", sans-serif;
     font-optical-sizing: auto;
     font-weight: 500;
@@ -5634,6 +5981,18 @@ header nav .aBorder2 {
   #edit-product form {
     gap: 1.2rem;
   }
+  #edit-product form div {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  #edit-product form div p {
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 18px;
+  }
   #edit-product form div label {
     font-family: "Roboto", sans-serif;
     font-optical-sizing: auto;
@@ -5644,8 +6003,19 @@ header nav .aBorder2 {
   #edit-product form div input,
   #edit-product form div select,
   #edit-product form div textarea {
-    font-size: 18px;
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 14px;
     padding: 0.6rem 0.8rem;
+  }
+  #edit-product form div textarea {
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 14px;
   }
   #edit-product form div button {
     font-family: "Inter", sans-serif;
@@ -5653,11 +6023,11 @@ header nav .aBorder2 {
     font-weight: 600;
     font-style: normal;
     font-variation-settings: "wdth" 100;
-    font-size: 15px;
+    font-size: 14px;
     padding: 8px 16px;
   }
 }
-/* ✅ Responsive MOBILE ≤768px */
+/* Responsive MOBILE 768px */
 @media screen and (max-width: 768px) {
   #edit-product {
     max-width: 95%;
@@ -5774,7 +6144,6 @@ header nav .aBorder2 {
 #register .register-body form .form-group input {
   border: 1px solid #2F0404;
   border-radius: 5px;
-  height: 20px;
 }
 #register .register-body form .form-group input,
 #register .register-body form .form-group textarea {
@@ -5786,6 +6155,7 @@ header nav .aBorder2 {
   font-weight: 400;
   font-style: normal;
   font-size: 16px;
+  height: 40px;
 }
 #register .register-body form .form-group input::placeholder,
 #register .register-body form .form-group textarea::placeholder {
@@ -6436,6 +6806,296 @@ header nav .aBorder2 {
   color: #580606;
 }
 
+/* Responsive Tablette 769px à 1024px */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  #productDetail {
+    margin: 0;
+    padding: 0;
+  }
+  #productDetail .productDetail-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* gauche = texte + image, droite = formulaire a modifier */
+    gap: 2rem;
+    padding: 2rem;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    align-items: start;
+    /* Partie gauche : texte + image */
+  }
+  #productDetail .productDetail-body .productDetail-leftPart {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  #productDetail .productDetail-body .productDetail-leftPart .productDetail-link {
+    margin-bottom: 15px;
+  }
+  #productDetail .productDetail-body .productDetail-leftPart .productDetail-link a, #productDetail .productDetail-body .productDetail-leftPart .productDetail-link span {
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+    font-size: 15px;
+  }
+  #productDetail .productDetail-body .productDetail-leftPart .productDetail-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  #productDetail .productDetail-body .productDetail-leftPart .productDetail-info h2 {
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+    font-variation-settings: "wdth" 100;
+    font-size: 21px;
+  }
+  #productDetail .productDetail-body .productDetail-leftPart .productDetail-info .separator {
+    display: flex;
+    flex-direction: row;
+    gap: 0.75rem;
+  }
+  #productDetail .productDetail-body .productDetail-leftPart .productDetail-info .separator p {
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 15px;
+  }
+  #productDetail .productDetail-body .productDetail-leftPart .productDetail-info .separator .productDetail-stars {
+    border-left: 1px solid rgba(0, 0, 0, 0.2);
+    padding: 6px 12px;
+    margin: 0;
+  }
+  #productDetail .productDetail-body .productDetail-leftPart .productDetail-info .separator .productDetail-stars span {
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 15px;
+  }
+  #productDetail .productDetail-body .productDetail-leftPart .productDetail-info .p-description {
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-variation-settings: "wdth" 100;
+    font-size: 15px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 0;
+  }
+  #productDetail .productDetail-body .productDetail-leftPart .productDetail-info .productDetail-btn {
+    display: flex;
+    gap: 1.5rem;
+  }
+  #productDetail .productDetail-body .productDetail-leftPart .productDetail-info .productDetail-btn h3 {
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+    font-variation-settings: "wdth" 100;
+    font-size: 15px;
+  }
+  #productDetail .productDetail-body .productDetail-leftPart .productDetail-info .productDetail-btn h3 a {
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+    font-size: 15px;
+  }
+  #productDetail .productDetail-body {
+    /* Image centrée */
+  }
+  #productDetail .productDetail-body .productDetail-centerPart {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  #productDetail .productDetail-body .productDetail-centerPart img {
+    max-width: 320px;
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    border: 1px solid #6E093B;
+  }
+  #productDetail .productDetail-body {
+    /* Partie droite : boutons / formulaire */
+  }
+  #productDetail .productDetail-body .productDetail-rightPart {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+  }
+  #productDetail .productDetail-body .productDetail-rightPart .productDetail-lots {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  #productDetail .productDetail-body .productDetail-rightPart .productDetail-lots p {
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 18px;
+  }
+  #productDetail .productDetail-body .productDetail-rightPart .productDetail-lots .productDetail-lot-btn,
+  #productDetail .productDetail-body .productDetail-rightPart .productDetail-lots button {
+    width: 100%;
+    max-width: 160px;
+    height: 38px;
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+    font-variation-settings: "wdth" 100;
+    font-size: 1§px;
+  }
+  #productDetail .productDetail-body .productDetail-rightPart .productDetail-formOrder {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  #productDetail .productDetail-body .productDetail-rightPart .productDetail-formOrder label {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  #productDetail .productDetail-body .productDetail-rightPart .productDetail-formOrder label .lots,
+  #productDetail .productDetail-body .productDetail-rightPart .productDetail-formOrder label .qty {
+    width: 100%;
+    max-width: 160px;
+    height: 38px;
+  }
+  #productDetail .productDetail-body .productDetail-rightPart .productDetail-formOrder label .lots .option,
+  #productDetail .productDetail-body .productDetail-rightPart .productDetail-formOrder label .qty .option {
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+    font-variation-settings: "wdth" 100;
+    font-size: 18px;
+  }
+  #productDetail .productDetail-body .productDetail-rightPart .productDetail-textOrder {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  #productDetail .productDetail-body .productDetail-rightPart .productDetail-textOrder button {
+    width: 100%;
+    max-width: 220px;
+    height: 38px;
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+    font-variation-settings: "wdth" 100;
+    font-size: 15px;
+  }
+  #productDetail .productDetail-body .productDetail-rightPart .productDetail-textOrder p {
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+    font-size: 15px;
+  }
+  #productDetail .productDetail-body .productDetail-rightPart .productDetail-textOrder p a {
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 15px;
+  }
+  #productDetail .productDetail-body .productDetail-rightPart .productDetail-textOrder .order-Condition {
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+    font-size: 13px;
+  }
+  #productDetail {
+    /* Popups Livraison / Formulaire */
+  }
+  #productDetail .popup-livraison .popup,
+  #productDetail #popup-form .popup {
+    width: 70%;
+    max-width: 500px;
+    top: 20%;
+    padding: 1.5rem;
+    border-radius: 10px;
+    background-color: #CBB799;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  }
+  #productDetail .popup-livraison .content,
+  #productDetail #popup-form .content {
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+  }
+  #productDetail .popup-livraison .content h5,
+  #productDetail #popup-form .content h5 {
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+    font-variation-settings: "wdth" 100;
+    font-size: 18px;
+    text-align: center;
+  }
+  #productDetail .popup-livraison .content p,
+  #productDetail #popup-form .content p {
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+    font-size: 14px;
+    text-align: center;
+  }
+  #productDetail .js-close-button,
+  #productDetail .close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+  }
+  #productDetail #openForm button {
+    width: 100%;
+    max-width: 220px;
+    height: 38px;
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+    font-variation-settings: "wdth" 100;
+    font-size: 15px;
+    margin-top: 1rem;
+  }
+  #productDetail #popup-form .purchase {
+    flex-direction: column;
+    margin-bottom: 1rem;
+  }
+  #productDetail #popup-form input,
+  #productDetail #popup-form textarea {
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 15px;
+    padding: 0.55rem;
+  }
+  #productDetail #popup-form .submit button {
+    width: 100%;
+    max-width: 220px;
+    height: 45px;
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+    font-variation-settings: "wdth" 100;
+    font-size: 15px;
+  }
+}
 /* Responsive - Mobile max-width: 768px */
 @media screen and (max-width: 768px) {
   #productDetail {
@@ -6446,19 +7106,28 @@ header nav .aBorder2 {
     flex-direction: column;
     gap: 1rem;
     padding: 0 4rem;
-    margin: 4rem auto;
+    margin: 2rem auto;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    align-items: center;
   }
   #productDetail .productDetail-body .productDetail-centerPart {
     order: 1;
   }
   #productDetail .productDetail-body .productDetail-centerPart img {
+    margin-top: 2rem;
     max-width: 210px;
     width: 100%;
     height: auto;
     padding: 0 0 20px 40px;
+    border: 1px solid #6E093B;
   }
   #productDetail .productDetail-body .productDetail-leftPart {
     order: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
   #productDetail .productDetail-body .productDetail-leftPart .productDetail-link {
     margin-bottom: 15px;
@@ -6469,6 +7138,11 @@ header nav .aBorder2 {
     font-weight: 300;
     font-style: normal;
     font-size: 14px;
+  }
+  #productDetail .productDetail-body .productDetail-leftPart .productDetail-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
   #productDetail .productDetail-body .productDetail-leftPart .productDetail-info h2 {
     font-family: "Montserrat", sans-serif;
@@ -6508,7 +7182,14 @@ header nav .aBorder2 {
     font-weight: 400;
     font-style: normal;
     font-variation-settings: "wdth" 100;
-    font-size: 14px;
+    font-size: 15px;
+    text-align: left;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+    padding: 0.8rem;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
   }
   #productDetail .productDetail-body .productDetail-leftPart .productDetail-info .productDetail-btn {
     gap: 1rem;
@@ -7001,25 +7682,33 @@ header nav .aBorder2 {
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px dashed rgba(47, 4, 4, 0.5);
-  padding-bottom: 0.5rem;
   margin-bottom: 0.5rem;
 }
-#buyer-messages .messages-listB .message-cardB .message-headerB .product-titleB {
+#buyer-messages .messages-listB .message-cardB .message-headerB p {
   font-family: "Roboto", sans-serif;
   font-optical-sizing: auto;
   font-weight: 500;
   font-style: normal;
-  font-size: 16px;
-  font-style: italic;
-  color: #788079;
+  font-size: 18px;
+  color: rgba(47, 4, 4, 0.8);
 }
 #buyer-messages .messages-listB .message-cardB .message-headerB .date {
   font-family: "Roboto", sans-serif;
   font-optical-sizing: auto;
   font-weight: 500;
   font-style: normal;
-  font-size: 14px;
-  color: rgba(0, 0, 0, 0.7);
+  font-size: 16px;
+  color: rgba(47, 4, 4, 0.8);
+}
+#buyer-messages .messages-listB .message-cardB .product-titleB {
+  font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 16px;
+  color: rgba(47, 4, 4, 0.8);
+  padding: 0.5rem 1rem 0.7rem 0;
+  border-bottom: 1px dashed rgba(47, 4, 4, 0.5);
 }
 #buyer-messages .messages-listB .message-cardB .message-bodyB {
   font-family: "Roboto", sans-serif;
@@ -7058,7 +7747,7 @@ header nav .aBorder2 {
   border-radius: 15px;
   padding: 2rem 3rem 2rem 2rem;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  height: 445px;
+  height: 500px;
 }
 #buyer-messages .reply-formB h2 {
   font-family: "Montserrat", sans-serif;
@@ -7489,6 +8178,7 @@ header nav .aBorder2 {
     padding: 1rem;
     width: 100%;
     box-sizing: border-box;
+    min-height: calc(100vh - 700px);
   }
   #producer-dash .producerDash-body {
     width: 100%;
@@ -7758,13 +8448,13 @@ header nav .aBorder2 {
   background: #4CAF50;
 }
 
-/* Responsive : Tablette */
-@media (max-width: 1089px) {
+/* Responsive Tablette (max-width: 1024px) */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
   #product-form {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 2rem;
+    margin: 2rem 1rem;
     min-height: calc(100vh - 700px);
   }
   #product-form .product-form-body {
