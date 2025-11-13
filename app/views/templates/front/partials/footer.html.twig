@@ -1,77 +1,88 @@
-<footer>
-    <section class="footer-body">
-        <section id="newsletters">
-            <section class="footer-logo">
+<footer aria-label="Pied de page du site AgriMai">
+    <section class="footer-body" aria-label="Contenu principal du pied de page">
+        <section id="newsletters" aria-label="Inscription à la newsletter AgriMai">
+            <section class="footer-logo" aria-label="Logo de la plateforme AgriMai">
                 <div class="footer-logoAm">
-                    <img src="/AgriMai/assets/styles/img/logo.png" alt="logo d'AgriMai">
+                    <img src="/AgriMai/assets/styles/img/logo.png" alt="Logo de la plateforme AgriMai">
                 </div>
-
             </section>
-            <div class="newsletters-body">
+            <div class="newsletters-body" aria-label="Formulaire et informations sur la newsletter">
                 <h6>Nos actus et bons plans</h6>
-                <p>Inscrivez-vous dès maintenant à notre newsletter <br>
+                <p>
+                    Inscrivez-vous dès maintenant à notre newsletter <br>
                     pour recevoir les dernières actualités sur les nouveaux produits agricoles,<br>
-                    les opportunités d’exportation, les offres exclusives et les tendances du marché.</p>
+                    les opportunités d’exportation, les offres exclusives et les tendances du marché.
+                </p>
+
                 {% if session['success-message'] is defined %}
                     <p style="color: green">{{ session['success-message'] }}</p>
                 {% endif %}
-                <form action="/index.php?route=newsletter" method="POST">
+
+                <form action="/index.php?route=newsletter" method="POST" aria-label="Formulaire d’inscription à la newsletter AgriMai">
                     <label for="email">
-                        <input type="email" id="email" name="email" placeholder="Votre e-mail" required>
+                        <input type="email" id="email" name="email" placeholder="Votre e-mail" required aria-label="Champ de saisie de votre adresse e-mail">
                     </label>
-                    <button type="submit">OK</button>
+                    <button type="submit" aria-label="Valider votre inscription à la newsletter">OK</button>
                 </form>
-                <p class="cdg2">En cliquant sur S’inscrire, vous confirmez que vous acceptez nos <span><a href="/AgriMai/index.php?route=cgu-cgv" class="cdgStyle2">Conditions <br> générales d’utilisation</a></span>.</p>
+
+                <p class="cdg2">
+                    En cliquant sur S’inscrire, vous confirmez que vous acceptez nos
+                    <span>
+                        <a href="/AgriMai/index.php?route=cgu-cgv" class="cdgStyle2" aria-label="Conditions générales d’utilisation du site AgriMai">
+                            Conditions <br> générales d’utilisation
+                        </a>
+                    </span>.
+                </p>
             </div>
         </section>
-        <section id="footer-social">
+        <section id="footer-social" aria-label="Liens informatifs et réseaux sociaux d’AgriMai">
             <div class="footer-social-body">
-                <div class="footer-text">
-                    <h6>A propos de Nous</h6>
+                <div class="footer-text" aria-label="Liens vers les pages à propos d’AgriMai">
+                    <h6>À propos de nous</h6>
                     <ul>
-                        <li><a href="/AgriMai/index.php?route=about"> Entreprise</a></li>
-                        <li><a href="/AgriMai/index.php?route=about">Notre Equipe</a></li>
-                        <li><a href="/AgriMai/index.php?route=faq">FAQ</a></li>
+                        <li><a href="/AgriMai/index.php?route=about" aria-label="Page Entreprise">Entreprise</a></li>
+                        <li><a href="/AgriMai/index.php?route=about" aria-label="Page Notre équipe">Notre équipe</a></li>
+                        <li><a href="/AgriMai/index.php?route=faq" aria-label="Foire aux questions du site AgriMai">FAQ</a></li>
                     </ul>
                 </div>
-                <div class="footer-text">
+
+                <div class="footer-text" aria-label="Liens vers les régions de production disponibles sur AgriMai">
                     <h6>Marché</h6>
                     <ul>
-                        <li><a href="/AgriMai/index.php?route=products-region&region=Normandie">Normandie</a></li>
-                        <li><a href="/AgriMai/index.php?route=products-region&region=Loire">Loire </a></li>
-                        <li><a href="/AgriMai/index.php?route=products-region&region=Alsace">Alsace</a></li>
+                        <li><a href="/AgriMai/index.php?route=products-region&region=Normandie" aria-label="Produits agricoles en Normandie">Normandie</a></li>
+                        <li><a href="/AgriMai/index.php?route=products-region&region=Loire" aria-label="Produits agricoles dans la région Loire">Loire</a></li>
+                        <li><a href="/AgriMai/index.php?route=products-region&region=Alsace" aria-label="Produits agricoles en Alsace">Alsace</a></li>
                     </ul>
                 </div>
-                <div class="footer-social-icon">
+
+                <div class="footer-social-icon" aria-label="Réseaux sociaux de la plateforme AgriMai">
                     <h6>Suivez-nous</h6>
-                    <a href="https://www.facebook.com/agrimai" target="_blank">
-                        <img src="/AgriMai/assets/styles/img/Facebook.png" alt="Facebook">Facebook
+                    <a href="https://www.facebook.com/agrimai" target="_blank" aria-label="Page Facebook d’AgriMai">
+                        <img src="/AgriMai/assets/styles/img/Facebook.png" alt="Icône Facebook">Facebook
                     </a>
-                    <a href="https://instagram.com/agrimai" >
-                        <img src="/AgriMai/assets/styles/img/Instagram.png" alt="Instagram">Instagram
+                    <a href="https://instagram.com/agrimai" target="_blank" aria-label="Page Instagram d’AgriMai">
+                        <img src="/AgriMai/assets/styles/img/Instagram.png" alt="Icône Instagram">Instagram
                     </a>
-                    <a href="https://twitter.com/agrimai" >
-                        <img src="/AgriMai/assets/styles/img/x.png" alt="X">X
+                    <a href="https://twitter.com/agrimai" target="_blank" aria-label="Profil X (ancien Twitter) d’AgriMai">
+                        <img src="/AgriMai/assets/styles/img/x.png" alt="Icône X">X
                     </a>
-                    <a href="https://linkedin.com/company/agrimai" >
-                        <img src="/AgriMai/assets/styles/img/In.png" alt="LinkedIn">LinkedIn
+                    <a href="https://linkedin.com/company/agrimai" target="_blank" aria-label="Page LinkedIn d’AgriMai">
+                        <img src="/AgriMai/assets/styles/img/In.png" alt="Icône LinkedIn">LinkedIn
                     </a>
-                    <a href="https://youtube.com/agrimai" >
-                        <img src="/AgriMai/assets/styles/img/Youtube.png" alt="Youtube">Youtube
+                    <a href="https://youtube.com/agrimai" target="_blank" aria-label="Chaîne YouTube d’AgriMai">
+                        <img src="/AgriMai/assets/styles/img/Youtube.png" alt="Icône YouTube">YouTube
                     </a>
                 </div>
-
             </div>
-
         </section>
     </section>
-    <section id="footer-legal">
+
+    <section id="footer-legal" aria-label="Mentions légales et politiques du site AgriMai">
         <div class="footer-legal-body">
             <p class="copyright">© 2025 AgriMai — Tous droits réservés</p>
-            <p><a href="/AgriMai/index.php?route=cgu-cgv">Politique de confidentialité</a></p>
-            <p><a href="/AgriMai/index.php?route=cgu-cgv">Conditions générales d'utilisation</a></p>
-            <!--<p><a href="">Paramètres des cookies</a></p>-->
+            <p><a href="/AgriMai/index.php?route=cgu-cgv" aria-label="Politique de confidentialité d’AgriMai">Politique de confidentialité</a></p>
+            <p><a href="/AgriMai/index.php?route=cgu-cgv" aria-label="Conditions générales d’utilisation d’AgriMai">Conditions générales d'utilisation</a></p>
+            <!--<p><a href="" aria-label="Paramètres des cookies du site AgriMai">Paramètres des cookies</a></p>-->
         </div>
-
     </section>
 </footer>

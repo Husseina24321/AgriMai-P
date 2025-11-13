@@ -3,20 +3,22 @@
 <head>
     <meta charset="utf-8" />
     <title> {% block title %} AgriMai {% endblock %}</title>
+    <!-- Pour le SEO -->
+    <meta name="description" content="AgriMai est une plateforme dédiée à la promotion et à la vente de pommes Reinette grise du Canada en France. Découvrez des produits locaux, de qualité et issus d’une agriculture responsable." />
+    <meta name="keywords" content="AgriMai, pommes Reinette grise du Canada, fruits locaux, producteurs français, agriculture durable, circuits courts, vente directe, produits agricoles" />
+    <meta name="author" content="AgriMai" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="/AgriMai/assets/styles/css/style.css">
 
 </head>
 <body>
 {% include "/front/partials/header.html.twig" %}
-
 <main>
     {% block content %}
     {% endblock %}
 </main>
-
 {% include "/front/partials/footer.html.twig" %}
-
 <script src="/AgriMai/assets/javascript/main.js"></script>
 </body>
 </html>

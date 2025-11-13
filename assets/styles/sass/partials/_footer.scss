@@ -133,6 +133,8 @@ footer {
   }
 
   #footer-legal {
+    padding-left: 0;
+    padding-right: 0;
     .footer-legal-body {
       display: flex;
       flex-direction: row;
@@ -189,28 +191,23 @@ footer {
     }
 
     #newsletters {
-
       .newsletters-body {
         h6 {
           @include roboto(500, normal, 15px);
           margin: 30px 0 0 0;
         }
-
         p {
           color: $color3;
           @include roboto(400, normal, 13.5px);
         }
       }
-
       form {
-
         label input {
           width: 420px;
           padding: 0.5rem;
           @include roboto(400, normal, 13.5px);
           border: 1px solid $color4;
         }
-
         button {
           padding: 0.5rem 0.3rem;
           border: 1px solid $color4;

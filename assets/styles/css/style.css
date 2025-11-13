@@ -30,7 +30,6 @@ main {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 0 2rem;
   width: 100%;
   overflow-x: hidden;
   box-sizing: border-box;
@@ -45,8 +44,10 @@ footer {
 }
 
 section {
-  margin: 0;
-  padding: 0;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  margin-left: auto;
+  margin-right: auto;
   width: 100%;
   box-sizing: border-box;
 }
@@ -191,6 +192,10 @@ footer #footer-social .footer-text ul li a:hover {
 }
 footer #footer-social .footer-text ul li a:active {
   color: #4CAF50;
+}
+footer #footer-legal {
+  padding-left: 0;
+  padding-right: 0;
 }
 footer #footer-legal .footer-legal-body {
   display: flex;
@@ -849,9 +854,8 @@ header nav .aBorder2 {
 #agMai-about .agMai-body {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
-  margin: 4rem;
-  gap: 0.2rem;
+  gap: 6rem;
+  padding-left: 4rem;
 }
 #agMai-about .agMai-body .agMaiAbout-text p {
   font-family: "Roboto", sans-serif;
@@ -875,16 +879,12 @@ header nav .aBorder2 {
   border-radius: 70px;
 }
 
-#team {
-  margin: 5rem;
-}
 #team .team-body {
   margin: 4rem;
 }
 #team .team-body .team1 {
   display: flex;
   flex-direction: row;
-  gap: 12rem;
   justify-content: space-between;
   border-top: inset;
   padding-top: 30px;
@@ -930,8 +930,8 @@ header nav .aBorder2 {
   margin-top: 40px;
   display: flex;
   flex-direction: row;
-  gap: 12rem;
   justify-content: space-between;
+  gap: 0.2rem;
   border-top: inset;
   padding-top: 30px;
 }
@@ -977,7 +977,6 @@ header nav .aBorder2 {
   border: dashed;
   padding: 10px;
   background: #5F5628;
-  margin: 6rem;
 }
 #address .address-body {
   display: flex;
@@ -2752,7 +2751,7 @@ header nav .aBorder2 {
 }
 #faq .faq-body .btnFaq {
   width: 150px;
-  height: 20px;
+  height: 35px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -2957,11 +2956,6 @@ header nav .aBorder2 {
     padding: 6px 12px;
   }
 }
-.container {
-  padding: 0;
-  margin: auto;
-}
-
 #hero {
   position: relative;
   background: url("/AgriMai/assets/styles/img/image1.png") no-repeat center center/cover;
