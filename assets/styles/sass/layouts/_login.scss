@@ -12,7 +12,7 @@
 
   .login-image {
     flex: 1;
-    background: url("/AgriMai/assets/styles/img/apples.png") no-repeat center center/cover;
+    background: url("./assets/styles/img/apples.png") no-repeat center center/cover;
     border-radius: 0 5px 5px 0;
     display: flex;
     align-items: center;
@@ -37,7 +37,9 @@
     }
 
     img{
-      width: 100px;
+      width: 100px ;
+      height: auto ;
+      max-width: none
     }
     p{
       @include roboto(400, oblique, 20px);
@@ -141,7 +143,7 @@
       border-radius: 5px 0 0 5px;
 
       h3 {
-        @include montserrat(600, normal, 20px);
+        @include montserrat(600, normal, 28px);
       }
 
       img {
@@ -149,7 +151,7 @@
       }
 
       p {
-        @include roboto(400, oblique, 18px);
+        @include roboto(400, oblique, 26px);
         margin: 0 0 25px 0;
         text-align: center;
       }
@@ -160,13 +162,14 @@
 
         label {
           width: 100%;
-          @include roboto(400, normal, 16px);
+          @include roboto(400, normal, 24px);
         }
 
         input,
         textarea {
+          height: 50px;
           padding: 0.5rem;
-          @include roboto(400, normal, 16px);
+          @include roboto(400, normal, 22px);
         }
 
         .login-btn {
@@ -175,9 +178,9 @@
         }
 
         button {
-          @include inter(600, normal, 16px);
+          @include inter(600, normal, 22px);
           padding: 0.5rem 1rem;
-          max-width: 160px;
+          max-width: 210px;
           width: 100%;
         }
       }
@@ -197,13 +200,14 @@
     gap: 0.8rem;
     p,
     a {
-      @include roboto(400, normal, 14px);
+      @include roboto(400, normal, 22px);
     }
   }
 
   .loginForm-group select {
     width: 150px; /* ajusté pour ne pas être trop large */
-    height: 30px;
+    height: 50px;
+    font-size: 22px;
   }
 }
 
@@ -217,17 +221,16 @@
     flex-direction: column;
     align-items: center;
     padding: 1.5rem;
-    margin: 1rem;
 
 
     .login-body {
       width: 100%;
-      max-width: 65%;
+      max-width: 85%;
       padding: 30px;
       border-radius: 10px 10px 0 0;
 
       h3 {
-        @include montserrat(600, normal, 18px);
+        @include montserrat(600, normal, 30px);
         text-align: center;
       }
 
@@ -237,25 +240,25 @@
       }
 
       p {
-        @include roboto(400, oblique, 16px);
+        @include roboto(400, oblique, 28px);
         margin: 0 0 20px 0;
         text-align: center;
       }
 
       form {
-        max-width: 350px;
         width: 100%;
         gap: 0.8rem;
 
         label {
           width: 100%;
-          @include roboto(400, normal, 16px);
+          @include roboto(400, normal, 26px);
         }
 
         input,
         textarea {
-          @include roboto(400, normal, 14px);
+          @include roboto(400, normal, 24px);
           padding: 0.4rem;
+          height: 50px;
         }
 
         .login-btn {
@@ -264,16 +267,16 @@
         }
 
         button {
-          @include inter(600, normal, 16px);
+          @include inter(600, normal, 20px);
           padding: 0.5rem 1rem;
-          max-width: 150px;
+          max-width: 250px;
           width: 100%;
         }
       }
     }
     .login-image {
       flex: 1;
-      width: 428px;
+      width:  85%;
       height: auto;
       min-height: 250px;
       border-radius: 0 0 5px 5px;
@@ -285,7 +288,7 @@
   .login-link {
     gap: 0.8rem;
     p, a {
-      @include roboto(400, normal, 14px);
+      @include roboto(400, normal, 26px);
       text-align: center;
     }
   }
@@ -294,7 +297,8 @@
     select {
       width: 100%;
       max-width: 150px;
-      height: 30px;
+      height: 40px;
+      font-size: 22px;
     }
   }
 

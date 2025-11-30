@@ -3,10 +3,11 @@
 {% block content %}
     <!-- Header / Hero -->
     <section id="hero">
+        <img src="./assets/styles/img/image1.png" class="hero-bg" alt="Image de fond ">
         <div class="hero-body">
             <div class="hero-image2">
 
-               <img src="/AgriMai/assets/styles/img/image2.png" alt="image d'une main avec une pomme">
+               <img src="./assets/styles/img/image2.png" alt="image d'une main avec une pomme">
                 <p>
                     Simplifiez votre vente de pommes avec notre plateforme dédiée :<br>
                     une solution simple, locale et directe entre producteurs et acheteurs.<br>
@@ -16,9 +17,9 @@
             <div class="hero-text">
                 <h1>Où souhaitez-vous acheter vos produits ?</h1>
                 <div class="hero-buttons">
-                    <button><a href="/AgriMai/index.php?route=products-region&region=Normandie">Normandie</a></button>
-                    <button><a href="/AgriMai/index.php?route=products-region&region=Loire">Loire</a></button>
-                    <button><a href="/AgriMai/index.php?route=products-region&region=Alsace">Alsace</a></button>
+                    <a class="hero-bnt" href="./index.php?route=products-region&region=Normandie">Normandie</a>
+                    <a class="hero-bnt" href="./index.php?route=products-region&region=Loire">Loire</a>
+                    <a class="hero-bnt" href="./index.php?route=products-region&region=Alsace">Alsace</a>
                 </div>
             </div>
         </div>
@@ -27,7 +28,7 @@
     <main id="content">
         <section class ="Presentation-body">
             <div class="Presentation-img">
-                <img src="/AgriMai/assets/styles/img/image3.jpg" alt="image de pommes dans un pommier ">
+                <img src="./assets/styles/img/image3.jpg" alt="image de pommes dans un pommier ">
             </div>
             <div class="Presentation-text">
                 <h2>AgriMai</h2>
@@ -41,8 +42,8 @@
                     dans chaque transaction.
                 </p>
                 <div class="Presentation-buttons">
-                    <button><a href="/AgriMai/index.php?route=about">EN SAVOIR PLUS</a></button>
-                    <button><a href="/AgriMai/index.php?route=create-product">PUBLIER UNE ANNONNCE</a></button>
+                    <button><a href="./index.php?route=about">EN SAVOIR PLUS</a></button>
+                    <button><a href="./index.php?route=create-product">PUBLIER UNE ANNONNCE</a></button>
                 </div>
             </div>
         </section>
@@ -56,7 +57,7 @@
                         {% for product in recentProducts %}
                             <div class="product-card">
                                 {% if product.getImage() %}
-                                    <img src="/AgriMai/public/uploads/{{ product.getImage() }}" alt="{{ product.getTitle() }}">
+                                    <img src="./public/uploads/{{ product.getImage() }}" alt="{{ product.getTitle() }}">
                                 {% else %}
                                     <p class="no-image">Pas d’image</p>
                                 {% endif %}
@@ -64,7 +65,7 @@
                                 <h4>{{ product.getTitle() }}</h4>
                                 <p class="producer">{{ product.getProducteur() }}</p>
                                 <p class="price">{{ product.getPrice() }} € / kg</p>
-                                <a href="/AgriMai/index.php?route=product-detail&id=1={{ product.getId() }}" class="btn2">Voir</a>
+                                <a href="./index.php?route=product-detail&id=1={{ product.getId() }}" class="btn2">Voir</a>
 
                             </div>
 
@@ -85,7 +86,7 @@
             <div class="certificat-body">
 
                 <div class="certificat">
-                    <img src="/AgriMai/assets/styles/img/logoAOP.png" alt="Logo de l'AOP, L’Appellation d’origine protégée">
+                    <img src="./assets/styles/img/logoAOP.png" alt="Logo de l'AOP, L’Appellation d’origine protégée">
                     <h3>L’Appellation d’origine protégée (AOP)</h3>
                     <p>
                         Désigne un produit dont toutes les étapes de production sont réalisées<br>
@@ -101,7 +102,7 @@
                 </div>
 
                 <div class="certificat">
-                    <img src="/AgriMai/assets/styles/img/LogoIGP.png" alt="Logo de l'IGP, L’indication géographique protégée ">
+                    <img src="./assets/styles/img/LogoIGP.png" alt="Logo de l'IGP, L’indication géographique protégée ">
                     <h3>L’indication géographique protégée (IGP)</h3>
                     <p>
                         Identifie un produit agricole, brut ou transformé,<br>
@@ -116,7 +117,7 @@
                 </div>
 
                 <div class="certificat">
-                    <img src="/AgriMai/assets/styles/img/STG.png" alt="Logo de STG, La spécialité traditionnelle garantie">
+                    <img src="./assets/styles/img/STG.png" alt="Logo de STG, La spécialité traditionnelle garantie">
                     <h3>La spécialité traditionnelle garantie (STG)</h3>
                     <p>
                         Correspond à un produit dont les qualités spécifiques sont liées <br>
@@ -141,19 +142,19 @@
         <section id="logos">
             <div class="logo-body">
                 <div class="logo-image">
-                    <img src="/AgriMai/assets/styles/img/blockchain.png" alt="Une icône dédiée à la traçabilité">
+                    <img src="./assets/styles/img/blockchain.png" alt="Une icône dédiée à la traçabilité">
                     <h5>Traçabilité intelligente</h5>
                 </div>
                 <div class="logo-image">
-                    <img src="/AgriMai/assets/styles/img/honesty.png" alt="Une icône dédiée à la transparence et à l’équité">
+                    <img src="./assets/styles/img/honesty.png" alt="Une icône dédiée à la transparence et à l’équité">
                     <h5>Commerce transparent et équitable</h5>
                 </div>
                 <div class="logo-image">
-                    <img src="/AgriMai/assets/styles/img/truck.png" alt="Une icône dédiée à la Logistique ">
+                    <img src="./assets/styles/img/truck.png" alt="Une icône dédiée à la Logistique ">
                     <h5>Logistique facilitée</h5>
                 </div>
                 <div class="logo-image">
-                    <img src="/AgriMai/assets/styles/img/best-seller.png" alt="Une icône dédiée au contrôle de qualité">
+                    <img src="./assets/styles/img/best-seller.png" alt="Une icône dédiée au contrôle de qualité">
                     <h5>Contrôle de qualité des produits</h5>
                 </div>
 
@@ -170,6 +171,7 @@
         </section>
 
         <section id="newsletter">
+            <img src="./assets/styles/img/pommes.jpg" alt="pommes" class="newsletter-bg">
             <div class="newsletter-body">
                 <h3>Nos actus et bons plans</h3>
                 <p>Inscrivez-vous dès maintenant à notre newsletter <br>
@@ -178,13 +180,19 @@
                 {% if session['success-message'] is defined %}
                     <p style="color: green">{{ session['success-message'] }}</p>
                 {% endif %}
-                <form action="/index.php?route=newsletter" method="POST">
+                <form action="./index.php?route=newsletter" method="POST">
                     <label for="email">
                         <input type="email" id="email" name="email" placeholder="Votre e-mail" required>
                     </label>
                     <button type="submit">OK</button>
                 </form>
-                <p class="cdg">En cliquant sur S’inscrire, vous confirmez que vous acceptez nos <span class="cdgStyle">Conditions générales d’utilisation</span>.</p>
+                <p class="cdg">En cliquant sur S’inscrire, vous confirmez que vous acceptez nos
+                    <span>
+                        <a href="./index.php?route=cgu-cgv" class="cdgStyle" aria-label="Conditions générales d’utilisation du site AgriMai">
+                        Conditions générales d’utilisation
+                        </a>
+                    </span>
+                </p>
             </div>
         </section>
     </main>

@@ -118,7 +118,7 @@
     padding: 1.5rem;
 
     h1 {
-      @include montserrat(600, normal, 24px);
+      @include montserrat(600, normal, 32px);
     }
 
     form {
@@ -128,27 +128,31 @@
         flex-direction: column;
         gap: 1rem;
         p{
-          @include roboto(500, normal, 18px);
+          @include roboto(500, normal, 28px);
         }
         label {
-          @include roboto(500, normal, 18px);
+          @include roboto(500, normal, 28px);
         }
 
         input,
         select,
         textarea {
-          @include roboto(400, normal, 14px);
+          @include roboto(400, normal, 26px);
           padding: 0.6rem 0.8rem;
         }
         textarea  {
-          @include roboto(400, normal, 14px)
+          @include roboto(400, normal, 26px)
         }
 
 
         button {
-          @include inter(600, normal, 14px);
+          @include inter(600, normal, 28px);
           padding: 8px 16px;
         }
+      }
+      button {
+        @include inter(600, normal, 28px);
+        padding: 8px 16px;
       }
     }
 
@@ -163,15 +167,18 @@
     padding: 1rem;
 
     h1 {
-      @include montserrat(600, normal, 20px);
+      @include montserrat(600, normal, 28px);
     }
 
     form {
       gap: 1rem;
 
       div {
+        p{
+          @include roboto(500, normal, 26px);
+        }
         label {
-          @include roboto(500, normal, 14px);
+          @include roboto(500, normal, 26px);
 
         }
 
@@ -179,13 +186,14 @@
         select,
         textarea {
           padding: 0.6rem 0.8rem;
+          font-size: 24px;
         }
       }
 
       button {
         width: 100%;
         max-width: 200px;
-        @include inter(600, normal, 15px);
+        @include inter(600, normal, 20px);
 
       }
     }

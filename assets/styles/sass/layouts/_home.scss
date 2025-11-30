@@ -5,13 +5,24 @@
 
   #hero {
   position: relative;
-  background: url("/AgriMai/assets/styles/img/image1.png") no-repeat center center/cover;
+  background: url("../img/image1.png") no-repeat center center/cover;
   color: white;
   min-height: 100vh; /* plein écran */
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 2rem;
+
+    .hero-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;            /* équivalent de background-size: cover */
+      object-position: center;      /* équivalent de background-position: center */
+      z-index: 0;
+    }
 
     &::before {
       content: "";
@@ -21,6 +32,7 @@
       background: rgba(0, 0, 0, 0.5); // noir transparent
       z-index: 0;
     }
+
 
 }
 #hero p {
@@ -67,16 +79,18 @@
   gap: 0.5rem;
 }
 
-.hero-buttons button {
+.hero-bnt{
   @include inter(600, normal, 18px);
   background: $color1;
   border: 1px solid $color1;
   padding: 0.5rem 1rem;
   border-radius: 6px;
   cursor: pointer;
+
 }
 
-.hero-buttons button:hover {
+
+.hero-bnt:hover {
   background:$color7;
   &:active {
     background: $color2;
@@ -90,25 +104,26 @@
 }
 .Presentation-body {
   display: flex;
-  align-items: center;
   justify-content: center;
-  margin: 70px 0 70px 40px;
   gap: 30px;
+  padding: 6rem;
 }
 .Presentation-body img{
   border: 1px solid $color1;
   border-radius: 30px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
   width: 600px;
-  height: 370px
+  height: 360px
 
 }
 .Presentation-text h2{
   @include montserrat(700, normal, 30px);
   color: $color8;
+  margin: 0;
 }
 .Presentation-text p{
   @include roboto(500, normal, 20px);
+  color:$color4;
   line-height: 1.6;
   .mission {
     color: $color8;
@@ -141,12 +156,12 @@
 }
 
 #recent-products {
+  border-top: inset;
   .recentP-body{
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 100px;
-    border-top: inset;
+  padding: 6rem;
 
     h3{
       @include montserrat(600, normal, 22px);
@@ -221,25 +236,24 @@
 
 
 #certificats {
-  margin: 90px;
-  padding: 2rem;
   border-top: inset;
-
   .certificat-body {
     display: flex;
     justify-content: space-between;
     gap: 2rem;
     flex-wrap: wrap;
+    padding: 6rem;
   }
 
   .certificat {
-    flex: 1 1 30%;
+    flex: 1 1 25%;
     background: $color29;
     border: 1px solid $color3;
     border-radius: 12px;
     padding: 1.5rem;
     text-align: center;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+
 
     /* Animation d'apparition */
     animation: fadeUp 0.8s ease forwards;
@@ -318,22 +332,20 @@
 
 
 #logos{
-  margin: 50px;
-  padding: 2rem;
+  border-top: dashed;
   .logo-body{
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
-    gap: 2rem;
-    border-top: dashed;
+    gap: 3rem;
+    padding: 6rem 6rem 8rem 6rem;
+
   }
   .logo-image {
-    padding: 2rem;
-    display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    max-width: 150px;
+
   }
 
   .logo-image img {
@@ -349,21 +361,49 @@
     margin: 0;
   }
 }
+#contact-home{
+  padding: 0;
+  margin: 0;
+}
 
-#newsletter{
-  background: url("/AgriMai/assets/styles/img/pommes.jpg") no-repeat center center/cover;
-  padding-bottom: 4rem;
+#newsletter {
   position: relative;
-  &::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.4); // noir transparent pour que le text soit visible
-    z-index: 1;
-  }
+  overflow: hidden;
+  padding: 4rem 1rem;  /* ajuste selon ton design */
+}
+
+#newsletter .newsletter-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;       /* = background-size: cover */
+  object-position: center; /* = background-position: center */
+  z-index: 0;
+}
+
+/* Overlay noir */
+#newsletter::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);  /* même effet que ton CSS */
+  z-index: 1;
+}
+.newsletter-body{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+  padding:6rem;
+
+}
+
 
   h3{
     @include montserrat(600, normal, 22px);
@@ -402,14 +442,8 @@
       }
     }
   }
-}
-.newsletter-body{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: relative;
-  z-index: 2;
-}
+
+
 .newsletter-form{
   display: flex;
   flex-direction: column;
@@ -444,37 +478,36 @@
     }
 
     .hero-text {
-      max-width: 400px;
 
       h1 {
-        @include montserrat(700, normal, 28px);
+        @include montserrat(700, normal, 30px);
       }
 
       .hero-buttons {
         gap: 0.5rem;
-        button {
+        .hero-bnt {
           padding: 0.5rem 0.8rem;
-          @include inter(600, normal, 16px);
+          @include inter(600, normal, 24px);
         }
       }
     }
 
     .hero-image2 img {
-      width: 220px;
+      width: 250px;
     }
 
     .hero-image2 p {
-      @include roboto(500, normal , 20px);
+      @include roboto(500, normal , 28px);
     }
   }
 
   /* SECTION PRÉSENTATION */
   .Presentation-body {
     flex-direction: row;
-    margin: 3rem 2rem;
     gap: 1.5rem;
-    justify-content: center;
     align-items: center;
+    display: flex;
+    justify-content: space-evenly;
 
     .Presentation-img img {
       width: 400px;
@@ -487,7 +520,7 @@
         @include montserrat(700, normal, 26px);
       }
       p {
-        @include roboto(500, normal, 18px);
+        @include roboto(500, normal, 22px);
         line-height: 1.5;
       }
 
@@ -495,15 +528,18 @@
         max-width: 230px;
         padding: 0.5rem 0.8rem;
         @include inter(600, normal, 16px);
+        height: 45px;
       }
     }
   }
 
   /* SECTION PRODUITS RÉCENTS */
   #recent-products {
+    padding: 0;
     .recentP-body {
-      margin: 3rem 2rem;
-
+      h3{
+        @include montserrat(600, normal, 30px);
+      }
       .products-grid {
         grid-template-columns: repeat(3, 1fr);
         gap: 15px;
@@ -512,18 +548,21 @@
 
       .product-card {
         img {
-          width: 90px;
-          height: 100px;
+          width: 150px;
+          height: 170px;
         }
         h4 {
-          @include montserrat(600, normal, 18px);
+          @include montserrat(600, normal, 26px);
         }
         p, .producer {
-          @include roboto(400, normal, 16px);
+          @include roboto(400, normal, 24px);
         }
         .btn2 {
-          font-size: 15px;
+          font-size: 22px;
           padding: 0.5rem;
+          width: 100%;
+          max-width: 150px;
+          height: 45px;
         }
       }
     }
@@ -531,8 +570,7 @@
 
   /* SECTION CERTIFICATS */
   #certificats {
-    margin: 3rem 2rem;
-
+    padding: 0;
     .certificat-body {
       flex-direction: row;
       flex-wrap: wrap;
@@ -545,19 +583,19 @@
       max-width: 400px;
 
       img {
-        width: 120px;
+        width: 180px;
       }
 
       h3 {
-        @include montserrat(600, normal, 18px);
+        @include montserrat(600, normal, 28px);
       }
 
       p {
-        @include roboto(400, normal, 16px);
+        @include roboto(400, normal, 26px);
       }
 
       .certificat-buttons button {
-        @include inter(600, normal, 16px);
+        @include inter(600, normal, 22px);
         padding: 0.5rem 1rem;
       }
     }
@@ -565,64 +603,69 @@
 
   /* SECTION LOGOS */
   #logos {
-    margin: 2rem;
-    padding: 1rem;
-
+    padding: 0;
     .logo-body {
       gap: 1.5rem;
       justify-content: space-around;
     }
 
     .logo-image {
-      max-width: 130px;
+      max-width: 200px;
       img {
-        width: 80px;
+        width: 150px;
       }
       h5 {
-        @include inter(500, normal, 14px);
+        @include inter(500, normal, 18px);
       }
     }
   }
 
   /* SECTION NEWSLETTER */
   #newsletter {
-    padding: 3rem 2rem;
-
     h3 {
-      @include montserrat(600, normal, 22px);
+      @include montserrat(600, normal, 30px);
+      margin-bottom: 10px;
+      text-align: center;
     }
 
     p {
-      @include roboto(400, normal, 17px);
+      margin-top: 10px;
+      @include roboto(400, normal, 28px);
     }
 
     .newsletter-body {
-      gap: 1rem;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      align-items: stretch;
     }
 
     form {
       display: flex;
       flex-direction: row;
       gap: 1rem;
+      width: 100%;
+      max-width: 500px;
 
       input {
-        width: 60%;
-        max-width: 300px;
+        width: 100%;
+        max-width: 600px;
         padding: 0.6rem;
-        font-size: 16px;
+        font-size: 18px;
       }
 
       button {
         width: auto;
         padding: 0.6rem 1rem;
-        @include inter(600, normal, 16px);
+        @include inter(600, normal, 20px);
       }
     }
 
     .cdg {
       width: 100%;
-      font-size: 13px;
+      font-size: 19px;
       text-align: center;
+
     }
   }
 }
@@ -653,9 +696,10 @@
       gap: 1rem;
       align-items: center;
       flex-direction: column;
+      max-width: 300px;
 
       h1 {
-        @include montserrat(700, normal, 24px);
+        @include montserrat(700, normal, 30px);
       }
 
     }
@@ -666,9 +710,9 @@
       margin: 1rem 0;
       gap: 0.5rem;
 
-      button {
+      .hero-bnt{
         width: 100%;
-        @include inter(600, normal, 18px);
+        @include inter(600, normal, 20px);
       }
     }
     .hero-image2{
@@ -676,17 +720,17 @@
       flex-direction: column;
       align-items: center;
       img {
-        width: 70%;
+        width: 50%;
       }
       p{
-        @include roboto(500, normal , 20px);
+        @include roboto(500, normal , 24px);
       }
     }
   }
 
   /* SECTION PRÉSENTATION */
   .Presentation-body {
-    margin: 2rem;
+    padding: 2rem;
     display: flex;
     flex-direction: column-reverse;
     align-items: center;
@@ -696,7 +740,7 @@
     img {
       width: 100%;
       height: auto;
-      max-width: 280px;
+      max-width: 580px;
 
     }
 
@@ -705,11 +749,11 @@
       flex-direction: column;
       align-items: center;
       h2 {
-        @include montserrat(700, normal, 22px);
+        @include montserrat(700, normal, 28px);
       }
 
       p {
-        @include roboto(500, normal , 16px);
+        @include roboto(500, normal , 24px);
         line-height: 1.5;
         text-align: left;
       }
@@ -721,10 +765,10 @@
       gap: 1rem;
       button {
         max-width: 180px;
-        width: 100%;
+        width: 50%;
         height: auto;
         padding: 0.6rem;
-        @include inter(600, normal, 16px);
+        @include inter(600, normal, 18px);
 
       }
 
@@ -736,12 +780,12 @@
   /* SECTION PRODUITS RÉCENTS */
   #recent-products {
     .recentP-body {
-      margin: 2rem 1rem;
+      padding: 0;
       text-align: center;
       overflow: hidden; // cache le contenu qui dépasse
 
       h3 {
-        @include montserrat(600, normal, 20px);
+        @include montserrat(600, normal, 1.5rem);
         margin-bottom: 1rem;
       }
 
@@ -762,24 +806,25 @@
 
 
         img {
-          width: 120px;
+          width: 150px;
           height: 120px;
           margin-bottom: 0.5rem;
         }
 
         h4 {
-          @include montserrat(600, normal, 18px);
+          @include montserrat(600, normal, 20px);
         }
 
         p,
         .producer {
-          @include roboto(400, normal, 16px);
+          @include roboto(400, normal, 18px);
         }
 
         .btn2 {
-          font-size: 15px;
+          @include roboto(400, normal, 20px);
           padding: 0.5rem;
-          border-radius: 8px;
+          border-radius: 0 20px;
+          height: 45px;
         }
       }
 
@@ -824,35 +869,35 @@
 
   /* SECTION CERTIFICATS */
   #certificats {
-    margin: 2rem 1rem;
-    padding: 1.5rem;
+    margin: 2rem 0 1rem 0;
 
     .certificat-body {
       flex-direction: column;
       align-items: center;
       gap: 1.5rem;
+      padding: 0;
     }
 
     .certificat {
       flex: none;
       width: 100%;
-      max-width: 350px;
+      max-width: 380px;
       padding: 1rem;
 
       img {
-        width: 80px;
+        width: 150px;
       }
 
       h3 {
-        @include montserrat(600, normal, 20px);
+        @include montserrat(600, normal, 24px);
       }
 
       p {
-        @include roboto(500, normal, 16px);
+        @include roboto(500, normal, 22px);
       }
 
       .certificat-buttons button {
-        @include inter(600, normal, 16px);
+        @include inter(600, normal, 20px);
         padding: 0.6rem;
       }
     }
@@ -869,41 +914,46 @@
     padding: 1rem;
 
     .logo-body {
-
-      gap: 1rem;
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      padding: 2rem 2rem 8rem 2rem;
+      flex-direction: column;
+      align-items: center;
 
     }
 
     .logo-image {
-      padding: 1rem;
-      max-width: 120px;
 
       img {
-        width: 80px;
+        width: 120px;
       }
 
       h5 {
-        @include inter(500, normal, 14px);
+        @include inter(500, normal, 22px);
       }
     }
   }
 
   /* SECTION NEWSLETTER */
   #newsletter {
+
     padding: 2rem 1rem;
     text-align: center;
 
     h3 {
-      @include montserrat(600, normal, 20px);
+      @include montserrat(600, normal, 26px);
       color: $color3;
+      margin: 0;
     }
 
     p {
-      @include roboto(400, normal, 16px);
+      @include roboto(400, normal, 24px);
       color: $color3;
     }
 
     .newsletter-body {
+      padding: 0;
       flex-direction: column;
       align-items: center;
       gap: 1rem;
@@ -924,8 +974,8 @@
 
       button {
         width: 100%;
-        max-width: 120px;
-        @include roboto(400, normal, 16px);
+        max-width: 300px;
+        @include roboto(400, normal, 20px);
       }
     }
   }
@@ -935,6 +985,9 @@
     @include roboto(400, normal, 12px);
     text-align: center;
     padding: 0 1rem;
+    .cdgStyle {
+      text-decoration: none;
+    }
   }
 }
 

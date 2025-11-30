@@ -66,7 +66,7 @@ class ProductController extends AbstractController
         $products = $this->pm->findAll();
 
         // Affiche la page marché
-        $this->render("/front/market.html.twig", [
+        $this->render("/front/Market.html.twig", [
             "products" => $products
         ]);
     }

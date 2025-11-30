@@ -19,21 +19,23 @@ footer {
   #newsletters {
     .newsletters-body {
       h6 {
-        @include roboto(500, normal, 16px);
+        @include roboto(500, normal, 18px);
         color: $color3;
         margin: 30px 0 0 0;
       }
       p {
         color: $color3;
-        @include roboto(400, normal, 14px);
+        @include roboto(400, normal, 16px);
       }
     }
 
     form {
+      display: flex;
+      flex-direction: row;
       label input {
         width: 450px;
         padding: 0.5rem;
-        @include roboto(400, normal, 14px);
+        @include roboto(400, normal, 16px);
         border: 1px solid $color4;
       }
 
@@ -118,7 +120,7 @@ footer {
         margin: 0;
 
         li a {
-          @include roboto(400, normal, 14px);
+          @include roboto(400, normal, 16px);
           text-decoration: none;
           color: $color3;
           &:hover {
@@ -147,7 +149,7 @@ footer {
 
       p {
         margin: 0.3rem 0;
-        @include roboto(400, normal, 14px);
+        @include roboto(400, normal, 16px);
 
         &:hover {
           color: $color7;
@@ -172,40 +174,44 @@ footer {
 }
 
 .copyright {
-  @include roboto(400, normal, 14px);
+  @include roboto(400, normal, 16px);
   color: $color3;
 }
 /* Responsive - Mobile max-width: 1024px */
 @media screen and (min-width: 769px) and (max-width: 1024px) {
 
   footer {
+    padding: 0;
     .footer-body {
       display: flex;
-      flex-direction: row;
-      align-items: center;
-    }
+      flex-direction: column;
 
+    }
+    .footer-logo{
+      padding: 0;
+    }
     .footer-logoAm img {
-      width: 50px;
-      height: 50px;
+      width: 100px;
+      height: 100px;
     }
 
     #newsletters {
+      padding: 0;
       .newsletters-body {
         h6 {
-          @include roboto(500, normal, 15px);
+          @include roboto(500, normal, 30px);
           margin: 30px 0 0 0;
         }
         p {
           color: $color3;
-          @include roboto(400, normal, 13.5px);
+          @include roboto(400, normal, 28px);
         }
       }
       form {
         label input {
           width: 420px;
           padding: 0.5rem;
-          @include roboto(400, normal, 13.5px);
+          @include roboto(400, normal, 24px);
           border: 1px solid $color4;
         }
         button {
@@ -214,7 +220,8 @@ footer {
           background: $color3;
           color: $color4;
           cursor: pointer;
-          @include inter(600, normal, 13.5px);
+          @include inter(600, normal, 26px);
+          width: 420px;
 
           &:hover {
             background: $color7;
@@ -227,7 +234,7 @@ footer {
       }
 
       .cdg2 {
-        @include roboto(400, normal, 12px);
+        @include roboto(400, normal, 18px);
       }
 
       .cdgStyle2 {
@@ -237,6 +244,7 @@ footer {
     }
 
     #footer-social {
+      padding: 0;
       .footer-social-body {
         display: flex;
         flex-direction: row;
@@ -246,26 +254,26 @@ footer {
 
       .footer-text {
         h6 {
-          @include roboto(500, normal, 15px);
+          @include roboto(500, normal, 28px);
           color: $color3;
           margin: 35px 0 10px 0;
         }
 
         ul li a {
-          @include roboto(400, normal, 13px);
+          @include roboto(400, normal, 26px);
         }
       }
 
       .footer-social-icon {
         h6 {
-          @include roboto(500, normal, 15px);
+          @include roboto(500, normal, 26px);
           margin: 35px 0 10px 0;
         }
 
         a {
-          @include roboto(400, normal, 13px);
+          @include roboto(400, normal, 26px);
           img {
-            width: 22px;
+            width: 50px;
           }
         }
       }
@@ -283,7 +291,7 @@ footer {
 
         p {
           margin: 0.3rem 0;
-          @include roboto(400, normal, 13px);
+          @include roboto(400, normal, 26px);
 
           &:hover {
             color: $color7;
@@ -308,7 +316,7 @@ footer {
   }
 
   .copyright {
-    @include roboto(400, normal, 12px);
+    @include roboto(400, normal, 18px);
     color: $color3;
     text-align: center;
   }
@@ -327,19 +335,23 @@ footer {
     }
 
     .footer-logoAm img {
-      width: 40px;
-      height: 40px;
+      width: 100px;
+      height: 100px;
+    }
+    .footer-logo{
+      padding: 0;
     }
 
     #newsletters {
+      padding: 0;
       .newsletters-body {
         h6 {
-          @include roboto(500, normal, 14px);
+          @include roboto(500, normal, 28px);
           margin: 20px 0 0 0;
         }
         p {
           color: $color3;
-          @include roboto(400, normal, 13px);
+          @include roboto(400, normal, 24px);
         }
       }
 
@@ -348,16 +360,17 @@ footer {
           display: flex;
           flex-direction: column;
           width: 100%;
-          max-width: 280px;
+          max-width: 300px;
           padding: 0.4rem;
-          @include roboto(400, normal, 13px);
+          @include roboto(400, normal, 22px);
+          height: 50px;
         }
 
         button {
           width: 100%;
-          max-width: 100px;
+          max-width: 300px;
           padding: 0.5rem;
-          @include inter(600, normal, 13px);
+          @include inter(600, normal, 22px);
         }
       }
 
@@ -367,6 +380,7 @@ footer {
     }
 
     #footer-social {
+      padding: 0;
       .footer-social-body {
         display: flex;
         flex-direction: column;
@@ -378,15 +392,15 @@ footer {
 
       .footer-social-icon {
         h6 {
-          @include roboto(500, normal, 14px);
+          @include roboto(500, normal, 24px);
           margin: 20px 0 5px 0;
         }
 
         a {
-          @include roboto(400, normal, 14px);
+          @include roboto(400, normal, 24px);
 
           img {
-            width: 20px;
+            width: 50px;
           }
         }
       }
@@ -397,12 +411,12 @@ footer {
         align-items: flex-start;
         text-align: unset;
         h6 {
-          @include roboto(500, normal, 14px);
+          @include roboto(500, normal, 22px);
           margin: 20px 0 5px 0;
         }
 
         ul li a {
-          @include roboto(400, normal, 13px);
+          @include roboto(400, normal, 22px);
         }
       }
     }
@@ -412,16 +426,21 @@ footer {
         display: flex;
         flex-direction: column;
         align-items: flex-start;
-        padding: 1rem 0 1rem 1rem;
+        padding: 1rem 0 1rem 0.5rem;
         gap: 0.5rem;
+
+        p{
+          @include roboto(400, normal, 22px)
+        }
 
       }
     }
   }
 
   .copyright {
-    @include roboto(400, normal, 14px);
-    text-align: center;
-    margin-bottom: 0;
+    @include roboto(400, normal, 22px);
+    text-align: start;
+    margin: 0;
+    padding: 0;
   }
 }

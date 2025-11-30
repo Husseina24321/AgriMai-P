@@ -1,28 +1,28 @@
 <header class="{% if session.user is defined and session.user.role == 'Admin' %}admin-header{% endif %}">
     <nav>
-        <img src="/AgriMai/assets/styles/img/logo.png" alt="logo">
+        <img src="./assets/styles/img/logo.png" alt="logo">
         <ul>
-            <li><a href="/AgriMai/index.php?route=home">ACCUEIL</a></li>
-            <li><a href="/AgriMai/index.php?route=about">À PROPOS DE NOUS</a></li>
-            <li><a href="/AgriMai/index.php?route=market">MARCHÉ</a></li>
+            <li><a href="./index.php?route=home">ACCUEIL</a></li>
+            <li><a href="./index.php?route=about">À PROPOS DE NOUS</a></li>
+            <li><a href="./index.php?route=market">MARCHÉ</a></li>
         </ul>
 
         <div class="top-right">
             {% if session.user is defined and session.user.role is defined %}
                 {% if session.user.role == 'Producteur' %}
-                    <a class="aBorder3" href="/AgriMai/index.php?route=list-products-by-user&user_id={{ session.user.id }}">MES PRODUITS</a>
-                    <a class="aBorder4" href="/AgriMai/index.php?route=producerMessages">MES MESSAGES</a>
+                    <a class="aBorder3" href="./index.php?route=list-products-by-user&user_id={{ session.user.id }}">MES PRODUITS</a>
+                    <a class="aBorder4" href="./index.php?route=producerMessages">MES MESSAGES</a>
                 {% elseif session.user.role == 'Acheteur' %}
-                    <a class="aBorder8" href="/AgriMai/index.php?route=buyerMessages">MES MESSAGES</a>
+                    <a class="aBorder8" href="./index.php?route=buyerMessages">MES MESSAGES</a>
                 {% elseif session.user.role == 'Admin' %}
-                    <a class="aBorder6" href="/AgriMai/index.php?route=list-users">GESTION DES UTILISATEURS</a>
-                    <a class="aBorder7" href="/AgriMai/index.php?route=list-AdminMessage">MESSAGES ADMIN</a>
+                    <a class="aBorder6" href="./index.php?route=list-users">GESTION DES UTILISATEURS</a>
+                    <a class="aBorder7" href="./index.php?route=list-AdminMessage">MESSAGES ADMIN</a>
                 {% endif %}
 
-                <a class="aBorder5" href="/AgriMai/index.php?route=logout">DÉCONNEXION</a>
+                <a class="aBorder5" href="./index.php?route=logout">DÉCONNEXION</a>
             {% else %}
-                <a class="aBorder1" href="/AgriMai/index.php?route=login">S'IDENTIFIER</a>
-                <a class="aBorder2" href="/AgriMai/index.php?route=register">S'INSCRIRE</a>
+                <a class="aBorder1" href="./index.php?route=login">S'IDENTIFIER</a>
+                <a class="aBorder2" href="./index.php?route=register">S'INSCRIRE</a>
             {% endif %}
 
             <!--<li>

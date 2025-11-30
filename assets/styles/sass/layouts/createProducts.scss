@@ -105,18 +105,55 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 2rem 1rem;
-    min-height: calc(100vh - 700px);
+    padding: 0;
+    margin: 0;
 
     .product-form-body {
-      margin: 4rem;
+      margin: 2rem;
       padding: 40px;
       width: 100%;
-      max-width: 600px;
+      max-width: 750px;
       height: 100%;
 
       h3 {
-        @include montserrat(600, normal, 20px);
+        @include montserrat(600, normal, 40px);
+      }
+      .product-form {
+        .bnt-createDsh {
+
+        }
+
+        textarea {
+          min-height: 240px;
+
+        }
+
+
+        label {
+          @include roboto(400, normal, 38px);
+        }
+
+
+        input,
+        select,
+        textarea {
+          @include roboto(400, normal, 36px);
+          height: 65px;
+
+        }
+
+        input {
+
+        }
+
+        select {
+          width: 670px;
+          @include roboto(400, normal, 38px);
+        }
+      }
+      button{
+        width: 200px;
+        @include inter(600, normal, 34px);
       }
     }
   }

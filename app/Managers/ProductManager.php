@@ -86,8 +86,7 @@ class ProductManager extends AbstractManager
     // Crée un produit
     public function createProduct(Product $product): Product
     {
-        $stmt = $this->db->prepare("
-            INSERT INTO products (title, description, producer, price, quantity, image, user_id, location, created_at)
+        $stmt = $this->db->prepare("INSERT INTO products (title, description, producer, price, quantity, image, user_id, location, created_at)
             VALUES (:title, :description, :producer, :price, :quantity, :image, :user_id, :location, NOW())
         ");
         $stmt->execute([

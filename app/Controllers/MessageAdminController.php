@@ -25,11 +25,11 @@ class MessageAdminController extends AbstractController
     {
         if (!isset($_GET['id'])) {
             $_SESSION['error-message'] = "ID du message manquant.";
-            $this->redirect("/AgriMai/index.php?route=list-AdminMessage");
+            $this->redirect("./index.php?route=list-AdminMessage");
         }
 
         $this->cm->deleteMessage((int)$_GET['id']);
         $_SESSION['success-message'] = "Message supprimé.";
-        $this->redirect("/AgriMai/index.php?route=list-AdminMessage");
+        $this->redirect("./index.php?route=list-AdminMessage");
     }
 }

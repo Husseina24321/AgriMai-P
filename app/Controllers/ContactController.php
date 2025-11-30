@@ -46,24 +46,37 @@ class ContactController extends AbstractController
             return;
         }
 
+        // Récupère les champs du formulaire
         $fields = [
-            'name'    => trim($_POST['name'] ?? ''),
-            'email'   => trim($_POST['email'] ?? ''),
-            'message' => trim($_POST['message'] ?? '')
+            'name'       => trim($_POST['name'] ?? ''),
+            'email'      => trim($_POST['email'] ?? ''),
+            'message'    => trim($_POST['message'] ?? ''),
+            'product_id' => trim($_POST['product_id'] ?? ''),
+            'receiver_id'=> trim($_POST['receiver_id'] ?? '')
         ];
 
+        // Règles de validation
         $rules = [
-            'name'    => 'required',
-            'email'   => 'email',
-            'message' => 'required'
+            'name'       => 'required',
+            'email'      => 'email',
+            'message'    => 'required',
+            'product_id' => 'required',
+            'receiver_id'=> 'required'
         ];
 
         $errors = $this->validateFields($fields, $rules);
 
-        $receiverId = 1; // id d’un compte admin ou producteur principal
+        // Vérifie le destinataire
+        $receiverId = (int) $fields['receiver_id'];
         $receiver = $this->contactManager->getUserById($receiverId);
         if (!$receiver) {
             $errors[] = "Le destinataire du message est introuvable (id $receiverId).";
+        }
+
+        // Vérifie le produit
+        $productId = (int) $fields['product_id'];
+        if ($productId <= 0) {
+            $errors[] = "Le produit sélectionné est invalide.";
         }
 
         if (!empty($errors)) {
@@ -71,26 +84,26 @@ class ContactController extends AbstractController
             return;
         }
 
-        $content = htmlspecialchars($fields['message'], ENT_QUOTES, 'UTF-8');
-
+        $content  = htmlspecialchars($fields['message'], ENT_QUOTES, 'UTF-8');
         $senderId = $_SESSION['user']['id'] ?? 0;
 
+        // Création du message
         $this->contactManager->create([
             "sender_id"   => $senderId,
             "receiver_id" => $receiverId,
-            "product_id"  => null,
+            "product_id"  => $productId,
             "content"     => $content
         ]);
 
-        // Envoi d’un mail au destinataire
+        // Envoi du mail
         if ($receiver && isset($receiver['email'])) {
             $subject = "Nouveau message reçu depuis le formulaire de contact";
-            $body = "Nom : {$fields['name']}\nEmail : {$fields['email']}\n\nMessage :\n{$fields['message']}";
+            $body    = "Nom : {$fields['name']}\nEmail : {$fields['email']}\n\nMessage :\n{$fields['message']}";
             mail($receiver['email'], $subject, $body);
         }
 
-        // Redirection
-        header("Location: /AgriMai/index.php?route=successMessage");
+        // Redirection pour éviter le double envoi
+        header("Location: ./index.php?route=successMessage");
         exit;
     }
 
@@ -204,11 +217,11 @@ class ContactController extends AbstractController
             $user = $_SESSION['user'] ?? null;
 
             if ($user && $user['role'] === 'Producteur') {
-                header("Location: /AgriMai/index.php?route=producerMessages");
+                header("Location: ./index.php?route=producerMessages");
             } elseif ($user && $user['role'] === 'Acheteur') {
-                header("Location: /AgriMai/index.php?route=buyerMessages");
+                header("Location: ./index.php?route=buyerMessages");
             } else {
-                header("Location: /AgriMai/index.php?route=home");
+                header("Location: ./index.php?route=home");
             }
 
             exit();
@@ -236,16 +249,16 @@ class ContactController extends AbstractController
         $user = $_SESSION['user'] ?? null;
 
         if ($user && $user['role'] === 'Producteur') {
-            $backRoute = "/AgriMai/index.php?route=producerMessages";
+            $backRoute = "./index.php?route=producerMessages";
         } elseif ($user && $user['role'] === 'Acheteur') {
-            $backRoute = "/AgriMai/index.php?route=buyerMessages";
+            $backRoute = "./index.php?route=buyerMessages";
         } else {
-            $backRoute = "/AgriMai/index.php?route=home";
+            $backRoute = "./index.php?route=home";
         }
 
         $this->render("/admin/editMessages.html.twig", [
             "message"     => $message,
-            "actionRoute" => "/AgriMai/index.php?route=updateMessageProducer",
+            "actionRoute" => "./index.php?route=updateMessageProducer",
             "backRoute"   => $backRoute
         ]);
     }
@@ -271,16 +284,16 @@ class ContactController extends AbstractController
         $user = $_SESSION['user'] ?? null;
 
         if ($user && $user['role'] === 'Acheteur') {
-            $backRoute = "/AgriMai/index.php?route=buyerMessages";
+            $backRoute = "./index.php?route=buyerMessages";
         } elseif ($user && $user['role'] === 'Producteur') {
-            $backRoute = "/AgriMai/index.php?route=producerMessages";
+            $backRoute = "./index.php?route=producerMessages";
         } else {
-            $backRoute = "/AgriMai/index.php?route=home";
+            $backRoute = "./index.php?route=home";
         }
 
         $this->render("/admin/editMessages.html.twig", [
             "message"     => $message,
-            "actionRoute" => "/AgriMai/index.php?route=updateMessageBuyer",
+            "actionRoute" => "./index.php?route=updateMessageBuyer",
             "backRoute"   => $backRoute
         ]);
     }
@@ -297,11 +310,11 @@ class ContactController extends AbstractController
             $user = $_SESSION['user'] ?? null;
 
             if ($user && $user['role'] === 'Acheteur') {
-                header("Location: /AgriMai/index.php?route=buyerMessages");
+                header("Location: ./index.php?route=buyerMessages");
             } elseif ($user && $user['role'] === 'Producteur') {
-                header("Location: /AgriMai/index.php?route=producerMessages");
+                header("Location: ./index.php?route=producerMessages");
             } else {
-                header("Location: /AgriMai/index.php?route=home");
+                header("Location: ./index.php?route=home");
             }
 
             exit();
@@ -314,7 +327,7 @@ class ContactController extends AbstractController
     public function deleteMessage(): void
     {
         if (!isset($_GET['id'])) {
-            header("Location: /AgriMai/index.php?route=producerMessages");
+            header("Location: ./index.php?route=producerMessages");
             exit();
         }
 
@@ -322,7 +335,7 @@ class ContactController extends AbstractController
         $this->contactManager->deleteMessage($messageId);
 
         // Redirection après suppression
-        header("Location: /AgriMai/index.php?route=producerMessages");
+        header("Location: ./index.php?route=producerMessages");
         exit();
     }
 

@@ -52,7 +52,7 @@ abstract class AbstractController
 
         if (!isset($_SESSION['user']) || empty($_SESSION['user']['id'])) {
             $_SESSION["error-message"] = "Vous devez être connecté.";
-            header("Location: /AgriMai/index.php?route=login");
+            header("Location: ./index.php?route=login");
             exit;
         }
 
@@ -64,7 +64,7 @@ abstract class AbstractController
             // utilisateur introuvable, déconnecter
             unset($_SESSION['user']);
             $_SESSION["error-message"] = "Utilisateur introuvable.";
-            header("Location: /AgriMai/index.php?route=login");
+            header("Location: ./index.php?route=login");
             exit;
         }
 
@@ -72,7 +72,7 @@ abstract class AbstractController
             // compte en attente, bloquer l'accès
             unset($_SESSION['user']); // on déconnecte
             $_SESSION["error-message"] = "Votre compte est en attente de validation par l'administrateur.";
-            header("Location: /AgriMai/index.php?route=login");
+            header("Location: ./index.php?route=login");
             exit;
         }
     }

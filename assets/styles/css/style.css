@@ -69,7 +69,7 @@ footer #newsletters .newsletters-body h6 {
   font-optical-sizing: auto;
   font-weight: 500;
   font-style: normal;
-  font-size: 16px;
+  font-size: 18px;
   color: #FFFFFF;
   margin: 30px 0 0 0;
 }
@@ -79,7 +79,11 @@ footer #newsletters .newsletters-body p {
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
-  font-size: 14px;
+  font-size: 16px;
+}
+footer #newsletters form {
+  display: flex;
+  flex-direction: row;
 }
 footer #newsletters form label input {
   width: 450px;
@@ -88,7 +92,7 @@ footer #newsletters form label input {
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
-  font-size: 14px;
+  font-size: 16px;
   border: 1px solid #000000;
 }
 footer #newsletters form button {
@@ -183,7 +187,7 @@ footer #footer-social .footer-text ul li a {
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
-  font-size: 14px;
+  font-size: 16px;
   text-decoration: none;
   color: #FFFFFF;
 }
@@ -213,7 +217,7 @@ footer #footer-legal .footer-legal-body p {
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
-  font-size: 14px;
+  font-size: 16px;
 }
 footer #footer-legal .footer-legal-body p:hover {
   color: #E2801D;
@@ -237,27 +241,35 @@ footer #footer-legal .footer-legal-body p a:active {
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
-  font-size: 14px;
+  font-size: 16px;
   color: #FFFFFF;
 }
 
 /* Responsive - Mobile max-width: 1024px */
 @media screen and (min-width: 769px) and (max-width: 1024px) {
+  footer {
+    padding: 0;
+  }
   footer .footer-body {
     display: flex;
-    flex-direction: row;
-    align-items: center;
+    flex-direction: column;
+  }
+  footer .footer-logo {
+    padding: 0;
   }
   footer .footer-logoAm img {
-    width: 50px;
-    height: 50px;
+    width: 100px;
+    height: 100px;
+  }
+  footer #newsletters {
+    padding: 0;
   }
   footer #newsletters .newsletters-body h6 {
     font-family: "Roboto", sans-serif;
     font-optical-sizing: auto;
     font-weight: 500;
     font-style: normal;
-    font-size: 15px;
+    font-size: 30px;
     margin: 30px 0 0 0;
   }
   footer #newsletters .newsletters-body p {
@@ -266,7 +278,7 @@ footer #footer-legal .footer-legal-body p a:active {
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
-    font-size: 13.5px;
+    font-size: 28px;
   }
   footer #newsletters form label input {
     width: 420px;
@@ -275,7 +287,7 @@ footer #footer-legal .footer-legal-body p a:active {
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
-    font-size: 13.5px;
+    font-size: 24px;
     border: 1px solid #000000;
   }
   footer #newsletters form button {
@@ -289,7 +301,8 @@ footer #footer-legal .footer-legal-body p a:active {
     font-weight: 600;
     font-style: normal;
     font-variation-settings: "wdth" 100;
-    font-size: 13.5px;
+    font-size: 26px;
+    width: 420px;
   }
   footer #newsletters form button:hover {
     background: #E2801D;
@@ -303,11 +316,14 @@ footer #footer-legal .footer-legal-body p a:active {
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
-    font-size: 12px;
+    font-size: 18px;
   }
   footer #newsletters .cdgStyle2 {
     color: #9EFFA2;
     text-decoration: none;
+  }
+  footer #footer-social {
+    padding: 0;
   }
   footer #footer-social .footer-social-body {
     display: flex;
@@ -320,7 +336,7 @@ footer #footer-legal .footer-legal-body p a:active {
     font-optical-sizing: auto;
     font-weight: 500;
     font-style: normal;
-    font-size: 15px;
+    font-size: 28px;
     color: #FFFFFF;
     margin: 35px 0 10px 0;
   }
@@ -329,14 +345,14 @@ footer #footer-legal .footer-legal-body p a:active {
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
-    font-size: 13px;
+    font-size: 26px;
   }
   footer #footer-social .footer-social-icon h6 {
     font-family: "Roboto", sans-serif;
     font-optical-sizing: auto;
     font-weight: 500;
     font-style: normal;
-    font-size: 15px;
+    font-size: 26px;
     margin: 35px 0 10px 0;
   }
   footer #footer-social .footer-social-icon a {
@@ -344,10 +360,10 @@ footer #footer-legal .footer-legal-body p a:active {
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
-    font-size: 13px;
+    font-size: 26px;
   }
   footer #footer-social .footer-social-icon a img {
-    width: 22px;
+    width: 50px;
   }
   footer #footer-legal .footer-legal-body {
     flex-direction: row;
@@ -364,7 +380,7 @@ footer #footer-legal .footer-legal-body p a:active {
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
-    font-size: 13px;
+    font-size: 26px;
   }
   footer #footer-legal .footer-legal-body p:hover {
     color: #E2801D;
@@ -387,7 +403,7 @@ footer #footer-legal .footer-legal-body p a:active {
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
-    font-size: 12px;
+    font-size: 18px;
     color: #FFFFFF;
     text-align: center;
   }
@@ -400,15 +416,21 @@ footer #footer-legal .footer-legal-body p a:active {
     padding: 1.5rem;
   }
   footer .footer-logoAm img {
-    width: 40px;
-    height: 40px;
+    width: 100px;
+    height: 100px;
+  }
+  footer .footer-logo {
+    padding: 0;
+  }
+  footer #newsletters {
+    padding: 0;
   }
   footer #newsletters .newsletters-body h6 {
     font-family: "Roboto", sans-serif;
     font-optical-sizing: auto;
     font-weight: 500;
     font-style: normal;
-    font-size: 14px;
+    font-size: 28px;
     margin: 20px 0 0 0;
   }
   footer #newsletters .newsletters-body p {
@@ -417,30 +439,31 @@ footer #footer-legal .footer-legal-body p a:active {
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
-    font-size: 13px;
+    font-size: 24px;
   }
   footer #newsletters form label input {
     display: flex;
     flex-direction: column;
     width: 100%;
-    max-width: 280px;
+    max-width: 300px;
     padding: 0.4rem;
     font-family: "Roboto", sans-serif;
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
-    font-size: 13px;
+    font-size: 22px;
+    height: 50px;
   }
   footer #newsletters form button {
     width: 100%;
-    max-width: 100px;
+    max-width: 300px;
     padding: 0.5rem;
     font-family: "Inter", sans-serif;
     font-optical-sizing: auto;
     font-weight: 600;
     font-style: normal;
     font-variation-settings: "wdth" 100;
-    font-size: 13px;
+    font-size: 22px;
   }
   footer #newsletters .cdg2 {
     font-family: "Roboto", sans-serif;
@@ -448,6 +471,9 @@ footer #footer-legal .footer-legal-body p a:active {
     font-weight: 400;
     font-style: normal;
     font-size: 12px;
+  }
+  footer #footer-social {
+    padding: 0;
   }
   footer #footer-social .footer-social-body {
     display: flex;
@@ -461,7 +487,7 @@ footer #footer-legal .footer-legal-body p a:active {
     font-optical-sizing: auto;
     font-weight: 500;
     font-style: normal;
-    font-size: 14px;
+    font-size: 24px;
     margin: 20px 0 5px 0;
   }
   footer #footer-social .footer-social-icon a {
@@ -469,10 +495,10 @@ footer #footer-legal .footer-legal-body p a:active {
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
-    font-size: 14px;
+    font-size: 24px;
   }
   footer #footer-social .footer-social-icon a img {
-    width: 20px;
+    width: 50px;
   }
   footer #footer-social .footer-text {
     display: flex;
@@ -485,7 +511,7 @@ footer #footer-legal .footer-legal-body p a:active {
     font-optical-sizing: auto;
     font-weight: 500;
     font-style: normal;
-    font-size: 14px;
+    font-size: 22px;
     margin: 20px 0 5px 0;
   }
   footer #footer-social .footer-text ul li a {
@@ -493,23 +519,31 @@ footer #footer-legal .footer-legal-body p a:active {
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
-    font-size: 13px;
+    font-size: 22px;
   }
   footer #footer-legal .footer-legal-body {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding: 1rem 0 1rem 1rem;
+    padding: 1rem 0 1rem 0.5rem;
     gap: 0.5rem;
+  }
+  footer #footer-legal .footer-legal-body p {
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 22px;
   }
   .copyright {
     font-family: "Roboto", sans-serif;
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
-    font-size: 14px;
-    text-align: center;
-    margin-bottom: 0;
+    font-size: 22px;
+    text-align: start;
+    margin: 0;
+    padding: 0;
   }
 }
 header {
@@ -541,13 +575,13 @@ header nav li {
   margin: 0 1rem;
 }
 header nav a {
+  color: #FFFFFF;
   font-family: "Inter", sans-serif;
   font-optical-sizing: auto;
   font-weight: 700;
   font-style: normal;
   font-variation-settings: "wdth" 100;
   font-size: 18px;
-  color: #FFFFFF;
   text-decoration: none;
   display: flex;
   align-items: center;
@@ -580,26 +614,26 @@ header nav .aBorder2 {
   }
   header nav {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    flex-direction: column;
+    align-items: flex-start;
     width: 100%;
-    flex-wrap: nowrap; /* empêche le retour à la ligne */
   }
   header nav img {
-    width: 70px;
+    padding-bottom: 1rem;
+    width: 110px;
     height: auto;
     flex-shrink: 0; /* empêche le logo de rétrécir */
   }
   header nav ul {
+    order: 1;
     display: flex;
-    align-items: flex-start;
-    gap: 0;
-    margin: 0 auto;
-    padding: 0;
+    flex-wrap: wrap;
+    width: 100%;
+    list-style: none;
+    padding: 2rem 0 1rem 0;
+    margin: 0;
+    gap: 2rem;
     justify-content: center;
-    flex-direction: row;
-    flex: 1;
-    flex-wrap: nowrap;
   }
   header nav li {
     margin: 0 1rem;
@@ -611,7 +645,7 @@ header nav .aBorder2 {
     font-weight: 700;
     font-style: normal;
     font-variation-settings: "wdth" 100;
-    font-size: 18px;
+    font-size: 26px;
     color: #FFFFFF;
     text-decoration: none;
     display: flex;
@@ -630,11 +664,12 @@ header nav .aBorder2 {
     height: auto;
   }
   header nav .top-right {
+    position: static;
+    order: 0;
+    width: 100%;
     display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 0;
-    flex-shrink: 0; /* reste à droite */
+    justify-content: flex-end;
+    margin-bottom: 0.5rem;
   }
   header nav .top-right a {
     white-space: nowrap;
@@ -644,7 +679,7 @@ header nav .aBorder2 {
     font-weight: 700;
     font-style: normal;
     font-variation-settings: "wdth" 100;
-    font-size: 16px;
+    font-size: 26px;
   }
 }
 /* Responsive Mobile max-width: 768px */
@@ -655,30 +690,32 @@ header nav .aBorder2 {
   header nav {
     position: relative;
     display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
+    align-items: center;
     justify-content: space-between;
     width: 100%;
-    align-items: center;
+    flex-wrap: wrap;
     gap: 1rem;
   }
   header nav img {
-    width: 50px;
+    width: 100px;
     height: auto;
   }
   header nav ul {
+    order: 2;
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    gap: 1.2rem;
-    width: 100%;
+    align-items: flex-start;
+    gap: 0;
+    margin: 0 auto;
     padding: 0;
+    justify-content: center;
+    flex-direction: row;
+    flex: 1;
+    flex-wrap: nowrap;
   }
   header nav li {
-    text-align: center;
-    margin: 0.5rem 0;
     white-space: nowrap;
+    margin: 0 1rem;
+    list-style: none;
   }
   header nav a {
     font-family: "Inter", sans-serif;
@@ -686,27 +723,34 @@ header nav .aBorder2 {
     font-weight: 700;
     font-style: normal;
     font-variation-settings: "wdth" 100;
-    font-size: 16px;
+    font-size: 24px;
     text-decoration: none;
     color: white;
     white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
   }
   header nav a img {
     width: 18px;
   }
   header nav .top-right {
-    position: absolute;
-    top: 1rem;
+    position: static;
+    order: 0;
     right: 1rem;
     display: flex;
     flex-wrap: wrap;
-    gap: 0.4rem;
-    justify-content: flex-end;
     max-width: 100%;
     width: auto;
-    margin: 0 0 0 1rem;
+    margin: 0 0 0 0.5rem;
+    align-items: center;
+    gap: 0;
+    flex-shrink: 0;
+    flex-direction: row;
+    justify-content: flex-end;
   }
   header nav .top-right a {
+    order: 1;
     border-radius: 4px;
     padding: 0.3rem 0.6rem;
     font-family: "Inter", sans-serif;
@@ -714,8 +758,12 @@ header nav .aBorder2 {
     font-weight: 700;
     font-style: normal;
     font-variation-settings: "wdth" 100;
-    font-size: 14px;
+    font-size: 24px;
     white-space: nowrap;
+  }
+  header nav .top-right a .aBorder5 {
+    position: static;
+    order: 0;
   }
 }
 /* Responsive très petit écran max-width: 480px */
@@ -724,18 +772,20 @@ header nav .aBorder2 {
     padding: 0.8rem 1rem;
   }
   header nav {
-    flex-direction: column;
-    align-items: center;
     gap: 0.6rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
   }
   header nav img {
     width: 40px;
   }
   header nav ul {
-    margin-left: 0;
+    display: flex;
+    margin: 1rem 0 0 0;
     gap: 1rem;
     flex-wrap: wrap;
-    flex-direction: column;
+    flex-direction: row;
     width: 100%;
     padding: 0;
   }
@@ -749,15 +799,17 @@ header nav .aBorder2 {
     font-weight: 700;
     font-style: normal;
     font-variation-settings: "wdth" 100;
-    font-size: 14px;
+    font-size: 1.2rem;
     white-space: normal;
   }
   header nav .top-right {
     position: static;
-    flex-direction: row;
-    gap: 0.3rem;
-    justify-content: center;
-    margin: 0.5rem 0 0 0;
+    order: 0;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    margin: 0 0.5rem 0 0.5rem;
+    gap: 0.6rem;
   }
   header nav .top-right a {
     padding: 0.25rem 0.4rem;
@@ -766,7 +818,7 @@ header nav .aBorder2 {
     font-weight: 700;
     font-style: normal;
     font-variation-settings: "wdth" 100;
-    font-size: 12px;
+    font-size: 1.2rem;
   }
 }
 @media screen and (min-width: 769px) and (max-width: 1024px) {
@@ -805,13 +857,22 @@ header nav .aBorder2 {
 }
 #header-about {
   position: relative;
-  background: url("/AgriMai/assets/styles/img/imageAbout1.jpg") no-repeat center center/cover;
-  color: white;
+  color: #FFFFFF;
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 2rem;
+}
+#header-about .about-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: -1;
 }
 #header-about::before {
   content: "";
@@ -842,11 +903,11 @@ header nav .aBorder2 {
   text-align: center;
 }
 #header-about .about-body .about-text p {
-  font-family: "Playfair Display", serif;
+  font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
   font-weight: 600;
   font-style: oblique;
   font-size: 28px;
-  line-height: 1.6;
   text-align: center;
   color: #FFFFFF;
 }
@@ -856,6 +917,7 @@ header nav .aBorder2 {
   flex-direction: row;
   gap: 6rem;
   padding-left: 4rem;
+  margin-top: 2rem;
 }
 #agMai-about .agMai-body .agMaiAbout-text p {
   font-family: "Roboto", sans-serif;
@@ -863,6 +925,7 @@ header nav .aBorder2 {
   font-weight: 300;
   font-style: normal;
   font-size: 18px;
+  color: #000000;
 }
 #agMai-about .agMai-body .agMaiAbout-text .about-titleP {
   font-family: "Roboto", sans-serif;
@@ -870,6 +933,7 @@ header nav .aBorder2 {
   font-weight: 500;
   font-style: normal;
   font-size: 26px;
+  color: #000000;
   text-decoration: underline;
 }
 #agMai-about .agMai-body .agMaiAbout-img img {
@@ -880,13 +944,13 @@ header nav .aBorder2 {
 }
 
 #team .team-body {
+  border-top: inset;
   margin: 4rem;
 }
 #team .team-body .team1 {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  border-top: inset;
   padding-top: 30px;
 }
 #team .team-body .team1 .team-member img {
@@ -900,6 +964,7 @@ header nav .aBorder2 {
   font-style: normal;
   font-variation-settings: "wdth" 100;
   font-size: 20px;
+  color: #000000;
 }
 #team .team-body .team1 .team-member .team-title {
   font-family: "Roboto", sans-serif;
@@ -907,6 +972,7 @@ header nav .aBorder2 {
   font-weight: 600;
   font-style: oblique;
   font-size: 18px;
+  color: #000000;
 }
 #team .team-body .team1 .team-member p {
   font-family: "Roboto", sans-serif;
@@ -914,6 +980,7 @@ header nav .aBorder2 {
   font-weight: 300;
   font-style: normal;
   font-size: 16px;
+  color: #000000;
 }
 #team .team-body .team1 .team-member .team-logo {
   display: flex;
@@ -946,6 +1013,7 @@ header nav .aBorder2 {
   font-style: normal;
   font-variation-settings: "wdth" 100;
   font-size: 20px;
+  color: #000000;
 }
 #team .team-body .team2 .team-member2 .team-title2 {
   font-family: "Roboto", sans-serif;
@@ -953,6 +1021,7 @@ header nav .aBorder2 {
   font-weight: 600;
   font-style: oblique;
   font-size: 18px;
+  color: #000000;
 }
 #team .team-body .team2 .team-member2 p {
   font-family: "Roboto", sans-serif;
@@ -960,6 +1029,7 @@ header nav .aBorder2 {
   font-weight: 300;
   font-style: normal;
   font-size: 16px;
+  color: #000000;
 }
 #team .team-body .team2 .team-member2 .team-logo2 {
   display: flex;
@@ -997,6 +1067,7 @@ header nav .aBorder2 {
   font-style: normal;
   font-variation-settings: "wdth" 100;
   font-size: 20px;
+  color: #000000;
 }
 #address .address-body .address-text p {
   font-family: "Roboto", sans-serif;
@@ -1004,13 +1075,14 @@ header nav .aBorder2 {
   font-weight: 300;
   font-style: normal;
   font-size: 16px;
+  color: #000000;
 }
 #address .address-body .address-img {
   margin-left: 0.5px;
 }
 #address .address-body .address-img iframe {
   width: 490px;
-  height: 270px;
+  height: 390px;
   padding: 20px 0 20px 0;
 }
 
@@ -1029,20 +1101,20 @@ header nav .aBorder2 {
     font-weight: 700;
     font-style: normal;
     font-variation-settings: "wdth" 100;
-    font-size: 28px;
+    font-size: 32px;
   }
   #header-about .about-body .about-text p {
     font-family: "Playfair Display", serif;
     font-weight: 600;
     font-style: oblique;
-    font-size: 24px;
+    font-size: 30px;
     line-height: 1.5;
   }
   #agMai-about .agMai-body {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
-    margin: 3rem;
+    padding: 0;
     gap: 0.15rem;
   }
   #agMai-about .agMai-body .agMaiAbout-text p {
@@ -1050,23 +1122,23 @@ header nav .aBorder2 {
     font-optical-sizing: auto;
     font-weight: 300;
     font-style: normal;
-    font-size: 14px;
+    font-size: 26px;
   }
   #agMai-about .agMai-body .agMaiAbout-text .about-titleP {
     font-family: "Roboto", sans-serif;
     font-optical-sizing: auto;
     font-weight: 500;
     font-style: normal;
-    font-size: 22px;
+    font-size: 28px;
   }
   #agMai-about .agMai-body .agMaiAbout-img {
     margin-top: 6rem;
   }
   #agMai-about .agMai-body .agMaiAbout-img img {
-    width: 370px;
+    width: 290px;
     height: 270px;
-    padding: 25px;
     border-radius: 65px;
+    padding: 0;
   }
   #team {
     margin: 3rem auto;
@@ -1099,7 +1171,7 @@ header nav .aBorder2 {
     font-weight: 600;
     font-style: normal;
     font-variation-settings: "wdth" 100;
-    font-size: 16px;
+    font-size: 28px;
   }
   #team .team-body .team1 .team-member .team-title,
   #team .team-body .team1 .team-member .team-title2,
@@ -1113,7 +1185,7 @@ header nav .aBorder2 {
     font-optical-sizing: auto;
     font-weight: 600;
     font-style: oblique;
-    font-size: 14px;
+    font-size: 26px;
   }
   #team .team-body .team1 .team-member p,
   #team .team-body .team1 .team-member2 p,
@@ -1123,7 +1195,7 @@ header nav .aBorder2 {
     font-optical-sizing: auto;
     font-weight: 300;
     font-style: normal;
-    font-size: 15px;
+    font-size: 24px;
   }
   #team .team-body .team1 .team-member .team-logo img,
   #team .team-body .team1 .team-member .team-logo2 img,
@@ -1133,7 +1205,7 @@ header nav .aBorder2 {
   #team .team-body .team2 .team-member .team-logo2 img,
   #team .team-body .team2 .team-member2 .team-logo img,
   #team .team-body .team2 .team-member2 .team-logo2 img {
-    width: 28px;
+    width: 38px;
     height: 28px;
   }
   #address {
@@ -1155,14 +1227,14 @@ header nav .aBorder2 {
     font-weight: 600;
     font-style: normal;
     font-variation-settings: "wdth" 100;
-    font-size: 16px;
+    font-size: 26px;
   }
   #address .address-body .address-text p {
     font-family: "Roboto", sans-serif;
     font-optical-sizing: auto;
     font-weight: 300;
     font-style: normal;
-    font-size: 15px;
+    font-size: 24px;
   }
   #address .address-body .address-img iframe {
     width: 330px;
@@ -1187,34 +1259,36 @@ header nav .aBorder2 {
     font-weight: 700;
     font-style: normal;
     font-variation-settings: "wdth" 100;
-    font-size: 24px;
+    font-size: 32px;
   }
   #header-about .about-body .about-text p {
     font-family: "Playfair Display", serif;
     font-weight: 600;
     font-style: oblique;
-    font-size: 22px;
+    font-size: 28px;
     line-height: 1.6;
     line-height: 1.4;
+  }
+  #agMai-about {
+    padding: 0;
   }
   #agMai-about .agMai-body {
     flex-direction: column;
     align-items: center;
-    margin: 2rem 1rem;
     gap: 1.5rem;
+    padding: 0;
   }
   #agMai-about .agMai-body .agMaiAbout-text {
     max-width: 400px;
     text-align: justify;
-    line-height: 1.6;
-    padding: 0 1rem;
   }
   #agMai-about .agMai-body .agMaiAbout-text p {
+    padding: 0 1rem 0 1rem;
     font-family: "Roboto", sans-serif;
     font-optical-sizing: auto;
     font-weight: 300;
     font-style: normal;
-    font-size: 16px;
+    font-size: 26px;
   }
   #agMai-about .agMai-body .agMaiAbout-text .about-titleP {
     display: flex;
@@ -1224,26 +1298,27 @@ header nav .aBorder2 {
     font-optical-sizing: auto;
     font-weight: 500;
     font-style: normal;
-    font-size: 20px;
+    font-size: 26px;
   }
   #agMai-about .agMai-body .agMaiAbout-img img {
-    width: 250px;
-    height: 250px;
+    width: 350px;
+    height: 350px;
     padding: 20px;
     border-radius: 50px;
   }
   #team {
-    margin: 2rem 1rem;
+    border-top: inset;
   }
   #team .team-body {
-    margin: 2rem 0;
+    padding: 0;
+    margin: 0;
   }
   #team .team-body .team1,
   #team .team-body .team2 {
     flex-direction: column;
     gap: 2rem;
     padding-top: 20px;
-    border-top-width: 1px;
+    border-top-width: 0;
   }
   #team .team-body .team1 .team-member,
   #team .team-body .team1 .team-member2,
@@ -1255,8 +1330,8 @@ header nav .aBorder2 {
   #team .team-body .team1 .team-member2 img,
   #team .team-body .team2 .team-member img,
   #team .team-body .team2 .team-member2 img {
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 150px;
   }
   #team .team-body .team1 .team-member h3,
   #team .team-body .team1 .team-member2 h3,
@@ -1267,7 +1342,7 @@ header nav .aBorder2 {
     font-weight: 600;
     font-style: normal;
     font-variation-settings: "wdth" 100;
-    font-size: 18px;
+    font-size: 26px;
   }
   #team .team-body .team1 .team-member .team-title,
   #team .team-body .team1 .team-member .team-title2,
@@ -1281,7 +1356,7 @@ header nav .aBorder2 {
     font-optical-sizing: auto;
     font-weight: 600;
     font-style: oblique;
-    font-size: 16px;
+    font-size: 24px;
   }
   #team .team-body .team1 .team-member p,
   #team .team-body .team1 .team-member2 p,
@@ -1291,7 +1366,7 @@ header nav .aBorder2 {
     font-optical-sizing: auto;
     font-weight: 300;
     font-style: normal;
-    font-size: 14px;
+    font-size: 22px;
   }
   #team .team-body .team1 .team-member .team-logo,
   #team .team-body .team1 .team-member .team-logo2,
@@ -1311,17 +1386,18 @@ header nav .aBorder2 {
   #team .team-body .team2 .team-member .team-logo2 img,
   #team .team-body .team2 .team-member2 .team-logo img,
   #team .team-body .team2 .team-member2 .team-logo2 img {
-    width: 25px;
-    height: 25px;
+    width: 35px;
+    height: 35px;
   }
   #address {
-    margin: 2rem 1rem;
+    margin-top: 2rem;
   }
   #address .address-body {
     flex-direction: column;
     gap: 2rem;
     background: #F5D29E;
     text-align: center;
+    padding-top: 0;
   }
   #address .address-body .address-text {
     padding: 10px;
@@ -1332,18 +1408,18 @@ header nav .aBorder2 {
     font-weight: 600;
     font-style: normal;
     font-variation-settings: "wdth" 100;
-    font-size: 18px;
+    font-size: 26px;
   }
   #address .address-body .address-text p {
     font-family: "Roboto", sans-serif;
     font-optical-sizing: auto;
     font-weight: 300;
     font-style: normal;
-    font-size: 14px;
+    font-size: 20px;
   }
   #address .address-body .address-img iframe {
     width: 100%;
-    max-width: 270px;
+    max-width: 300px;
     height: auto;
     padding: 10px;
     box-sizing: border-box;
@@ -1351,18 +1427,19 @@ header nav .aBorder2 {
 }
 .contact {
   background: #a07856;
+  padding: 0;
   margin: 0;
 }
 .contact .contact-body {
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 6rem;
 }
 .contact .contact-body .contact-form {
   background: #CBB799;
   border: 2px solid #F5F5DC;
   border-radius: 30px;
-  margin: 2rem;
   width: 570px;
 }
 .contact .contact-body .contact-form form {
@@ -1486,7 +1563,7 @@ header nav .aBorder2 {
     font-weight: 600;
     font-style: normal;
     font-variation-settings: "wdth" 100;
-    font-size: 22px;
+    font-size: 26px;
     margin-bottom: 0.6rem;
   }
   .contact .contact-body .contact-form form p {
@@ -1494,7 +1571,7 @@ header nav .aBorder2 {
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: oblique;
-    font-size: 17px;
+    font-size: 24px;
     margin: 1.2rem 0;
     text-align: center;
   }
@@ -1504,7 +1581,7 @@ header nav .aBorder2 {
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
-    font-size: 15px;
+    font-size: 24px;
     padding: 0.45rem;
   }
   .contact .contact-body .contact-form label {
@@ -1512,7 +1589,7 @@ header nav .aBorder2 {
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
-    font-size: 17px;
+    font-size: 22px;
     margin-bottom: 0.25rem;
   }
   .contact .contact-body .contact-form .champs {
@@ -1527,7 +1604,7 @@ header nav .aBorder2 {
     font-weight: 600;
     font-style: normal;
     font-variation-settings: "wdth" 100;
-    font-size: 16px;
+    font-size: 22px;
     padding: 0.55rem 1.1rem;
   }
   .contact .contact-body .contact-form .errors {
@@ -1536,7 +1613,7 @@ header nav .aBorder2 {
     font-weight: 600;
     font-style: normal;
     font-variation-settings: "wdth" 100;
-    font-size: 15px;
+    font-size: 20px;
     padding: 0.45rem;
   }
   .contact .contact-body .contact-form .errors ul {
@@ -1568,7 +1645,7 @@ header nav .aBorder2 {
     font-weight: 600;
     font-style: normal;
     font-variation-settings: "wdth" 100;
-    font-size: 20px;
+    font-size: 24px;
     margin-bottom: 0.5rem;
   }
   .contact .contact-body .contact-form form p {
@@ -1576,8 +1653,8 @@ header nav .aBorder2 {
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: oblique;
-    font-size: 16px;
-    margin: 1rem 0;
+    font-size: 22px;
+    margin: 1rem 0 2rem 0;
   }
   .contact .contact-body .contact-form input,
   .contact .contact-body .contact-form textarea {
@@ -1585,7 +1662,7 @@ header nav .aBorder2 {
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
-    font-size: 14px;
+    font-size: 20px;
     padding: 0.4rem;
   }
   .contact .contact-body .contact-form label {
@@ -1593,7 +1670,7 @@ header nav .aBorder2 {
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
-    font-size: 16px;
+    font-size: 20px;
     margin-bottom: 0.2rem;
   }
   .contact .contact-body .contact-form .title {
@@ -1611,8 +1688,9 @@ header nav .aBorder2 {
     font-weight: 600;
     font-style: normal;
     font-variation-settings: "wdth" 100;
-    font-size: 16px;
+    font-size: 20px;
     padding: 0.5rem 1rem;
+    width: 150px;
   }
   .contact .contact-body .contact-form .errors {
     font-family: "Inter", sans-serif;
@@ -1620,7 +1698,7 @@ header nav .aBorder2 {
     font-weight: 600;
     font-style: normal;
     font-variation-settings: "wdth" 100;
-    font-size: 14px;
+    font-size: 18px;
     padding: 0.4rem;
   }
   .contact .contact-body .contact-form .errors ul {
@@ -1686,7 +1764,7 @@ header nav .aBorder2 {
     font-optical-sizing: auto;
     font-weight: 600;
     font-style: oblique;
-    font-size: 20px;
+    font-size: 22px;
     color: #000000;
     line-height: 1.5;
     max-width: 600px;
@@ -1717,7 +1795,7 @@ header nav .aBorder2 {
     font-optical-sizing: auto;
     font-weight: 600;
     font-style: oblique;
-    font-size: 18px;
+    font-size: 30px;
     line-height: 1.5;
     color: #000000;
     max-width: 90%;
@@ -2097,7 +2175,7 @@ header nav .aBorder2 {
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
-    font-size: 15px;
+    font-size: 30px;
     padding: 0.5rem 0.8rem;
     text-align: center;
     white-space: normal;
@@ -2433,7 +2511,7 @@ header nav .aBorder2 {
     font-weight: 600;
     font-style: normal;
     font-variation-settings: "wdth" 100;
-    font-size: 22px;
+    font-size: 40px;
     margin-bottom: 1.2rem;
     text-align: center;
   }
@@ -2442,7 +2520,7 @@ header nav .aBorder2 {
     margin-bottom: 1.2rem;
     border-radius: 10px;
     border-right: 4px solid #6E093B;
-    width: 450px;
+    width: 750px;
     margin-inline: auto;
     background-color: rgba(255, 255, 255, 0.9);
   }
@@ -2452,36 +2530,50 @@ header nav .aBorder2 {
   #producer-messages .messages-list .message-card.received {
     border-left: 4px solid #2F0404;
   }
+  #producer-messages .messages-list .message-card .product-title {
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 34px;
+  }
   #producer-messages .messages-list .message-card .message-header {
     font-family: "Roboto", sans-serif;
     font-optical-sizing: auto;
     font-weight: 500;
     font-style: normal;
-    font-size: 16px;
+    font-size: 38px;
     gap: 0.4rem;
     flex-direction: column;
     align-items: flex-start;
+  }
+  #producer-messages .messages-list .message-card .message-header p {
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 34px;
   }
   #producer-messages .messages-list .message-card .message-header .product-title {
     font-family: "Roboto", sans-serif;
     font-optical-sizing: auto;
     font-weight: 500;
     font-style: normal;
-    font-size: 14px;
+    font-size: 36px;
   }
   #producer-messages .messages-list .message-card .message-header .date {
     font-family: "Roboto", sans-serif;
     font-optical-sizing: auto;
     font-weight: 500;
     font-style: normal;
-    font-size: 12px;
+    font-size: 34px;
   }
   #producer-messages .messages-list .message-card .message-body {
     font-family: "Roboto", sans-serif;
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: italic;
-    font-size: 14px;
+    font-size: 34px;
     line-height: 1.4;
     padding: 0.4rem 0 0.8rem 0;
   }
@@ -2494,7 +2586,7 @@ header nav .aBorder2 {
     font-optical-sizing: auto;
     font-weight: 500;
     font-style: normal;
-    font-size: 14px;
+    font-size: 30px;
     padding: 0.3rem 0.8rem;
   }
   #producer-messages .reply-form {
@@ -2504,7 +2596,7 @@ header nav .aBorder2 {
     height: auto;
     border-left: 4px solid #6E093B;
     border-radius: 12px;
-    width: 450px;
+    width: 750px;
     margin-inline: auto;
   }
   #producer-messages .reply-form h2 {
@@ -2513,8 +2605,8 @@ header nav .aBorder2 {
     font-weight: 600;
     font-style: normal;
     font-variation-settings: "wdth" 100;
-    font-size: 20px;
-    margin-bottom: 0.8rem;
+    font-size: 40px;
+    margin-bottom: 2rem;
     text-align: center;
   }
   #producer-messages .reply-form .form-messageProducer {
@@ -2527,7 +2619,7 @@ header nav .aBorder2 {
     font-optical-sizing: auto;
     font-weight: 500;
     font-style: normal;
-    font-size: 14px;
+    font-size: 34px;
   }
   #producer-messages .reply-form .form-messageProducer input,
   #producer-messages .reply-form .form-messageProducer select,
@@ -2536,11 +2628,11 @@ header nav .aBorder2 {
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
-    font-size: 14px;
+    font-size: 34px;
     padding: 0.4rem 0.6rem;
   }
   #producer-messages .reply-form .form-messageProducer textarea {
-    min-height: 190px;
+    min-height: 290px;
   }
   #producer-messages .reply-form .form-messageProducer .reply-actions {
     display: flex;
@@ -2552,7 +2644,7 @@ header nav .aBorder2 {
     font-weight: 600;
     font-style: normal;
     font-variation-settings: "wdth" 100;
-    font-size: 16px;
+    font-size: 34px;
     padding: 0.4rem 0.8rem;
   }
 }
@@ -2958,13 +3050,23 @@ header nav .aBorder2 {
 }
 #hero {
   position: relative;
-  background: url("/AgriMai/assets/styles/img/image1.png") no-repeat center center/cover;
+  background: url("../img/image1.png") no-repeat center center/cover;
   color: white;
   min-height: 100vh; /* plein écran */
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 2rem;
+}
+#hero .hero-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* équivalent de background-size: cover */
+  object-position: center; /* équivalent de background-position: center */
+  z-index: 0;
 }
 #hero::before {
   content: "";
@@ -3028,7 +3130,7 @@ header nav .aBorder2 {
   gap: 0.5rem;
 }
 
-.hero-buttons button {
+.hero-bnt {
   font-family: "Inter", sans-serif;
   font-optical-sizing: auto;
   font-weight: 600;
@@ -3042,10 +3144,10 @@ header nav .aBorder2 {
   cursor: pointer;
 }
 
-.hero-buttons button:hover {
+.hero-bnt:hover {
   background: #E2801D;
 }
-.hero-buttons button:hover:active {
+.hero-bnt:hover:active {
   background: #4CAF50;
   color: #F5F5DC;
 }
@@ -3057,10 +3159,9 @@ header nav .aBorder2 {
 
 .Presentation-body {
   display: flex;
-  align-items: center;
   justify-content: center;
-  margin: 70px 0 70px 40px;
   gap: 30px;
+  padding: 6rem;
 }
 
 .Presentation-body img {
@@ -3068,7 +3169,7 @@ header nav .aBorder2 {
   border-radius: 30px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
   width: 600px;
-  height: 370px;
+  height: 360px;
 }
 
 .Presentation-text h2 {
@@ -3079,6 +3180,7 @@ header nav .aBorder2 {
   font-variation-settings: "wdth" 100;
   font-size: 30px;
   color: #285829;
+  margin: 0;
 }
 
 .Presentation-text p {
@@ -3087,6 +3189,7 @@ header nav .aBorder2 {
   font-weight: 500;
   font-style: normal;
   font-size: 20px;
+  color: #000000;
   line-height: 1.6;
 }
 .Presentation-text p .mission {
@@ -3123,12 +3226,14 @@ header nav .aBorder2 {
   color: inherit;
 }
 
+#recent-products {
+  border-top: inset;
+}
 #recent-products .recentP-body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 100px;
-  border-top: inset;
+  padding: 6rem;
 }
 #recent-products .recentP-body h3 {
   font-family: "Montserrat", sans-serif;
@@ -3214,8 +3319,6 @@ header nav .aBorder2 {
 }
 
 #certificats {
-  margin: 90px;
-  padding: 2rem;
   border-top: inset;
 }
 #certificats .certificat-body {
@@ -3223,9 +3326,10 @@ header nav .aBorder2 {
   justify-content: space-between;
   gap: 2rem;
   flex-wrap: wrap;
+  padding: 6rem;
 }
 #certificats .certificat {
-  flex: 1 1 30%;
+  flex: 1 1 25%;
   background: #440505;
   border: 1px solid #FFFFFF;
   border-radius: 12px;
@@ -3319,23 +3423,19 @@ header nav .aBorder2 {
   }
 }
 #logos {
-  margin: 50px;
-  padding: 2rem;
+  border-top: dashed;
 }
 #logos .logo-body {
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
-  gap: 2rem;
-  border-top: dashed;
+  gap: 3rem;
+  padding: 6rem 6rem 8rem 6rem;
 }
 #logos .logo-image {
-  padding: 2rem;
-  display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  max-width: 150px;
 }
 #logos .logo-image img {
   width: 100px;
@@ -3353,11 +3453,29 @@ header nav .aBorder2 {
   margin: 0;
 }
 
-#newsletter {
-  background: url("/AgriMai/assets/styles/img/pommes.jpg") no-repeat center center/cover;
-  padding-bottom: 4rem;
-  position: relative;
+#contact-home {
+  padding: 0;
+  margin: 0;
 }
+
+#newsletter {
+  position: relative;
+  overflow: hidden;
+  padding: 4rem 1rem; /* ajuste selon ton design */
+}
+
+#newsletter .newsletter-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* = background-size: cover */
+  object-position: center; /* = background-position: center */
+  z-index: 0;
+}
+
+/* Overlay noir */
 #newsletter::before {
   content: "";
   position: absolute;
@@ -3365,10 +3483,20 @@ header nav .aBorder2 {
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 0.4); /* même effet que ton CSS */
   z-index: 1;
 }
-#newsletter h3 {
+
+.newsletter-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+  padding: 6rem;
+}
+
+h3 {
   font-family: "Montserrat", sans-serif;
   font-optical-sizing: auto;
   font-weight: 600;
@@ -3377,7 +3505,8 @@ header nav .aBorder2 {
   font-size: 22px;
   color: #FFFFFF;
 }
-#newsletter p {
+
+p {
   font-family: "Roboto", sans-serif;
   font-optical-sizing: auto;
   font-weight: 400;
@@ -3385,7 +3514,8 @@ header nav .aBorder2 {
   font-size: 18px;
   color: #FFFFFF;
 }
-#newsletter form label input {
+
+form label input {
   width: 530px;
   padding: 0.8rem;
   font-family: "Roboto", sans-serif;
@@ -3395,7 +3525,7 @@ header nav .aBorder2 {
   font-size: 18px;
   border: 1px solid #000000;
 }
-#newsletter form button {
+form button {
   padding: 0.8rem 1.2rem;
   border: 1px solid #000000;
   background: #FFFFFF;
@@ -3408,20 +3538,12 @@ header nav .aBorder2 {
   font-variation-settings: "wdth" 100;
   font-size: 18px;
 }
-#newsletter form button:hover {
+form button:hover {
   background: #E2801D;
 }
-#newsletter form button:active {
+form button:active {
   background: #4CAF50;
   color: #F5F5DC;
-}
-
-.newsletter-body {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: relative;
-  z-index: 2;
 }
 
 .newsletter-form {
@@ -3460,46 +3582,43 @@ header nav .aBorder2 {
     gap: 2rem;
     max-width: 1000px;
   }
-  #hero .hero-text {
-    max-width: 400px;
-  }
   #hero .hero-text h1 {
     font-family: "Montserrat", sans-serif;
     font-optical-sizing: auto;
     font-weight: 700;
     font-style: normal;
     font-variation-settings: "wdth" 100;
-    font-size: 28px;
+    font-size: 30px;
   }
   #hero .hero-text .hero-buttons {
     gap: 0.5rem;
   }
-  #hero .hero-text .hero-buttons button {
+  #hero .hero-text .hero-buttons .hero-bnt {
     padding: 0.5rem 0.8rem;
     font-family: "Inter", sans-serif;
     font-optical-sizing: auto;
     font-weight: 600;
     font-style: normal;
     font-variation-settings: "wdth" 100;
-    font-size: 16px;
+    font-size: 24px;
   }
   #hero .hero-image2 img {
-    width: 220px;
+    width: 250px;
   }
   #hero .hero-image2 p {
     font-family: "Roboto", sans-serif;
     font-optical-sizing: auto;
     font-weight: 500;
     font-style: normal;
-    font-size: 20px;
+    font-size: 28px;
   }
   /* SECTION PRÉSENTATION */
   .Presentation-body {
     flex-direction: row;
-    margin: 3rem 2rem;
     gap: 1.5rem;
-    justify-content: center;
     align-items: center;
+    display: flex;
+    justify-content: space-evenly;
   }
   .Presentation-body .Presentation-img img {
     width: 400px;
@@ -3521,7 +3640,7 @@ header nav .aBorder2 {
     font-optical-sizing: auto;
     font-weight: 500;
     font-style: normal;
-    font-size: 18px;
+    font-size: 22px;
     line-height: 1.5;
   }
   .Presentation-body .Presentation-text .Presentation-buttons button {
@@ -3533,10 +3652,19 @@ header nav .aBorder2 {
     font-style: normal;
     font-variation-settings: "wdth" 100;
     font-size: 16px;
+    height: 45px;
   }
   /* SECTION PRODUITS RÉCENTS */
-  #recent-products .recentP-body {
-    margin: 3rem 2rem;
+  #recent-products {
+    padding: 0;
+  }
+  #recent-products .recentP-body h3 {
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+    font-variation-settings: "wdth" 100;
+    font-size: 30px;
   }
   #recent-products .recentP-body .products-grid {
     grid-template-columns: repeat(3, 1fr);
@@ -3544,8 +3672,8 @@ header nav .aBorder2 {
     max-width: 800px;
   }
   #recent-products .recentP-body .product-card img {
-    width: 90px;
-    height: 100px;
+    width: 150px;
+    height: 170px;
   }
   #recent-products .recentP-body .product-card h4 {
     font-family: "Montserrat", sans-serif;
@@ -3553,22 +3681,25 @@ header nav .aBorder2 {
     font-weight: 600;
     font-style: normal;
     font-variation-settings: "wdth" 100;
-    font-size: 18px;
+    font-size: 26px;
   }
   #recent-products .recentP-body .product-card p, #recent-products .recentP-body .product-card .producer {
     font-family: "Roboto", sans-serif;
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
-    font-size: 16px;
+    font-size: 24px;
   }
   #recent-products .recentP-body .product-card .btn2 {
-    font-size: 15px;
+    font-size: 22px;
     padding: 0.5rem;
+    width: 100%;
+    max-width: 150px;
+    height: 45px;
   }
   /* SECTION CERTIFICATS */
   #certificats {
-    margin: 3rem 2rem;
+    padding: 0;
   }
   #certificats .certificat-body {
     flex-direction: row;
@@ -3581,7 +3712,7 @@ header nav .aBorder2 {
     max-width: 400px;
   }
   #certificats .certificat img {
-    width: 120px;
+    width: 180px;
   }
   #certificats .certificat h3 {
     font-family: "Montserrat", sans-serif;
@@ -3589,14 +3720,14 @@ header nav .aBorder2 {
     font-weight: 600;
     font-style: normal;
     font-variation-settings: "wdth" 100;
-    font-size: 18px;
+    font-size: 28px;
   }
   #certificats .certificat p {
     font-family: "Roboto", sans-serif;
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
-    font-size: 16px;
+    font-size: 26px;
   }
   #certificats .certificat .certificat-buttons button {
     font-family: "Inter", sans-serif;
@@ -3604,23 +3735,22 @@ header nav .aBorder2 {
     font-weight: 600;
     font-style: normal;
     font-variation-settings: "wdth" 100;
-    font-size: 16px;
+    font-size: 22px;
     padding: 0.5rem 1rem;
   }
   /* SECTION LOGOS */
   #logos {
-    margin: 2rem;
-    padding: 1rem;
+    padding: 0;
   }
   #logos .logo-body {
     gap: 1.5rem;
     justify-content: space-around;
   }
   #logos .logo-image {
-    max-width: 130px;
+    max-width: 200px;
   }
   #logos .logo-image img {
-    width: 80px;
+    width: 150px;
   }
   #logos .logo-image h5 {
     font-family: "Inter", sans-serif;
@@ -3628,40 +3758,45 @@ header nav .aBorder2 {
     font-weight: 500;
     font-style: normal;
     font-variation-settings: "wdth" 100;
-    font-size: 14px;
+    font-size: 18px;
   }
   /* SECTION NEWSLETTER */
-  #newsletter {
-    padding: 3rem 2rem;
-  }
   #newsletter h3 {
     font-family: "Montserrat", sans-serif;
     font-optical-sizing: auto;
     font-weight: 600;
     font-style: normal;
     font-variation-settings: "wdth" 100;
-    font-size: 22px;
+    font-size: 30px;
+    margin-bottom: 10px;
+    text-align: center;
   }
   #newsletter p {
+    margin-top: 10px;
     font-family: "Roboto", sans-serif;
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
-    font-size: 17px;
+    font-size: 28px;
   }
   #newsletter .newsletter-body {
-    gap: 1rem;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    align-items: stretch;
   }
   #newsletter form {
     display: flex;
     flex-direction: row;
     gap: 1rem;
+    width: 100%;
+    max-width: 500px;
   }
   #newsletter form input {
-    width: 60%;
-    max-width: 300px;
+    width: 100%;
+    max-width: 600px;
     padding: 0.6rem;
-    font-size: 16px;
+    font-size: 18px;
   }
   #newsletter form button {
     width: auto;
@@ -3671,11 +3806,11 @@ header nav .aBorder2 {
     font-weight: 600;
     font-style: normal;
     font-variation-settings: "wdth" 100;
-    font-size: 16px;
+    font-size: 20px;
   }
   #newsletter .cdg {
     width: 100%;
-    font-size: 13px;
+    font-size: 19px;
     text-align: center;
   }
 }
@@ -3702,6 +3837,7 @@ header nav .aBorder2 {
     gap: 1rem;
     align-items: center;
     flex-direction: column;
+    max-width: 300px;
   }
   #hero .hero-text h1 {
     font-family: "Montserrat", sans-serif;
@@ -3709,7 +3845,7 @@ header nav .aBorder2 {
     font-weight: 700;
     font-style: normal;
     font-variation-settings: "wdth" 100;
-    font-size: 24px;
+    font-size: 30px;
   }
   #hero .hero-buttons {
     display: flex;
@@ -3717,14 +3853,14 @@ header nav .aBorder2 {
     margin: 1rem 0;
     gap: 0.5rem;
   }
-  #hero .hero-buttons button {
+  #hero .hero-buttons .hero-bnt {
     width: 100%;
     font-family: "Inter", sans-serif;
     font-optical-sizing: auto;
     font-weight: 600;
     font-style: normal;
     font-variation-settings: "wdth" 100;
-    font-size: 18px;
+    font-size: 20px;
   }
   #hero .hero-image2 {
     display: flex;
@@ -3732,18 +3868,18 @@ header nav .aBorder2 {
     align-items: center;
   }
   #hero .hero-image2 img {
-    width: 70%;
+    width: 50%;
   }
   #hero .hero-image2 p {
     font-family: "Roboto", sans-serif;
     font-optical-sizing: auto;
     font-weight: 500;
     font-style: normal;
-    font-size: 20px;
+    font-size: 24px;
   }
   /* SECTION PRÉSENTATION */
   .Presentation-body {
-    margin: 2rem;
+    padding: 2rem;
     display: flex;
     flex-direction: column-reverse;
     align-items: center;
@@ -3753,7 +3889,7 @@ header nav .aBorder2 {
   .Presentation-body img {
     width: 100%;
     height: auto;
-    max-width: 280px;
+    max-width: 580px;
   }
   .Presentation-body .Presentation-text {
     display: flex;
@@ -3766,14 +3902,14 @@ header nav .aBorder2 {
     font-weight: 700;
     font-style: normal;
     font-variation-settings: "wdth" 100;
-    font-size: 22px;
+    font-size: 28px;
   }
   .Presentation-body .Presentation-text p {
     font-family: "Roboto", sans-serif;
     font-optical-sizing: auto;
     font-weight: 500;
     font-style: normal;
-    font-size: 16px;
+    font-size: 24px;
     line-height: 1.5;
     text-align: left;
   }
@@ -3784,7 +3920,7 @@ header nav .aBorder2 {
   }
   .Presentation-body .Presentation-buttons button {
     max-width: 180px;
-    width: 100%;
+    width: 50%;
     height: auto;
     padding: 0.6rem;
     font-family: "Inter", sans-serif;
@@ -3792,11 +3928,11 @@ header nav .aBorder2 {
     font-weight: 600;
     font-style: normal;
     font-variation-settings: "wdth" 100;
-    font-size: 16px;
+    font-size: 18px;
   }
   /* SECTION PRODUITS RÉCENTS */
   #recent-products .recentP-body {
-    margin: 2rem 1rem;
+    padding: 0;
     text-align: center;
     overflow: hidden;
   }
@@ -3806,7 +3942,7 @@ header nav .aBorder2 {
     font-weight: 600;
     font-style: normal;
     font-variation-settings: "wdth" 100;
-    font-size: 20px;
+    font-size: 1.5rem;
     margin-bottom: 1rem;
   }
   #recent-products .recentP-body .products-grid {
@@ -3823,7 +3959,7 @@ header nav .aBorder2 {
     transition: transform 0.8s ease;
   }
   #recent-products .recentP-body .product-card img {
-    width: 120px;
+    width: 150px;
     height: 120px;
     margin-bottom: 0.5rem;
   }
@@ -3833,7 +3969,7 @@ header nav .aBorder2 {
     font-weight: 600;
     font-style: normal;
     font-variation-settings: "wdth" 100;
-    font-size: 18px;
+    font-size: 20px;
   }
   #recent-products .recentP-body .product-card p,
   #recent-products .recentP-body .product-card .producer {
@@ -3841,12 +3977,17 @@ header nav .aBorder2 {
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
-    font-size: 16px;
+    font-size: 18px;
   }
   #recent-products .recentP-body .product-card .btn2 {
-    font-size: 15px;
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 20px;
     padding: 0.5rem;
-    border-radius: 8px;
+    border-radius: 0 20px;
+    height: 45px;
   }
   #recent-products .recentP-body {
     /* Animation automatique */
@@ -3909,22 +4050,22 @@ header nav .aBorder2 {
   }
   /* SECTION CERTIFICATS */
   #certificats {
-    margin: 2rem 1rem;
-    padding: 1.5rem;
+    margin: 2rem 0 1rem 0;
   }
   #certificats .certificat-body {
     flex-direction: column;
     align-items: center;
     gap: 1.5rem;
+    padding: 0;
   }
   #certificats .certificat {
     flex: none;
     width: 100%;
-    max-width: 350px;
+    max-width: 380px;
     padding: 1rem;
   }
   #certificats .certificat img {
-    width: 80px;
+    width: 150px;
   }
   #certificats .certificat h3 {
     font-family: "Montserrat", sans-serif;
@@ -3932,14 +4073,14 @@ header nav .aBorder2 {
     font-weight: 600;
     font-style: normal;
     font-variation-settings: "wdth" 100;
-    font-size: 20px;
+    font-size: 24px;
   }
   #certificats .certificat p {
     font-family: "Roboto", sans-serif;
     font-optical-sizing: auto;
     font-weight: 500;
     font-style: normal;
-    font-size: 16px;
+    font-size: 22px;
   }
   #certificats .certificat .certificat-buttons button {
     font-family: "Inter", sans-serif;
@@ -3947,7 +4088,7 @@ header nav .aBorder2 {
     font-weight: 600;
     font-style: normal;
     font-variation-settings: "wdth" 100;
-    font-size: 16px;
+    font-size: 20px;
     padding: 0.6rem;
   }
   /*  SECTION LOGOS */
@@ -3956,14 +4097,15 @@ header nav .aBorder2 {
     padding: 1rem;
   }
   #logos .logo-body {
-    gap: 1rem;
-  }
-  #logos .logo-image {
-    padding: 1rem;
-    max-width: 120px;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding: 2rem 2rem 8rem 2rem;
+    flex-direction: column;
+    align-items: center;
   }
   #logos .logo-image img {
-    width: 80px;
+    width: 120px;
   }
   #logos .logo-image h5 {
     font-family: "Inter", sans-serif;
@@ -3971,7 +4113,7 @@ header nav .aBorder2 {
     font-weight: 500;
     font-style: normal;
     font-variation-settings: "wdth" 100;
-    font-size: 14px;
+    font-size: 22px;
   }
   /* SECTION NEWSLETTER */
   #newsletter {
@@ -3984,18 +4126,20 @@ header nav .aBorder2 {
     font-weight: 600;
     font-style: normal;
     font-variation-settings: "wdth" 100;
-    font-size: 20px;
+    font-size: 26px;
     color: #FFFFFF;
+    margin: 0;
   }
   #newsletter p {
     font-family: "Roboto", sans-serif;
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
-    font-size: 16px;
+    font-size: 24px;
     color: #FFFFFF;
   }
   #newsletter .newsletter-body {
+    padding: 0;
     flex-direction: column;
     align-items: center;
     gap: 1rem;
@@ -4014,12 +4158,12 @@ header nav .aBorder2 {
   }
   #newsletter form button {
     width: 100%;
-    max-width: 120px;
+    max-width: 300px;
     font-family: "Roboto", sans-serif;
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
-    font-size: 16px;
+    font-size: 20px;
   }
   .cdg {
     width: 100%;
@@ -4030,6 +4174,9 @@ header nav .aBorder2 {
     font-size: 12px;
     text-align: center;
     padding: 0 1rem;
+  }
+  .cdg .cdgStyle {
+    text-decoration: none;
   }
 }
 #cgu {
@@ -4329,7 +4476,7 @@ header nav .aBorder2 {
 }
 #login .login-image {
   flex: 1;
-  background: url("/AgriMai/assets/styles/img/apples.png") no-repeat center center/cover;
+  background: url("./assets/styles/img/apples.png") no-repeat center center/cover;
   border-radius: 0 5px 5px 0;
   display: flex;
   align-items: center;
@@ -4358,6 +4505,8 @@ header nav .aBorder2 {
 }
 #login .login-body img {
   width: 100px;
+  height: auto;
+  max-width: none;
 }
 #login .login-body p {
   font-family: "Roboto", sans-serif;
@@ -4484,7 +4633,7 @@ header nav .aBorder2 {
     font-weight: 600;
     font-style: normal;
     font-variation-settings: "wdth" 100;
-    font-size: 20px;
+    font-size: 28px;
   }
   #login .login-body img {
     width: 90px;
@@ -4494,7 +4643,7 @@ header nav .aBorder2 {
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: oblique;
-    font-size: 18px;
+    font-size: 26px;
     margin: 0 0 25px 0;
     text-align: center;
   }
@@ -4508,16 +4657,17 @@ header nav .aBorder2 {
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
-    font-size: 16px;
+    font-size: 24px;
   }
   #login .login-body form input,
   #login .login-body form textarea {
+    height: 50px;
     padding: 0.5rem;
     font-family: "Roboto", sans-serif;
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
-    font-size: 16px;
+    font-size: 22px;
   }
   #login .login-body form .login-btn {
     margin-top: 1rem;
@@ -4529,9 +4679,9 @@ header nav .aBorder2 {
     font-weight: 600;
     font-style: normal;
     font-variation-settings: "wdth" 100;
-    font-size: 16px;
+    font-size: 22px;
     padding: 0.5rem 1rem;
-    max-width: 160px;
+    max-width: 210px;
     width: 100%;
   }
   #login .login-image {
@@ -4551,11 +4701,12 @@ header nav .aBorder2 {
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
-    font-size: 14px;
+    font-size: 22px;
   }
   .loginForm-group select {
     width: 150px; /* ajusté pour ne pas être trop large */
-    height: 30px;
+    height: 50px;
+    font-size: 22px;
   }
 }
 /* Responsive - Mobile max-width: 768px */
@@ -4565,11 +4716,10 @@ header nav .aBorder2 {
     flex-direction: column;
     align-items: center;
     padding: 1.5rem;
-    margin: 1rem;
   }
   #login .login-body {
     width: 100%;
-    max-width: 65%;
+    max-width: 85%;
     padding: 30px;
     border-radius: 10px 10px 0 0;
   }
@@ -4579,7 +4729,7 @@ header nav .aBorder2 {
     font-weight: 600;
     font-style: normal;
     font-variation-settings: "wdth" 100;
-    font-size: 18px;
+    font-size: 30px;
     text-align: center;
   }
   #login .login-body img {
@@ -4591,12 +4741,11 @@ header nav .aBorder2 {
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: oblique;
-    font-size: 16px;
+    font-size: 28px;
     margin: 0 0 20px 0;
     text-align: center;
   }
   #login .login-body form {
-    max-width: 350px;
     width: 100%;
     gap: 0.8rem;
   }
@@ -4606,7 +4755,7 @@ header nav .aBorder2 {
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
-    font-size: 16px;
+    font-size: 26px;
   }
   #login .login-body form input,
   #login .login-body form textarea {
@@ -4614,8 +4763,9 @@ header nav .aBorder2 {
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
-    font-size: 14px;
+    font-size: 24px;
     padding: 0.4rem;
+    height: 50px;
   }
   #login .login-body form .login-btn {
     margin-top: 0.8rem;
@@ -4627,14 +4777,14 @@ header nav .aBorder2 {
     font-weight: 600;
     font-style: normal;
     font-variation-settings: "wdth" 100;
-    font-size: 16px;
+    font-size: 20px;
     padding: 0.5rem 1rem;
-    max-width: 150px;
+    max-width: 250px;
     width: 100%;
   }
   #login .login-image {
     flex: 1;
-    width: 428px;
+    width: 85%;
     height: auto;
     min-height: 250px;
     border-radius: 0 0 5px 5px;
@@ -4649,13 +4799,14 @@ header nav .aBorder2 {
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
-    font-size: 14px;
+    font-size: 26px;
     text-align: center;
   }
   .loginForm-group select {
     width: 100%;
     max-width: 150px;
-    height: 30px;
+    height: 40px;
+    font-size: 22px;
   }
 }
 #reset-password {
@@ -5742,7 +5893,7 @@ header nav .aBorder2 {
     font-weight: 600;
     font-style: normal;
     font-variation-settings: "wdth" 100;
-    font-size: 22px;
+    font-size: 40px;
   }
   #edit-message .editMessage-body form {
     gap: 1rem;
@@ -5752,7 +5903,7 @@ header nav .aBorder2 {
     font-optical-sizing: auto;
     font-weight: 500;
     font-style: normal;
-    font-size: 16px;
+    font-size: 34px;
   }
   #edit-message .editMessage-body form div input,
   #edit-message .editMessage-body form div textarea {
@@ -5760,7 +5911,7 @@ header nav .aBorder2 {
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
-    font-size: 16px;
+    font-size: 34px;
   }
   #edit-message .editMessage-body form button {
     font-family: "Inter", sans-serif;
@@ -5768,7 +5919,7 @@ header nav .aBorder2 {
     font-weight: 600;
     font-style: normal;
     font-variation-settings: "wdth" 100;
-    font-size: 18px;
+    font-size: 32px;
     padding: 0.5rem 1.3rem;
   }
   #edit-message .editMessage-body p a {
@@ -5776,7 +5927,7 @@ header nav .aBorder2 {
     font-optical-sizing: auto;
     font-weight: 500;
     font-style: normal;
-    font-size: 16px;
+    font-size: 32px;
   }
 }
 /*Responsive Mobile (max-width: 768px) */
@@ -5970,7 +6121,7 @@ header nav .aBorder2 {
     font-weight: 600;
     font-style: normal;
     font-variation-settings: "wdth" 100;
-    font-size: 24px;
+    font-size: 32px;
   }
   #edit-product form {
     gap: 1.2rem;
@@ -5985,14 +6136,14 @@ header nav .aBorder2 {
     font-optical-sizing: auto;
     font-weight: 500;
     font-style: normal;
-    font-size: 18px;
+    font-size: 28px;
   }
   #edit-product form div label {
     font-family: "Roboto", sans-serif;
     font-optical-sizing: auto;
     font-weight: 500;
     font-style: normal;
-    font-size: 18px;
+    font-size: 28px;
   }
   #edit-product form div input,
   #edit-product form div select,
@@ -6001,7 +6152,7 @@ header nav .aBorder2 {
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
-    font-size: 14px;
+    font-size: 26px;
     padding: 0.6rem 0.8rem;
   }
   #edit-product form div textarea {
@@ -6009,7 +6160,7 @@ header nav .aBorder2 {
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
-    font-size: 14px;
+    font-size: 26px;
   }
   #edit-product form div button {
     font-family: "Inter", sans-serif;
@@ -6017,7 +6168,16 @@ header nav .aBorder2 {
     font-weight: 600;
     font-style: normal;
     font-variation-settings: "wdth" 100;
-    font-size: 14px;
+    font-size: 28px;
+    padding: 8px 16px;
+  }
+  #edit-product form button {
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+    font-variation-settings: "wdth" 100;
+    font-size: 28px;
     padding: 8px 16px;
   }
 }
@@ -6034,22 +6194,30 @@ header nav .aBorder2 {
     font-weight: 600;
     font-style: normal;
     font-variation-settings: "wdth" 100;
-    font-size: 20px;
+    font-size: 28px;
   }
   #edit-product form {
     gap: 1rem;
+  }
+  #edit-product form div p {
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 26px;
   }
   #edit-product form div label {
     font-family: "Roboto", sans-serif;
     font-optical-sizing: auto;
     font-weight: 500;
     font-style: normal;
-    font-size: 14px;
+    font-size: 26px;
   }
   #edit-product form div input,
   #edit-product form div select,
   #edit-product form div textarea {
     padding: 0.6rem 0.8rem;
+    font-size: 24px;
   }
   #edit-product form button {
     width: 100%;
@@ -6059,7 +6227,7 @@ header nav .aBorder2 {
     font-weight: 600;
     font-style: normal;
     font-variation-settings: "wdth" 100;
-    font-size: 15px;
+    font-size: 20px;
   }
 }
 #register {
@@ -6079,6 +6247,9 @@ header nav .aBorder2 {
   align-items: center;
   justify-content: center;
   color: white;
+  width: 100px;
+  height: auto;
+  max-width: none;
 }
 #register .register-body {
   flex: 1;
@@ -6322,12 +6493,10 @@ header nav .aBorder2 {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 1.5rem;
-    margin: 1rem;
   }
   #register .register-body {
     width: 100%;
-    max-width: 65%;
+    max-width: 100%;
     padding: 30px;
     border-radius: 10px 10px 0 0;
   }
@@ -6341,7 +6510,7 @@ header nav .aBorder2 {
     font-weight: 600;
     font-style: normal;
     font-variation-settings: "wdth" 100;
-    font-size: 18px;
+    font-size: 26px;
     text-align: center;
   }
   #register .register-body p {
@@ -6349,12 +6518,12 @@ header nav .aBorder2 {
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: oblique;
-    font-size: 16px;
+    font-size: 24px;
     margin: 0 0 20px 0;
     text-align: center;
   }
   #register .register-body form {
-    max-width: 300px;
+    max-width: 500px;
     width: 100%;
     gap: 0.8rem;
   }
@@ -6367,7 +6536,7 @@ header nav .aBorder2 {
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
-    font-size: 16px;
+    font-size: 24px;
   }
   #register .register-body form .form-group input,
   #register .register-body form .form-group select,
@@ -6376,12 +6545,13 @@ header nav .aBorder2 {
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
-    font-size: 14px;
+    font-size: 24px;
     padding: 0.4rem;
     width: 100%;
+    max-width: 400px;
   }
   #register .register-body form .form-group select {
-    width: 150px;
+    width: 170px;
   }
   #register .register-body form button {
     font-family: "Inter", sans-serif;
@@ -6389,7 +6559,7 @@ header nav .aBorder2 {
     font-weight: 600;
     font-style: normal;
     font-variation-settings: "wdth" 100;
-    font-size: 16px;
+    font-size: 22px;
     padding: 0.5rem 1rem;
     max-width: 150px;
     width: 100%;
@@ -6400,12 +6570,12 @@ header nav .aBorder2 {
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
-    font-size: 14px;
+    font-size: 22px;
     text-align: center;
   }
   #register .register-img {
     flex: 1;
-    width: 410px;
+    width: 100%;
     height: auto;
     min-height: 250px;
     border-radius: 0 0 5px 5px;
@@ -6439,6 +6609,7 @@ header nav .aBorder2 {
   color: #000000;
 }
 #productDetail .productDetail-body .productDetail-leftPart .productDetail-link span {
+  color: #000000;
   font-family: "Roboto", sans-serif;
   font-optical-sizing: auto;
   font-weight: 600;
@@ -6461,6 +6632,7 @@ header nav .aBorder2 {
   align-items: center;
 }
 #productDetail .productDetail-body .productDetail-leftPart .productDetail-info .separator p {
+  color: #000000;
   font-family: "Roboto", sans-serif;
   font-optical-sizing: auto;
   font-weight: 600;
@@ -6482,6 +6654,7 @@ header nav .aBorder2 {
   color: #000000;
 }
 #productDetail .productDetail-body .productDetail-leftPart .productDetail-info .p-description {
+  color: #000000;
   font-family: "Inter", sans-serif;
   font-optical-sizing: auto;
   font-weight: 400;
@@ -6514,6 +6687,14 @@ header nav .aBorder2 {
   text-decoration: underline;
   color: #000000;
 }
+#productDetail .productDetail-body .productDetail-rightPart p {
+  color: #000000;
+  font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 16px;
+}
 #productDetail .productDetail-body .productDetail-rightPart {
   margin-top: 60px;
 }
@@ -6521,6 +6702,7 @@ header nav .aBorder2 {
   margin: 0 0 30px 0;
 }
 #productDetail .productDetail-body .productDetail-rightPart .productDetail-lots p {
+  color: #000000;
   font-family: "Roboto", sans-serif;
   font-optical-sizing: auto;
   font-weight: 600;
@@ -6536,7 +6718,7 @@ header nav .aBorder2 {
   font-size: 16px;
   border: 1px solid #FFFFFF;
   background: black;
-  color: white;
+  color: #FFFFFF;
   width: 100px;
   height: 35px;
 }
@@ -6581,6 +6763,7 @@ header nav .aBorder2 {
   text-decoration: none;
 }
 #productDetail .productDetail-body .productDetail-rightPart .productDetail-textOrder p {
+  color: #000000;
   font-family: "Roboto", sans-serif;
   font-optical-sizing: auto;
   font-weight: 300;
@@ -6596,6 +6779,7 @@ header nav .aBorder2 {
   color: #000000;
 }
 #productDetail .productDetail-body .productDetail-rightPart .productDetail-textOrder .order-Condition {
+  color: #000000;
   font-family: "Roboto", sans-serif;
   font-optical-sizing: auto;
   font-weight: 300;
@@ -6620,7 +6804,7 @@ header nav .aBorder2 {
   margin: 0 auto;
   top: 25%;
   width: 75%;
-  height: 65%;
+  height: 69%;
   background-color: #CBB799;
   border-radius: 0.5rem;
   padding: 1.5rem;
@@ -6678,7 +6862,7 @@ header nav .aBorder2 {
   font-variation-settings: "wdth" 100;
   font-size: 16px;
   border: 1px solid #FFFFFF;
-  background: black;
+  background-color: #000000;
   color: white;
   width: 220px;
   height: 35px;
@@ -6717,7 +6901,7 @@ header nav .aBorder2 {
 /* Bouton d’envoi */
 #popup-form .submit {
   text-align: center;
-  margin-top: 1rem;
+  margin: 1rem 0 1rem 0;
 }
 
 #popup-form .submit button {
@@ -6725,7 +6909,8 @@ header nav .aBorder2 {
   color: #F5F5DC;
   border: 1px solid #FFFFFF;
   border-radius: 18px;
-  width: 200px;
+  max-width: 220px;
+  width: 100%;
   height: 50px;
   font-family: "Inter", sans-serif;
   font-optical-sizing: auto;
@@ -6758,7 +6943,7 @@ header nav .aBorder2 {
   background-color: rgba(0, 0, 0, 0.5);
 }
 .popup-retour .popup2 {
-  background-color: #F5F5DC;
+  background-color: #CBB799;
   margin: 10% auto;
   padding: 20px;
   border-radius: 10px;
@@ -6830,7 +7015,7 @@ header nav .aBorder2 {
     font-optical-sizing: auto;
     font-weight: 300;
     font-style: normal;
-    font-size: 15px;
+    font-size: 26px;
   }
   #productDetail .productDetail-body .productDetail-leftPart .productDetail-info {
     display: flex;
@@ -6843,7 +7028,7 @@ header nav .aBorder2 {
     font-weight: 600;
     font-style: normal;
     font-variation-settings: "wdth" 100;
-    font-size: 21px;
+    font-size: 26px;
   }
   #productDetail .productDetail-body .productDetail-leftPart .productDetail-info .separator {
     display: flex;
@@ -6855,7 +7040,7 @@ header nav .aBorder2 {
     font-optical-sizing: auto;
     font-weight: 600;
     font-style: normal;
-    font-size: 15px;
+    font-size: 22px;
   }
   #productDetail .productDetail-body .productDetail-leftPart .productDetail-info .separator .productDetail-stars {
     border-left: 1px solid rgba(0, 0, 0, 0.2);
@@ -6867,7 +7052,7 @@ header nav .aBorder2 {
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
-    font-size: 15px;
+    font-size: 24px;
   }
   #productDetail .productDetail-body .productDetail-leftPart .productDetail-info .p-description {
     font-family: "Inter", sans-serif;
@@ -6875,7 +7060,7 @@ header nav .aBorder2 {
     font-weight: 400;
     font-style: normal;
     font-variation-settings: "wdth" 100;
-    font-size: 15px;
+    font-size: 28px;
     background-color: rgba(255, 255, 255, 0.1);
     border-radius: 8px;
     padding: 0;
@@ -6890,14 +7075,14 @@ header nav .aBorder2 {
     font-weight: 300;
     font-style: normal;
     font-variation-settings: "wdth" 100;
-    font-size: 15px;
+    font-size: 26px;
   }
   #productDetail .productDetail-body .productDetail-leftPart .productDetail-info .productDetail-btn h3 a {
     font-family: "Roboto", sans-serif;
     font-optical-sizing: auto;
     font-weight: 300;
     font-style: normal;
-    font-size: 15px;
+    font-size: 26px;
   }
   #productDetail .productDetail-body {
     /* Image centrée */
@@ -6922,6 +7107,9 @@ header nav .aBorder2 {
     flex-direction: column;
     margin: 0;
   }
+  #productDetail .productDetail-body .productDetail-rightPart p {
+    font-size: 24px;
+  }
   #productDetail .productDetail-body .productDetail-rightPart .productDetail-lots {
     display: flex;
     flex-direction: column;
@@ -6932,7 +7120,7 @@ header nav .aBorder2 {
     font-optical-sizing: auto;
     font-weight: 600;
     font-style: normal;
-    font-size: 18px;
+    font-size: 28px;
   }
   #productDetail .productDetail-body .productDetail-rightPart .productDetail-lots .productDetail-lot-btn,
   #productDetail .productDetail-body .productDetail-rightPart .productDetail-lots button {
@@ -6944,7 +7132,7 @@ header nav .aBorder2 {
     font-weight: 600;
     font-style: normal;
     font-variation-settings: "wdth" 100;
-    font-size: 1§px;
+    font-size: 24px;
   }
   #productDetail .productDetail-body .productDetail-rightPart .productDetail-formOrder {
     display: flex;
@@ -6955,12 +7143,18 @@ header nav .aBorder2 {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 28px;
   }
   #productDetail .productDetail-body .productDetail-rightPart .productDetail-formOrder label .lots,
   #productDetail .productDetail-body .productDetail-rightPart .productDetail-formOrder label .qty {
     width: 100%;
-    max-width: 160px;
-    height: 38px;
+    max-width: 320px;
+    height: 60px;
+    font-size: 24px;
   }
   #productDetail .productDetail-body .productDetail-rightPart .productDetail-formOrder label .lots .option,
   #productDetail .productDetail-body .productDetail-rightPart .productDetail-formOrder label .qty .option {
@@ -6969,7 +7163,7 @@ header nav .aBorder2 {
     font-weight: 600;
     font-style: normal;
     font-variation-settings: "wdth" 100;
-    font-size: 18px;
+    font-size: 20px;
   }
   #productDetail .productDetail-body .productDetail-rightPart .productDetail-textOrder {
     display: flex;
@@ -6978,35 +7172,35 @@ header nav .aBorder2 {
   }
   #productDetail .productDetail-body .productDetail-rightPart .productDetail-textOrder button {
     width: 100%;
-    max-width: 220px;
+    max-width: 320px;
     height: 38px;
     font-family: "Inter", sans-serif;
     font-optical-sizing: auto;
     font-weight: 600;
     font-style: normal;
     font-variation-settings: "wdth" 100;
-    font-size: 15px;
+    font-size: 26px;
   }
   #productDetail .productDetail-body .productDetail-rightPart .productDetail-textOrder p {
     font-family: "Roboto", sans-serif;
     font-optical-sizing: auto;
     font-weight: 300;
     font-style: normal;
-    font-size: 15px;
+    font-size: 24px;
   }
   #productDetail .productDetail-body .productDetail-rightPart .productDetail-textOrder p a {
     font-family: "Roboto", sans-serif;
     font-optical-sizing: auto;
     font-weight: 600;
     font-style: normal;
-    font-size: 15px;
+    font-size: 24px;
   }
   #productDetail .productDetail-body .productDetail-rightPart .productDetail-textOrder .order-Condition {
     font-family: "Roboto", sans-serif;
     font-optical-sizing: auto;
     font-weight: 300;
     font-style: normal;
-    font-size: 13px;
+    font-size: 22px;
   }
   #productDetail {
     /* Popups Livraison / Formulaire */
@@ -7014,7 +7208,7 @@ header nav .aBorder2 {
   #productDetail .popup-livraison .popup,
   #productDetail #popup-form .popup {
     width: 70%;
-    max-width: 500px;
+    max-width: 700px;
     top: 20%;
     padding: 1.5rem;
     border-radius: 10px;
@@ -7027,6 +7221,20 @@ header nav .aBorder2 {
     flex-direction: column;
     padding: 1.5rem;
   }
+  #productDetail .popup-livraison .content form,
+  #productDetail #popup-form .content form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  #productDetail .popup-livraison .content form label,
+  #productDetail #popup-form .content form label {
+    font-size: 28px;
+  }
+  #productDetail .popup-livraison .content form textarea,
+  #productDetail #popup-form .content form textarea {
+    height: 260px;
+  }
   #productDetail .popup-livraison .content h5,
   #productDetail #popup-form .content h5 {
     font-family: "Montserrat", sans-serif;
@@ -7034,7 +7242,7 @@ header nav .aBorder2 {
     font-weight: 600;
     font-style: normal;
     font-variation-settings: "wdth" 100;
-    font-size: 18px;
+    font-size: 32px;
     text-align: center;
   }
   #productDetail .popup-livraison .content p,
@@ -7043,7 +7251,7 @@ header nav .aBorder2 {
     font-optical-sizing: auto;
     font-weight: 300;
     font-style: normal;
-    font-size: 14px;
+    font-size: 26px;
     text-align: center;
   }
   #productDetail .js-close-button,
@@ -7055,14 +7263,14 @@ header nav .aBorder2 {
   }
   #productDetail #openForm button {
     width: 100%;
-    max-width: 220px;
-    height: 38px;
+    max-width: 320px;
+    height: 58px;
     font-family: "Inter", sans-serif;
     font-optical-sizing: auto;
     font-weight: 600;
     font-style: normal;
     font-variation-settings: "wdth" 100;
-    font-size: 15px;
+    font-size: 24px;
     margin-top: 1rem;
   }
   #productDetail #popup-form .purchase {
@@ -7075,19 +7283,22 @@ header nav .aBorder2 {
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
-    font-size: 15px;
+    font-size: 24px;
     padding: 0.55rem;
+  }
+  #productDetail #popup-form .submit {
+    margin-top: 0;
   }
   #productDetail #popup-form .submit button {
     width: 100%;
-    max-width: 220px;
-    height: 45px;
+    max-width: 320px;
+    height: 50px;
     font-family: "Inter", sans-serif;
     font-optical-sizing: auto;
     font-weight: 600;
     font-style: normal;
     font-variation-settings: "wdth" 100;
-    font-size: 15px;
+    font-size: 24px;
   }
 }
 /* Responsive - Mobile max-width: 768px */
@@ -7438,7 +7649,7 @@ header nav .aBorder2 {
 }
 #products-market .market-body .grid-market .card-market .actions a.btnMarket {
   display: inline-block;
-  width: 100px;
+  width: 150px;
   height: 40px;
   border-radius: 0 20px;
   border: 1px solid #000000;
@@ -7477,7 +7688,7 @@ header nav .aBorder2 {
     font-weight: 600;
     font-style: normal;
     font-variation-settings: "wdth" 100;
-    font-size: 22px;
+    font-size: 30px;
     text-align: center;
     max-width: 80%;
   }
@@ -7492,7 +7703,7 @@ header nav .aBorder2 {
   }
   #products-market .market-body .grid-market .card-market {
     width: 90%;
-    max-width: 360px;
+    max-width: 400px;
     padding: 1rem;
     border-radius: 10px;
     background: #FDD087;
@@ -7518,7 +7729,7 @@ header nav .aBorder2 {
     font-weight: 600;
     font-style: normal;
     font-variation-settings: "wdth" 100;
-    font-size: 20px;
+    font-size: 26px;
     color: #000000;
   }
   #products-market .market-body .grid-market .card-market p {
@@ -7526,7 +7737,7 @@ header nav .aBorder2 {
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
-    font-size: 18px;
+    font-size: 24px;
     color: #000000;
   }
   #products-market .market-body .grid-market .card-market .actions {
@@ -7534,8 +7745,8 @@ header nav .aBorder2 {
   }
   #products-market .market-body .grid-market .card-market .actions a.btnMarket {
     display: inline-block;
-    width: 120px;
-    height: 38px;
+    width: 150px;
+    height: 50px;
     border-radius: 0 20px;
     border: 1px solid #000000;
     background: #6E093B;
@@ -7547,7 +7758,7 @@ header nav .aBorder2 {
     font-weight: 600;
     font-style: normal;
     font-variation-settings: "wdth" 100;
-    font-size: 18px;
+    font-size: 24px;
     transition: all 0.3s ease;
   }
   #products-market .market-body .grid-market .card-market .actions a.btnMarket:hover {
@@ -7572,7 +7783,7 @@ header nav .aBorder2 {
     font-weight: 600;
     font-style: normal;
     font-variation-settings: "wdth" 100;
-    font-size: 20px;
+    font-size: 30px;
     text-align: center;
   }
   #products-market .market-body .grid-market {
@@ -7580,17 +7791,17 @@ header nav .aBorder2 {
     grid-template-columns: 1fr;
     gap: 15px;
     margin: 20px auto;
-    max-width: 310px;
+    max-width: 410px;
     width: 100%;
   }
   #products-market .market-body .grid-market .card-market {
     padding: 0.8rem;
   }
   #products-market .market-body .grid-market .card-market img {
-    max-width: 120px;
+    max-width: 150px;
     width: 100%;
     height: auto;
-    max-height: 110px;
+    max-height: 120px;
     border-radius: 8px;
   }
   #products-market .market-body .grid-market .card-market h2 {
@@ -7599,14 +7810,14 @@ header nav .aBorder2 {
     font-weight: 600;
     font-style: normal;
     font-variation-settings: "wdth" 100;
-    font-size: 18px;
+    font-size: 26px;
   }
   #products-market .market-body .grid-market .card-market p {
     font-family: "Roboto", sans-serif;
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
-    font-size: 16px;
+    font-size: 22px;
   }
   #products-market .market-body .grid-market .card-market .actions {
     margin-top: 10px;
@@ -7614,13 +7825,13 @@ header nav .aBorder2 {
   #products-market .market-body .grid-market .card-market .actions a.btn {
     height: auto;
     width: 100%;
-    max-width: 100px;
+    max-width: 150px;
     font-family: "Inter", sans-serif;
     font-optical-sizing: auto;
     font-weight: 600;
     font-style: normal;
     font-variation-settings: "wdth" 100;
-    font-size: 16px;
+    font-size: 20px;
     padding: 0.5rem;
   }
 }
@@ -7808,7 +8019,8 @@ header nav .aBorder2 {
     justify-content: center;
     align-items: center;
     gap: 0;
-    margin: 3rem auto;
+    margin: 0;
+    padding: 2rem;
     width: 95%;
   }
   #buyer-messages .messages-listB {
@@ -7820,7 +8032,7 @@ header nav .aBorder2 {
     font-weight: 600;
     font-style: normal;
     font-variation-settings: "wdth" 100;
-    font-size: 20px;
+    font-size: 40px;
     margin-bottom: 1rem;
     text-align: center;
   }
@@ -7829,7 +8041,14 @@ header nav .aBorder2 {
     margin-bottom: 1.2rem;
     border-radius: 10px;
     border-right: 4px solid #6E093B;
-    width: 450px;
+    width: 750px;
+  }
+  #buyer-messages .messages-listB .message-cardB .product-titleB {
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 38px;
   }
   #buyer-messages .messages-listB .message-cardB .sent {
     border-left: 4px solid #6E093B;
@@ -7839,29 +8058,29 @@ header nav .aBorder2 {
     font-optical-sizing: auto;
     font-weight: 500;
     font-style: normal;
-    font-size: 16px;
+    font-size: 34px;
     gap: 0.4rem;
   }
-  #buyer-messages .messages-listB .message-cardB .message-headerB .product-titleB {
+  #buyer-messages .messages-listB .message-cardB .message-headerB p {
     font-family: "Roboto", sans-serif;
     font-optical-sizing: auto;
     font-weight: 500;
     font-style: normal;
-    font-size: 14px;
+    font-size: 38px;
   }
   #buyer-messages .messages-listB .message-cardB .message-headerB .date {
     font-family: "Roboto", sans-serif;
     font-optical-sizing: auto;
     font-weight: 500;
     font-style: normal;
-    font-size: 12px;
+    font-size: 34px;
   }
   #buyer-messages .messages-listB .message-cardB .message-bodyB {
     font-family: "Roboto", sans-serif;
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: italic;
-    font-size: 14px;
+    font-size: 38px;
     line-height: 1.4;
     padding: 0.4rem 0 0.8rem 0;
   }
@@ -7870,7 +8089,7 @@ header nav .aBorder2 {
     font-optical-sizing: auto;
     font-weight: 500;
     font-style: normal;
-    font-size: 14px;
+    font-size: 36px;
     padding: 0.3rem 0.8rem;
   }
   #buyer-messages .reply-formB {
@@ -7880,7 +8099,7 @@ header nav .aBorder2 {
     height: auto;
     border-left: 4px solid #6E093B;
     border-radius: 12px;
-    width: 450px;
+    width: 750px;
   }
   #buyer-messages .reply-formB h2 {
     font-family: "Montserrat", sans-serif;
@@ -7888,19 +8107,19 @@ header nav .aBorder2 {
     font-weight: 600;
     font-style: normal;
     font-variation-settings: "wdth" 100;
-    font-size: 20px;
-    margin-bottom: 0.8rem;
+    font-size: 40px;
+    margin-bottom: 3rem;
     text-align: center;
   }
   #buyer-messages .reply-formB .formBuyer {
-    gap: 0.6rem;
+    gap: 1.5rem;
   }
   #buyer-messages .reply-formB .formBuyer label {
     font-family: "Roboto", sans-serif;
     font-optical-sizing: auto;
     font-weight: 500;
     font-style: normal;
-    font-size: 14px;
+    font-size: 38px;
   }
   #buyer-messages .reply-formB .formBuyer input,
   #buyer-messages .reply-formB .formBuyer select,
@@ -7909,11 +8128,12 @@ header nav .aBorder2 {
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
-    font-size: 14px;
+    font-size: 36px;
     padding: 0.4rem 0.6rem;
+    height: 80px;
   }
   #buyer-messages .reply-formB .formBuyer textarea {
-    min-height: 190px;
+    min-height: 390px;
   }
   #buyer-messages .reply-formB .formBuyer .reply-actionsBuyer button {
     font-family: "Inter", sans-serif;
@@ -7921,7 +8141,7 @@ header nav .aBorder2 {
     font-weight: 600;
     font-style: normal;
     font-variation-settings: "wdth" 100;
-    font-size: 16px;
+    font-size: 36px;
     padding: 0.4rem 0.8rem;
   }
 }
@@ -8190,7 +8410,7 @@ header nav .aBorder2 {
     font-weight: 600;
     font-style: normal;
     font-variation-settings: "wdth" 100;
-    font-size: 24px;
+    font-size: 30px;
     word-wrap: break-word;
   }
   #producer-dash .producerDash-body .producerDash-text a {
@@ -8198,7 +8418,7 @@ header nav .aBorder2 {
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
-    font-size: 15px;
+    font-size: 24px;
     word-wrap: break-word;
   }
   #producer-dash .producerDash-body .grid-producerDash {
@@ -8220,7 +8440,7 @@ header nav .aBorder2 {
     font-weight: 600;
     font-style: normal;
     font-variation-settings: "wdth" 100;
-    font-size: 20px;
+    font-size: 28px;
     word-wrap: break-word;
   }
   #producer-dash .producerDash-body .grid-producerDash .card-producerDash p {
@@ -8228,7 +8448,7 @@ header nav .aBorder2 {
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
-    font-size: 16px;
+    font-size: 26px;
     word-wrap: break-word;
   }
   #producer-dash .producerDash-body .grid-producerDash .card-producerDash img {
@@ -8247,9 +8467,17 @@ header nav .aBorder2 {
     margin-top: 1rem;
     padding-left: 0;
   }
+  #producer-dash .producerDash-body .grid-producerDash .card-producerDash .actions-producerDash .actions-producerDashText a {
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 26px;
+  }
   #producer-dash .producerDash-body .grid-producerDash .card-producerDash .actions-producerDash form button {
+    font-size: 28px;
     width: 100%;
-    max-width: 150px;
+    max-width: 180px;
     margin-top: 1rem;
   }
   footer {
@@ -8448,14 +8676,14 @@ header nav .aBorder2 {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 2rem 1rem;
-    min-height: calc(100vh - 700px);
+    padding: 0;
+    margin: 0;
   }
   #product-form .product-form-body {
-    margin: 4rem;
+    margin: 2rem;
     padding: 40px;
     width: 100%;
-    max-width: 600px;
+    max-width: 750px;
     height: 100%;
   }
   #product-form .product-form-body h3 {
@@ -8464,7 +8692,44 @@ header nav .aBorder2 {
     font-weight: 600;
     font-style: normal;
     font-variation-settings: "wdth" 100;
-    font-size: 20px;
+    font-size: 40px;
+  }
+  #product-form .product-form-body .product-form textarea {
+    min-height: 240px;
+  }
+  #product-form .product-form-body .product-form label {
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 38px;
+  }
+  #product-form .product-form-body .product-form input,
+  #product-form .product-form-body .product-form select,
+  #product-form .product-form-body .product-form textarea {
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 36px;
+    height: 65px;
+  }
+  #product-form .product-form-body .product-form select {
+    width: 670px;
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 38px;
+  }
+  #product-form .product-form-body button {
+    width: 200px;
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+    font-variation-settings: "wdth" 100;
+    font-size: 34px;
   }
 }
 /* Responsive - Mobile (max-width: 768px) */

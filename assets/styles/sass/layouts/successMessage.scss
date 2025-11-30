@@ -51,7 +51,7 @@
 
 
       p {
-        @include roboto(600, oblique, 20px);
+        @include roboto(600, oblique, 22px);
         color: $color4;
         line-height: 1.5;
         max-width: 600px;
@@ -80,14 +80,12 @@
       margin: 4rem 1rem;
       width: 95%;
       gap: 1rem;
-
       p {
-        @include roboto(600, oblique, 18px);
+        @include roboto(600, oblique, 30px);
         line-height: 1.5;
         color: $color4;
         max-width: 90%;
       }
-
       a {
         @include roboto-light(300, normal, 16px);
         color: $color12;
@@ -100,5 +98,7 @@
       }
     }
   }
+
+
 }
 

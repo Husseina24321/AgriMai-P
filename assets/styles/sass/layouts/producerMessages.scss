@@ -199,7 +199,7 @@
       flex: 2;
 
       h1 {
-        @include montserrat(600, normal, 22px);
+        @include montserrat(600, normal, 40px);
         margin-bottom: 1.2rem;
         text-align: center;
       }
@@ -209,7 +209,7 @@
         margin-bottom: 1.2rem;
         border-radius: 10px;
         border-right: 4px solid $color12;
-        width: 450px;
+        width: 750px;
         margin-inline: auto;
         background-color: rgba($color3, 0.9);
 
@@ -221,23 +221,29 @@
           border-left: 4px solid $color27;
         }
 
+        .product-title {
+          @include roboto(500, normal, 34px);
+        }
+
         .message-header {
-          @include roboto(500, normal, 16px);
+          @include roboto(500, normal, 38px);
           gap: 0.4rem;
           flex-direction: column;
           align-items: flex-start;
-
+          p{
+            @include roboto(500, normal, 34px);
+          }
           .product-title {
-            @include roboto(500, normal, 14px);
+            @include roboto(500, normal, 36px);
           }
 
           .date {
-            @include roboto(500, normal, 12px);
+            @include roboto(500, normal, 34px);
           }
         }
 
         .message-body {
-          @include roboto-light(400, italic, 14px);
+          @include roboto-light(400, italic, 34px);
           line-height: 1.4;
           padding: 0.4rem 0 0.8rem 0;
         }
@@ -247,7 +253,7 @@
           justify-content: center;
 
           a {
-            @include roboto(500, normal, 14px);
+            @include roboto(500, normal, 30px);
             padding: 0.3rem 0.8rem;
           }
         }
@@ -261,12 +267,12 @@
       height: auto;
       border-left: 4px solid $color12;
       border-radius: 12px;
-      width: 450px;
+      width: 750px;
       margin-inline: auto;
 
       h2 {
-        @include montserrat(600, normal, 20px);
-        margin-bottom: 0.8rem;
+        @include montserrat(600, normal, 40px);
+        margin-bottom: 2rem;
         text-align: center;
       }
 
@@ -276,18 +282,18 @@
         gap: 0.6rem;
 
         label {
-          @include roboto(500, normal, 14px);
+          @include roboto(500, normal, 34px);
         }
 
         input,
         select,
         textarea {
-          @include roboto(400, normal, 14px);
+          @include roboto(400, normal, 34px);
           padding: 0.4rem 0.6rem;
         }
 
         textarea {
-          min-height: 190px;
+          min-height: 290px;
         }
 
         .reply-actions {
@@ -295,7 +301,7 @@
           justify-content: center;
 
           button {
-            @include inter(600, normal, 16px);
+            @include inter(600, normal, 34px);
             padding: 0.4rem 0.8rem;
           }
         }

@@ -4,17 +4,18 @@
 
 .contact {
   background:$color21;
+  padding: 0;
   margin: 0;
   .contact-body {
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 6rem;
 
     .contact-form {
       background: $color22;
       border: 2px solid $color1;
       border-radius: 30px;
-      margin: 2rem;
       width: 570px;
 
       form{
@@ -131,12 +132,12 @@
           padding: 25px;
 
           h3 {
-            @include montserrat(600, normal, 22px);
+            @include montserrat(600, normal, 26px);
             margin-bottom: 0.6rem;
           }
 
           p {
-            @include roboto(400, oblique, 17px);
+            @include roboto(400, oblique, 24px);
             margin: 1.2rem 0;
             text-align: center;
           }
@@ -144,12 +145,12 @@
 
         input,
         textarea {
-          @include roboto(400, normal, 15px);
+          @include roboto(400, normal, 24px);
           padding: 0.45rem;
         }
 
         label {
-          @include roboto(400, normal, 17px);
+          @include roboto(400, normal, 22px);
           margin-bottom: 0.25rem;
         }
 
@@ -161,13 +162,13 @@
           padding: 18px;
 
           button {
-            @include inter(600, normal, 16px);
+            @include inter(600, normal, 22px);
             padding: 0.55rem 1.1rem;
           }
         }
 
         .errors {
-          @include inter(600, normal, 15px);
+          @include inter(600, normal, 20px);
           padding: 0.45rem;
 
           ul {
@@ -203,24 +204,24 @@
           padding: 20px;
 
           h3 {
-            @include montserrat(600, normal, 20px);
+            @include montserrat(600, normal, 24px);
             margin-bottom: 0.5rem;
           }
 
           p {
-            @include roboto(400, oblique, 16px);
-            margin: 1rem 0;
+            @include roboto(400, oblique, 22px);
+            margin: 1rem 0 2rem 0;
           }
         }
 
         input,
         textarea {
-          @include roboto(400, normal, 14px);
+          @include roboto(400, normal, 20px);
           padding: 0.4rem;
         }
 
         label {
-          @include roboto(400, normal, 16px);
+          @include roboto(400, normal, 20px);
           margin-bottom: 0.2rem;
         }
 
@@ -236,13 +237,14 @@
           padding: 15px;
 
           button {
-            @include inter(600, normal, 16px);
+            @include inter(600, normal, 20px);
             padding: 0.5rem 1rem;
+            width: 150px;
           }
         }
 
         .errors {
-          @include inter(600, normal, 14px);
+          @include inter(600, normal, 18px);
           padding: 0.4rem;
 
           ul {

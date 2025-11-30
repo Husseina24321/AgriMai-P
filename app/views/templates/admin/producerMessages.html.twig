@@ -9,26 +9,26 @@
                 {% for msg in messages %}
                     <div class="message-card {% if msg.is_sender %}sent{% else %}received{% endif %}">
                         <div class="message-header">
-                            <p>
-                                {% if msg.is_sender %}
-                                    Vous avez écrit à {{ msg.receiverFirstName }} {{ msg.receiverLastName }}
-                                {% else %}
-                                    Vous avez reçu un message {{ msg.senderFirstName }} {{ msg.senderLastName }}
-                                {% endif %}
-                            </p>
+                            {% if msg.is_sender %}
+                                <p>Vous avez écrit à {{ msg.receiverFirstName }} {{ msg.receiverLastName }}</p>
+                            {% else %}
+                                <p>Vous avez reçu un message de {{ msg.senderFirstName }} {{ msg.senderLastName }}</p>
+                            {% endif %}
                             <span class="date">Le {{ msg.sentAt ? msg.sentAt|date("d/m/Y à H:i") : "" }}</span>
                         </div>
+
                         {% if msg.productTitle %}
                             <span class="product-title">Produit: {{ msg.productTitle }}</span>
                         {% endif %}
+
                         <div class="message-body">
                             <p>{{ msg.content|nl2br }}</p>
                         </div>
 
                         {% if msg.is_sender %}
                             <div class="message-actions">
-                                <a href="/AgriMai/index.php?route=editMessageProducer&id={{ msg.id }}">Modifier</a>
-                                <a href="/AgriMai/index.php?route=deleteMessage&id={{ msg.id }}"
+                                <a href="./index.php?route=editMessageProducer&id={{ msg.id }}">Modifier</a>
+                                <a href="./index.php?route=delete-messages&id={{ msg.id }}"
                                    onclick="return confirm('Voulez-vous vraiment supprimer ce message ?');">
                                     Supprimer
                                 </a>
@@ -36,6 +36,7 @@
                         {% endif %}
                     </div>
                 {% endfor %}
+
             </div>
         {% else %}
             <p>Vous n'avez aucun message pour le moment.</p>
@@ -44,7 +45,7 @@
         {% if receiver_id %}
             <div class="reply-form">
                 <h2>Envoyer un nouveau message</h2>
-                <form method="post" action="/AgriMai/index.php?route=sendMessage"class="form-messageProducer">
+                <form method="post" action="./index.php?route=sendMessage"class="form-messageProducer">
                     <input type="hidden" name="receiver_id" value="{{ receiver_id }}">
                     <input type="hidden" name="product_id" value="{{ product_id }}">
 

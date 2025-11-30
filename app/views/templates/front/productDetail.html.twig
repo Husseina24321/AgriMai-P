@@ -6,8 +6,8 @@
         <div class="productDetail-body">
             <div class="productDetail-leftPart">
                 <div class="productDetail-link">
-                    <a href="/AgriMai/index.php?route=home">Voir tout</a> &gt
-                    <a href="/AgriMai/index.php?route=products-region&region=Normandie">Catégorie</a> &gt
+                    <a href="./index.php?route=home">Voir tout</a> &gt
+                    <a href="./index.php?route=products-region&region=Normandie">Catégorie</a> &gt
                     <span>{{ product.getTitle() }}</span>
                 </div>
                 <div class="productDetail-info">
@@ -60,7 +60,7 @@
 
             </div>
             <div class="productDetail-centerPart">
-                <img src="/AgriMai/public/uploads/{{ product.getImage() }}" alt="{{ product.name }}">
+                <img src="./public/uploads/{{ product.getImage() }}" alt="{{ product.name }}">
             </div>
             <div class="productDetail-rightPart">
 
@@ -98,7 +98,7 @@
                         <a class="js-close-button close-button" href="#">x</a>
                         <div class="content">
                             <h5>Formulaire d'achat</h5>
-                            <form method="post" action="/AgriMai/index.php?route=sendMessage" id="contactForm">
+                            <form method="post" action="./index.php?route=sendMessage" id="contactForm">
                                 <div class="purchase-fields">
                                     <label for="name">Nom :</label>
                                     <input type="text" id="name" name="name" placeholder="Votre nom" required>

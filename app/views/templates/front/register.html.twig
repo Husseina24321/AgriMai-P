@@ -2,7 +2,7 @@
 {% block content %}
     <section id="register">
         <div class="register-body">
-            <img src="/AgriMai/assets/styles/img/logo.png" alt="Logo AgriMai">
+            <img src="./assets/styles/img/logo.png" alt="Logo AgriMai">
             <h3>FORMULAIRE D'INSCRIPTION</h3>
             <p>Remplissez ce formulaire pour rejoindre notre plateforme.</p>
 
@@ -10,7 +10,7 @@
                 {{ session["error-message"] }}
             </p>
 
-            <form action="/AgriMai/index.php?route=check-register" method="POST" class="register-form">
+            <form action="./index.php?route=check-register" method="POST" class="register-form">
                 <div class="form-group">
                     <label for="first_name">Prénom :</label>
                     <input type="text" id="first_name" name="first_name" placeholder="Prénom" required>
@@ -49,7 +49,7 @@
 
                 <button type="submit">S'inscrire</button>
                 <p>Vous avez déjà un compte ?
-                    <a href="/AgriMai/index.php?route=login">Connectez-vous</a>
+                    <a href="./index.php?route=login">Connectez-vous</a>
                 </p>
             </form>
         </div>

@@ -108,20 +108,20 @@ class AuthController extends AbstractController
         // Redirection selon le rôle réel
         switch ($user->getRole()) {
             case UserRole::Buyer:
-                $this->redirect("/AgriMai/index.php?route=home");
+                $this->redirect("./index.php?route=home");
                 break;
 
             case UserRole::Producer:
                 $pm = new ProductManager();
                 if ($pm->userLogProducts($user->getId())) {
-                    $this->redirect("/AgriMai/index.php?route=list-products-by-user&user_id=" . $user->getId());
+                    $this->redirect("./index.php?route=list-products-by-user&user_id=" . $user->getId());
                 } else {
-                    $this->redirect("/AgriMai/index.php?route=create-product");
+                    $this->redirect("./index.php?route=create-product");
                 }
                 break;
 
             case UserRole::Admin:
-                $this->redirect("/AgriMai/index.php?route=list-users");
+                $this->redirect("./index.php?route=list-users");
                 break;
         }
     }
@@ -209,7 +209,7 @@ class AuthController extends AbstractController
         }
 
         // Si jamais l'utilisateur est validé immédiatement
-        $this->redirect("/AgriMai/index.php?route=login");
+        $this->redirect("./index.php?route=login");
     }
 
     public function logout(): void
@@ -226,7 +226,7 @@ class AuthController extends AbstractController
         session_destroy();
 
         // redirige vers la page de connexion
-        header("Location: /AgriMai/index.php?route=login");
+        header("Location: ./index.php?route=login");
         exit;
     }
 
@@ -237,7 +237,7 @@ class AuthController extends AbstractController
 
             if (!$email) {
                 $_SESSION['error-message'] = "Veuillez saisir un email.";
-                $this->redirect("/AgriMai/index.php?route=forgot-password");
+                $this->redirect("./index.php?route=forgot-password");
                 return;
             }
 
@@ -254,13 +254,13 @@ class AuthController extends AbstractController
                 $um->savePasswordReset($email, $token, $expires);
 
                 // Redirige directement vers le formulaire de reset avec le token
-                $this->redirect("/AgriMai/index.php?route=reset-password&token=$token");
+                $this->redirect("./index.php?route=reset-password&token=$token");
                 return;
             }
 
             // Message générique pour ne pas révéler l’existence de l’email
             $_SESSION["success-message"] = "Si un compte existe pour cet email, vous pouvez réinitialiser le mot de passe.";
-            $this->redirect("/AgriMai/index.php?route=login");
+            $this->redirect("./index.php?route=login");
         } else {
             $csrfManager = new CSRFTokenManager();
             $csrfToken = $csrfManager->generateCSRFToken();
@@ -273,7 +273,7 @@ class AuthController extends AbstractController
     {
         if (empty($_POST['email'])) {
             $_SESSION["error-message"] = "Veuillez entrer votre email.";
-            $this->redirect("/AgriMai/index.php?route=forgot-password");
+            $this->redirect("./index.php?route=forgot-password");
             return;
         }
 
@@ -289,7 +289,7 @@ class AuthController extends AbstractController
             } catch (\Exception ) {
                 // Impossible de générer le token → message d'erreur générique
                 $_SESSION["error-message"] = "Impossible de générer le lien de réinitialisation. Veuillez réessayer.";
-                $this->redirect("/AgriMai/index.php?route=forgot-password");
+                $this->redirect("./index.php?route=forgot-password");
                 return;
             }
 
@@ -316,7 +316,7 @@ class AuthController extends AbstractController
 
 // Toujours afficher un message générique pour éviter de révéler l'existence d'un compte
         $_SESSION["success-message"] = "Si un compte existe pour cet email, un lien de réinitialisation a été envoyé.";
-        $this->redirect("/AgriMai/index.php?route=login");
+        $this->redirect("./index.php?route=login");
 
     }
 
@@ -326,7 +326,7 @@ class AuthController extends AbstractController
         $token = $_GET['token'] ?? null;
         if (!$token) {
             $_SESSION['error-message'] = "Token manquant.";
-            $this->redirect("/AgriMai/index.php?route=login");
+            $this->redirect("./index.php?route=login");
             return;
         }
 
@@ -335,7 +335,7 @@ class AuthController extends AbstractController
 
         if (!$resetData || strtotime($resetData['expires_at']) < time()) {
             $_SESSION['error-message'] = "Token invalide ou expiré.";
-            $this->redirect("/AgriMai/index.php?route=forgot-password");
+            $this->redirect("./index.php?route=forgot-password");
             return;
         }
 
@@ -345,7 +345,7 @@ class AuthController extends AbstractController
 
             if ($password !== $confirm) {
                 $_SESSION['error-message'] = "Les mots de passe ne correspondent pas.";
-                $this->redirect("/AgriMai/index.php?route=reset-password&token=$token");
+                $this->redirect("./index.php?route=reset-password&token=$token");
                 return;
             }
 
@@ -354,7 +354,7 @@ class AuthController extends AbstractController
             $um->deleteResetByEmail($resetData['email']);
 
             $_SESSION['success-message'] = "Mot de passe réinitialisé avec succès.";
-            $this->redirect("/AgriMai/index.php?route=login");
+            $this->redirect("./index.php?route=login");
             return;
         }
 
@@ -372,7 +372,7 @@ class AuthController extends AbstractController
     {
         if (!isset($_POST['token'], $_POST['password'])) {
             $_SESSION["error-message"] = "Formulaire incomplet.";
-            $this->redirect("/AgriMai/index.php?route=login");
+            $this->redirect("./index.php?route=login");
             return;
         }
 
@@ -387,10 +387,10 @@ class AuthController extends AbstractController
             $um->deleteResetByEmail($reset['email']);
 
             $_SESSION["success-message"] = "Mot de passe mis à jour avec succès !";
-            $this->redirect("/AgriMai/index.php?route=login");
+            $this->redirect("./index.php?route=login");
         } else {
             $_SESSION["error-message"] = "Lien invalide ou expiré.";
-            $this->redirect("/AgriMai/index.php?route=forgot-password");
+            $this->redirect("./index.php?route=forgot-password");
         }
     }
 

@@ -165,7 +165,8 @@
     justify-content: center;
     align-items: center;
     gap: 0;
-    margin: 3rem auto;
+    margin:0;
+    padding: 2rem;
     width: 95%;
 
 
@@ -173,7 +174,7 @@
       flex: 2;
 
       h1 {
-        @include montserrat(600, normal, 20px);
+        @include montserrat(600, normal, 40px);
         margin-bottom: 1rem;
         text-align: center;
       }
@@ -183,33 +184,37 @@
         margin-bottom: 1.2rem;
         border-radius: 10px;
         border-right: 4px solid $color12;
-        width: 450px;
+        width: 750px;
 
+        .product-titleB {
+          @include roboto(500, normal, 38px);
+        }
         .sent{
-          border-left: 4px solid $color12
+          border-left: 4px solid $color12;
+
         }
         .message-headerB {
-          @include roboto(500, normal, 16px);
+          @include roboto(500, normal, 34px);
           gap: 0.4rem;
-
-          .product-titleB {
-            @include roboto(500, normal, 14px);
+          p{
+            @include roboto(500, normal, 38px);
           }
 
+
           .date {
-            @include roboto(500, normal, 12px);
+            @include roboto(500, normal, 34px);
           }
         }
 
         .message-bodyB {
-          @include roboto-light(400, italic, 14px);
+          @include roboto-light(400, italic, 38px);
           line-height: 1.4;
           padding: 0.4rem 0 0.8rem 0;
         }
 
         .message-actionsB {
           a {
-            @include roboto(500, normal, 14px);
+            @include roboto(500, normal, 36px);
             padding: 0.3rem 0.8rem;
           }
         }
@@ -223,34 +228,35 @@
       height: auto;
       border-left: 4px solid $color12;
       border-radius: 12px;
-      width: 450px;
+      width: 750px;
 
       h2 {
-        @include montserrat(600, normal, 20px);
-        margin-bottom: 0.8rem;
+        @include montserrat(600, normal, 40px);
+        margin-bottom: 3rem;
         text-align: center;
       }
 
       .formBuyer {
-        gap: 0.6rem;
+        gap: 1.5rem;
 
         label {
-          @include roboto(500, normal, 14px);
+          @include roboto(500, normal, 38px);
         }
 
         input,
         select,
         textarea {
-          @include roboto(400, normal, 14px);
+          @include roboto(400, normal, 36px);
           padding: 0.4rem 0.6rem;
+          height: 80px;
         }
 
         textarea {
-          min-height: 190px;
+          min-height: 390px;
         }
 
         .reply-actionsBuyer button {
-          @include inter(600, normal, 16px);
+          @include inter(600, normal, 36px);
           padding: 0.4rem 0.8rem;
         }
       }

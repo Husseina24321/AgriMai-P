@@ -11,12 +11,12 @@
                 {% if products is not empty %}
                     {% for product in products %}
                         <div class="card-market">
-                            <img src="/AgriMai/public/uploads/{{ product.getImage() }}" alt="{{ product.getTitle() }}">
+                            <img src="./public/uploads/{{ product.getImage() }}" alt="{{ product.getTitle() }}">
                             <h2>{{ product.getTitle() }}</h2>
                             <p class="producteur">{{ product.getProducteur() }}</p>
                             <p class="prix">{{ product.getPrice() }} € / kg</p>
                             <div class="actions">
-                                <a href="/AgriMai/index.php?route=product-detail&id={{ product.getId() }}" class="btnMarket">Voir</a>
+                                <a href="./index.php?route=product-detail&id={{ product.getId() }}" class="btnMarket">Voir</a>
                             </div>
                         </div>
                     {% endfor %}

@@ -22,13 +22,13 @@ class UserController extends AbstractController
     {
         if (!isset($_GET["id"])) {
             $_SESSION["error-message"] = "ID utilisateur manquant.";
-            $this->redirect("/Agrimai/index.php?route=list-users");
+            $this->redirect("./index.php?route=list-users");
         }
 
         $user = $this->um->findById((int)$_GET["id"]);
         if (!$user) {
             $_SESSION["error-message"] = "Utilisateur introuvable.";
-            $this->redirect("/Agrimai/index.php?route=list-users");
+            $this->redirect("./index.php?route=list-users");
         }
 
         return $user;
@@ -60,7 +60,7 @@ class UserController extends AbstractController
         $this->um->validateUser($user);
 
         $_SESSION["success-message"] = "Utilisateur validé.";
-        $this->redirect("/AgriMai/index.php?route=list-users");
+        $this->redirect("./index.php?route=list-users");
     }
     public function createUser(): void
     {
@@ -144,6 +144,6 @@ class UserController extends AbstractController
         $this->um->deleteUser($user);
 
         $_SESSION["success-message"] = "Utilisateur supprimé.";
-        $this->redirect("/Agrimai/index.php?route=list-users");
+        $this->redirect("./index.php?route=list-users");
     }
 }

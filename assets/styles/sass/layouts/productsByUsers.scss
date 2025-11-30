@@ -127,13 +127,14 @@
         max-width: 960px; // Limite la largeur
         text-align: center;
 
+
         h1 {
-          @include montserrat(600, normal, 24px);
+          @include montserrat(600, normal, 30px);
           word-wrap: break-word; // Empêche le texte de déborder
         }
 
         a {
-          @include roboto(400, normal, 15px);
+          @include roboto(400, normal, 24px);
           word-wrap: break-word;
         }
       }
@@ -151,12 +152,12 @@
           padding: 0.9rem;
 
           h3 {
-            @include montserrat(600, normal, 20px);
+            @include montserrat(600, normal, 28px);
             word-wrap: break-word;
           }
 
           p {
-            @include roboto(400, normal, 16px);
+            @include roboto(400, normal, 26px);
             word-wrap: break-word;
           }
 
@@ -178,12 +179,17 @@
               gap: 0.8rem;
               margin-top: 1rem;
               padding-left: 0;
+
+              a{
+                @include roboto(400, normal, 26px);
+              }
             }
 
             form {
               button {
+                font-size: 28px;
                 width: 100%;
-                max-width: 150px;
+                max-width: 180px;
                 margin-top: 1rem;
               }
             }

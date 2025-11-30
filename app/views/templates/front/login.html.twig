@@ -3,7 +3,7 @@
 <section id="login">
 
     <div class="login-body">
-        <img src="/AgriMai/assets/styles/img/logo.png" alt="Logo d'AgriMai">
+        <img src="./assets/styles/img/logo.png" alt="Logo d'AgriMai">
         <h3>CONNEXION </h3>
         <p>
             Connexion sécurisée à votre compte producteur ou acheteur.
@@ -17,7 +17,7 @@
         {% if successMessage %}
             <p class="alert-success">{{ successMessage }}</p>
         {% endif %}
-        <form action="/AgriMai/index.php?route=check-login" method="POST">
+        <form action="./index.php?route=check-login" method="POST">
             <label>Nom:
                 <input type="text" name="nom" placeholder="Nom" required>
             </label>
@@ -41,9 +41,9 @@
             </div>
         </form>
         <div class="login-link">
-            <a href="/AgriMai/index.php?route=forgot-password">Mot de passe oublié ?</a>
+            <a href="./index.php?route=forgot-password">Mot de passe oublié ?</a>
             <p>Vous n’avez pas de compte ?
-                <a href="/AgriMai/index.php?route=register">Inscrivez-vous</a>
+                <a href="./index.php?route=register">Inscrivez-vous</a>
             </p>
         </div>
 

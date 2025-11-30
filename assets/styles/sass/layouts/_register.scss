@@ -17,6 +17,9 @@
     align-items: center;
     justify-content: center;
     color: white;
+    width: 100px;
+    height: auto;
+    max-width: none
   }
   .register-body{
     flex: 1;
@@ -226,12 +229,11 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 1.5rem;
-    margin: 1rem;
+
 
     .register-body {
       width: 100%;
-      max-width: 65%;
+      max-width: 100%;
       padding: 30px;
       border-radius: 10px 10px 0 0;
 
@@ -241,18 +243,18 @@
       }
 
       h3 {
-        @include montserrat(600, normal, 18px);
+        @include montserrat(600, normal, 26px);
         text-align: center;
       }
 
       p {
-        @include roboto(400, oblique, 16px);
+        @include roboto(400, oblique, 24px);
         margin: 0 0 20px 0;
         text-align: center;
       }
 
       form {
-        max-width: 300px;
+        max-width: 500px;
         width: 100%;
         gap: 0.8rem;
 
@@ -261,23 +263,24 @@
           flex-direction: column;
 
           label {
-            @include roboto(400, normal, 16px);
+            @include roboto(400, normal, 24px);
           }
 
           input,
           select,
           textarea {
-            @include roboto(400, normal, 14px);
+            @include roboto(400, normal, 24px);
             padding: 0.4rem;
             width: 100%;
+            max-width: 400px;
           }
           select{
-            width: 150px;
+            width: 170px;
           }
         }
 
         button {
-          @include inter(600, normal, 16px);
+          @include inter(600, normal, 22px);
           padding: 0.5rem 1rem;
           max-width: 150px;
           width: 100%;
@@ -285,14 +288,14 @@
         }
 
         p, p a {
-          @include roboto(400, normal, 14px);
+          @include roboto(400, normal, 22px);
           text-align: center;
         }
       }
     }
     .register-img {
       flex: 1;
-      width: 410px;
+      width: 100%;
       height: auto;
       min-height: 250px;
       border-radius: 0 0 5px 5px;

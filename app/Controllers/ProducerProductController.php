@@ -41,7 +41,7 @@ class ProducerProductController extends AbstractController
     {
         if (empty($file['name'])) return null;
 
-        $uploadDir = $_SERVER['DOCUMENT_ROOT'] . '/AgriMai/public/uploads/';
+        $uploadDir = $_SERVER['DOCUMENT_ROOT'] . './public/uploads/';
         if (!is_dir($uploadDir)) {
             mkdir($uploadDir, 0777, true);
         }

@@ -4,7 +4,7 @@
     <section id="edit-product">
         <h1>Modifier le produit</h1>
 
-        <form method="POST" action="/AgriMai/index.php?route=update-product&id={{ product.getId() }}" enctype="multipart/form-data">
+        <form method="POST" action="./index.php?route=update-product&id={{ product.getId() }}" enctype="multipart/form-data">
             <input type="hidden" name="id" value="{{ product.getId() }}">
             <input type="hidden" name="csrf-token" value="{{ csrfToken }}">
 
@@ -45,7 +45,7 @@
             <div>
                 <label for="image">Image (laisser vide pour conserver l'actuelle) :</label>
                 <input type="file" id="image" name="image">
-                <p>Image actuelle : <img src="/AgriMai/public/uploads/{{ product.getImage() }}" alt="{{ product.getTitle() }}" width="100"></p>
+                <p>Image actuelle : <img src="./public/uploads/{{ product.getImage() }}" alt="{{ product.getTitle() }}" width="100"></p>
             </div>
 
             <button type="submit">Mettre à jour</button>

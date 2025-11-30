@@ -12,7 +12,7 @@
                 <div class="grid-producerDash">
                     {% for product in products %}
                         <div class="card-producerDash">
-                            <img src="/AgriMai/public/uploads/{{ product.getImage() }}" alt="{{ product.getTitle() }}">
+                            <img src="./public/uploads/{{ product.getImage() }}" alt="{{ product.getTitle() }}">
                             <h3>{{ product.getTitle() }}</h3>
                             <p class="producer">{{ product.getProducteur() }}</p>
                             <div class="card-producerDashText">
@@ -23,11 +23,11 @@
 
                             <div class="actions-producerDash">
                                 <div class="actions-producerDashText">
-                                    <a href="/AgriMai/index.php?route=edit-product&id={{ product.getId() }}" class="btn">Modifier</a>
-                                    <a href="/AgriMai/index.php?route=product-detail&id={{ product.getId() }}" class="btn">Voir</a>
-                                    <a href="/AgriMai/index.php?route=create-product" class="btn-producerDash"> Ajouter un produit</a>
+                                    <a href="./index.php?route=edit-product&id={{ product.getId() }}" class="btn">Modifier</a>
+                                    <a href="./index.php?route=product-detail&id={{ product.getId() }}" class="btn">Voir</a>
+                                    <a href="./index.php?route=create-product" class="btn-producerDash"> Ajouter un produit</a>
                                 </div>
-                                <form method="POST" action="/AgriMai/index.php?route=delete-product&id={{ product.getId() }}" style="display:inline;" onsubmit="return confirm('Voulez-vous vraiment supprimer ce produit ?');">
+                                <form method="POST" action="./index.php?route=delete-product&id={{ product.getId() }}" style="display:inline;" onsubmit="return confirm('Voulez-vous vraiment supprimer ce produit ?');">
                                     <button type="submit" class="btn">Supprimer</button>
                                 </form>
                             </div>
@@ -36,7 +36,7 @@
                 </div>
             {% else %}
                 <p>Vous n'avez pas encore ajouté de produit.</p>
-                <a href="/AgriMai/index.php?route=create-product" class="btn btn-primary">Créer mon premier produit</a>
+                <a href="./index.php?route=create-product" class="btn btn-primary">Créer mon premier produit</a>
             {% endif %}
         </div>
     </section>
