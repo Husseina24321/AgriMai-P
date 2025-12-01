@@ -221,7 +221,7 @@ footer {
           color: $color4;
           cursor: pointer;
           @include inter(600, normal, 26px);
-          width: 420px;
+          height: 46px;
 
           &:hover {
             background: $color7;
@@ -356,6 +356,8 @@ footer {
       }
 
       form {
+        display: flex;
+        flex-direction: row;
         label input {
           display: flex;
           flex-direction: column;
@@ -368,7 +370,7 @@ footer {
 
         button {
           width: 100%;
-          max-width: 300px;
+          max-width: 90px;
           padding: 0.5rem;
           @include inter(600, normal, 22px);
         }

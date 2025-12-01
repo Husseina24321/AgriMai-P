@@ -12,12 +12,18 @@
 
   .login-image {
     flex: 1;
-    background: url("./assets/styles/img/apples.png") no-repeat center center/cover;
     border-radius: 0 5px 5px 0;
     display: flex;
-    align-items: center;
     justify-content: center;
     color: white;
+
+
+    img {
+      width: 100%; /* ne dépasse pas la largeur du conteneur */
+      height: auto; /* garde les proportions */
+      border-radius: 0 5px 5px 0; /* arrondis côté droit */
+      object-fit: cover; /* rempli bien l'espace si nécessaire */
+    }
   }
 
   .login-body{
@@ -26,10 +32,11 @@
     padding: 50px;
     display: flex;
     flex-direction: column;
-    align-items: center;
     border: 1px solid;
     border-radius: 5px 0 0 5px;
     background-color:$color30;
+
+
 
     h3{
       @include montserrat(600, normal, 22px);
@@ -138,7 +145,7 @@
 
     .login-body {
       width: 100%;
-      max-width: 400px; /* réduit la largeur */
+      max-width: 500px; /* réduit la largeur */
       padding: 40px; /* un peu moins que sur desktop */
       border-radius: 5px 0 0 5px;
 
@@ -170,6 +177,7 @@
           height: 50px;
           padding: 0.5rem;
           @include roboto(400, normal, 22px);
+          width: auto;
         }
 
         .login-btn {
@@ -190,9 +198,10 @@
       flex: 1; /* garde côte à côte */
       height: auto;
       min-height: 500px;
-      border-radius: 0 5px 5px 0;
+      border-radius: 0 0 5px 5px;
       background-size: cover;
       background-position: center;
+
     }
   }
 
@@ -221,6 +230,14 @@
     flex-direction: column;
     align-items: center;
     padding: 1.5rem;
+
+    .login-image {
+
+       img{
+         max-height: 450px;
+         border-radius: 0 0 5px 5px;
+       }
+    }
 
 
     .login-body {
@@ -259,6 +276,7 @@
           @include roboto(400, normal, 24px);
           padding: 0.4rem;
           height: 50px;
+          width: auto;
         }
 
         .login-btn {
@@ -282,6 +300,9 @@
       border-radius: 0 0 5px 5px;
       background-size: cover;
       background-position: center;
+      img{
+
+      }
     }
   }
 

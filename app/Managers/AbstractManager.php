@@ -11,17 +11,20 @@ abstract class AbstractManager
     public function __construct()
     {
         $host = 'localhost';
-        //$host = 'localhost'; // important
+//$host = 'localhost'; // important
         $port = 8889; // port MySQL MAMP
-        //$port = 3306; // port MySQL MAMP
+//$port = 3306; // port Hostinger
         $dbname = 'agriMai';
-        //$dbname ="u164688670_agriMai";
+//$dbname ="u164688670_agriMai";
+
 
         $charset = 'utf8mb4';
         $user = 'root';
-        //$user="u164688670_husseina";
-        //$password ="@Amiralove24";
+//$user="u164688670_husseina";
+//$password ="@Amiralove24";
         $password = 'root';
+
+
 
         $dsn = "mysql:host=$host;port=$port;charset=$charset;dbname=$dbname";
 

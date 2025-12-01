@@ -302,7 +302,7 @@ footer #footer-legal .footer-legal-body p a:active {
     font-style: normal;
     font-variation-settings: "wdth" 100;
     font-size: 26px;
-    width: 420px;
+    height: 46px;
   }
   footer #newsletters form button:hover {
     background: #E2801D;
@@ -441,6 +441,10 @@ footer #footer-legal .footer-legal-body p a:active {
     font-style: normal;
     font-size: 24px;
   }
+  footer #newsletters form {
+    display: flex;
+    flex-direction: row;
+  }
   footer #newsletters form label input {
     display: flex;
     flex-direction: column;
@@ -456,7 +460,7 @@ footer #footer-legal .footer-legal-body p a:active {
   }
   footer #newsletters form button {
     width: 100%;
-    max-width: 300px;
+    max-width: 90px;
     padding: 0.5rem;
     font-family: "Inter", sans-serif;
     font-optical-sizing: auto;
@@ -2379,6 +2383,9 @@ header nav .aBorder2 {
   line-height: 1.5;
   padding: 0.5rem 0 1rem 0;
 }
+#producer-messages .messages-list .message-card .message-body p {
+  color: #000000;
+}
 #producer-messages .messages-list .message-card .message-actions {
   display: flex;
   justify-content: flex-end;
@@ -3050,33 +3057,33 @@ header nav .aBorder2 {
 }
 #hero {
   position: relative;
-  background: url("../img/image1.png") no-repeat center center/cover;
-  color: white;
-  min-height: 100vh; /* plein écran */
+  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 2rem;
+  overflow: hidden;
+  color: white;
 }
-#hero .hero-bg {
+
+.hero-bg {
   position: absolute;
-  top: 0;
-  left: 0;
+  inset: 0; /* top:0 + left:0 + width + height */
   width: 100%;
   height: 100%;
-  object-fit: cover; /* équivalent de background-size: cover */
-  object-position: center; /* équivalent de background-position: center */
+  object-fit: cover;
+  object-position: center;
   z-index: 0;
+  pointer-events: none;
 }
+
+/* overlay */
 #hero::before {
   content: "";
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   background: rgba(0, 0, 0, 0.5);
-  z-index: 0;
+  z-index: 1;
 }
 
 #hero p {
@@ -3090,7 +3097,7 @@ header nav .aBorder2 {
 
 .hero-body {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   display: flex;
   gap: 4rem;
   max-width: 1200px;
@@ -4476,12 +4483,16 @@ form button:active {
 }
 #login .login-image {
   flex: 1;
-  background: url("./assets/styles/img/apples.png") no-repeat center center/cover;
   border-radius: 0 5px 5px 0;
   display: flex;
-  align-items: center;
   justify-content: center;
   color: white;
+}
+#login .login-image img {
+  width: 100%; /* ne dépasse pas la largeur du conteneur */
+  height: auto; /* garde les proportions */
+  border-radius: 0 5px 5px 0; /* arrondis côté droit */
+  object-fit: cover; /* rempli bien l'espace si nécessaire */
 }
 #login .login-body {
   flex: 1;
@@ -4489,7 +4500,6 @@ form button:active {
   padding: 50px;
   display: flex;
   flex-direction: column;
-  align-items: center;
   border: 1px solid;
   border-radius: 5px 0 0 5px;
   background-color: #6f1d1b;
@@ -4623,7 +4633,7 @@ form button:active {
   }
   #login .login-body {
     width: 100%;
-    max-width: 400px; /* réduit la largeur */
+    max-width: 500px; /* réduit la largeur */
     padding: 40px; /* un peu moins que sur desktop */
     border-radius: 5px 0 0 5px;
   }
@@ -4668,6 +4678,7 @@ form button:active {
     font-weight: 400;
     font-style: normal;
     font-size: 22px;
+    width: auto;
   }
   #login .login-body form .login-btn {
     margin-top: 1rem;
@@ -4688,7 +4699,7 @@ form button:active {
     flex: 1; /* garde côte à côte */
     height: auto;
     min-height: 500px;
-    border-radius: 0 5px 5px 0;
+    border-radius: 0 0 5px 5px;
     background-size: cover;
     background-position: center;
   }
@@ -4716,6 +4727,10 @@ form button:active {
     flex-direction: column;
     align-items: center;
     padding: 1.5rem;
+  }
+  #login .login-image img {
+    max-height: 450px;
+    border-radius: 0 0 5px 5px;
   }
   #login .login-body {
     width: 100%;
@@ -4766,6 +4781,7 @@ form button:active {
     font-size: 24px;
     padding: 0.4rem;
     height: 50px;
+    width: auto;
   }
   #login .login-body form .login-btn {
     margin-top: 0.8rem;
@@ -5142,7 +5158,7 @@ form button:active {
   }
   #reset-password .reset-body .reset-form .reset-btn button {
     width: 100%;
-    max-width: 280px;
+    height: 49px;
   }
   #reset-password .reset-body a {
     text-align: center;
@@ -6241,15 +6257,18 @@ form button:active {
 }
 #register .register-img {
   flex: 1;
-  background: url("/AgriMai/assets/styles/img/apples.png") no-repeat center center/cover;
-  border-radius: 0 5px 5px 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
-  width: 100px;
-  height: auto;
-  max-width: none;
+  /* Évite que la div écrase l'image */
+  overflow: hidden;
+}
+#register .register-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* garde l’image propre sans déformation */
+  border-radius: 0 5px 5px 0; /* même effet que ton background */
+  display: block;
 }
 #register .register-body {
   flex: 1;
@@ -6576,11 +6595,12 @@ form button:active {
   #register .register-img {
     flex: 1;
     width: 100%;
-    height: auto;
-    min-height: 250px;
-    border-radius: 0 0 5px 5px;
     background-size: cover;
     background-position: center;
+  }
+  #register .register-img img {
+    border-radius: 0 0 5px 5px;
+    max-height: 450px;
   }
 }
 #productDetail {
@@ -6866,6 +6886,7 @@ form button:active {
   color: white;
   width: 220px;
   height: 35px;
+  margin-top: 0.9rem;
 }
 
 #popup-form .purchase {
@@ -7535,6 +7556,7 @@ form button:active {
     width: 100%;
     max-width: 220px;
     height: 35px;
+    margin-top: 1.5rem;
   }
   #productDetail #popup-form .purchase {
     flex-direction: column;

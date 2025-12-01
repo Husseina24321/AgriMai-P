@@ -102,6 +102,11 @@ class Router {
                     $contactController = new ContactController();
                     $contactController->sendMessage();
                     break;
+                    
+                case "sendContactMessage":
+                    $contactController = new ContactController();
+                    $contactController->sendContactMessage();
+                    break;
 
                 case "successMessage":
                     $contactController = new ContactController();

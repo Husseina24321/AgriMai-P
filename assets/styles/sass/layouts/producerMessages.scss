@@ -78,6 +78,10 @@
         color: rgba($color4, 0.9);
         line-height: 1.5;
         padding: 0.5rem 0 1rem 0 ;
+
+        p{
+          color:$color4;
+        }
       }
 
       .message-actions {
@@ -246,6 +250,7 @@
           @include roboto-light(400, italic, 34px);
           line-height: 1.4;
           padding: 0.4rem 0 0.8rem 0;
+
         }
 
         .message-actions {

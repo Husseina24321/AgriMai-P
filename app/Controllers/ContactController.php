@@ -107,6 +107,70 @@ class ContactController extends AbstractController
         exit;
     }
 
+    //FORMULAIRE DE CONTACT
+    /**
+     * Méthode pour gérer l'envoi des messages depuis le formulaire de contact
+     * Ce formulaire est destiné aux visiteurs ou utilisateurs qui ne sont pas liés à un produit
+     */
+    public function sendContactMessage(): void
+    {
+        // Vérifie que le formulaire est soumis via POST
+        if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+            // Affiche le formulaire si ce n'est pas un POST
+            $this->showContactForm();
+            return;
+        }
+
+        //  Récupération et nettoyage des champs
+        $name    = trim($_POST['name'] ?? '');
+        $email   = trim($_POST['email'] ?? '');
+        $message = trim($_POST['message'] ?? '');
+
+        // Validation simple des champs
+        $errors = [];
+        if (empty($name)) {
+            $errors[] = "Le nom est obligatoire.";
+        }
+        if (empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $errors[] = "Un email valide est obligatoire.";
+        }
+        if (empty($message)) {
+            $errors[] = "Le message ne peut pas être vide.";
+        }
+
+        // Si des erreurs existent, on ré-affiche le formulaire avec les valeurs et les messages d'erreur
+        if (!empty($errors)) {
+            $this->showContactForm([
+                'name'    => $name,
+                'email'   => $email,
+                'message' => $message
+            ], $errors);
+            return;
+        }
+
+        $adminId = 22;
+        // Création du message dans la base de données
+        // sender_id = 0 pour un visiteur anonyme
+        // product_id = null car pas de destinataire spécifique ni de produit
+        $this->contactManager->create([
+            'sender_id'   => 0,         // visiteur anonyme
+            'receiver_id' => $adminId,  // destinataire admin
+            'product_id'  => null,      // pas de produit associé
+            'content'     => $message
+        ]);
+
+        // Envoi d'un mail au support / administrateur /Husseina
+        //$adminEmail = 'husseina.aoudou-pacco@3wa.io'; // adresse ou recevoir les messages
+       // $subject = "Nouveau message depuis le formulaire de contact D'AgriMai";
+       // $body = "Nom : $name\nEmail : $email\n\nMessage :\n$message";
+       // mail($adminEmail, $subject, $body);
+
+        // Redirection avec message de succès pour éviter le double envoi
+        header("Location: ./index.php?route=successMessage");
+        exit;
+    }
+
+
 
     public function successMessage(): void
     {
@@ -338,7 +402,6 @@ class ContactController extends AbstractController
         header("Location: ./index.php?route=producerMessages");
         exit();
     }
-
 
 
 
